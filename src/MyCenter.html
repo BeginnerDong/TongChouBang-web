@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <title>特色会场</title>
+    <link type="text/css" rel="stylesheet" href="../css/style.css" />
+    <style>
+        .mycenter {
+            max-width: 1200px;
+            width: 80%;
+            margin: 0 auto;
+            /* border: 1px solid #222222; */
+            /* height: 200px */
+        }
+
+        .my_tab {}
+
+        .my_tab li {
+            float: left;
+            list-style-type: none;
+            line-height: 90px;
+        }
+
+        .my_tab li a {
+            padding: 0 30px;
+            font-size: 26px;
+            color: #212121;
+        }
+
+        .my_tab li:nth-of-type(1) a {
+            padding: 0;
+        }
+
+        .orderlist {
+            margin: 0px 0px 50px 0px;
+        }
+
+        .orderhead {
+            background: #e2f4ff;
+            padding: 0 20px;
+        }
+
+        .orderhead li {
+            width: 33.33%;
+            float: left;
+            line-height: 60px;
+            font-size: 16px;
+            color: #212121;
+            list-style-type: none;
+        }
+
+        .orderhead li:nth-of-type(1) {
+            text-align: left;
+        }
+
+        .orderhead li:nth-of-type(2) {
+            text-align: center;
+        }
+
+        .orderhead li:nth-of-type(3) {
+            text-align: right;
+            color: #ff556f;
+        }
+
+        .deleteicon {
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+            background: url("/img/deleteicon.png");
+            vertical-align: middle;
+            margin-left: 20px;
+        }
+
+        .orderdeatil {
+            border: 2px solid #e2f4ff;
+            padding: 40px;
+        }
+
+        .ordertab {
+            font-size: 14px;
+            color: #999999;
+        }
+
+        .closeorder {
+            position: absolute;
+            top: 0;
+            right: 0;
+            line-height: 60px;
+            width: 140px;
+            background: #ff556f;
+            text-align: center;
+            border-radius: 8px;
+            font-size: 20px;
+            color: #fff;
+            top: 26%;
+        }
+
+        .orderleft {
+            position: relative;
+            background: #212121;
+            float: left;
+            width: 188px;
+            height: 141px;
+            margin: 6px 15px 0 0;
+            overflow: hidden;
+        }
+
+        .orderright {
+            padding-right: 200px;
+            margin-left: 200px;
+            position: relative;
+        }
+
+        .ordertitle {
+            font-size: 16px;
+            color: #212121;
+        }
+
+        .ordercont {
+            font-size: 16px;
+            color: #666666;
+            height: 88px;
+            overflow: hidden;
+        }
+
+        @media screen and (min-width:1040px) {
+            .orderclick {
+                font-size: 28px !important;
+                color: #ff556f !important;
+            }
+        }
+
+
+        .meshead {
+            line-height: 59px;
+            width: 100%;
+            background: #f0f0f0f0;
+            border-bottom: 2px solid #ff556f;
+        }
+
+        .meshead span {
+            width: 180px;
+            display: inline-block;
+            background: #ff556f;
+            text-align: center;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .mesdetail0 {
+            border: 1px solid #ffeff1;
+            /* margin: 50px; */
+        }
+
+        .mesdetail {
+            margin: 50px;
+
+        }
+
+        .mesleft {
+            background: #212121;
+            float: left;
+            width: 188px;
+            height: 141px;
+            margin: 6px 15px 0 0;
+            overflow: hidden;
+        }
+
+        .mesright {
+            padding-right: 200px;
+            margin-left: 200px;
+            position: relative;
+        }
+
+        .mescont {
+            font-size: 20px;
+            color: #999999;
+            width: 100%;
+            resize: none;
+            min-height: 300px;
+            background: #f5f5f5;
+            border: none;
+            /* padding: 20px 30px; */
+        }
+
+        .mescont:focus {
+            outline: none;
+        }
+
+        .mesicon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            background: url("/img/messtaricon.png");
+            vertical-align: middle;
+        }
+
+        .sendmes {
+            width: 300px;
+            height: 60px;
+            background: #ff556f;
+            border-radius: 8px;
+            border: none;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        @media screen and (max-width:1040px) {
+            .mycenter {
+                width: 90%;
+            }
+
+            .my_tab li {
+                width: 15%;
+                text-align: center;
+            }
+
+            .my_tab li a {
+                font-size: 18px;
+                padding: 0;
+            }
+
+            .orderclick {
+                font-size: 20px !important;
+                color: #ff556f !important;
+            }
+
+            .orderleft {
+                width: 100%;
+                float: none;
+            }
+
+            .orderright {
+                width: 100%;
+                margin-left: 0px;
+                padding-right: 0px;
+
+            }
+
+            .closeorder {
+                top: unset;
+                bottom: 0px;
+                right: 0px;
+                line-height: 36px;
+                font-size: 16px;
+                width: 75px;
+            }
+        }
+
+        @media screen and (max-width:620px) {
+            .mycenter {
+                width: 100%;
+            }
+            .orderclick{
+                font-size: 16px !important;
+                color: #ff556f !important;
+            }
+            .my_tab li:nth-of-type(1){
+                width: 23%;
+            }
+            .my_tab li a{
+                font-size: 14px;
+            }
+            .orderhead li{
+                font-size: 14px;
+            }
+            .closeorder {
+                line-height: 21px;
+                bottom: -3px;
+            }
+            .orderdeatil {
+                padding: 20px;
+            }
+            .mesdetail{
+                margin:10px; 
+            }
+            .mesleft{
+                float: none;
+                width: 100%;
+            }
+            .mesright{
+                margin: 0px;
+                padding:0px;
+            }
+            .mesicon{
+               
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <!-- 头部 -->
+    <header class="clear head_top">
+        <div class="clear">
+            <!--logo-->
+            <div class="head_logo">
+                <span class="logo">统筹帮</span>
+                <select class="tab_adress">
+                    <option>北京</option>
+                    <option>上海</option>
+                </select>
+            </div>
+            <!--导航栏-->
+            <nav class="head_nav">
+                <ul class="clear">
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="TeSe.html">找特色会场</a></li>
+                    <li><a href="Print.html">找应刷商</a></li>
+                    <li><a href="PartTime.html">找兼职</a></li>
+                    <li id="nav2btn"><a>会议配套服务</a>
+                        <ul class="clear nav_2 ycxiala" id="nav2">
+                            <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+                            <li><a href="Lease.html">活动道具租赁</a></li>
+                            <li><a href="Advertising.html">线下广告</a></li>
+                            <li><a href="GiftPurchasing.html">礼品采购</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="ShopTransfer.html">店铺转让</a></li>
+                </ul>
+            </nav>
+            <div class="nav_small">
+                <button class="nav_btn" id="btnnav">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="clear"></div>
+                <ul class="clear small_nav orgin" id="snav">
+                    <li><a>首页</a></li>
+                    <li><a href="TeSe.html">找特色会场</a></li>
+                    <li><a href="Print.html">找应刷商</a></li>
+                    <li><a href="PartTime.html">找兼职</a></li>
+                    <li><a id="smnavbtn">会议配套服务</a>
+                        <ul class="clear smallnav2 smycxiala" id="smnav2">
+                            <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+                            <li><a href="Lease.html">活动道具租赁</a></li>
+                            <li><a href="Advertising.html">线下广告</a></li>
+                            <li><a href="GiftPurchasing.html">礼品采购</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="ShopTransfer.html">店铺转让</a></li>
+                    <li><a href="Login.html">登录注册</a></li>
+                    <li class="li_bg"><a href="MyCenter.html">个人中心</a></li>
+                    <li><a href="Apply.html">申请入驻</a></li>
+                    <li><a href="Help.html">帮助中心</a></li>
+                </ul>
+            </div>
+
+            <!--个人中心-->
+            <div class="head_abnoutus">
+                <ul class="clear">
+                    <li><a href="Login.html">登录注册</a></li>
+                    <li class="active"><a href="MyCenter.html">个人中心</a></li>
+                    <li><a href="Apply.html">申请入驻</a></li>
+                    <li><a href="Help.html">帮助中心</a></li>
+                </ul>
+            </div>
+            <div class="me_rk" style="float: right">
+                <div class="btn_me"><img id="btn_me" src="/img/meicon.png" /></div>
+
+                <ul class="me_list" id="me_list">
+                    <li><a href="Login.html">登录注册</a></li>
+                    <li><a href="MyCenter.html">个人中心</a></li>
+                    <li><a href="Apply.html">申请入驻</a></li>
+                    <li><a href="Help.html">帮助中心</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </header>
+    <div class="mycenter">
+        <div>
+            <div>
+                <ul class="my_tab clear">
+                    <li><a class="orderclick">我的预约</a></li>
+                    <li><a>待确认</a></li>
+                    <li><a>进行中</a></li>
+                    <li><a>待评价</a></li>
+                    <li><a>已评价</a></li>
+                    <li><a>已取消</a></li>
+                </ul>
+            </div>
+            <section class="orderlist">
+                <ul class="clear orderhead">
+                    <li>2019-02-23</li>
+                    <li>商家名称</li>
+                    <li>待确认<a class="deleteicon"></a></li>
+                </ul>
+                <div class="orderdeatil">
+                    <div class="clear">
+                        <div class="orderleft">
+                            <a></div>
+                        </a>
+                        <div class="orderright">
+                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
+                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                            <p><span class="ordertab">预约项目：家政服务</span></p>
+                            <a class="closeorder">取消预约</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="orderlist">
+                <ul class="clear orderhead">
+                    <li>2019-02-23</li>
+                    <li>商家名称</li>
+                    <li>进行中<a class="deleteicon"></a></li>
+                </ul>
+                <div class="orderdeatil">
+                    <div class="clear">
+                        <div class="orderleft">
+                            <a></div>
+                        </a>
+                        <div class="orderright">
+                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
+                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                            <p><span class="ordertab">预约项目：家政服务</span></p>
+                            <a class="closeorder">取消预约</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="orderlist">
+                <ul class="clear orderhead">
+                    <li>2019-02-23</li>
+                    <li>商家名称</li>
+                    <li>待评价<a class="deleteicon"></a></li>
+                </ul>
+                <div class="orderdeatil">
+                    <div class="clear">
+                        <div class="orderleft">
+                            <a></div>
+                        </a>
+                        <div class="orderright">
+                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
+                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                            <p><span class="ordertab">预约项目：家政服务</span></p>
+                            <a class="closeorder">去评价</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="orderlist">
+                <ul class="clear orderhead">
+                    <li>2019-02-23</li>
+                    <li>商家名称</li>
+                    <li>已评价<a class="deleteicon"></a></li>
+                </ul>
+                <div class="orderdeatil">
+                    <div class="clear">
+                        <div class="orderleft">
+                            <a></div>
+                        </a>
+                        <div class="orderright">
+                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
+                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                            <p><span class="ordertab">预约项目：家政服务</span></p>
+                            <a class="closeorder"></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="orderlist">
+                <ul class="clear orderhead">
+                    <li>2019-02-23</li>
+                    <li>商家名称</li>
+                    <li>已取消<a class="deleteicon"></a></li>
+                </ul>
+                <div class="orderdeatil">
+                    <div class="clear">
+                        <div class="orderleft">
+                            <a></div>
+                        </a>
+                        <div class="orderright">
+                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
+                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                            <p><span class="ordertab">预约项目：家政服务</span></p>
+                            <a class="closeorder"></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="mesdetail0">
+                <div class="meshead" style=""><span style="">评论服务</span></div>
+                <div class="mesdetail">
+                    <div class="clear">
+                        <div class="mesleft">
+                            <a></div>
+                        </a>
+                        <div class="mesright">
+                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
+                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                            <p><span class="ordertab">预约项目：家政服务</span></p>
+                        </div>
+                        <div style="margin-top: 40px;">
+                            <textarea placeholder="亲，写点评论吧，您的评论对其他买家有很大的帮助" class="mescont"></textarea>
+                        </div>
+                        <div style="line-height: 95px;"><span style="font-size: 22px;color: #ff556f">星级评论</span>
+                            <div style="display: inline-block;margin-left: 30px;">
+                                <span style="background: url('/img/messtaricon.png');" class="mesicon"></span>
+                                <span style="background: url('/img/messtaricon.png');" class="mesicon"></span>
+                                <span style="background: url('/img/messtaricon.png');" class="mesicon"></span>
+                                <span style="background: url('/img/messtaricon.png');" class="mesicon"></span>
+                                <span style="background: url('/img/messtaricon.png');" class="mesicon"></span>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            <div style="text-align: center;margin:50px 0px;"><button class="sendmes">发表评论</button></div>
+
+        </div>
+    </div>
+    <footer class="clear">
+        <div class="foot_k">
+            <ul class="clear ul_1 clear">
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">找特色会场</h4>
+                        <ul class="ul_2 clear">
+                            <li>年会场地</li>
+                            <li>品牌推广专区</li>
+                            <li>发布会场地</li>
+                            <li>婚宴场地</li>
+                            <li>商务会议场地</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">找印刷商</h4>
+                        <ul class="ul_2">
+                            <li>印刷厂</li>
+                            <li>印刷喷绘安装一体式服务</li>
+                            <li>其他</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">找兼职</h4>
+                        <ul class="ul_2">
+                            <li>演出人员</li>
+                            <li>模特</li>
+                            <li>翻译</li>
+                            <li>摄影摄像</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">店铺转让</h4>
+                        <ul class="ul_2">
+                            <li>酒吧夜店</li>
+                            <li>购物中心</li>
+                            <li>剧院剧场</li>
+                            <li>培训场地</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">会议自助餐</h4>
+                        <ul class="ul_2">
+                            <li>西餐自助餐</li>
+                            <li>中式桌餐</li>
+                            <li>茶歇</li>
+                            <li>中式自助</li>
+                            <li>自助酒会</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">活动道具租赁</h4>
+                        <ul class="ul_2">
+                            <li>DIY暖场</li>
+                            <li>车辆租赁</li>
+                            <li>仿真展品</li>
+                            <li>花艺布置</li>
+                            <li>活动服装租赁</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">线下广告</h4>
+                        <ul class="ul_2">
+                            <li>酒店夜店</li>
+                            <li>购物中心</li>
+                            <li>共享空间</li>
+                            <li>校园场地</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">礼品采购</h4>
+                        <ul class="ul_2">
+                            <li>厂家直销</li>
+                            <li>定制礼品</li>
+                            <li>其他</li>
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+        <div class="foot_contact">
+            <ul class="clear">
+                <li><span class="cion"></span>北京相予科技有限公司</li>
+                <li><span class="cion"></span>13126608897/1355128433</li>
+                <li><span class="cion"></span>北京石墨山万达F座</li>
+                <li><span class="cion"></span>1193549646@qq.com</li>
+                <li style="position: relative"><span class="cion" id="wechatbtn"></span>
+                    <div id="wechatk">
+                        <div><img src="/img/wechat1.jpg" /></div>
+                        <div><img src="/img/wechat1.jpg" /></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>
+<script type="text/javascript" src="/js/pubilc.js"></script>
+<script>
+    var 
+</script>

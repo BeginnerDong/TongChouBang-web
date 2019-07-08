@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+    <title>特色会场详情页</title>
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="/css/style.css" />
+    <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/js/base.js" type="application/javascript"></script>
+    <script src="/js/rem.js"></script>
+    <script type="text/javascript " src="/js/bootstrap.js"></script>
+    <!--[if IE 9]>
+ <style>
+    .animatedOpacity{
+        opacity:1;
+        }
+    .sort_in{
+    margin-top:0.3rem;
+    }
+ </style>
+<![endif]-->
+    <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+    <style>
+    @media screen and (max-width:1000px) {
+        .tese_intro_left{
+            height: auto;
+        }
+        .tese_intro_left{
+            width: 100%;
+        }
+        .tese_intro_right{
+            width: 100%;
+            margin-left:0;
+        }
+        .tese_mes .t_p{
+            line-height: 35px;
+        }
+        .tese_mes hr{
+           
+            margin: 10px 0;
+        }
+      .tese_mes{
+            width: 90%;
+            margin: 0 auto;
+        }
+        .tesedetali_top{
+            padding: 10px;
+        }
+        .teseimg{
+            float: none;
+            width: 100%;
+            height: 100%;
+        }
+        .teseimg img{
+            width: 100%;
+        }
+        .teseintro{
+            width: 100%;
+            margin-left: 0;
+        }
+        .y_bind{
+            padding: 1px 24px;
+        }
+        .tesedetail_c{
+            margin-bottom:20px; 
+        }
+        .tab_head ul li{
+            line-height: 60px;
+            font-size:22px;
+        }
+        .tab_head ul li:nth-of-type(1){
+            width: 35%;
+        }
+        .tab_head ul li:nth-of-type(2){
+            width: 35%;
+        }
+        .tab_head ul li:nth-of-type(3){
+            width: 30%;
+        }
+        .sect {
+            padding: 20px;
+        }
+        .btn_m_y{
+            position:absolute;
+            bottom: -10px;
+            top:auto;
+        }
+        .tab_head{
+            padding: 0px 10px;
+        }
+        .line_h_m{
+            display: none;
+        }
+        .tesedetail_m{
+            padding: 46px 10px;
+        }
+        .tab_m li{
+            line-height: 25px;
+        }
+        .tesedetail_m ul li{
+            font-size: 15px;
+        }
+        .tab_m_s1{
+            font-size: 19px;
+        }
+        .tab_mes_t{
+            width: 100%;
+        }
+        .aboutus_t_t{
+            width: 100%;
+            margin: 3px 0;
+            margin-left: 35px;
+        }
+        .aboutus_b{
+            padding-top: 0px;
+        }
+        .aboutus_w{
+            padding: 0px 20px;
+        }
+        .ts_kk{
+            padding: 0px 20px;
+        }
+        .jdimglist li{
+            width: 100%;
+            margin-left: 0;
+            margin-top: 20px;
+        }
+        .ts_kk h2{
+            font-size: 24px;
+        }
+        .map_a img{
+            width: 100%;
+        }
+        .activelist li{
+            width: 100%;
+            margin-left: 0;
+            margin-top: 20px;
+        }
+        .starlist ul li{
+            width: 19%;
+        }
+        .starlist{
+            width: 98px;
+            display: none;
+        }
+    }
+    @media screen and (min-width:1200px) {
+        .tese_intro{
+            width: 1200px;
+        }
+        .t_p{
+            line-height: 35px;
+        }
+    }
+    .yyct_1 ul li{
+        list-style-type: none;
+    }
+    .yyct_1 ul li div{
+        float: left;
+    }   
+    .yyct_1 ul li div:nth-of-type(1){
+        width: 13%;
+    }
+    .yyct_1 ul li div:nth-of-type(2){
+        width: 87%;
+    }
+    .tese_mes h3{
+        margin-top: -1px;
+    }
+    .tese_mes p{
+        margin-top: 20px;
+    }
+    @media screen and (max-width:1200px){
+        .tese_mes h3 {
+    margin-top: 47px;
+}
+    }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header class="clear head_top">
+            <div class="clear">
+                <!--logo-->
+                <div class="head_logo">
+                    <span class="logo">统筹帮</span>
+                    <select class="tab_adress">
+                        <option>北京</option>
+                        <option>上海</option>
+                    </select>
+                </div>
+                <!--导航栏-->
+                <nav class="head_nav">
+                    <ul class="clear">
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="TeSe.html">找特色会场</a></li>
+                        <li class="active"><a href="Print.html">找应刷商</a></li>
+                        <li><a href="PartTime.html">找兼职</a></li>
+                        <li id="nav2btn"><a>会议配套服务</a>
+                            <ul class="clear nav_2 ycxiala" id="nav2">
+                                <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+                                <li><a href="Lease.html">活动道具租赁</a></li>
+                                <li><a href="Advertising.html">线下广告</a></li>
+                                <li><a href="GiftPurchasing.html">礼品采购</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="ShopTransfer.html">店铺转让</a></li>
+                    </ul>
+                </nav>
+                <div class="nav_small">
+                    <button class="nav_btn" id="btnnav">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="clear"></div>
+                    <ul class="clear small_nav orgin" id="snav">
+                        <li><a>首页</a></li>
+                        <li><a href="TeSe.html">找特色会场</a></li>
+                        <li class="li_bg"><a href="Print.html">找应刷商</a></li>
+                        <li><a href="PartTime.html">找兼职</a></li>
+                        <li><a id="smnavbtn">会议配套服务</a>
+                            <ul class="clear smallnav2 smycxiala" id="smnav2">
+                                <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+                                <li><a href="Lease.html">活动道具租赁</a></li>
+                                <li><a href="Advertising.html">线下广告</a></li>
+                                <li><a href="GiftPurchasing.html">礼品采购</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="ShopTransfer.html">店铺转让</a></li>
+                        <li><a href="Login.html">登录注册</a></li>
+                        <li><a href="MyCenter.html">个人中心</a></li>
+                        <li><a href="Apply.html">申请入驻</a></li>
+                        <li><a href="Help.html">帮助中心</a></li>
+                    </ul>
+                </div>
+    
+                <!--个人中心-->
+                <div class="head_abnoutus">
+                    <ul class="clear">
+                        <li><a href="Login.html">登录注册</a></li>
+                        <li><a href="MyCenter.html">个人中心</a></li>
+                        <li><a href="Apply.html">申请入驻</a></li>
+                        <li><a href="Help.html">帮助中心</a></li>
+                    </ul>
+                </div>
+                <div class="me_rk" style="float: right">
+                    <div class="btn_me"><img id="btn_me" src="/img/meicon.png" /></div>
+    
+                    <ul class="me_list" id="me_list">
+                        <li><a href="Login.html">登录注册</a></li>
+                        <li><a href="MyCenter.html">个人中心</a></li>
+                        <li><a href="Apply.html">申请入驻</a></li>
+                        <li><a href="Help.html">帮助中心</a></li>
+                    </ul>
+                </div>
+    
+            </div>
+        </header>
+    <div>
+        <div class="tese_intro clear">
+            <div class="tese_intro_left">
+                <div class="banner">
+                    <div id="carousel-example-generic" data-ride="carousel" class="carousel slide">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
+                        </ol>
+                        <div role="listbox" class="carousel-inner">
+                            <div class="item"><img src="/img/tese_topimg1.jpg" class="img-responsive banner_img"
+                                    style="height: 100%;width: 100%"></div>
+                            <div class="item active"><img src="/img/tese_topimg1.jpg" class="img-responsive banner_img"
+                                    style="height: 100%;width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tese_intro_right">
+                <div class="tese_mes">
+                    <h3>标题标题标题标题标题标题</h3>
+                    <p class="t_p">
+                        <span>类别：特色会场</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>地区：北京区</span>
+                    </p>
+                    <p class="t_p">详细地址：北京区地区地区地区</p>
+                    <hr stype="" />
+                    <div class="printcont_head">
+                            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                            内容内容内容内容内容内容内容内容内容内容内容内容
+                            内容内容内容内容内容内容内容内容内容内容
+                    </div>
+                    <hr />
+                    <p class="t_p">
+                        <span>价格：￥556</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>优惠价格：￥522
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="tesedetail_1">
+        <div class="tesedetail_2">
+            <div class="tesedetali_top clear">
+                <div class="teseimg"><img src="/img/tesedetail_top.jpg" /></div>
+                <div class="teseintro">
+                    <h3 class="tese_t">标题标题标题标题标题标题</h3>
+                    <p class="tesedetail_c">
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
+                    <p><span class="tese_gg1">￥288/人起</span><a class="y_bind yd_btn">预定</a></p>
+                </div>
+            </div>
+            <section class="sect">
+                <div class="tab_head">
+                    <ul class="clear">
+                        <li>套餐名称</li>
+                        <li>可用时段</li>
+                        <li>价格</li>
+                    </ul>
+                </div>
+                <div class="tesedetail_m">
+                    <i class="line_h_m"></i>
+                    <ul class="clear tab_m">
+                        <li><span class="tab_m_s1">A套餐单人涵餐</span></li>
+                        <li><span>0：00至24：00</span></li>
+                        <li><span class="tab_m_s2">￥288/人起</span></li>
+                    </ul>
+                    <a class="btn_m_y yd_btn">预定</a>
+                    <hr class="tab_line_m" />
+                    <ul class="clear tab_m_f">
+                        <li class="clear">
+                            <span class="tab_mes_t">套餐信息 :</span>
+                            <p class="tab_mes_r">40人起订，600平方米超大的空间，所有娱乐设施全含，正餐一顿：火锅A套餐自助餐，饮料畅饮，酒水畅饮，小吃畅饮。</p>
+                        </li>
+                        <li class="clear"><span class="tab_mes_t">预定须知 :</span>
+                            <p class="tab_mes_r"></p>可用8小时，40分起订，最多150人份</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section class="sect">
+                <div class="tab_head">
+                    <ul class="clear">
+                        <li>套餐名称</li>
+                        <li>可用时段</li>
+                        <li>价格</li>
+                    </ul>
+                </div>
+                <div class="tesedetail_m">
+                    <i class="line_h_m"></i>
+                    <ul class="clear tab_m">
+                        <li><span class="tab_m_s1">A套餐单人涵餐</span></li>
+                        <li><span>0：00至24：00</span></li>
+                        <li><span class="tab_m_s2">￥288/人起</span></li>
+                    </ul>
+                    <a class="btn_m_y yd_btn">预定</a>
+                    <hr class="tab_line_m" />
+                    <ul class="clear tab_m_f">
+                        <li class="clear">
+                            <span class="tab_mes_t">套餐信息 :</span>
+                            <p class="tab_mes_r">40人起订，600平方米超大的空间，所有娱乐设施全含，正餐一顿：火锅A套餐自助餐，饮料畅饮，酒水畅饮，小吃畅饮。</p>
+                        </li>
+                        <li class="clear"><span class="tab_mes_t">预定须知 :</span>
+                            <p class="tab_mes_r"></p>可用8小时，40分起订，最多150人份</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div>
+        <div class="aboutus_t">
+            <div class="aboutus_t_b">
+                <section class="ts_kk">
+                    <h2 style="line-height: 70px;">关于公司</h2>
+                    <p>开业时间：<span>2016年10月</span>&nbsp;&nbsp;&nbsp;&nbsp;营业时间<span>0：00-24：00</span>&nbsp;&nbsp;&nbsp;&nbsp;装修时间：<span>2016年10月</span>
+                    </p>
+                    <p class="aboutus_intro_c">Party’s奇点高端轰趴馆北京旗舰店，运用了火烈鸟主题，粉色与金属水泥的强烈碰撞带给你不_样的视觉体验.火烈鸟寓意忠贞的爱情，我们希望所有的朋
+                        友都可以在Party_s找到属于自己的那份爱情.旗舰店对于我们来说是一个新的起点，也是一个奇特的点子，所以取名为Party、奇点.600平米超大丨oft场
+                        地，7米S超高挑空酒吧、奢华的夜店区域，专业的夜店音响带你整夜摇摆；最专业的KTV party房，我不会告诉你我们的音响灯光总造价超过30万元；标准
+                        的德州扑克桌；正规美式黑八落袋台球案子；可容纳至少60人用餐的餐区，为您提供最正宗的美式烧烤自助餐；超过30軟桌游任你选；超大投影幕布、xbox
+                        ;街机、小霸王游戏机、麻将机、空气撞球、桌上足球、S黑电脑；可容纳至少30人住宿、超大榻榻米可观影；场地建议容纳120人以内的团建及聚会，可承
+                        接会议、展览、小型婚礼、公司团建、同学、闺蜜、团体聚会等工厂范儿带给你全新的聚会体验，生日，求婚，纪念日，主题趴，公司年会，团建等只要你能
+                        想到我们就能做到只要预定场地，就有最地道的美式烧烤贈送.过生日还提供专属定制服务、贈送洋酒等！最嗨的聚会场地就在Party_s，快来和我们一起打
+                        开新的起点吧</p>
+                </section>
+                <section class="ts_kk">
+                    <h2 style="line-height: 70px;">北京帝京豪庭酒店图集</h2>
+                    <ul class="jdimglist clear">
+                        <li><a href="javascript:void(0)" onclick="imglistfc()">
+                            <div><img src="/img/jiudian1.jpg" /></div>
+                            <div>
+                                <p><span class="jdname">酒店会场</span><span class="jdimgsum">8张</span></p>
+                            </div></a>
+                        </li>
+                        <li><a href="javascript:void(0)" onclick="imglistfc()">
+                            <div><img src="/img/jiudian1.jpg" /></div>
+                            <div>
+                                <p><span class="jdname">酒店会场</span><span class="jdimgsum">8张</span></p>
+                            </div></a>
+                        </li>
+                        <li><a href="javascript:void(0)" onclick="imglistfc()">
+                            <div><img src="/img/jiudian1.jpg" /></div>
+                            <div>
+                                <p><span class="jdname">酒店会场</span><span class="jdimgsum">8张</span></p>
+                            </div></a>
+                        </li>
+                        <li><a href="javascript:void(0)" onclick="imglistfc()">
+                            <div><img src="/img/jiudian1.jpg" /></div>
+                            <div>
+                                <p><span class="jdname">酒店会场</span><span class="jdimgsum">8张</span></p>
+                            </div></a>
+                        </li>
+                        <li><a href="javascript:void(0)" onclick="imglistfc()">
+                            <div><img src="/img/jiudian1.jpg" /></div>
+                            <div>
+                                <p><span class="jdname">酒店会场</span><span class="jdimgsum">8张</span></p>
+                            </div></a>
+                        </li>
+                    </ul>
+                </section>
+                <section class="ts_kk">
+                    <h2 style="line-height: 70px;">位置地图</h2>
+                    <div class="map_a"><img src="/img/map.jpg" /></div>
+                </section>
+                <section class="ts_kk">
+                    <h2 style="line-height: 70px;">历史活动</h2>
+                    <ul class="activelist clear">
+                        <li><a href="javascript:void(0)" onclick="imglistfc()">
+                            <div><img src="/img/active.jpg" /></div>
+                            <div class="active_f">
+                                <span class="active_t">开会聚会两不误</span>
+                                <p class="active_time">2019年5月10日</p>
+                                <span class="actveimgsum">8张</span>
+                            </div></a>
+                        </li>
+                        <li><a href="javascript:void(0)" onclick="imglistfc()">
+                            <div><img src="/img/active.jpg" /></div>
+                            <div class="active_f">
+                                <span class="active_t">开会聚会两不误</span>
+                                <p class="active_time">2019年5月10日</p>
+                                <span class="actveimgsum">8张</span>
+                            </div></a>
+                        </li>
+                        <li><a href="javascript:void(0)" onclick="imglistfc()">
+                            <div><img src="/img/active.jpg" /></div>
+                            <div class="active_f">
+                                <span class="active_t">开会聚会两不误</span>
+                                <p class="active_time">2019年5月10日</p>
+                                <span class="actveimgsum">8张</span>
+                            </div></a>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="review_big">
+        <div class="review">
+
+            <h1 style="padding-left: 50px;font-size: 32px;color: #212121;font-family: 'MicrosoftYaHei'">评论</h1>
+            <section class="review_s">
+                <div class="review_k">
+                    <div class="review_title">
+                        <h3 style="color: #212121;font-size: 20px;font-family: 'MicrosoftYaHei'">用户姓名：张三</h3>
+                        <div class="starlist">
+                            <ul class="clear">
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star0.jpg" /></li>
+                                <li><img src="/img/star0.jpg" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p style="font-size:18px;color:#666666;font-family: 'MicrosoftYaHei'">内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    </p>
+                </div>
+            </section>
+            <section class="review_s">
+                <div class="review_k">
+                    <div class="review_title">
+                        <h3 style="color: #212121;font-size: 20px;font-family: 'MicrosoftYaHei'">用户姓名：张三</h3>
+                        <div class="starlist">
+                            <ul class="clear">
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star0.jpg" /></li>
+                                <li><img src="/img/star0.jpg" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p style="font-size:18px;color:#666666;font-family: 'MicrosoftYaHei'">内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    </p>
+                </div>
+            </section>
+            <section class="review_s">
+                <div class="review_k">
+                    <div class="review_title">
+                        <h3 style="color: #212121;font-size: 20px;font-family: 'MicrosoftYaHei'">用户姓名：张三</h3>
+                        <div class="starlist">
+                            <ul class="clear">
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star0.jpg" /></li>
+                                <li><img src="/img/star0.jpg" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p style="font-size:18px;color:#666666;font-family: 'MicrosoftYaHei'">内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    </p>
+                </div>
+            </section>
+            <section class="review_s">
+                <div class="review_k">
+                    <div class="review_title">
+                        <h3 style="color: #212121;font-size: 20px;font-family: 'MicrosoftYaHei'">用户姓名：张三</h3>
+                        <div class="starlist">
+                            <ul class="clear">
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star1.jpg" /></li>
+                                <li><img src="/img/star0.jpg" /></li>
+                                <li><img src="/img/star0.jpg" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p style="font-size:18px;color:#666666;font-family: 'MicrosoftYaHei'">内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                        内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                    </p>
+                </div>
+            </section>
+            <div class="review_btn">
+                <p style="text-align: center"><a>加载更多<span class="b_cion"></span></a></p>
+            </div>
+        </div>
+    </div>
+    <footer class="clear">
+        <div class="foot_k">
+            <ul class="clear ul_1 clear">
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">找特色会场</h4>
+                        <ul class="ul_2 clear">
+                            <li>年会场地</li>
+                            <li>品牌推广专区</li>
+                            <li>发布会场地</li>
+                            <li>婚宴场地</li>
+                            <li>商务会议场地</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">找印刷商</h4>
+                        <ul class="ul_2">
+                            <li>印刷厂</li>
+                            <li>印刷喷绘安装一体式服务</li>
+                            <li>其他</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">找兼职</h4>
+                        <ul class="ul_2">
+                            <li>演出人员</li>
+                            <li>模特</li>
+                            <li>翻译</li>
+                            <li>摄影摄像</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">店铺转让</h4>
+                        <ul class="ul_2">
+                            <li>酒吧夜店</li>
+                            <li>购物中心</li>
+                            <li>剧院剧场</li>
+                            <li>培训场地</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">会议自助餐</h4>
+                        <ul class="ul_2">
+                            <li>西餐自助餐</li>
+                            <li>中式桌餐</li>
+                            <li>茶歇</li>
+                            <li>中式自助</li>
+                            <li>自助酒会</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">活动道具租赁</h4>
+                        <ul class="ul_2">
+                            <li>DIY暖场</li>
+                            <li>车辆租赁</li>
+                            <li>仿真展品</li>
+                            <li>花艺布置</li>
+                            <li>活动服装租赁</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">线下广告</h4>
+                        <ul class="ul_2">
+                            <li>酒店夜店</li>
+                            <li>购物中心</li>
+                            <li>共享空间</li>
+                            <li>校园场地</li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <div class="foot_list">
+                        <h4 class="foot_title">礼品采购</h4>
+                        <ul class="ul_2">
+                            <li>厂家直销</li>
+                            <li>定制礼品</li>
+                            <li>其他</li>
+                        </ul>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+        <div class="foot_contact">
+            <ul class="clear">
+                <li><span class="cion"></span>北京相予科技有限公司</li>
+                <li><span class="cion"></span>13126608897/1355128433</li>
+                <li><span class="cion"></span>北京石墨山万达F座</li>
+                <li><span class="cion"></span>1193549646@qq.com</li>
+                <li style="position: relative"><span class="cion" id="wechatbtn"></span>
+                    <div id="wechatk">
+                        <div><img src="/img/wechat1.jpg" /></div>
+                        <div><img src="/img/wechat1.jpg" /></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </footer>
+    <!--预约弹窗-->
+    <div class="yytc" id="yytc" style="display: none">
+        <div class="yyct">
+            <a class="close_tc" id="close_tc">x</a>
+            <div class="yyct_1">
+                <h1 class="yy_title1">预约信息</h1>
+                <ul class="clear">
+                    <li class="tr1 clear">
+                        <div class="yy_tt_t">*活动时间</div>
+                        <div style=""><input type="text" class="txt_s" /></div>
+                    </li>
+                    <li class="tr1">
+                        <div>*使用时段</div>
+                        <div>0:00-24:00</div>
+                    </li>
+                    <li class="tr1">
+                        <div class="yy_tt_t">*购买数量</div>
+                        <div>
+                            <span class="jian">-</span>
+                            <input type="text" value="40" readonly style="width:50px;height: 35px;text-align: center" />
+                            <span class="jia">+</span>
+                            <span style="font-size: 14px;">最小购买数量为40，最大购买数量为150</span>
+                        </div>
+                    </li>
+                    <li class="tr1">
+                        <div class="yy_tt_t">*活动规模</div>
+                        <div><input type="text" class="txt_s" placeholder="请正确填写活动规模" /></div>
+                    </li>
+                    <li class="tr1">
+                        <div style="vertical-align: top;">*备注信息</div>
+                        <div><textarea placeholder="请简单描述您需要的设施与服务，如投影仪、白板等（非必填）"
+                                style="width: 500px;height: 100px;resize: none;margin-top: 15px"></textarea></div>
+                        </li>
+                </ul>
+                <h1 class="yy_title1">联系1信息</h1>
+                <ul class="clear">
+                    <li class="tr1">
+                        <div class="yy_tt_t">*联系人姓名</div>
+                        <div><input type="text" class="txt_s" /></div>
+                    </li>
+                    <li class="tr1">
+                        <div class="yy_tt_t">*联系电话</div>
+                        <div><input type="text" class="txt_s" /></div>
+                    </li>
+                    <li class="tr1">
+                        <div>*联系邮箱</div>
+                        <div><input type="text" class="txt_s" /></div>
+                    </li>
+                </ul>
+                <div style="text-align: center;margin-top: 50px;margin-bottom: 50px;">
+                    <input type="button" value="提交" id="btn_yy" /></div>
+            </div>
+        </div>
+    </div>
+    <!--图片集合弹层-->
+    <div id="imglisttk" style="position: fixed;left: 0;right: 0;top: 0;bottom: 0;background: rgb(114, 114, 114,0.81);z-index: 999999;">
+            <div class="imgbig_kk" style="">
+                <ul id="imgkk" class="imglistbanner clear">
+                    <li><img  src="/img/case1.jpg" /></li>
+                    <li><img  src="/img/case2.jpg" /></li>
+                    <li><img  src="/img/case3.jpg" /></li>
+                    <li><img  src="/img/case4.jpg" /></li>
+                    <li><img  src="/img/case5.jpg" /></li>
+                </ul>
+                <div style="transform: translateY(-50%);top:50%;width: 100%;position: absolute">
+                    <a id="leftdetailbtn">
+                        <</a> <a id="rightdetailbtn">>
+                    </a>
+                </div>
+    
+            </div>
+            <a id="closeimgbtn">x</a>
+        </div>
+</body>
+
+</html>
+<script>
+    var tc = document.getElementById("yytc");
+    var close_btn = document.getElementById("close_tc");
+    var open_btn = document.getElementsByClassName("yd_btn");
+    close_btn.onclick = function () {
+        tc.style.display = "none";
+    }
+    console.log(open_btn);
+    for (var i = 0; i < open_btn.length; i++) {
+        open_btn[i].onclick = function () {
+            tc.style.display = "block";
+        }
+    }
+
+    console.log(tc.style);
+</script>
+<script type="text/javascript" src="/js/pubilc.js"></script>
