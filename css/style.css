@@ -257,6 +257,44 @@ html,
 .yearsite img{
     width: 100%;
 }
+
+.fenye{
+    width: 100%;
+    text-align: center;
+    margin: 0.5rem auto;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0.3rem;
+    color: #333;
+}
+.fenye a{
+    font-size: 0.2rem;
+    padding: 0.1rem 0.2rem;
+    background: #fff;
+    color: #53728f;
+    display: inline-block;
+    border:1px #ddd solid;
+    margin-right:3px;
+    
+}
+.fenye span{
+    font-size: 0.2rem;
+}
+.fenye span input{
+    width: 1.5rem;
+    font-size: 0.2rem;
+    padding: 0.1rem 0.2rem;
+    outline: none;
+    border:1px #aaa solid !important;
+}
+.fenye a:hover,.fenye span:hover{
+    cursor: pointer;
+}
+.fenye a:hover,.fenye a.active{
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+}
         .c_title_1 {
             float: left;
             font-size: 34px;
@@ -869,7 +907,7 @@ html,
         .product_d {
             padding: 40px 20px;
             background: #fff;
-            height: 148px;
+            height:235px;
             border-radius: 8px;
         }
 
@@ -885,14 +923,20 @@ html,
             list-style-type: none;
             position: relative;
             margin-top: 30px;
+			height:235px
         }
 
         .pro_n_list ul li div.proimg {
             float: left;
             position: relative;
             width: 220px;
-            height: 226px;
+            height: 160px;
         }
+		.pro_n_list ul li div.proimg img{
+		  
+		    width: 100%;
+		    height: 100%;
+		}
 
         .pro_n_list ul li div.procont {
             padding-right: 143px;
@@ -1610,7 +1654,7 @@ html,
 }
 
 .yyct {
-    position: absolute;
+    position: fixed;
     width: 800px;
     background: #fff;
     left: 50%;
@@ -2189,7 +2233,7 @@ select:focus{
  }
  
  .act_big_0{
-     position: absolute;top:60px;right: 20px;
+     position: absolute;top:0px;right: 0px;
  }
  .active_big_k>div{
      padding: 20px;
@@ -2528,9 +2572,7 @@ select:focus{
     padding: 0px 20px;
     cursor: pointer;
 }
-#imglisttk{
-    display: none;
-}
+
 @media screen and (max-width: 800px){
     .imgbig_kk{
         width: 100%;

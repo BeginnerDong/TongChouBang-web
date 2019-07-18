@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
-    <title>统筹帮首页</title>
-
-    <link type="text/css" rel="stylesheet" href="/css/bootstrap.css" />
-    <link type="text/css" rel="stylesheet" href="/css/style.css" />
-    <script type="text/javascript" src="/js/jquery-2.1.4.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="/js/base.js" type="application/javascript"></script>
-    <script src="/js/rem.js"></script>
-    <script type="text/javascript " src="/js/bootstrap.js"></script>
-    <!--[if IE 9]>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<title>统筹帮首页</title>
+		<script src="../js/include.js"></script>
+		<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
+		<link type="text/css" rel="stylesheet" href="../css/style.css" />
+		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<script src="../js/base.js" type="application/javascript"></script>
+		<script src="../js/rem.js"></script>
+		<script type="text/javascript " src="../js/bootstrap.js"></script>
+		<!--[if IE 9]>
  <style>
     .animatedOpacity{
         opacity:1;
@@ -24,9 +24,9 @@
     }
  </style>
 <![endif]-->
-</head>
-<style>
-    header {
+	</head>
+	<style>
+		header {
         border: none;
     }
 
@@ -60,689 +60,819 @@
     }
 </style>
 
-<body>
-    <!-- 头部 -->
-    <header class="clear head_top">
-        <div class="clear">
-            <!--logo-->
-            <div class="head_logo">
-                <span class="logo">统筹帮</span>
-                <select class="tab_adress">
-                    <option>北京</option>
-                    <option>上海</option>
-                </select>
-            </div>
-            <!--导航栏-->
-            <nav class="head_nav">
-                <ul class="clear">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="TeSe.html">找特色会场</a></li>
-                    <li><a href="Print.html">找应刷商</a></li>
-                    <li><a href="PartTime.html">找兼职</a></li>
-                    <li id="nav2btn"><a>会议配套服务</a>
-                        <ul class="clear nav_2 ycxiala" id="nav2">
-                            <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-                            <li><a href="Lease.html">活动道具租赁</a></li>
-                            <li><a href="Advertising.html">线下广告</a></li>
-                            <li><a href="GiftPurchasing.html">礼品采购</a></li>
-                        </ul>
-                    </li>
-                    <li class="active"><a href="ShopTransfer.html">店铺转让</a></li>
-                </ul>
-            </nav>
-            <div class="nav_small">
-                <button class="nav_btn" id="btnnav">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="clear"></div>
-                <ul class="clear small_nav orgin" id="snav">
-                    <li class="li_bg"><a>首页</a></li>
-                    <li><a href="TeSe.html">找特色会场</a></li>
-                    <li><a href="Print.html">找应刷商</a></li>
-                    <li><a href="PartTime.html">找兼职</a></li>
-                    <li><a id="smnavbtn">会议配套服务</a>
-                        <ul class="clear smallnav2 smycxiala" id="smnav2">
-                            <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-                            <li><a href="Lease.html">活动道具租赁</a></li>
-                            <li><a href="Advertising.html">线下广告</a></li>
-                            <li><a href="GiftPurchasing.html">礼品采购</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="ShopTransfer.html">店铺转让</a></li>
-                    <li><a href="Login.html">登录注册</a></li>
-                    <li><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
+	<body>
+		<!-- 头部 -->
+		<div id="app">
+			<header class="clear head_top">
+				<div class="clear">
+					<!--logo-->
+					<div class="head_logo">
+						<span class="logo">统筹帮</span>
+						<select class="tab_adress">
+							<option v-for="item in cityData">{{item.title}}</option>
+						
+						</select>
+					</div>
+					<!--导航栏-->
+					<nav class="head_nav">
+						<ul class="clear">
+							<li class="active"><a href="index.html">首页</a></li>
+							<li><a href="TeSe.html">找特色会场</a></li>
+							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="PartTime.html">找兼职</a></li>
+							<li id="nav2btn"><a>会议配套服务</a>
+								<ul class="clear nav_2 ycxiala" id="nav2">
+									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+									<li><a href="Lease.html">活动道具租赁</a></li>
+									<li><a href="Advertising.html">线下广告</a></li>
+									<li><a href="GiftPurchasing.html">礼品采购</a></li>
+								</ul>
+							</li>
+							<li><a href="ShopTransfer.html">店铺转让</a></li>
+						</ul>
+					</nav>
+					<div class="nav_small">
+						<button class="nav_btn" id="btnnav">
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+						<div class="clear"></div>
+						<ul class="clear small_nav orgin" id="snav">
+							<li class="li_bg"><a>首页</a></li>
+							<li><a href="TeSe.html">找特色会场</a></li>
+							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="PartTime.html">找兼职</a></li>
+							<li><a id="smnavbtn">会议配套服务</a>
+								<ul class="clear smallnav2 smycxiala" id="smnav2">
+									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+									<li><a href="Lease.html">活动道具租赁</a></li>
+									<li><a href="Advertising.html">线下广告</a></li>
+									<li><a href="GiftPurchasing.html">礼品采购</a></li>
+								</ul>
+							</li>
+							<li><a href="ShopTransfer.html">店铺转让</a></li>
+							<li><a href="Login.html">登录注册</a></li>
+							<li><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
 
-            <!--个人中心-->
-            <div class="head_abnoutus">
-                <ul class="clear">
-                    <li><a href="Login.html">登录注册</a></li>
-                    <li><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
-            <div class="me_rk" style="float: right">
-                <div class="btn_me"><img id="btn_me" src="/img/meicon.png" /></div>
+					<!--个人中心-->
+					<div class="head_abnoutus">
+						<ul class="clear">
+							<li><a href="Login.html">登录注册</a></li>
+							<li><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
+					<div class="me_rk" style="float: right">
+						<div class="btn_me"><img id="btn_me" src="../img/meicon.png" /></div>
 
-                <ul class="me_list" id="me_list">
-                    <li><a href="Login.html">登录注册</a></li>
-                    <li><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
+						<ul class="me_list" id="me_list">
+							<li><a href="Login.html">登录注册</a></li>
+							<li><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
 
-        </div>
-    </header>
-    <!--轮播图-->
-    <div class="top">
-        <div class="banner">
-            <div id="carousel-example-generic" data-ride="carousel" class="carousel slide">
-                <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1" class="active"></li>
-                </ol>
-                <div role="listbox" class="carousel-inner">
-                    <div class="item"><img src="/img/home-banner .jpg" class="img-responsive banner_img"
-                            style="height: 7.7rem;"></div>
-                    <div class="item active"><img src="/img/home-banner .jpg" class="img-responsive banner_img"
-                            style="height: 7.7rem;"></div>
-                </div>
-            </div>
-        </div>
-        <div class="top_search">
-            <input type="text" class="search" placeholder="搜索团建游，目的地等" /><input type="button" value="搜索服务"
-                class="search_btn" />
-        </div>
-    </div>
-    <div class="big_div">
-        <!--年会场地推荐-->
-        <div class="content bg_1">
-            <div class="yearsite">
-                <div class="clear">
-                    <h2 class="c_title_1">年会场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
-                </div>
-                <ul class="tab_1 clear">
-                    <li class="active"><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                </ul>
-                <div>
-                    <div style="position: relative">
-                        <img src="/img/1469435129.jpg" alt="场地预订" />
-                        <div class="adree_yd">
-                            <h2>场地预订</h2>
-                            <span>你们想要什么我们都有</span>
-                        </div>
-                    </div>
-                    <div class="yearlist">
-                        <ul class="clear">
-                            <li>
-                                <a><img src="/img/ylist1.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/ylist2.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/ylist3.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/ylist4.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--品牌推广专区-->
-        <div class="content bg_2">
-            <div class="yearsite">
-                <div class="clear">
-                    <h2 class="c_title_1">品牌推广专区</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
-                </div>
-                <ul class="tab_1 clear">
-                    <li class="active"><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                </ul>
-                <div>
-                    <div style="position: relative">
-                        <img src="/img/cont_2_bg.jpg" alt="场地预订" />
-                        <div class="adree_yd">
-                            <h2>场地预订</h2>
-                            <span>你们想要什么我们都有</span>
-                        </div>
-                    </div>
-                    <div class="yearlist1">
-                        <ul class="clear">
-                            <li>
-                                <a><img src="/img/plist1.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/plist1.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/plist1.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--发布会场地-->
-        <div class="content bg_1">
-            <div class="yearsite">
-                <div class="clear">
-                    <h2 class="c_title_1">发布会场地</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
-                </div>
-                <ul class="tab_1 clear">
-                    <li class="active"><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                </ul>
-                <div>
-                    <div style="position: relative">
-                        <img src="/img/cont_3_bg.jpg" alt="场地预订" />
-                        <div class="adree_yd">
-                            <h2>场地预订</h2>
-                            <span>你们想要什么我们都有</span>
-                        </div>
-                    </div>
-                    <div class="yearlist">
-                        <ul class="clear">
-                            <li>
-                                <a><img src="/img/flist1.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/flist2.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/flist3.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/flist4.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--婚宴场地推荐-->
-        <div class="content bg_2">
-            <div class="yearsite">
-                <div class="clear">
-                    <h2 class="c_title_1">婚宴场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
-                </div>
-                <ul class="tab_1 clear">
-                    <li class="active"><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                </ul>
-                <div>
-                    <div style="position: relative">
-                        <img src="/img/cont_4_bg.jpg" alt="场地预订" />
-                        <div class="adree_yd">
-                            <h2>场地预订</h2>
-                            <span>你们想要什么我们都有</span>
-                        </div>
-                    </div>
-                    <div class="yearlist1">
-                        <ul class="clear">
-                            <li>
-                                <a><img src="/img/hlist1.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/hlist2.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/hlist3.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--商务会议场地推荐-->
-        <div class="content bg_1">
-            <div class="yearsite">
-                <div class="clear">
-                    <h2 class="c_title_1">商务会议场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
-                </div>
-                <ul class="tab_1 clear">
-                    <li class="active"><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                </ul>
-                <div>
-                    <div style="position: relative">
-                        <img src="/img/cont_5_bg.jpg" alt="场地预订" />
-                        <div class="adree_yd">
-                            <h2>场地预订</h2>
-                            <span>你们想要什么我们都有</span>
-                        </div>
-                    </div>
-                    <div class="yearlist">
-                        <ul class="clear">
-                            <li>
-                                <a><img src="/img/slist1.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/slist2.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/slist3.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/slist4.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--团建场地推荐-->
-        <div class="content bg_2">
-            <div class="yearsite">
-                <div class="clear">
-                    <h2 class="c_title_1">团建场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
-                </div>
-                <ul class="tab_1 clear">
-                    <li class="active"><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                    <li><a>分类分类</a></li>
-                </ul>
-                <div>
-                    <div style="position: relative">
-                        <img src="/img/cont_5_bg.jpg" alt="场地预订" />
-                        <div class="adree_yd">
-                            <h2>场地预订</h2>
-                            <span>你们想要什么我们都有</span>
-                        </div>
-                    </div>
-                    <div class="yearlist">
-                        <ul class="clear">
-                            <li>
-                                <a><img src="/img/slist1.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/slist2.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/slist3.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                            <li>
-                                <a><img src="/img/slist4.jpg"></a>
-                                <span class="yearcion">推荐</span>
-                                <div class="y_info">
-                                    <div class="clear"><span class="y_name">上海环球巷</span><span class="y_price">999</span>
-                                    </div>
-                                    <span class="intro">内容内容内容内容内容内容</span>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="active_big_k act_big_0" id="act_big">
-            <div>
-                <h2 class="active_title">活动需求</h2>
-                <ul>
-                    <li class="clear active_tab" style="">
-                        <div class="act_t_1">活动类型</div>
-                        <select class="select_t_1">
-                            <option>不限</option>
-                            <option>类型2</option>
-                            <option>类型3</option>
-                        </select>
-                    </li>
-                    <li class="clear active_tab" style="">
-                        <div class="act_t_1">活动类型</div>
-                        <select class="select_t_1">
-                            <option>不限</option>
-                            <option>类型2</option>
-                            <option>类型3</option>
-                        </select>
-                    </li>
-                    <li class="clear active_tab">
-                        <div class="act_t_1">预算</div>
-                        <div class="act_t_2"><input class="act_i_1" placeholder="请输入您的预算值" /></div>
-                    </li>
-                    <li class="clear active_tab">
-                        <div class="act_t_1">联系人姓名</div>
-                        <div class="act_t_2"><input class="act_i_1" placeholder="请输入联系人姓名" /></div>
-                    </li>
-                    <li class="clear active_tab">
-                        <div class="act_t_1">联系电话</div>
-                        <div class="act_t_2"><input class="act_i_1" placeholder="请输入11位手机号码" /></div>
-                    </li>
-                    <li class="clear active_tab">
-                        <div class="act_t_1">短信验证</div>
-                        <div class="act_t_2"><input class="act_i_2" placeholder="" /><label class="sendyzm">短信验证</label>
-                        </div>
-                    </li>
-                    <li class="clear active_tab">
-                        <div class="act_t_1">备注</div>
-                        <div class="act_t_2"><textarea style="border: none;resize: none"></textarea></div>
-                    </li>
-                </ul>
-                <p class="act_plan">
-                    <span>不想自己找吗？</span>把你们的计划要求告诉我们，统筹帮免费帮你推荐最合适的需求，帮你做活动统筹计划
-                </p>
-                <p class="act_tel">咨询热线：13126688897</span></p>
-                <button class="act_btn">提交需求</button>
-            </div>
-        </div>
-    </div>
-    <!--优点-->
-    <div class="merit">
-        <ul class="clear">
-            <li><span class="likecion m_cion"></span><span class="cionintro">海量资源</span></li>
-            <li><span class="servecion m_cion"></span><span class="cionintro">高效服务</span></li>
-            <li><span class="linkcion m_cion"></span><span class="cionintro">服务连接</span></li>
-            <li><span class="pricecion m_cion"></span><span class="cionintro">省钱省力</span></li>
-        </ul>
-    </div>
-    <div style="margin-top: 60px;">
-        <div>
-            <h2 class="case_title"><span>精选案例</span>Selected Case</h2>
-            <p class="case_p"><a class="case_detail" href="CaseDetail.html">查看更多></a></p>
-        </div>
-        <div class="caselsit">
-            <ul class="clear">
-
-                <li>
-                    <a href="CaseContent.html">
-                        <div class="case_kk">
-                            <div><img src="/img/case1.jpg" /></div>
-                            <p>标题标题标题标题</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="CaseContent.html">
-                        <div class="case_kk">
-                            <div><img src="/img/case2.jpg" /></div>
-                            <p>标题标题标题标题</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="CaseContent.html">
-                        <div class="case_kk">
-                            <div><img src="/img/case3.jpg" /></div>
-                            <p>标题标题标题标题</p>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <footer class="clear">
-        <div class="foot_k">
-            <ul class="clear ul_1 clear">
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">找特色会场</h4>
-                        <ul class="ul_2 clear">
-                            <li>年会场地</li>
-                            <li>品牌推广专区</li>
-                            <li>发布会场地</li>
-                            <li>婚宴场地</li>
-                            <li>商务会议场地</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">找印刷商</h4>
-                        <ul class="ul_2">
-                            <li>印刷厂</li>
-                            <li>印刷喷绘安装一体式服务</li>
-                            <li>其他</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">找兼职</h4>
-                        <ul class="ul_2">
-                            <li>演出人员</li>
-                            <li>模特</li>
-                            <li>翻译</li>
-                            <li>摄影摄像</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">店铺转让</h4>
-                        <ul class="ul_2">
-                            <li>酒吧夜店</li>
-                            <li>购物中心</li>
-                            <li>剧院剧场</li>
-                            <li>培训场地</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">会议自助餐</h4>
-                        <ul class="ul_2">
-                            <li>西餐自助餐</li>
-                            <li>中式桌餐</li>
-                            <li>茶歇</li>
-                            <li>中式自助</li>
-                            <li>自助酒会</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">活动道具租赁</h4>
-                        <ul class="ul_2">
-                            <li>DIY暖场</li>
-                            <li>车辆租赁</li>
-                            <li>仿真展品</li>
-                            <li>花艺布置</li>
-                            <li>活动服装租赁</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">线下广告</h4>
-                        <ul class="ul_2">
-                            <li>酒店夜店</li>
-                            <li>购物中心</li>
-                            <li>共享空间</li>
-                            <li>校园场地</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">礼品采购</h4>
-                        <ul class="ul_2">
-                            <li>厂家直销</li>
-                            <li>定制礼品</li>
-                            <li>其他</li>
-                        </ul>
-                    </div>
-                </li>
-                
-            </ul>
-        </div>
-        <div class="foot_contact">
-            <ul class="clear">
-                <li><span class="cion"></span>北京相予科技有限公司</li>
-                <li><span class="cion"></span>13126608897/1355128433</li>
-                <li><span class="cion"></span>北京石墨山万达F座</li>
-                <li><span class="cion"></span>1193549646@qq.com</li>
-                <li style="position: relative"><span class="cion" id="wechatbtn"></span>
-                    <div id="wechatk">
-                        <div><img src="/img/wechat1.jpg" /></div>
-                        <div><img src="/img/wechat1.jpg" /></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </footer>
-</body>
+				</div>
+			</header>
+			<!--轮播图-->
+			<div class="top">
+				<div class="banner">
+					<div id="carousel-example-generic" data-ride="carousel" class="carousel slide">
+						<ol class="carousel-indicators">
+							<li v-for="(item, index) in swiperData.mainImg" data-target="#carousel-example-generic" :data-slide-to="index"
+							 :class="index=='0'?'active':''"></li>
+						</ol>
+						<div role="listbox" class="carousel-inner">
+							<div class="item" v-for="(item, index) in swiperData.mainImg" :class="index=='0'?'active':''" style="height:7.7rem;border: none;">
+								<img :src="item.url" class="img-responsive banner_img" style="height: 100%;width: 100%">
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<div class="top_search">
+					<input type="text" class="search" placeholder="搜索团建游，目的地等" v-model="title"/><input type="button" value="搜索服务" class="search_btn" @click="goSearch"/>
+				</div>
+			</div>
+			<div class="big_div">
+				<!--年会场地推荐-->
+				<div class="content bg_1" v-if="productOneData.length>0">
+					<div class="yearsite">
+						<div class="clear">
+							<h2 class="c_title_1">年会场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+						</div>
+						
+						<div>
+							<div style="position: relative;height:350px">
+								<img :src="productOneData&&productOneData[0]&&productOneData[0].mainImg&&productOneData[0].mainImg[0]?productOneData[0].mainImg[0].url:''" 
+								alt="场地预订" style="height:100%"/>
+								<div class="adree_yd">
+									<h2>场地预订</h2>
+									<span>你们想要什么我们都有</span>
+								</div>
+							</div>
+							<div class="yearlist">
+								<ul class="clear">
+									<li v-for="(item,index) in productOneData" v-if="index>0&&index<5">
+										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
+										<span class="yearcion">推荐</span>
+										<div class="y_info">
+											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
+											</div>
+											<span class="intro">
+												<div class="content ql-editor " style="clear: both;">
+													<p class="p1 " v-html="item.content"></p>
+												</div>
+											</span>
+										</div>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--品牌推广专区-->
+				<div class="content bg_2" v-if="productTwoData.length>0">
+					<div class="yearsite">
+						<div class="clear">
+							<h2 class="c_title_1">品牌推广专区</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+						</div>
+						
+						<div>
+							<div style="position: relative">
+								<img :src="productTwoData&&productTwoData[0]&&productTwoData[0].mainImg&&productTwoData[0].mainImg[0]?productTwoData[0].mainImg[0].url:''" 
+								alt="场地预订" />
+								<div class="adree_yd">
+									<h2>场地预订</h2>
+									<span>你们想要什么我们都有</span>
+								</div>
+							</div>
+							<div class="yearlist">
+								<ul class="clear">
+									<li v-for="(item,index) in productTwoData" v-if="index>0&&index<5">
+										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
+										<span class="yearcion">推荐</span>
+										<div class="y_info">
+											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
+											</div>
+											<span class="intro">
+												<div class="content ql-editor " style="clear: both;">
+													<p class="p1 " v-html="item.content"></p>
+												</div>
+											</span>
+										</div>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<!--发布会场地-->
+				<div class="content bg_1" v-if="productThreeData.length>0">
+					<div class="yearsite">
+						<div class="clear">
+							<h2 class="c_title_1">发布会场地</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+						</div>
+						
+						<div>
+							<div style="position: relative">
+								<img :src="productThreeData&&productThreeData[0]&&productThreeData[0].mainImg&&productThreeData[0].mainImg[0]?productThreeData[0].mainImg[0].url:''" 
+								alt="场地预订" />
+								<div class="adree_yd">
+									<h2>场地预订</h2>
+									<span>你们想要什么我们都有</span>
+								</div>
+							</div>
+							<div class="yearlist">
+								<ul class="clear">
+									<li v-for="(item,index) in productThreeData" v-if="index>0&&index<5">
+										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
+										<span class="yearcion">推荐</span>
+										<div class="y_info">
+											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
+											</div>
+											<span class="intro">
+												<div class="content ql-editor " style="clear: both;">
+													<p class="p1 " v-html="item.content"></p>
+												</div>
+											</span>
+										</div>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--婚宴场地推荐-->
+				<div class="content bg_2" v-if="productFourData.length>0">
+					<div class="yearsite">
+						<div class="clear">
+							<h2 class="c_title_1">婚宴场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+						</div>
+						
+						<div>
+							<div style="position: relative">
+								<img :src="productFourData&&productFourData[0]&&productFourData[0].mainImg&&productFourData[0].mainImg[0]?productFourData[0].mainImg[0].url:''" 
+								alt="场地预订" />
+								<div class="adree_yd">
+									<h2>场地预订</h2>
+									<span>你们想要什么我们都有</span>
+								</div>
+							</div>
+							<div class="yearlist">
+								<ul class="clear">
+									<li v-for="(item,index) in productFourData" v-if="index>0&&index<5">
+										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
+										<span class="yearcion">推荐</span>
+										<div class="y_info">
+											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
+											</div>
+											<span class="intro">
+												<div class="content ql-editor " style="clear: both;">
+													<p class="p1 " v-html="item.content"></p>
+												</div>
+											</span>
+										</div>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--商务会议场地推荐-->
+				<div class="content bg_1" v-if="productFiveData.length>0">
+					<div class="yearsite">
+						<div class="clear">
+							<h2 class="c_title_1">商务会议场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+						</div>
+						
+						<div>
+							<div style="position: relative">
+								<img :src="productFiveData&&productFiveData[0]&&productFiveData[0].mainImg&&productFiveData[0].mainImg[0]?productFiveData[0].mainImg[0].url:''" 
+								alt="场地预订" />
+								<div class="adree_yd">
+									<h2>场地预订</h2>
+									<span>你们想要什么我们都有</span>
+								</div>
+							</div>
+							<div class="yearlist">
+								<ul class="clear">
+									<li v-for="(item,index) in productFiveData" v-if="index>0&&index<5">
+										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
+										<span class="yearcion">推荐</span>
+										<div class="y_info">
+											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
+											</div>
+											<span class="intro">
+												<div class="content ql-editor " style="clear: both;">
+													<p class="p1 " v-html="item.content"></p>
+												</div>
+											</span>
+										</div>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--团建场地推荐-->
+				<div class="content bg_2" v-if="productSixData.length>0">
+					<div class="yearsite">
+						<div class="clear">
+							<h2 class="c_title_1">团建场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+						</div>
+						
+						<div>
+							<div style="position: relative">
+								<img :src="productSixData&&productSixData[0]&&productSixData[0].mainImg&&productSixData[0].mainImg[0]?productSixData[0].mainImg[0].url:''" 
+								alt="场地预订" />
+								<div class="adree_yd">
+									<h2>场地预订</h2>
+									<span>你们想要什么我们都有</span>
+								</div>
+							</div>
+							<div class="yearlist">
+								<ul class="clear">
+									<li v-for="(item,index) in productSixData" v-if="index>0&&index<5">
+										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
+										<span class="yearcion">推荐</span>
+										<div class="y_info">
+											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
+											</div>
+											<span class="intro">
+												<div class="content ql-editor " style="clear: both;">
+													<p class="p1 " v-html="item.content"></p>
+												</div>
+											</span>
+										</div>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<include src="form.html" ></include>
+			</div>
+			<!--优点-->
+			<div class="merit">
+				<ul class="clear">
+					<li><span class="likecion m_cion"></span><span class="cionintro">海量资源</span></li>
+					<li><span class="servecion m_cion"></span><span class="cionintro">高效服务</span></li>
+					<li><span class="linkcion m_cion"></span><span class="cionintro">服务连接</span></li>
+					<li><span class="pricecion m_cion"></span><span class="cionintro">省钱省力</span></li>
+				</ul>
+			</div>
+			
+			<div style="margin-top: 60px;">
+				<div>
+					<h2 class="case_title"><span>精选案例</span>Selected Case</h2>
+					<p class="case_p"><a class="case_detail" href="CaseDetail.html">查看更多></a></p>
+				</div>
+				<div class="caselsit">
+					<ul class="clear">
+						<li v-for="item in mainData">
+							<a href="CaseContent.html">
+								<div class="case_kk">
+									<div><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
+									<p>{{item.title}}</p>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<include src="footer.html" ></include>
+		</div>
+		
+	</body>	
 
 </html>
-<script>
-//弹框悬浮
-    document.getElementsByTagName("body")[0].onscroll = function () {
-        var gdtop = document.documentElement.scrollTop;
-        var wheight = window.innerHeight;
-        var actig = document.getElementById("act_big");
-        if (gdtop > wheight) {
-            actig.classList.remove("act_big_0");
-            actig.classList.add("act_big_1");
-        } else {
-            actig.classList.remove("act_big_1");
-            actig.classList.add("act_big_0");
-        }
-    }
-    
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#app',
+		data: function() {
+			return {
+				swiperData:[],
+				productOneData:[],
+				productTwoData:[],
+				productThreeData:[],
+				productFourData:[],
+				productFiveData:[],
+				productSixData:[],
+				mainData:[],
+				cityData:[],
+				searchItem:{
+					status:1
+				},
+				title:''
+			}
+		},
+		created: function() {
+			var self = this;
+			self.init()
+		},
+
+		methods: {
+			init: function(e) {
+				var self = this;
+				self.getSliderData();
+				self.getCityData();
+				self.getLabelOneData();
+				self.getLabelTwoData();
+				self.getLabelThreeData();
+				self.getLabelFourData();
+				self.getLabelFiveData();
+				self.getLabelSixData();
+				self.getMainData()
+			},
+			
+			goSearch(){
+				const self = this;
+				if(self.title!=''){
+					window.location.href = 'search.html?title='+self.title
+				}else{
+					alert('请输入标题搜索')
+				}
+			},
+			
+			getSliderData() {
+				const self = this;
+				const postData = {};
+				postData.searchItem = {
+					thirdapp_id: 2,
+					title: '首页轮播',
+				};
+			
+				const callback = (res) => {
+					if (res.info.data.length > 0) {
+						self.swiperData = res.info.data[0]
+						console.log('swiperData',self.swiperData)
+					};
+				};
+				window.base.labelGet(postData, callback);
+			},
+			
+			getCityData: function(id) {
+				var self = this;
+				var postData = {};
+			
+				postData.searchItem = {
+					type: 11
+			
+				};
+				postData.order = {
+					listorder: 'desc'
+				};
+				var callback = function(res) {
+					if (res.info.data.length > 0) {
+						self.cityData.push.apply(self.cityData, res.info.data);
+					}
+				};
+				console.log('self.city', self.city)
+				window.base.labelGet(postData, callback);
+			},
+			
+			getMainData: function(id) {
+				var self = this;
+				var postData = {};
+				postData.paginate = { 
+					count: 0, 
+					currentPage: 1, 
+					pagesize:3, 
+					is_page: true, 
+				},
+				postData.searchItem = {
+					status:1
+				};
+				postData.getBefore = {
+					Label: {
+						tableName: 'Label',
+						middleKey: 'menu_id',
+						key: 'id',
+						searchItem: {
+							status: ['in',[1]],
+							parentid:['in',[106]]
+						},
+						condition: 'in'
+					}
+				};
+				postData.order = {
+					listorder: 'desc'
+				};
+				var callback = function(res) {
+					if (res.info.data.length > 0) {
+						self.mainData.push.apply(self.mainData, res.info.data);
+					}
+				};
+				console.log('self.mainData', self.mainData)
+				window.base.articleGet(postData, callback);
+			},
+
+			getLabelOneData: function(id) {
+				var self = this;
+				var postData = {};
+
+				postData.searchItem = {
+					parentid: 4,
+					title: '年会场地'
+				};
+
+				var callback = function(res) {
+					if (res.info.data.length > 0) {
+						self.getProductOneData(res.info.data[0].id)
+					}
+				};
+				
+				window.base.labelGet(postData, callback);
+			},
+
+			getProductOneData: function(id) {
+				var self = this;
+				var postData = {};
+				
+				postData.searchItem = {
+					status:1,
+				};
+				postData.getBefore = {
+					Label: {
+						tableName: 'Relation',
+						middleKey: 'product_no',
+						key: 'relation_one',
+						searchItem: {
+							status: ['in',[1]],
+							relation_two:['in',[id]]
+						},
+						condition: 'in'
+					}
+				};
+				var callback = function(res) {
+					if(res.info.data.length>0){
+						self.productOneData.push.apply(self.productOneData,res.info.data)
+					}
+				};
+				
+				window.base.productGet(postData, callback);
+			},
+			
+			getLabelTwoData: function(id) {
+				var self = this;
+				var postData = {};
+			
+				postData.searchItem = {
+					parentid: 4,
+					title: '品牌推广场地'
+				};
+			
+				var callback = function(res) {
+					if (res.info.data.length > 0) {
+						self.getProductTwoData(res.info.data[0].id)
+					}
+				};
+				
+				window.base.labelGet(postData, callback);
+			},
+			
+			getProductTwoData: function(id) {
+				var self = this;
+				var postData = {};
+				
+				postData.searchItem = {
+					status:1
+				};
+				postData.getBefore = {
+					Label: {
+						tableName: 'Relation',
+						middleKey: 'product_no',
+						key: 'relation_one',
+						searchItem: {
+							status: ['in',[1]],
+							relation_two:['in',[id]]
+						},
+						condition: 'in'
+					}
+				};
+				var callback = function(res) {
+					if(res.info.data.length>0){
+						self.productTwo.push.apply(self.productTwo,res.info.data)
+					}
+				};
+				
+				window.base.productGet(postData, callback);
+			},
+			
+			getLabelThreeData: function(id) {
+				var self = this;
+				var postData = {};
+			
+				postData.searchItem = {
+					parentid: 4,
+					title: '发布会场地'
+				};
+			
+				var callback = function(res) {
+					if (res.info.data.length > 0) {
+						self.getProductThreeData(res.info.data[0].id)
+					}
+				};
+				
+				window.base.labelGet(postData, callback);
+			},
+			
+			getProductThreeData: function(id) {
+				var self = this;
+				var postData = {};
+				
+				postData.searchItem = {
+					status:1
+				};
+				postData.getBefore = {
+					Label: {
+						tableName: 'Relation',
+						middleKey: 'product_no',
+						key: 'relation_one',
+						searchItem: {
+							status: ['in',[1]],
+							relation_two:['in',[id]]
+						},
+						condition: 'in'
+					}
+				};
+				var callback = function(res) {
+					if(res.info.data.length>0){
+						self.productThree.push.apply(self.productThree,res.info.data)
+					}
+				};
+				
+				window.base.productGet(postData, callback);
+			},
+			
+			getLabelFourData: function(id) {
+				var self = this;
+				var postData = {};
+			
+				postData.searchItem = {
+					parentid: 4,
+					title: '婚宴场地'
+				};
+			
+				var callback = function(res) {
+					if (res.info.data.length > 0) {
+						self.getProductFourData(res.info.data[0].id)
+					}
+				};
+				
+				window.base.labelGet(postData, callback);
+			},
+			
+			getProductFourData: function(id) {
+				var self = this;
+				var postData = {};
+				
+				postData.searchItem = {
+					status:1
+				};
+				postData.getBefore = {
+					Label: {
+						tableName: 'Relation',
+						middleKey: 'product_no',
+						key: 'relation_one',
+						searchItem: {
+							status: ['in',[1]],
+							relation_two:['in',[id]]
+						},
+						condition: 'in'
+					}
+				};
+				var callback = function(res) {
+					if(res.info.data.length>0){
+						self.productFour.push.apply(self.productFour,res.info.data)
+					}
+				};
+				
+				window.base.productGet(postData, callback);
+			},
+			
+			getLabelFiveData: function(id) {
+				var self = this;
+				var postData = {};
+			
+				postData.searchItem = {
+					parentid: 4,
+					title: '商务会议场地'
+				};
+			
+				var callback = function(res) {
+					if (res.info.data.length > 0) {
+						self.getProductFiveData(res.info.data[0].id)
+					}
+				};
+				
+				window.base.labelGet(postData, callback);
+			},
+			
+			getProductFiveData: function(id) {
+				var self = this;
+				var postData = {};
+				
+				postData.searchItem = {
+					status:1
+				};
+				postData.getBefore = {
+					Label: {
+						tableName: 'Relation',
+						middleKey: 'product_no',
+						key: 'relation_one',
+						searchItem: {
+							status: ['in',[1]],
+							relation_two:['in',[id]]
+						},
+						condition: 'in'
+					}
+				};
+				var callback = function(res) {
+					if(res.info.data.length>0){
+						self.productFive.push.apply(self.productFive,res.info.data)
+					}
+				};
+				
+				window.base.productGet(postData, callback);
+			},
+			
+			getLabelSixData: function(id) {
+				var self = this;
+				var postData = {};
+			
+				postData.searchItem = {
+					parentid: 4,
+					title: '团建场地'
+				};
+			
+				var callback = function(res) {
+					if (res.info.data.length > 0) {
+						self.getProductSixData(res.info.data[0].id)
+					}
+				};
+				
+				window.base.labelGet(postData, callback);
+			},
+			
+			getProductSixData: function(id) {
+				var self = this;
+				var postData = {};
+				
+				postData.searchItem = {
+					status:1
+				};
+				postData.getBefore = {
+					Label: {
+						tableName: 'Relation',
+						middleKey: 'product_no',
+						key: 'relation_one',
+						searchItem: {
+							status: ['in',[1]],
+							relation_two:['in',[id]]
+						},
+						condition: 'in'
+					}
+				};
+				var callback = function(res) {
+					if(res.info.data.length>0){
+						self.productSix.push.apply(self.productSix,res.info.data)
+					}
+				};
+				
+				window.base.productGet(postData, callback);
+			},
+			
+			intoPath(url) {
+				console.log(url);
+				var into_url = url;
+				console.log(into_url);
+				window.location.href = into_url + '.html'
+			}
+
+		}
+	});
 </script>
-<script type="text/javascript" src="/js/pubilc.js"></script>
+<script>
+	//弹框悬浮
+	document.getElementsByTagName("body")[0].onscroll = function() {
+		var gdtop = document.documentElement.scrollTop;
+		var wheight = window.innerHeight;
+		var actig = document.getElementById("act_big");
+		if (gdtop > wheight) {
+			actig.classList.remove("act_big_0");
+			actig.classList.add("act_big_1");
+		} else {
+			actig.classList.remove("act_big_1");
+			actig.classList.add("act_big_0");
+		}
+	}
+</script>
+<script>
+	/*PC端*/
+	var btnnav = document.getElementById("nav2btn");
+	var nav2 = document.getElementById("nav2");
+	var flag = true;
+	btnnav.onclick = function() {
+		if (flag) {
+			nav2.classList.remove("ycxiala");
+			nav2.classList.add("xiala");
+			flag = false;
+		} else {
+			nav2.classList.remove("xiala");
+			nav2.classList.add("ycxiala");
+			flag = true;
+		}
+	}
+	/*手机端*/
+	var btnnav1 = document.getElementById("smnavbtn");
+	var nav21 = document.getElementById("smnav2");
+	var flag1 = true;
+	btnnav1.onclick = function() {
+		if (flag1) {
+			nav21.classList.remove("smycxiala");
+			nav21.classList.add("smxiala");
+			flag1 = false;
+		} else {
+			nav21.classList.remove("smxiala");
+			nav21.classList.add("smycxiala");
+			flag1 = true;
+		}
+	}
+</script>
+<script type="text/javascript" src="../js/pubilc.js"></script>

@@ -11,7 +11,7 @@
 		<link type="text/css" rel="stylesheet" href="../css/style.css" />
 		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		
+
 		<script src="../js/base.js" type="application/javascript"></script>
 		<script src="../js/rem.js"></script>
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
@@ -270,7 +270,7 @@
 							<li><a href="ShopTransfer.html">店铺转让</a></li>
 							<li><a href="Login.html">登录注册</a></li>
 							<li><a href="MyCenter.html">个人中心</a></li>
-							<li class="li_bg"><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
@@ -302,99 +302,76 @@
 				<img src="../img/apply_bg.jpg" style="width: 100%" />
 			</div>
 			<div>
-				<div class="cont_applay">
-					<div>
-						<h2><span style="font-size:32px;color: #222222;display: inline-block;padding-left: 30px;border-left: 4px solid #ff556f;line-height: 50px;">注册信息</span>
-						</h2>
-						<div style="padding: 30px;">
-							<ul class="app_ul1">
-								<li>
-									<div class="app_tab"><span>*</span><label class="applay_li1">手机号码</label></div>
-									<div class="app_txt"><input class="applay_input" type="text" placeholder="请输入手机号码" v-model="submitData.phone" /></div>
-								</li>
-								<li>
-									<div class="app_tab"><span>*</span><label class="applay_li1">短信验证码</label></div>
-									<div class="app_txt" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码" /><a
-										 class="hqnum">获取验证码</a></div>
-								</li>
-							</ul>
+				<div class="product_c">
+					<div class="product_c_z">
+						<div class="pro_top">
+							<img src="../img/peoduct_top.jpg">
 						</div>
-					</div>
-					<div>
-						<h2><span style="font-size:32px;color: #222222;display: inline-block;padding-left: 30px;border-left: 4px solid #ff556f;line-height: 50px;">商家信息</span>
-						</h2>
-						<div class="app_kk">
-							<ul class="app_ul1">
-								<li>
-									<div class="app_tab"><span class="bitian_x">*</span><label class="applay_li1">联系人姓名</label>
-									</div>
-									<div class="app_txt"><input class="applay_input" type="text" placeholder="姓名只需填一个" v-model="submitData.passage1"/></div>
-								</li>
-								<li>
-									<div class="app_tab"><span class="bitian_x">*</span><label class="applay_li1">商家名称</label>
-									</div>
-									<div class="app_txt"><input class="applay_input" type="text" placeholder="请输入商家名称" v-model="submitData.title"/></div>
-								</li>
-								<li>
-									<div class="app_tab" style="float: left;margin-top:0px"><span class="bitian_x">*</span><label class="applay_li1">服务类型</label></div>
-									<div class="fwtype">
-										<span class="applytype0" v-for="(item,index) in type" @click="selectType(index)">
-											<img :src="item.isSelect?'../img/checkbox-a.png':'../img/checkbox.png'" />{{item.name}}
-										</span>
-										
-									</div>
-								</li>
-								<li>
-									<div class="app_tab"><span class="bitian_x">*</span><label class="applay_li1">所在城市</label>
-									</div>
-									<div class="app_txt"><select class="applay_input" @change="cityChange">
-											<option>请选择</option>
-											<option v-for="item in cityData">{{item.title}}</option>
-										</select></div>
-								</li>
-								<li>
-									<div class="app_tab" style="float: left;margin-top:0px"><span class="bitian_x">*</span><label class="applay_li1">备注</label></div>
-									<div class="app_txt">
-										<textarea placeholder="请简单描述，非必填" class="textarea_0" v-model="submitData.content">
-			                        </textarea>
-									</div>
-								</li>
-							</ul>
-							<div style="float: right;margin-right: 20px">
-								<div style="line-height: 35px"><input type="radio" id="radiologin" name="radio1" class="" />
-									<span class="" style="margin-left: 10px" id="openmz">免责条款</span><span class="bookcion1"></span></div>
-								<button class="sendmes" @click="submit">提交入驻申请</button>
-
+						<div class="pro_middle">
+							<div class="tab_rank">
+								<ul>
+									<li><a :class="num==1?'pro_active':''" @click="changeOrder('1')">推荐排序</a></li>
+									<li><a :class="num==2?'pro_active':''" @click="changeOrder('2')">价格排序</a></li>
+									<li><a :class="num==3?'pro_active':''" @click="changeOrder('3')">销量排序</a></li>
+									<li><a :class="num==4?'pro_active':''" @click="changeOrder('4')">折扣排序</a></li>
+									<li>共有<span>{{totalCount?totalCount:''}}</span>个产品满足条件</li>
+								</ul>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<include src="footer.html" ></include>
-			<!--免责条款-->
+						<div class="peo_list">
+							<div class="pro_b_l">
+								<ul class="clear">
+									<li><img src="../img/pro1.jpg" /></li>
+									<li><img src="../img/pro2.jpg" /></li>
+									<li><img src="../img/pro3.jpg" /></li>
+									<li><img src="../img/pro1.jpg" /></li>
+								</ul>
+							</div>
+							<div class="pro_n_list">
+								<ul class="clear">
+									<li v-for="item in mainData">
+										<div class="product_d">
+											<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
+											<div class="procont">
+												<h3 class="pro_title">{{item.title}}</h2>
+													<p class="pro_intro">
+														<div class="content ql-editor ">
+															<p class="p1 " v-html="item.content"></p>
+														</div>
+													</p>
+													<p class="pro_p_f clear">
+														<span class="x_price">现价：{{item.score}}元/<span class="x_q">起</span> </span>
+														<span class="y_price1">原价:{{item.price}}元/<span class="y_q">起</span></span>
+														<span class="zk_price">{{item.discount}}折</span>
+													</p>
+											</div>
+											<div class="probind  nowbind" @click="intoPath('TeSeDetail.html',item.id)">立即绑定</div>
+										</div>
+									</li>
 
-			<div class="zdc_1 sign_in" id="zdc1" style="">
-			</div>
-			<div class="zdc_2 sign_in" id="zdc2" style="">
-				<span class="close_tk" id="closetkbtn"></span>
-				<div style="padding: 50px;">
-					<h2 style="font-size: 30px;color: #222222;text-align: center">免责条款</h2>
-					<div>
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
+								</ul>
+							</div>
+							<include src="form.html"></include>
+						</div>
+						<div class="fenye">
+							<span>
+								共:{{allPages}}页
+							</span>
+							<a class="pages backPage" data-type="back" @click="changePage">上一页</a>
+							<span v-for="item in pageArray">
+								<a v-if="item == paginate.currentPage" class="currentpages active">{{item}}</a>
+								<a v-if="item != paginate.currentPage" class="currentpages" :data-page="item" @click="linkTo">{{item}}</a>
+							</span>
+							<sapn class="currentpages" v-if="pageArray[pageArray.length-1]!=allPages">...</sapn>
+							<a class="pages nextPage" data-type="next" @click="changePage">下一页</a>
+
+						</div>
 					</div>
+
 				</div>
 			</div>
+			<include src="footer.html"></include>
+			<!--免责条款-->
 		</div>
 
 	</body>
@@ -404,42 +381,75 @@
 			data() {
 				return {
 
-					submitData: {
-						phone:'',
-						passage1:'',
-						title:'',
-						passage_array:[],
-						content:'',
-						relation_id:'',
-						type:2,
-						user_type:0
+					paginate: { 
+					    count: 0, 
+					    currentPage: 1, 
+					    pagesize:6, 
+					    is_page: true, 
 					},
+					
+					labelData: [],
+					mainData:[],
+					totalCount:0,
 					cityData:[],
-					type:[{name:'找特色会场',isSelect:false},{name:'找印刷商',isSelect:false},{name:'找兼职',isSelect:false},
-					{name:'会议自助餐',isSelect:false},{name:'活动道具租赁',isSelect:false},{name:'线下广告',isSelect:false},{name:'礼品采购',isSelect:false},{name:'店铺转让',isSelect:false}]
-
+					num:1,
+					order:{
+						listorder:'desc'
+					},
+					spuArray:[],
+					pageArray: [],
+					allPages: 0,
+					linkPage: '',
 				}
 			},
 			created() {
 				const self = this;
-				self.getCityData()
+				self.getCityData();
+				self.getMainData()
 			},
 
 			methods: {
-				
-				cityChange(e){
+
+				changeOrder(num) {
 					const self = this;
-					console.log(e)
-					self.submitData.relation_id = self.cityData[e.target.options.selectedIndex-1].id
+					if (self.num != num) {
+						self.num = num;
+						if (self.num == 1) {
+							self.order = {
+								listorder: 'desc'
+							}
+						} else if (num == 2) {
+							self.order = {
+								score: 'asc'
+							}
+						} else if (num == 3) {
+							self.order = {
+								sale_count: 'desc'
+							}
+						} else {
+							self.order = {
+								discount: 'asc'
+							}
+						};
+						self.mainData = [];
+						self.paginate = {
+								count: 0,
+								currentPage: 1,
+								pagesize: 6,
+								is_page: true,
+							},
+							self.getMainData()
+					}
 				},
-				
+
+
 				getCityData: function(id) {
 					var self = this;
 					var postData = {};
-							
+
 					postData.searchItem = {
 						type: 11
-							
+
 					};
 					postData.order = {
 						listorder: 'desc'
@@ -452,64 +462,51 @@
 					console.log('self.city', self.city)
 					window.base.labelGet(postData, callback);
 				},
+
+				getMainData: function(id) {
+					var self = this;
+					var postData = {};
+					postData.paginate = window.base.cloneForm(self.paginate);
+					postData.searchItem = {
+						title: ['LIKE', ['%' + window.base.GetRequest().title + '%']]
+					};
+					postData.order = window.base.cloneForm(self.order);
 				
-				messageAdd() {
-					const self = this;
-					const postData = {};
-					postData.data = {};
-					postData.data = window.base.cloneForm(self.submitData);
-					
-					const callback = (res) => {
-						if (res.solely_code == 100000) {
-							alert('申请成功');
-							window.location.reload()
+					var callback = function(res) {
+						if (res.info.data.length > 0) {
+							self.mainData.push.apply(self.mainData, res.info.data);
+							self.paginate['count'] = res.info.total;
+							window.base.computePageArr(self);
+							self.totalCount = res.info.total
 						} else {
-							alert(res.msg)
+							self.totalCount = '0'
 						}
-
 					};
-					window.base.addMessage(postData, callback);
+					console.log('self.mainData', self.mainData)
+					window.base.productGet(postData, callback);
+				},
+
+				changePage: function(e) {
+					var self = this;
+					var dataSet = window.base.getDataSet(e);
+					window.base.changePage(dataSet, self);
+				},
+
+				linkTo: function(e) {
+					var self = this;
+					console.log(e);
+					self.linkPage = window.base.getDataSet(e).page;
+					window.base.linkTo(self);
 				},
 
 
+				intoPath: function(url, id) {
+					var self = this;
+					var toUrl = url;
+					console.log(toUrl);
+					window.location.href = toUrl + '?id=' + id;
 
-
-
-				submit() {
-					const self = this;
-					
-					console.log(self.submitData)
-
-					var newObject = window.base.cloneForm(self.submitData);
-					delete newObject.content;
-					const pass = window.base.checkComplete(newObject);
-					console.log('pass', pass)
-					if (pass) {
-						
-						self.messageAdd();
-					} else {
-						alert('请补全信息');
-					};
 				},
-
-
-				selectType(index) {
-					const self = this;
-					console.log(index)
-					console.log(self.submitData.passage_array)
-					console.log(window.base.inArray(self.type[index].name,self.submitData.passage_array))
-					var position = self.submitData.passage_array.indexOf(self.type[index].name);
-					if(position >= 0){
-						
-						self.submitData.passage_array.splice(position, 1);
-						self.type[index].isSelect = false;
-							
-					}else{
-						self.submitData.passage_array.push(self.type[index].name);
-						self.type[index].isSelect = true;
-					}
-					
-				}
 
 			}
 		});

@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
-    <title>特色会场</title>
-    <link type="text/css" rel="stylesheet" href="../css/style.css" />
-    <script type="text/javascript" src="/js/jquery-1.10.1.js"></script>
-    <style>
-        html,
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<title>特色会场</title>
+		<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
+		<link type="text/css" rel="stylesheet" href="../css/style.css" />
+		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		
+		<script src="../js/base.js" type="application/javascript"></script>
+		<script src="../js/rem.js"></script>
+	
+		<style>
+			html,
         body {
             height: 100%;
             width: 100%;
@@ -60,7 +66,7 @@
             font-family: "MicrosoftYaHei";
         }
 
-        .tab_login .login_lab1 span {
+        .active {
             border-bottom: 2px solid #ff0c0c;
             padding-bottom: 12px;
         }
@@ -97,23 +103,23 @@
         }
 
         .l_name {
-            background: url("/img/login-icon.png") no-repeat center;
+            background: url("../img/login-icon.png") no-repeat center;
         }
 
         .l_pwd {
-            background: url("/img/login-icon1.png") no-repeat center;
+            background: url("../img/login-icon1.png") no-repeat center;
         }
 
         .l_tel {
-            background: url("/img/telicon.png") no-repeat center;
+            background: url("../img/telicon.png") no-repeat center;
         }
 
         .l_adress {
-            background: url("/img/adressicon.png") no-repeat center;
+            background: url("../img/adressicon.png") no-repeat center;
         }
 
         .l_user {
-            background: url("/img/namecion.png") no-repeat center;
+            background: url("../img/namecion.png") no-repeat center;
         }
 
         .txt_sr {
@@ -166,7 +172,7 @@
             width: 24px;
             height: 20px;
             display: inline-block;
-            background: url("/img/icon .png");
+            background: url("../img/icon .png");
             vertical-align: middle;
         }
 
@@ -227,246 +233,345 @@
             }
         }
     </style>
-</head>
+	</head>
 
-<body>
-    <!-- 头部 -->
-    <!-- 头部 -->
-    <header class="clear head_top">
-        <div class="clear">
-            <!--logo-->
-            <div class="head_logo">
-                <span class="logo">统筹帮</span>
-                <select class="tab_adress">
-                    <option>北京</option>
-                    <option>上海</option>
-                </select>
-            </div>
-            <!--导航栏-->
-            <nav class="head_nav">
-                <ul class="clear">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="TeSe.html">找特色会场</a></li>
-                    <li><a href="Print.html">找应刷商</a></li>
-                    <li><a href="PartTime.html">找兼职</a></li>
-                    <li id="nav2btn"><a>会议配套服务</a>
-                        <ul class="clear nav_2 ycxiala" id="nav2">
-                            <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-                            <li><a href="Lease.html">活动道具租赁</a></li>
-                            <li><a href="Advertising.html">线下广告</a></li>
-                            <li><a href="GiftPurchasing.html">礼品采购</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="ShopTransfer.html">店铺转让</a></li>
-                </ul>
-            </nav>
-            <div class="nav_small">
-                <button class="nav_btn" id="btnnav">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="clear"></div>
-                <ul class="clear small_nav orgin" id="snav">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="TeSe.html">找特色会场</a></li>
-                    <li><a href="Print.html">找应刷商</a></li>
-                    <li><a href="PartTime.html">找兼职</a></li>
-                    <li><a id="smnavbtn">会议配套服务</a>
-                        <ul class="clear smallnav2 smycxiala" id="smnav2">
-                            <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-                            <li><a href="Lease.html">活动道具租赁</a></li>
-                            <li><a href="Advertising.html">线下广告</a></li>
-                            <li><a href="GiftPurchasing.html">礼品采购</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="ShopTransfer.html">店铺转让</a></li>
-                    <li class="li_bg"><a href="Login.html">登录注册</a></li>
-                    <li><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
+	<body>
+		<!-- 头部 -->
+		<!-- 头部 -->
+		<div id="app">
+			<header class="clear head_top">
+				<div class="clear">
+					<!--logo-->
+					<div class="head_logo">
+						<span class="logo">统筹帮</span>
+						<!-- <select class="tab_adress">
+							<option>北京</option>
+							<option>上海</option>
+						</select> -->
+					</div>
+					<!--导航栏-->
+					<nav class="head_nav">
+						<ul class="clear">
+							<li><a href="index.html">首页</a></li>
+							<li><a href="TeSe.html">找特色会场</a></li>
+							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="PartTime.html">找兼职</a></li>
+							<li id="nav2btn"><a>会议配套服务</a>
+								<ul class="clear nav_2 ycxiala" id="nav2">
+									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+									<li><a href="Lease.html">活动道具租赁</a></li>
+									<li><a href="Advertising.html">线下广告</a></li>
+									<li><a href="GiftPurchasing.html">礼品采购</a></li>
+								</ul>
+							</li>
+							<li><a href="ShopTransfer.html">店铺转让</a></li>
+						</ul>
+					</nav>
+					<div class="nav_small">
+						<button class="nav_btn" id="btnnav">
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+						<div class="clear"></div>
+						<ul class="clear small_nav orgin" id="snav">
+							<li><a href="index.html">首页</a></li>
+							<li><a href="TeSe.html">找特色会场</a></li>
+							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="PartTime.html">找兼职</a></li>
+							<li><a id="smnavbtn">会议配套服务</a>
+								<ul class="clear smallnav2 smycxiala" id="smnav2">
+									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+									<li><a href="Lease.html">活动道具租赁</a></li>
+									<li><a href="Advertising.html">线下广告</a></li>
+									<li><a href="GiftPurchasing.html">礼品采购</a></li>
+								</ul>
+							</li>
+							<li><a href="ShopTransfer.html">店铺转让</a></li>
+							<li class="li_bg"><a href="Login.html">登录注册</a></li>
+							<li><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
 
-            <!--个人中心-->
-            <div class="head_abnoutus">
-                <ul class="clear">
-                    <li class="active"><a href="Login.html">登录注册</a></li>
-                    <li><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
-            <div class="me_rk" style="float: right">
-                <div class="btn_me"><img id="btn_me" src="/img/meicon.png" /></div>
+					<!--个人中心-->
+					<div class="head_abnoutus">
+						<ul class="clear">
+							<li class="active"><a href="Login.html">登录注册</a></li>
+							<li><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
+					<div class="me_rk" style="float: right">
+						<div class="btn_me"><img id="btn_me" src="../img/meicon.png" /></div>
 
-                <ul class="me_list" id="me_list">
-                    <li><a href="Login.html">登录注册</a></li>
-                    <li><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
+						<ul class="me_list" id="me_list">
+							<li><a href="Login.html">登录注册</a></li>
+							<li><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
 
-        </div>
-    </header>
-    <!--登录注册修改密码-->
-    <div style="background: #f5f5f5;height: 100%;width: 100%;padding-top:50px">
-        <div class="login_sign" style="">
-            <form action="" class="from_1">
-                <div class="clear tab_login login_yc">
-                    <div class="login_lab1" id="logintab"><span>账号登录</span></div>
-                    <div class="login_lab2" id="signintab"><span>账号注册</span></div>
-                </div>
-                <div class="clear tab_login sign_in" id="updatesign">
-                    <div class="update_lab1" id="updatetab"><span>修改密码</span></div>
-                </div>
-                <div class="txt_login_k">
-                    <div class="k_user login_li sign_in sign_yc">
-                        <span class="l_user login_icon"></span><input type="text" id="i_user" class="txt_sr"
-                            placeholder="姓名" />
-                    </div>
+				</div>
+			</header>
+			<!--登录注册修改密码-->
+			<div style="background: #f5f5f5;height: 100%;width: 100%;padding-top:50px">
+				<div class="login_sign" style="">
+					<div  class="from_1">
+						<div class="clear tab_login login_yc">
+							<div class="login_lab2"  id="logintab" @click="changeType('login')"><span :class="isLogin?'active':''">账号登录</span></div>
+							<div class="login_lab2"  id="signintab" @click="changeType('register')"><span :class="!isLogin?'active':''">账号注册</span></div>
+						</div>
+						<div class="clear tab_login sign_in" id="updatesign">
+							<div class="update_lab1" id="updatetab"><span>修改密码</span></div>
+						</div>
+						<div class="txt_login_k" v-if="isLogin">			
+							<div class="k_name login_li login_yc" >
+								<span class="l_name login_icon"></span><input type="text" id="i_name" class="txt_sr" placeholder="账号" v-model="submitData.login_name"/>
+							</div>
+							<div class="k_pwd login_li login_yc">
+								<span class="l_pwd login_icon"></span><input type="text" id="i_pwd" class="txt_sr" placeholder="用户密码" v-model="submitData.password"/>
+							</div>	
+							<a class="update_pwd" id="updatebtn">修改密码</a>
+							<button id="loginbtn" @click="submit">登录</button>						
+						</div>
+						<div class="txt_login_k" v-if="!isLogin">
+							<div class="k_user login_li  sign_yc"  >
+								<span class="l_user login_icon"></span><input type="text"  class="txt_sr" placeholder="姓名" v-model="submitData.name"/>
+							</div>
+						
+							<div class="k_tel login_li  sign_yc">
+								<span class="l_tel login_icon"></span><input type="text"  class="txt_sr" placeholder="手机号"  v-model="submitData.phone"/>
+							</div>
+							<div class="k_adress login_li  sign_yc">
+								<span class="l_adress  login_icon"></span><input type="text"  class="txt_sr" placeholder="地区"  v-model="submitData.address"/>
+							</div>
+							<div class="k_name login_li login_yc" >
+								<span class="l_name login_icon"></span><input type="text"  class="txt_sr" placeholder="账号"  v-model="submitData.login_name"/>
+							</div>
+							<div class="k_pwd login_li login_yc" >
+								<span class="l_pwd login_icon"></span><input type="text"  class="txt_sr" placeholder="用户密码"  v-model="submitData.password"/>
+							</div>
+							
+							<input type="radio" id="radiologin" name="radio1" class=" sign_yc" /><span class=" sign_yc" style="margin-left: 10px"
+							 id="openmz">免责条款<span class="bookcion  sign_yc"></span></span>
 
-                    <div class="k_tel login_li sign_in sign_yc">
-                        <span class="l_tel login_icon"></span><input type="text" id="i_tel" class="txt_sr"
-                            placeholder="手机号" />
-                    </div>
-                    <div class="k_adress login_li sign_in sign_yc">
-                        <span class="l_adress  login_icon"></span><input type="text" id="i_adress " class="txt_sr"
-                            placeholder="地区" />
-                    </div>
-                    <div class="k_name login_li login_yc">
-                        <span class="l_name login_icon"></span><input type="text" id="i_name" class="txt_sr"
-                            placeholder="账号" />
-                    </div>
-                    <div class="k_pwd login_li login_yc">
-                        <span class="l_pwd login_icon"></span><input type="text" id="i_pwd" class="txt_sr"
-                            placeholder="用户密码" />
-                    </div>
-                    <div class="k_adress login_li sign_in update_yc">
-                        <span class="l_adress  login_icon"></span><input type="text" id="i_adress " class="txt_sr"
-                            placeholder="旧密码" />
-                    </div>
-                    <div class="k_name login_li sign_in update_yc">
-                        <span class="l_name login_icon"></span><input type="text" id="i_name" class="txt_sr"
-                            placeholder="新密码" />
-                    </div>
-                    <div class="k_pwd login_li sign_in update_yc">
-                        <span class="l_pwd login_icon"></span><input type="text" id="i_pwd" class="txt_sr"
-                            placeholder="确认新密码" />
-                    </div>
-                    <input type="radio" id="radiologin" name="radio1" class="sign_in sign_yc" /><span
-                        class="sign_in sign_yc" style="margin-left: 10px" id="openmz">免责条款<span
-                        class="bookcion sign_in sign_yc"></span></span>
-                    <a class="update_pwd" id="updatebtn">修改密码</a>
-                    <button id="loginbtn">登录</button>
-                    <button id="signinbtn" class="sign_in sign_yc">注册</button>
-                    <button id="updatebtn1" class="sign_in update_yc">提交</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!--免责条款-->
+							<button id="loginbtn" @click="register" >注册</button>
+						
+						</div>
+						<div class="txt_login_k" v-if="isPsd">
+							
+							<div class="k_adress login_li  update_yc" v-if="isPsd">
+								<span class="l_adress  login_icon"></span><input type="text" id="i_adress" class="txt_sr" placeholder="旧密码" />
+							</div>
+							<div class="k_name login_li  update_yc">
+								<span class="l_name login_icon"></span><input type="text" id="i_name" class="txt_sr" placeholder="新密码" />
+							</div>
+							<div class="k_pwd login_li  update_yc">
+								<span class="l_pwd login_icon"></span><input type="text" id="i_pwd" class="txt_sr" placeholder="确认新密码" />
+							</div>
+							
+							<button id="updatebtn1" class=" update_yc">提交</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--免责条款-->
 
-    <div class="zdc_1 sign_in" id="zdc1" style="">
-    </div>
-    <div class="zdc_2 sign_in" id="zdc2" style="">
-        <span class="close_tk" id="closetkbtn"></span>
-        <div class="zdc_3">
-            <h2 style="font-size: 30px;color: #222222;text-align: center">免责条款</h2>
-            <div>
-                <p style="font-size: 18px;color: #666666;line-height: 35px;">
-                    1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                </p>
-                <p style="font-size: 18px;color: #666666;line-height: 35px;">
-                    1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                </p>
-                <p style="font-size: 18px;color: #666666;line-height: 35px;">
-                    1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                </p>
-                <p style="font-size: 18px;color: #666666;line-height: 35px;">
-                    1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                </p>
-            </div>
-        </div>
-    </div>
+			<div class="zdc_1 sign_in" id="zdc1" style="">
+			</div>
+			<div class="zdc_2 sign_in" id="zdc2" style="">
+				<span class="close_tk" id="closetkbtn"></span>
+				<div class="zdc_3">
+					<h2 style="font-size: 30px;color: #222222;text-align: center">免责条款</h2>
+					<div>
+						<p style="font-size: 18px;color: #666666;line-height: 35px;">
+							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+						</p>
+						<p style="font-size: 18px;color: #666666;line-height: 35px;">
+							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+						</p>
+						<p style="font-size: 18px;color: #666666;line-height: 35px;">
+							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+						</p>
+						<p style="font-size: 18px;color: #666666;line-height: 35px;">
+							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
 
-</body>
+
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: function() {
+				return {
+
+					is_toggle: true,
+					isLogin: true,
+					isPsd:false,
+
+					submitData: {
+						login_name: '',
+						password: '',
+						name:'',
+						phone:'',
+						address:'',
+						thirdapp_id:2
+					},
+
+
+				}
+			},
+			
+			created: function() {
+				const self = this;
+				console.log('window.my',window.my)
+				console.log('window.base',window.base)
+				self.init()
+				
+			},
+
+
+
+
+
+			methods: {
+				
+				init: function(e) {
+					const self = this;
+					var user_no = window.base.GetRequest().user_no;
+					if (user_no) {
+						self.submitData.invitation = window.base.GetRequest().user_no;
+						self.isLogin = false;
+					}
+
+				},
+
+				submit: function() {
+					const self = this;
+					const postData = {
+						login_name: self.submitData.login_name,
+						password: self.submitData.password,
+					};
+					var newObject = window.base.cloneForm(self.submitData);
+					delete newObject.name;
+					delete newObject.phone;
+					delete newObject.address;
+					delete newObject.thirdapp_id;
+					if (window.base.checkComplete(newObject)) {
+						const callback = (res) => {
+							if (res.solely_code == 100000) {
+								localStorage.setItem('user_token', res.token);
+								localStorage.setItem('user_no', res.info.user_no);
+								
+								window.base.setStorageArray('user_info', res.info, 'id', 999, 'unshift');
+								window.location.href = './MyCenter.html'
+							} else {
+								alert(res.msg)
+							}
+						}
+						window.base.login(postData, callback);
+					} else {
+						alert('请输入账号密码', 'none')
+					};
+				},
+				
+				test(){
+					const self = this;
+					console.log(1111)
+				},
+
+				register() {
+					const self = this;
+					
+					const postData = window.base.cloneForm(self.submitData)
+					
+					var newObject = window.base.cloneForm(self.submitData);
+					console.log('test',postData)
+					if (window.base.checkComplete(newObject)) {
+						const callback = (res) => {
+							if (res.solely_code == 100000) {
+								alert(res.msg)
+								self.submitData = {
+									login_name: '',
+									password: '',
+									name:'',
+									phone:'',
+									address:''
+								};
+								self.isLogin = true;
+							} else {
+								alert(res.msg)
+							}
+						}
+						window.base.register(postData, callback);
+					} else {
+						alert('请补全信息', 'none')
+					};
+				},
+
+				changeType: function(type) {
+					const self = this;
+					console.log(111)
+					console.log(type)
+					if (type == "login") {
+						self.isLogin = true
+					} else if (type == "register") {
+						self.isLogin = false
+					}
+					console.log(self.isLogin)
+				},
+
+				intoPath: function(url, id) {
+					const self = this;
+					var toUrl = url;
+					console.log(toUrl);
+					window.location.href = toUrl + '?id=' + id;
+
+				},
+
+			}
+		});
+	</script>
+
 
 </html>
-<script type="text/javascript" src="/js/pubilc.js"></script>
 <script>
-    var logintab = document.getElementById("logintab");
-    var signintab = document.getElementById("signintab");
-    var signlist = document.getElementsByClassName("sign_yc");
-    var updatebtn = document.getElementById("updatebtn");
-    var loginbtn = document.getElementById("loginbtn");
-    var updatetab = document.getElementById("updatetab");
-    var loginlist = document.getElementsByClassName("login_yc");
-    var updatelist = document.getElementsByClassName("update_yc");
-    //点击注册
-    signintab.onclick = function () {
-        /* alert(1);
-        console.log(signlist); */
-        signintab.classList.remove("login_lab2");
-        signintab.classList.add("login_lab1");
-        logintab.classList.remove("login_lab1");
-        logintab.classList.add("login_lab2");
-        updatebtn.classList.add("sign_in");
-        loginbtn.classList.add("sign_in");
-        for (var i = 0; i < signlist.length; i++) {
-            signlist[i].classList.remove("sign_in");
-        }
-    }
-    //点击登录
-    logintab.onclick = function () {
-        /*  alert(2);
-         console.log(signlist); */
-        signintab.classList.remove("login_lab1");
-        signintab.classList.add("login_lab2");
-        logintab.classList.remove("login_lab2");
-        logintab.classList.add("login_lab1");
-        updatebtn.classList.remove("sign_in");
-        loginbtn.classList.remove("sign_in");
-        for (var i = 0; i < signlist.length; i++) {
-            signlist[i].classList.add("sign_in");
-        }
-    }
-    //点击修改密码
-    updatebtn.onclick = function () {
-        updatebtn.classList.add("sign_in");
-        updatesign.classList.remove("sign_in");
-        loginbtn.classList.add("sign_in");
-        for (var i = 0; i < loginlist.length; i++) {
-            loginlist[i].classList.add("sign_in");
-        }
-        for (var i = 0; i < updatelist.length; i++) {
-            updatelist[i].classList.remove("sign_in");
-        }
-    }
-    //选择是否同意免责条款
-    var radiologin = $("#radiologin");
-    var flag = true;
-    $("#radiologin").click(function () {
-        if (flag) {
-            flag = false;
-        } else {
-            $(this).removeAttr("checked");
-            flag = true;
-        }
-    });
-    //关闭免责条款
-    var closetkbtn = document.getElementById("closetkbtn");
-    var zdc1 = document.getElementById("zdc1");
-    var zdc2 = document.getElementById("zdc2");
-    closetkbtn.onclick = function () {
-        zdc1.classList.add("sign_in");
-        zdc2.classList.add("sign_in");
-    }
-    //打开免责条款
-    var openmz = document.getElementById("openmz");
-    openmz.onclick = function () {
-        zdc1.classList.remove("sign_in");
-        zdc2.classList.remove("sign_in");
-    }
+	/*PC端*/
+	var btnnav = document.getElementById("nav2btn");
+	var nav2 = document.getElementById("nav2");
+	var flag = true;
+	btnnav.onclick = function() {
+		if (flag) {
+			nav2.classList.remove("ycxiala");
+			nav2.classList.add("xiala");
+			flag = false;
+		} else {
+			nav2.classList.remove("xiala");
+			nav2.classList.add("ycxiala");
+			flag = true;
+		}
+	}
+	/*手机端*/
+	var btnnav1 = document.getElementById("smnavbtn");
+	var nav21 = document.getElementById("smnav2");
+	var flag1 = true;
+	btnnav1.onclick = function() {
+		if (flag1) {
+			nav21.classList.remove("smycxiala");
+			nav21.classList.add("smxiala");
+			flag1 = false;
+		} else {
+			nav21.classList.remove("smxiala");
+			nav21.classList.add("smycxiala");
+			flag1 = true;
+		}
+	}
 </script>

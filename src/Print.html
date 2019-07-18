@@ -1,368 +1,470 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
-    <title>特色会场</title>
-    <link type="text/css" rel="stylesheet" href="../css/style.css" />
-</head>
-<body>
-<!-- 头部 -->
-<header class="clear head_top">
-        <div class="clear">
-            <!--logo-->
-            <div class="head_logo">
-                <span class="logo">统筹帮</span>
-                <select class="tab_adress">
-                    <option>北京</option>
-                    <option>上海</option>
-                </select>
-            </div>
-            <!--导航栏-->
-            <nav class="head_nav">
-                <ul class="clear">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="TeSe.html">找特色会场</a></li>
-                    <li class="active"><a href="Print.html">找应刷商</a></li>
-                    <li><a href="PartTime.html">找兼职</a></li>
-                    <li id="nav2btn"><a>会议配套服务</a>
-                        <ul class="clear nav_2 ycxiala" id="nav2">
-                            <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-                            <li><a href="Lease.html">活动道具租赁</a></li>
-                            <li><a href="Advertising.html">线下广告</a></li>
-                            <li><a href="GiftPurchasing.html">礼品采购</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="ShopTransfer.html">店铺转让</a></li>
-                </ul>
-            </nav>
-            <div class="nav_small">
-                <button class="nav_btn" id="btnnav">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="clear"></div>
-                <ul class="clear small_nav orgin" id="snav">
-                    <li><a>首页</a></li>
-                    <li><a href="TeSe.html">找特色会场</a></li>
-                    <li class="li_bg"><a href="Print.html">找应刷商</a></li>
-                    <li><a href="PartTime.html">找兼职</a></li>
-                    <li><a id="smnavbtn">会议配套服务</a>
-                        <ul class="clear smallnav2 smycxiala" id="smnav2">
-                            <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-                            <li><a href="Lease.html">活动道具租赁</a></li>
-                            <li><a href="Advertising.html">线下广告</a></li>
-                            <li><a href="GiftPurchasing.html">礼品采购</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="ShopTransfer.html">店铺转让</a></li>
-                    <li><a href="Login.html">登录注册</a></li>
-                    <li><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<title>特色会场</title>
+		<script src="../js/include.js"></script>
+		<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
+		<link type="text/css" rel="stylesheet" href="../css/style.css" />
+		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
-            <!--个人中心-->
-            <div class="head_abnoutus">
-                <ul class="clear">
-                    <li><a href="Login.html">登录注册</a></li>
-                    <li><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
-            <div class="me_rk" style="float: right">
-                <div class="btn_me"><img id="btn_me" src="/img/meicon.png" /></div>
+		<script src="../js/base.js" type="application/javascript"></script>
+		<script src="../js/rem.js"></script>
+		<script type="text/javascript " src="../js/bootstrap.js"></script>
+	</head>
+	<body>
+		<!-- 头部 -->
+		<div id="app">
+			<header class="clear head_top">
+				
+					<div class="clear">
+						<!--logo-->
+						<div class="head_logo">
+							<span class="logo">统筹帮</span>
+							<select class="tab_adress">
+								<option v-for="item in cityData">{{item.title}}</option>
+								
+							</select>
+						</div>
+						<!--导航栏-->
+						<nav class="head_nav">
+							<ul class="clear">
+								<li><a href="index.html">首页</a></li>
+								<li><a href="TeSe.html">找特色会场</a></li>
+								<li class="active"><a href="Print.html">找应刷商</a></li>
+								<li><a href="PartTime.html">找兼职</a></li>
+								<li id="nav2btn"><a>会议配套服务</a>
+									<ul class="clear nav_2 ycxiala" id="nav2">
+										<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+										<li><a href="Lease.html">活动道具租赁</a></li>
+										<li><a href="Advertising.html">线下广告</a></li>
+										<li><a href="GiftPurchasing.html">礼品采购</a></li>
+									</ul>
+								</li>
+								<li><a href="ShopTransfer.html">店铺转让</a></li>
+							</ul>
+						</nav>
+						<div class="nav_small">
+							<button class="nav_btn" id="btnnav">
+								<span></span>
+								<span></span>
+								<span></span>
+							</button>
+							<div class="clear"></div>
+							<ul class="clear small_nav orgin" id="snav">
+								<li><a>首页</a></li>
+								<li><a href="TeSe.html">找特色会场</a></li>
+								<li class="li_bg"><a href="Print.html">找应刷商</a></li>
+								<li><a href="PartTime.html">找兼职</a></li>
+								<li><a id="smnavbtn">会议配套服务</a>
+									<ul class="clear smallnav2 smycxiala" id="smnav2">
+										<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+										<li><a href="Lease.html">活动道具租赁</a></li>
+										<li><a href="Advertising.html">线下广告</a></li>
+										<li><a href="GiftPurchasing.html">礼品采购</a></li>
+									</ul>
+								</li>
+								<li><a href="ShopTransfer.html">店铺转让</a></li>
+								<li><a href="Login.html">登录注册</a></li>
+								<li><a href="MyCenter.html">个人中心</a></li>
+								<li><a href="Apply.html">申请入驻</a></li>
+								<li><a href="Help.html">帮助中心</a></li>
+							</ul>
+						</div>
 
-                <ul class="me_list" id="me_list">
-                    <li><a href="Login.html">登录注册</a></li>
-                    <li><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
+						<!--个人中心-->
+						<div class="head_abnoutus">
+							<ul class="clear">
+								<li><a href="Login.html">登录注册</a></li>
+								<li><a href="MyCenter.html">个人中心</a></li>
+								<li><a href="Apply.html">申请入驻</a></li>
+								<li><a href="Help.html">帮助中心</a></li>
+							</ul>
+						</div>
+						<div class="me_rk" style="float: right">
+							<div class="btn_me"><img id="btn_me" src="../img/meicon.png" /></div>
 
-        </div>
-    </header>
-    <!--内容-->
-    <div>
-            <div class="typelist">
-                <div>
-                    <!--搜索框-->
-                    <div class="search_k">
-                        <div class="search_k_1">
-                            <span class="sp_1 sp_0_0">
-                                <input type="text" class="search_text1" placeholder="搜索团建游，目的地等" /></span>
-                            <span class="sp_1 sp_0_1">
-                                <input type="button" class="search_btn1" value="搜索" /></span>
-                        </div>
-                    </div>
-                    <!--条件选择-->
-                    <div class="type_list">
-                        <!--场地类型-->
-                        <div class="adresstype type_s clear">
-                            <div class="type_1">
-                                <span>类型</span>
-                            </div>
-                            <div class="type_all">
-                                <span>不限</span>
-                            </div>
-                            <div class="type_list1">
-                                <a>印刷厂</a>
-                                <a>印刷喷绘安装一体式服务公司</a>
-                                <a>其他</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="product_c">
-                <div class="product_c_z">
-                    <div class="pro_top">
-                        <img src="/img/peoduct_top.jpg">
-                    </div>
-                    <div class="pro_middle">
-                        <div class="tab_rank">
-                            <ul>
-                                <li><a class="pro_active">推荐排序</a></li>
-                                <li><a>价格排序</a></li>
-                                <li><a>销量排序</a></li>
-                                <li><a>折扣排序</a></li>
-                                <li>共有<span>234</span>个产品满足条件</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="peo_list">
-                        <div class="pro_b_l">
-                            <ul class="clear">
-                                <li><img src="/img/pro1.jpg" /></li>
-                                <li><img src="/img/pro2.jpg" /></li>
-                                <li><img src="/img/pro3.jpg" /></li>
-                                <li><img src="/img/pro1.jpg" /></li>
-                            </ul>
-                        </div>
-                        <div class="pro_n_list">
-                            <ul class="clear">
-                                <li>
-                                    <div class="product_d">
-                                        <div class="proimg"><img src="/img/pro.jpg"></div>
-                                        <div class="procont">
-                                            <h3 class="pro_title">标题标题标题标题</h2>
-                                                <p class="pro_intro">
-                                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                                </p>
-                                                <p class="pro_p_f clear">
-                                                    <span class="x_price">现价：999元/<span class="x_q">起</span> </span>
-                                                     <span class="y_price1">原价:18888元/<span class="y_q">起</span></span> 
-                                                     <span class="zk_price">7折</span>
-                                                </p>
-                                        </div>
-                                        <div class="probind"><a class="nowbind" href="PrintList.html">立即绑定</a></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="product_d">
-                                        <div class="proimg"><img src="/img/pro.jpg"></div>
-                                        <div class="procont">
-                                            <h3 class="pro_title">标题标题标题标题</h2>
-                                                <p class="pro_intro">
-                                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                                </p>
-                                                <p class="pro_p_f clear">
-                                                    <span class="x_price">现价：999元/<span class="x_q">起</span> </span>
-                                                     <span class="y_price1">原价:18888元/<span class="y_q">起</span></span> 
-                                                     <span class="zk_price">7折</span>
-                                                </p>
-                                        </div>
-                                        <div class="probind"><a class="nowbind" href="PrintList.html">立即绑定</a></div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="product_d">
-                                        <div class="proimg"><img src="/img/pro.jpg"></div>
-                                        <div class="procont">
-                                            <h3 class="pro_title">标题标题标题标题</h2>
-                                                <p class="pro_intro">
-                                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                                </p>
-                                                <p class="pro_p_f clear">
-                                                    <span class="x_price">现价：999元/<span class="x_q">起</span> </span>
-                                                     <span class="y_price1">原价:18888元/<span class="y_q">起</span></span> 
-                                                     <span class="zk_price">7折</span>
-                                                </p>
-                                        </div>
-                                        <div class="probind"><a class="nowbind" href="PrintList.html">立即绑定</a></div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="active_big_k act_big_1" id="act_big">
-                                <div>
-                                    <h2 class="active_title">活动需求</h2>
-                                    <ul>
-                                        <li class="clear active_tab" style="">
-                                            <div class="act_t_1">活动类型</div>
-                                            <select class="select_t_1">
-                                                <option>不限</option>
-                                                <option>类型2</option>
-                                                <option>类型3</option>
-                                            </select>
-                                        </li>
-                                        <li class="clear active_tab" style="">
-                                            <div class="act_t_1">活动类型</div>
-                                            <select class="select_t_1">
-                                                <option>不限</option>
-                                                <option>类型2</option>
-                                                <option>类型3</option>
-                                            </select>
-                                        </li>
-                                        <li class="clear active_tab">
-                                            <div class="act_t_1">预算</div>
-                                            <div class="act_t_2"><input class="act_i_1" placeholder="请输入您的预算值"/></div>
-                                        </li>
-                                        <li class="clear active_tab">
-                                            <div class="act_t_1">联系人姓名</div>
-                                            <div class="act_t_2"><input class="act_i_1" placeholder="请输入联系人姓名"/></div>
-                                        </li>
-                                        <li class="clear active_tab">
-                                            <div class="act_t_1">联系电话</div>
-                                            <div class="act_t_2"><input class="act_i_1" placeholder="请输入11位手机号码"/></div>
-                                        </li>
-                                        <li class="clear active_tab">
-                                            <div class="act_t_1">短信验证</div>
-                                            <div class="act_t_2"><input class="act_i_2" placeholder=""/><label style="color: red">短信验证</label></div>
-                                        </li>
-                                        <li class="clear active_tab">
-                                            <div class="act_t_1">备注</div>
-                                            <div class="act_t_2"><textarea style="border: none;resize: none"></textarea></div>
-                                        </li>
-                                    </ul>
-                                    <p class="act_plan">
-                                        <span>不想自己找吗？</span>把你们的计划要求告诉我们，统筹帮免费帮你推荐最合适的需求，帮你做活动统筹计划
-                                    </p>
-                                    <p class="act_tel" >咨询热线：13126688897</span></p>
-                                    <button class="act_btn">提交计划</button>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-                
-            </div>
-            <footer class="clear">
-                <div class="foot_k">
-                    <ul class="clear ul_1 clear">
-                        <li>
-                            <div class="foot_list">
-                                <h4 class="foot_title">找特色会场</h4>
-                                <ul class="ul_2 clear">
-                                    <li>年会场地</li>
-                                    <li>品牌推广专区</li>
-                                    <li>发布会场地</li>
-                                    <li>婚宴场地</li>
-                                    <li>商务会议场地</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="foot_list">
-                                <h4 class="foot_title">找印刷商</h4>
-                                <ul class="ul_2">
-                                    <li>印刷厂</li>
-                                    <li>印刷喷绘安装一体式服务</li>
-                                    <li>其他</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="foot_list">
-                                <h4 class="foot_title">找兼职</h4>
-                                <ul class="ul_2">
-                                    <li>演出人员</li>
-                                    <li>模特</li>
-                                    <li>翻译</li>
-                                    <li>摄影摄像</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="foot_list">
-                                <h4 class="foot_title">店铺转让</h4>
-                                <ul class="ul_2">
-                                    <li>酒吧夜店</li>
-                                    <li>购物中心</li>
-                                    <li>剧院剧场</li>
-                                    <li>培训场地</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="foot_list">
-                                <h4 class="foot_title">会议自助餐</h4>
-                                <ul class="ul_2">
-                                    <li>西餐自助餐</li>
-                                    <li>中式桌餐</li>
-                                    <li>茶歇</li>
-                                    <li>中式自助</li>
-                                    <li>自助酒会</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="foot_list">
-                                <h4 class="foot_title">活动道具租赁</h4>
-                                <ul class="ul_2">
-                                    <li>DIY暖场</li>
-                                    <li>车辆租赁</li>
-                                    <li>仿真展品</li>
-                                    <li>花艺布置</li>
-                                    <li>活动服装租赁</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="foot_list">
-                                <h4 class="foot_title">线下广告</h4>
-                                <ul class="ul_2">
-                                    <li>酒店夜店</li>
-                                    <li>购物中心</li>
-                                    <li>共享空间</li>
-                                    <li>校园场地</li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="foot_list">
-                                <h4 class="foot_title">礼品采购</h4>
-                                <ul class="ul_2">
-                                    <li>厂家直销</li>
-                                    <li>定制礼品</li>
-                                    <li>其他</li>
-                                </ul>
-                            </div>
-                        </li>
-                        
-                    </ul>
-                </div>
-                <div class="foot_contact">
-                    <ul class="clear">
-                        <li><span class="cion"></span>北京相予科技有限公司</li>
-                        <li><span class="cion"></span>13126608897/1355128433</li>
-                        <li><span class="cion"></span>北京石墨山万达F座</li>
-                        <li><span class="cion"></span>1193549646@qq.com</li>
-                        <li style="position: relative"><span class="cion" id="wechatbtn"></span>
-                            <div id="wechatk">
-                                <div><img src="/img/wechat1.jpg" /></div>
-                                <div><img src="/img/wechat1.jpg" /></div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </footer>
-</body>
+							<ul class="me_list" id="me_list">
+								<li><a href="Login.html">登录注册</a></li>
+								<li><a href="MyCenter.html">个人中心</a></li>
+								<li><a href="Apply.html">申请入驻</a></li>
+								<li><a href="Help.html">帮助中心</a></li>
+							</ul>
+						</div>
+
+					</div>
+			</header>
+			<!--内容-->
+			<div>
+				<div class="typelist">
+					<div>
+						<!--搜索框-->
+						<div class="search_k">
+							<div class="search_k_1">
+								<span class="sp_1 sp_0_0">
+									<input type="text" class="search_text1" placeholder="搜索团建游，目的地等" v-model="title"/></span>
+								<span class="sp_1 sp_0_1">
+									<input type="button" class="search_btn1" value="搜索" @click="goSearch"/></span>
+							</div>
+						</div>
+						<!--条件选择-->
+						<div class="type_list">
+							<!--场地类型-->
+
+							<div class="adresstype type_s clear" v-for="item in labelData">
+								<div class="type_1">
+									<span>{{item.title[1]}}</span>
+								</div>
+								<div class="type_all">
+									<span>不限</span>
+								</div>
+								<div class="type_list1">
+									<a v-for="(c_item,c_index) in item.child" @click="select(c_item.id)" :style="check(c_item.id)?'color:red':''">{{c_item.title}}</a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="product_c">
+				<div class="product_c_z">
+					<div class="pro_top">
+						<img src="../img/peoduct_top.jpg">
+					</div>
+					<div class="pro_middle">
+						<div class="tab_rank">
+							<ul>
+								<li><a :class="num==1?'pro_active':''" @click="changeOrder('1')">推荐排序</a></li>
+								<li><a :class="num==2?'pro_active':''" @click="changeOrder('2')">价格排序</a></li>
+								<li><a :class="num==3?'pro_active':''" @click="changeOrder('3')">销量排序</a></li>
+								<li><a :class="num==4?'pro_active':''" @click="changeOrder('4')">折扣排序</a></li>
+								<li>共有<span>{{totalCount?totalCount:''}}</span>个产品满足条件</li>
+							</ul>
+						</div>
+					</div>
+					<div class="peo_list">
+						<div class="pro_b_l">
+							<ul class="clear">
+								<li><img src="../img/pro1.jpg" /></li>
+								<li><img src="../img/pro2.jpg" /></li>
+								<li><img src="../img/pro3.jpg" /></li>
+								<li><img src="../img/pro1.jpg" /></li>
+							</ul>
+						</div>
+						<div class="pro_n_list">
+							<ul class="clear">
+								<li v-for="item in mainData">
+									<div class="product_d">
+										<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
+										<div class="procont">
+											<h3 class="pro_title">{{item.title}}</h2>
+												<p class="pro_intro">
+													<div class="content ql-editor " style="clear: both;">
+														<p class="p1 " v-html="item.content"></p>
+													</div>
+												</p>
+												<p class="pro_p_f clear">
+													<span class="x_price">现价：{{item.score}}元/<span class="x_q">起</span> </span>
+													<span class="y_price1">原价:{{item.price}}元/<span class="y_q">起</span></span>
+													<span class="zk_price">{{item.discount}}折</span>
+												</p>
+										</div>
+										<div class="probind  nowbind" @click="intoPath('printList.html',item.id)">立即绑定</div>
+									</div>
+								</li>
+
+							</ul>
+						</div>
+						<include src="form.html" ></include>
+					</div>
+					<div class="fenye">
+						<span>
+							共:{{allPages}}页
+						</span>
+						<a class="pages backPage" data-type="back" @click="changePage">上一页</a>
+						<span v-for="item in pageArray">
+							<a v-if="item == paginate.currentPage" class="currentpages active">{{item}}</a>
+							<a v-if="item != paginate.currentPage" class="currentpages" :data-page="item" @click="linkTo">{{item}}</a>
+						</span>
+						<sapn class="currentpages" v-if="pageArray[pageArray.length-1]!=allPages">...</sapn>
+						<a class="pages nextPage" data-type="next" @click="changePage">下一页</a>
+					
+					</div>
+				</div>
+
+			</div>
+			<include src="footer.html" ></include>
+		</div>
+	
+
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: function() {
+				return {
+					paginate: {
+						count: 0,
+						currentPage: 1,
+						pagesize: 6,
+						is_page: true,
+					},
+					spuArray:[],
+					pageArray: [],
+					allPages: 0,
+					linkPage: '',
+					labelData: [],
+					mainData: [],
+					totalCount:0,
+					cityData:[],
+					num:1,
+					order:{
+						listorder:'desc'
+					},
+					title:''
+				}
+			},
+
+			created: function() {
+				var self = this;
+				self.init()
+			},
+
+			methods: {
+				init: function(e) {
+					var self = this;
+					self.getLableData();
+					self.getMainData();
+					self.getCityData()
+					self.getBefore = {
+						spu: {
+							tableName: 'Relation',
+							middleKey: 'product_no',
+							key: 'relation_one',
+							searchItem: {
+								
+								relation_two:['in',[self.spuArray]]
+							},
+							condition: 'in'
+						}
+					};
+				},
+				
+				check(id){
+					const self = this;
+					var position = self.spuArray.indexOf(id);
+					if(position >= 0){
+						return true
+					}else{
+						return false
+					}
+				},
+				
+				select(id){
+					const self = this;
+					
+					var position = self.spuArray.indexOf(id);
+					if(position >= 0){			
+						self.spuArray.splice(position, 1);					
+					}else{
+						self.spuArray.push(id);		
+					}
+					console.log(self.spuArray)
+					self.mainData = [];
+					self.paginate= { 
+						count: 0, 
+						currentPage: 1, 
+						pagesize:6, 
+						is_page: true, 
+					},
+					self.getMainData()
+				},
+				
+				changeOrder(num){
+					const self = this;
+					if(self.num!=num){
+						self.num = num;
+						if(self.num ==1){
+							self.order={
+								listorder:'desc'
+							}
+						}else if(num==2){
+							self.order={
+								score:'asc'
+							}
+						}else if(num==3){
+							self.order={
+								sale_count:'desc'
+							}
+						}else{
+							self.order={
+								discount:'asc'
+							}
+						};
+						self.mainData = [];
+						self.paginate= { 
+							count: 0, 
+							currentPage: 1, 
+							pagesize:6, 
+							is_page: true, 
+						},
+						self.getMainData()
+					}
+				},
+			
+				getCityData: function(id) {
+					var self = this;
+					var postData = {};
+			
+					postData.searchItem = {
+						type: 11
+			
+					};
+					postData.order = {
+						listorder: 'desc'
+					};
+					var callback = function(res) {
+						if (res.info.data.length > 0) {
+							self.cityData.push.apply(self.cityData, res.info.data);
+						}
+					};
+					console.log('self.city', self.city)
+					window.base.labelGet(postData, callback);
+				},
+
+				getLableData: function(id) {
+					var self = this;
+					var postData = {};
+
+					postData.searchItem = {
+						type: ['in', [7, 8]],
+						id: ['in', [34]]
+					};
+					postData.getAfter = {
+						child: {
+							tableName: 'Label',
+							middleKey: 'id',
+							key: 'parentid',
+							searchItem: {
+								status: 1
+							},
+							condition: '='
+						}
+					};
+					postData.order = {
+						listorder: 'desc'
+					};
+					var callback = function(res) {
+						if (res.info.data.length > 0) {
+							self.labelData.push.apply(self.labelData, res.info.data);
+							for (var i = 0; i < self.labelData.length; i++) {
+								self.labelData[i].title=self.labelData[i].title.split('-')
+							}
+						}
+					};
+					console.log('self.labelData', self.labelData)
+					window.base.labelGet(postData, callback);
+				},
+
+				getMainData: function(id) {
+					var self = this;
+					var postData = {};
+					postData.paginate = window.base.cloneForm(self.paginate);
+					postData.searchItem = {
+						category_id: 2
+					};
+					postData.order = {
+						listorder: 'desc'
+					};
+					if(self.spuArray.length>0){
+						postData.getBefore = window.base.cloneForm(self.getBefore);
+					};
+					var callback = function(res) {
+						if (res.info.data.length > 0) {
+							self.mainData.push.apply(self.mainData, res.info.data);
+							self.paginate['count'] = res.info.total;
+							window.base.computePageArr(self);
+							self.totalCount = res.info.total
+						} else {
+							self.totalCount = 0
+						}
+					};
+					console.log('self.mainData', self.mainData)
+					window.base.productGet(postData, callback);
+				},
+				
+				goSearch(){
+					const self = this;
+					if(self.title!=''){
+						window.location.href = 'search.html?title='+self.title
+					}else{
+						alert('请输入标题搜索')
+					}
+				},
+				
+				changePage:function(e) {
+					var self = this;
+					var dataSet = window.base.getDataSet(e);
+					window.base.changePage(dataSet, self);
+				},
+				
+				linkTo:function(e) {
+					var self = this;
+					console.log(e);
+					self.linkPage = window.base.getDataSet(e).page;
+					window.base.linkTo(self);
+				},
+
+				intoPath: function(url, id) {
+					var self = this;
+					var toUrl = url;
+					console.log(toUrl);
+					window.location.href = toUrl + '?id=' + id;
+
+				},
+
+
+
+			}
+		});
+	</script>
+
 </html>
 <script type="text/javascript" src="/js/pubilc.js"></script>
+<script>
+	/*PC端*/
+	var btnnav = document.getElementById("nav2btn");
+	var nav2 = document.getElementById("nav2");
+	var flag = true;
+	btnnav.onclick = function() {
+		if (flag) {
+			nav2.classList.remove("ycxiala");
+			nav2.classList.add("xiala");
+			flag = false;
+		} else {
+			nav2.classList.remove("xiala");
+			nav2.classList.add("ycxiala");
+			flag = true;
+		}
+	}
+	/*手机端*/
+	var btnnav1 = document.getElementById("smnavbtn");
+	var nav21 = document.getElementById("smnav2");
+	var flag1 = true;
+	btnnav1.onclick = function() {
+		if (flag1) {
+			nav21.classList.remove("smycxiala");
+			nav21.classList.add("smxiala");
+			flag1 = false;
+		} else {
+			nav21.classList.remove("smxiala");
+			nav21.classList.add("smycxiala");
+			flag1 = true;
+		}
+	}
+</script>

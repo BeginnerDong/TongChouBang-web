@@ -1,0 +1,160 @@
+<div id="form_app">
+	<div class="active_big_k act_big_0" id="act_big" style="z-index:999">
+		<div>
+			<h2 class="active_title">活动需求</h2>
+			<ul>
+				<li class="clear active_tab" style="">
+					<div class="act_t_1">活动类型</div>
+					<select class="select_t_1" @change="changeType">
+						<option>不限</option>
+						<option v-for="item in labelData">{{item.title}}</option>
+	
+					</select>
+				</li>
+				<li class="clear active_tab" style="">
+					<div class="act_t_1">活动时间</div>
+					<input type="date" name="user_date" style="height:20px;border:none" v-model="submitData.description" />
+				</li>
+				<li class="clear active_tab">
+					<div class="act_t_1">预算</div>
+					<div class="act_t_2"><input class="act_i_1" placeholder="请输入您的预算值" v-model="submitData.keywords" /></div>
+				</li>
+				<li class="clear active_tab">
+					<div class="act_t_1">联系人姓名</div>
+					<div class="act_t_2"><input class="act_i_1" placeholder="请输入联系人姓名" v-model="submitData.passage1" /></div>
+				</li>
+				<li class="clear active_tab">
+					<div class="act_t_1">联系电话</div>
+					<div class="act_t_2"><input class="act_i_1" placeholder="请输入11位手机号码" v-model="submitData.phone" /></div>
+				</li>
+				<li class="clear active_tab">
+					<div class="act_t_1">短信验证</div>
+					<div class="act_t_2"><input class="act_i_2" placeholder="" /><label class="sendyzm">短信验证</label>
+					</div>
+				</li>
+				<li class="clear active_tab">
+					<div class="act_t_1">备注</div>
+					<div class="act_t_2"><textarea style="border: none;resize: none" v-model="submitData.content"></textarea></div>
+				</li>
+			</ul>
+			<p class="act_plan">
+				<span>不想自己找吗？</span>把你们的计划要求告诉我们，统筹帮免费帮你推荐最合适的需求，帮你做活动统筹计划
+			</p>
+			<p class="act_tel">咨询热线：13126688897</span></p>
+			<button class="act_btn" @click="submit">提交需求</button>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	var app = new Vue({
+		el: '#form_app',
+		data() {
+			return {
+
+				submitData: {
+					phone: '',
+					passage1: '',
+					title: '',
+					description: '',
+					content: '',
+					keywords: '',
+					type: 1,
+					user_type:0
+				},
+				labelData: [],
+				searchItem: {
+					status: 1
+				},
+
+			}
+		},
+		created() {
+			const self = this;
+			console.log('form',11)
+			self.getLabelData();
+		},
+
+		methods: {
+
+			changeType(e) {
+				const self = this;
+				console.log(e)
+				self.submitData.title = self.labelData[e.target.options.selectedIndex - 1].title
+			},
+
+			messageAdd() {
+				const self = this;
+				const postData = {};
+				postData.data = {};
+				postData.data = window.base.cloneForm(self.submitData);
+
+				const callback = (res) => {
+					if (res.solely_code == 100000) {
+						alert('提交成功');
+						window.location.reload()
+					} else {
+						alert(res.msg)
+					}
+
+				};
+				window.base.addMessage(postData, callback);
+			},
+
+
+
+
+
+			submit() {
+				const self = this;
+
+				console.log(self.submitData)
+
+				var newObject = window.base.cloneForm(self.submitData);
+				delete newObject.content;
+				const pass = window.base.checkComplete(newObject);
+				console.log('pass', pass)
+				if (pass) {
+
+					self.messageAdd();
+				} else {
+					alert('请补全信息');
+				};
+			},
+
+			getLabelData(id) {
+				var self = this;
+				var postData = {};
+
+				postData.searchItem = window.base.cloneForm(self.searchItem);
+				postData.getBefore = {
+					Label: {
+						tableName: 'Label',
+						middleKey: 'parentid',
+						key: 'id',
+						searchItem: {
+							title: ['in', ['精选案例']]
+						},
+						condition: 'in'
+					}
+				};
+				postData.order = {
+					listorder: 'desc'
+				};
+				var callback = function(res) {
+					if (res.info.data.length > 0) {
+						self.labelData.push.apply(self.labelData, res.info.data);
+					}
+					console.log('self.labelData', self.labelData)
+				};
+
+				window.base.labelGet(postData, callback);
+			},
+
+		}
+	});
+</script>
+
+
+

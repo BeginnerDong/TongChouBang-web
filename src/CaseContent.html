@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
-    <title>特色会场</title>
-    <link type="text/css" rel="stylesheet" href="../css/style.css" />
-    <style>
-    .casedetail_con{
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<title>特色会场</title>
+		<script src="../js/include.js"></script>
+		<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
+		<link type="text/css" rel="stylesheet" href="../css/style.css" />
+		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+		<script src="../js/base.js" type="application/javascript"></script>
+		<script src="../js/rem.js"></script>
+		<script type="text/javascript " src="../js/bootstrap.js"></script>
+		<style>
+			.casedetail_con{
         background: #f6f6f6;
         padding: 50px;
     }
@@ -43,215 +51,219 @@
     }
     }
     </style>
-</head>
+	</head>
 
-<body>
-    <!-- 头部 -->
-    <header class="clear head_top">
-            <div class="clear">
-                <!--logo-->
-                <div class="head_logo">
-                    <span class="logo">统筹帮</span>
-                    <select class="tab_adress">
-                        <option>北京</option>
-                        <option>上海</option>
-                    </select>
-                </div>
-                <!--导航栏-->
-                <nav class="head_nav">
-                    <ul class="clear">
-                        <li><a href="index.html">首页</a></li>
-                        <li><a href="TeSe.html">找特色会场</a></li>
-                        <li><a href="Print.html">找应刷商</a></li>
-                        <li><a href="PartTime.html">找兼职</a></li>
-                        <li id="nav2btn"><a>会议配套服务</a>
-                            <ul class="clear nav_2 ycxiala" id="nav2">
-                                <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-                                <li><a href="Lease.html">活动道具租赁</a></li>
-                                <li><a href="Advertising.html">线下广告</a></li>
-                                <li><a href="GiftPurchasing.html">礼品采购</a></li>
-                            </ul>
-                        </li>
-                        <li class="active"><a href="ShopTransfer.html">店铺转让</a></li>
-                    </ul>
-                </nav>
-                <div class="nav_small">
-                    <button class="nav_btn" id="btnnav">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <div class="clear"></div>
-                    <ul class="clear small_nav orgin" id="snav">
-                        <li class="li_bg"><a>首页</a></li>
-                        <li><a href="TeSe.html">找特色会场</a></li>
-                        <li><a href="Print.html">找应刷商</a></li>
-                        <li><a href="PartTime.html">找兼职</a></li>
-                        <li><a id="smnavbtn">会议配套服务</a>
-                            <ul class="clear smallnav2 smycxiala" id="smnav2">
-                                <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-                                <li><a href="Lease.html">活动道具租赁</a></li>
-                                <li><a href="Advertising.html">线下广告</a></li>
-                                <li><a href="GiftPurchasing.html">礼品采购</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="ShopTransfer.html">店铺转让</a></li>
-                        <li><a href="Login.html">登录注册</a></li>
-                        <li><a href="MyCenter.html">个人中心</a></li>
-                        <li><a href="Apply.html">申请入驻</a></li>
-                        <li><a href="Help.html">帮助中心</a></li>
-                    </ul>
-                </div>
-    
-                <!--个人中心-->
-                <div class="head_abnoutus">
-                    <ul class="clear">
-                        <li><a href="Login.html">登录注册</a></li>
-                        <li><a href="MyCenter.html">个人中心</a></li>
-                        <li><a href="Apply.html">申请入驻</a></li>
-                        <li><a href="Help.html">帮助中心</a></li>
-                    </ul>
-                </div>
-                <div class="me_rk" style="float: right">
-                    <div class="btn_me"><img id="btn_me" src="/img/meicon.png" /></div>
-    
-                    <ul class="me_list" id="me_list">
-                        <li><a href="Login.html">登录注册</a></li>
-                        <li><a href="MyCenter.html">个人中心</a></li>
-                        <li><a href="Apply.html">申请入驻</a></li>
-                        <li><a href="Help.html">帮助中心</a></li>
-                    </ul>
-                </div>
-    
-            </div>
-        </header>
-        <div>
-            <img src="/img/casedetail_bg.jpg"/>
-        </div>
-        <div class="casedetail_con">
-            <div class="cont_de_con">
-                <div style="margin:40px 15px">
-                    <h2 style="font-size: 24px;color:#212121">标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题</h2>
-                    <div>内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                            内容内容内容内容内容内容内容内容内容内容内容内容内容
-                            内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                            内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class="clear">
-            <div class="foot_k">
-                <ul class="clear ul_1 clear">
-                    <li>
-                        <div class="foot_list">
-                            <h4 class="foot_title">找特色会场</h4>
-                            <ul class="ul_2 clear">
-                                <li>年会场地</li>
-                                <li>品牌推广专区</li>
-                                <li>发布会场地</li>
-                                <li>婚宴场地</li>
-                                <li>商务会议场地</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="foot_list">
-                            <h4 class="foot_title">找印刷商</h4>
-                            <ul class="ul_2">
-                                <li>印刷厂</li>
-                                <li>印刷喷绘安装一体式服务</li>
-                                <li>其他</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="foot_list">
-                            <h4 class="foot_title">找兼职</h4>
-                            <ul class="ul_2">
-                                <li>演出人员</li>
-                                <li>模特</li>
-                                <li>翻译</li>
-                                <li>摄影摄像</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="foot_list">
-                            <h4 class="foot_title">店铺转让</h4>
-                            <ul class="ul_2">
-                                <li>酒吧夜店</li>
-                                <li>购物中心</li>
-                                <li>剧院剧场</li>
-                                <li>培训场地</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="foot_list">
-                            <h4 class="foot_title">会议自助餐</h4>
-                            <ul class="ul_2">
-                                <li>西餐自助餐</li>
-                                <li>中式桌餐</li>
-                                <li>茶歇</li>
-                                <li>中式自助</li>
-                                <li>自助酒会</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="foot_list">
-                            <h4 class="foot_title">活动道具租赁</h4>
-                            <ul class="ul_2">
-                                <li>DIY暖场</li>
-                                <li>车辆租赁</li>
-                                <li>仿真展品</li>
-                                <li>花艺布置</li>
-                                <li>活动服装租赁</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="foot_list">
-                            <h4 class="foot_title">线下广告</h4>
-                            <ul class="ul_2">
-                                <li>酒店夜店</li>
-                                <li>购物中心</li>
-                                <li>共享空间</li>
-                                <li>校园场地</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="foot_list">
-                            <h4 class="foot_title">礼品采购</h4>
-                            <ul class="ul_2">
-                                <li>厂家直销</li>
-                                <li>定制礼品</li>
-                                <li>其他</li>
-                            </ul>
-                        </div>
-                    </li>
-                    
-                </ul>
-            </div>
-            <div class="foot_contact">
-                <ul class="clear">
-                    <li><span class="cion"></span>北京相予科技有限公司</li>
-                    <li><span class="cion"></span>13126608897/1355128433</li>
-                    <li><span class="cion"></span>北京石墨山万达F座</li>
-                    <li><span class="cion"></span>1193549646@qq.com</li>
-                    <li style="position: relative"><span class="cion" id="wechatbtn"></span>
-                        <div id="wechatk">
-                            <div><img src="/img/wechat1.jpg" /></div>
-                            <div><img src="/img/wechat1.jpg" /></div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </footer>
-        </body>
-        
-        </html>
-        <script type="text/javascript" src="/js/pubilc.js"></script>
-        
+	<body>
+		<!-- 头部 -->
+		<div id="app">
+			<header class="clear head_top">
+				<div class="clear">
+					<!--logo-->
+					<div class="head_logo">
+						<span class="logo">统筹帮</span>
+						<!-- <select class="tab_adress">
+							<option v-for="item in cityData">{{item.title}}</option>
+
+						</select> -->
+					</div>
+					<!--导航栏-->
+					<nav class="head_nav">
+						<ul class="clear">
+							<li><a href="index.html">首页</a></li>
+							<li><a href="TeSe.html">找特色会场</a></li>
+							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="PartTime.html">找兼职</a></li>
+							<li id="nav2btn"><a>会议配套服务</a>
+								<ul class="clear nav_2 ycxiala" id="nav2">
+									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+									<li><a href="Lease.html">活动道具租赁</a></li>
+									<li><a href="Advertising.html">线下广告</a></li>
+									<li><a href="GiftPurchasing.html">礼品采购</a></li>
+								</ul>
+							</li>
+							<li><a href="ShopTransfer.html">店铺转让</a></li>
+						</ul>
+					</nav>
+					<div class="nav_small">
+						<button class="nav_btn" id="btnnav">
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+						<div class="clear"></div>
+						<ul class="clear small_nav orgin" id="snav">
+							<li class="li_bg"><a>首页</a></li>
+							<li><a href="TeSe.html">找特色会场</a></li>
+							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="PartTime.html">找兼职</a></li>
+							<li><a id="smnavbtn">会议配套服务</a>
+								<ul class="clear smallnav2 smycxiala" id="smnav2">
+									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+									<li><a href="Lease.html">活动道具租赁</a></li>
+									<li><a href="Advertising.html">线下广告</a></li>
+									<li><a href="GiftPurchasing.html">礼品采购</a></li>
+								</ul>
+							</li>
+							<li><a href="ShopTransfer.html">店铺转让</a></li>
+							<li><a href="Login.html">登录注册</a></li>
+							<li><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
+
+					<!--个人中心-->
+					<div class="head_abnoutus">
+						<ul class="clear">
+							<li><a href="Login.html">登录注册</a></li>
+							<li><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
+					<div class="me_rk" style="float: right">
+						<div class="btn_me"><img id="btn_me" src="../img/meicon.png" /></div>
+
+						<ul class="me_list" id="me_list">
+							<li><a href="Login.html">登录注册</a></li>
+							<li><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
+
+				</div>
+			</header>
+			<div>
+				<img src="../img/casedetail_bg.jpg" />
+			</div>
+			<div class="casedetail_con">
+				<div class="cont_de_con">
+					<div style="margin:40px 15px">
+
+						<h2 style="font-size: 24px;color:#212121">{{mainData.title}}</h2>
+						<div>
+							<div class="content ql-editor " style="clear: both;">
+								<p class="p1 " v-html="mainData.content"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<include src="footer.html"></include>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: function() {
+				return {
+					paginate: {
+						count: 0,
+						currentPage: 1,
+						pagesize: 6,
+						is_page: true,
+					},
+					cityData:[],
+					mainData: {},
+
+				}
+			},
+
+			created: function() {
+				var self = this;
+				self.init()
+			},
+
+			methods: {
+				init: function(e) {
+					var self = this;
+					self.getCityData();
+					self.getMainData();
+
+				},
+
+				getCityData: function(id) {
+					var self = this;
+					var postData = {};
+
+					postData.searchItem = {
+						type: 11
+
+					};
+					postData.order = {
+						listorder: 'desc'
+					};
+					var callback = function(res) {
+						if (res.info.data.length > 0) {
+							self.cityData.push.apply(self.cityData, res.info.data);
+						}
+					};
+					console.log('self.city', self.city)
+					window.base.labelGet(postData, callback);
+				},
+
+
+				getMainData: function(id) {
+					var self = this;
+					var postData = {};
+					postData.searchItem = {
+						id: window.base.GetRequest().id
+					};
+					var callback = function(res) {
+						if (res.info.data.length > 0) {
+							self.mainData = res.info.data[0]
+						}
+					};
+					console.log('self.mainData', self.mainData)
+					window.base.articleGet(postData, callback);
+				},
+
+				intoPath: function(url, id) {
+					var self = this;
+					var toUrl = url;
+					console.log(toUrl);
+					window.location.href = toUrl + '?id=' + id;
+
+				},
+
+
+
+			}
+		});
+	</script>
+</html>
+<script type="text/javascript" src="/js/pubilc.js"></script>
+<script>
+	/*PC端*/
+	var btnnav = document.getElementById("nav2btn");
+	var nav2 = document.getElementById("nav2");
+	var flag = true;
+	btnnav.onclick = function() {
+		if (flag) {
+			nav2.classList.remove("ycxiala");
+			nav2.classList.add("xiala");
+			flag = false;
+		} else {
+			nav2.classList.remove("xiala");
+			nav2.classList.add("ycxiala");
+			flag = true;
+		}
+	}
+	/*手机端*/
+	var btnnav1 = document.getElementById("smnavbtn");
+	var nav21 = document.getElementById("smnav2");
+	var flag1 = true;
+	btnnav1.onclick = function() {
+		if (flag1) {
+			nav21.classList.remove("smycxiala");
+			nav21.classList.add("smxiala");
+			flag1 = false;
+		} else {
+			nav21.classList.remove("smxiala");
+			nav21.classList.add("smycxiala");
+			flag1 = true;
+		}
+	}
+</script>

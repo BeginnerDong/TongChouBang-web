@@ -1,0 +1,237 @@
+
+
+
+
+<!-- 头部 -->
+<!-- 头部 -->
+<div id="foot_app">
+	<footer class="clear">
+		<div class="foot_k">
+			<ul class="clear ul_1 clear">
+				<li>
+					<div class="foot_list">
+						<h4 class="foot_title">找特色会场</h4>
+						<ul class="ul_2 clear">
+							<li>年会场地</li>
+							<li>品牌推广专区</li>
+							<li>发布会场地</li>
+							<li>婚宴场地</li>
+							<li>商务会议场地</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="foot_list">
+						<h4 class="foot_title">找印刷商</h4>
+						<ul class="ul_2">
+							<li>印刷厂</li>
+							<li>印刷喷绘安装一体式服务</li>
+							<li>其他</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="foot_list">
+						<h4 class="foot_title">找兼职</h4>
+						<ul class="ul_2">
+							<li>演出人员</li>
+							<li>模特</li>
+							<li>翻译</li>
+							<li>摄影摄像</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="foot_list">
+						<h4 class="foot_title">店铺转让</h4>
+						<ul class="ul_2">
+							<li>酒吧夜店</li>
+							<li>购物中心</li>
+							<li>剧院剧场</li>
+							<li>培训场地</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="foot_list">
+						<h4 class="foot_title">会议自助餐</h4>
+						<ul class="ul_2">
+							<li>西餐自助餐</li>
+							<li>中式桌餐</li>
+							<li>茶歇</li>
+							<li>中式自助</li>
+							<li>自助酒会</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="foot_list">
+						<h4 class="foot_title">活道具租赁</h4>
+						<ul class="ul_2">
+							<li>DIY暖场</li>
+							<li>车辆租赁</li>
+							<li>仿真展品</li>
+							<li>花艺布置</li>
+							<li>活动服装租赁</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="foot_list">
+						<h4 class="foot_title">线下广告</h4>
+						<ul class="ul_2">
+							<li>酒店夜店</li>
+							<li>购物中心</li>
+							<li>共享空间</li>
+							<li>校园场地</li>
+						</ul>
+					</div>
+				</li>
+				<li>
+					<div class="foot_list">
+						<h4 class="foot_title">礼品采购</h4>
+						<ul class="ul_2">
+							<li>厂家直销</li>
+							<li>定制礼品</li>
+							<li>其他</li>
+						</ul>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+		<div class="foot_contact">
+			<ul class="clear">
+				<li><span class="cion"></span>北京相予科技有限公司</li>
+				<li><span class="cion"></span>13126608897/1355128433</li>
+				<li><span class="cion"></span>北京石墨山万达F座</li>
+				<li><span class="cion"></span>1193549646@qq.com</li>
+				<li style="position: relative"><span class="cion" id="wechatbtn"></span>
+					<div id="wechatk">
+						<div><img src="../img/wechat1.jpg" /></div>
+						<div><img src="../img/wechat1.jpg" /></div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</footer>
+</div>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#foot_app',
+			data() {
+				return {
+
+					submitData: {
+						phone: '',
+						name: '',
+						title: '',
+						passage_array: [],
+						content: '',
+						relation_id: '',
+						type: 2
+					},
+					cityData: [],
+					
+
+				}
+			},
+			created() {
+				const self = this;
+				
+			},
+
+			methods: {
+
+				cityChange(e) {
+					const self = this;
+					console.log(e)
+					self.submitData.relation_id = self.cityData[e.target.options.selectedIndex - 1].id
+				},
+
+				getCityData: function(id) {
+					var self = this;
+					var postData = {};
+
+					postData.searchItem = {
+						type: 11
+
+					};
+					postData.order = {
+						listorder: 'desc'
+					};
+					var callback = function(res) {
+						if (res.info.data.length > 0) {
+							self.cityData.push.apply(self.cityData, res.info.data);
+						}
+					};
+					console.log('self.city', self.city)
+					window.base.labelGet(postData, callback);
+				},
+
+				messageAdd() {
+					const self = this;
+					const postData = {};
+					postData.data = {};
+					postData.data = window.base.cloneForm(self.submitData);
+
+					const callback = (res) => {
+						if (res.solely_code == 100000) {
+							alert('申请成功');
+							window.location.reload()
+						} else {
+							alert(res.msg)
+						}
+
+					};
+					window.base.addMessage(postData, callback);
+				},
+
+
+
+
+
+				submit() {
+					const self = this;
+
+					console.log(self.submitData)
+
+					var newObject = window.base.cloneForm(self.submitData);
+					delete newObject.content;
+					const pass = window.base.checkComplete(newObject);
+					console.log('pass', pass)
+					if (pass) {
+
+						self.messageAdd();
+					} else {
+						alert('请补全信息');
+					};
+				},
+
+
+				selectType(index) {
+					const self = this;
+					console.log(index)
+					console.log(self.submitData.passage_array)
+					console.log(window.base.inArray(self.type[index].name, self.submitData.passage_array))
+					var position = self.submitData.passage_array.indexOf(self.type[index].name);
+					if (position >= 0) {
+
+						self.submitData.passage_array.splice(position, 1);
+						self.type[index].isSelect = false;
+
+					} else {
+						self.submitData.passage_array.push(self.type[index].name);
+						self.type[index].isSelect = true;
+					}
+
+				}
+
+			}
+		});
+	</script>
+
+
+
+	</html>
+	

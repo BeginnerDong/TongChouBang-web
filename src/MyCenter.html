@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
-    <title>特色会场</title>
-    <link type="text/css" rel="stylesheet" href="../css/style.css" />
-    <style>
-        .mycenter {
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
+		<title>特色会场</title>
+		<script src="../js/include.js"></script>
+		<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
+		<link type="text/css" rel="stylesheet" href="../css/style.css" />
+		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		
+		<script src="../js/base.js" type="application/javascript"></script>
+		<script src="../js/rem.js"></script>
+		<script type="text/javascript " src="../js/bootstrap.js"></script>
+		<style>
+			.mycenter {
             max-width: 1200px;
             width: 80%;
             margin: 0 auto;
@@ -69,7 +77,7 @@
             width: 30px;
             height: 30px;
             display: inline-block;
-            background: url("/img/deleteicon.png");
+            background: url("../img/deleteicon.png");
             vertical-align: middle;
             margin-left: 20px;
         }
@@ -194,7 +202,7 @@
             width: 24px;
             height: 24px;
             display: inline-block;
-            background: url("/img/messtaricon.png");
+            background: url("../img/messtaricon.png");
             vertical-align: middle;
         }
 
@@ -290,345 +298,463 @@
             }
         }
     </style>
-</head>
+	</head>
 
-<body>
-    <!-- 头部 -->
-    <!-- 头部 -->
-    <header class="clear head_top">
-        <div class="clear">
-            <!--logo-->
-            <div class="head_logo">
-                <span class="logo">统筹帮</span>
-                <select class="tab_adress">
-                    <option>北京</option>
-                    <option>上海</option>
-                </select>
-            </div>
-            <!--导航栏-->
-            <nav class="head_nav">
-                <ul class="clear">
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="TeSe.html">找特色会场</a></li>
-                    <li><a href="Print.html">找应刷商</a></li>
-                    <li><a href="PartTime.html">找兼职</a></li>
-                    <li id="nav2btn"><a>会议配套服务</a>
-                        <ul class="clear nav_2 ycxiala" id="nav2">
-                            <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-                            <li><a href="Lease.html">活动道具租赁</a></li>
-                            <li><a href="Advertising.html">线下广告</a></li>
-                            <li><a href="GiftPurchasing.html">礼品采购</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="ShopTransfer.html">店铺转让</a></li>
-                </ul>
-            </nav>
-            <div class="nav_small">
-                <button class="nav_btn" id="btnnav">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                <div class="clear"></div>
-                <ul class="clear small_nav orgin" id="snav">
-                    <li><a>首页</a></li>
-                    <li><a href="TeSe.html">找特色会场</a></li>
-                    <li><a href="Print.html">找应刷商</a></li>
-                    <li><a href="PartTime.html">找兼职</a></li>
-                    <li><a id="smnavbtn">会议配套服务</a>
-                        <ul class="clear smallnav2 smycxiala" id="smnav2">
-                            <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-                            <li><a href="Lease.html">活动道具租赁</a></li>
-                            <li><a href="Advertising.html">线下广告</a></li>
-                            <li><a href="GiftPurchasing.html">礼品采购</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="ShopTransfer.html">店铺转让</a></li>
-                    <li><a href="Login.html">登录注册</a></li>
-                    <li class="li_bg"><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
+	<body>
+		<!-- 头部 -->
+		<!-- 头部 -->
+		<div id="app">
+					<header class="clear head_top">
+				<div class="clear">
+					<!--logo-->
+					<div class="head_logo">
+						<span class="logo">统筹帮</span>
+						<!-- <select class="tab_adress">
+							<option>北京</option>
+							<option>上海</option>
+						</select> -->
+					</div>
+					<!--导航栏-->
+					<nav class="head_nav">
+						<ul class="clear">
+							<li><a href="index.html">首页</a></li>
+							<li><a href="TeSe.html">找特色会场</a></li>
+							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="PartTime.html">找兼职</a></li>
+							<li id="nav2btn"><a>会议配套服务</a>
+								<ul class="clear nav_2 ycxiala" id="nav2">
+									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+									<li><a href="Lease.html">活动道具租赁</a></li>
+									<li><a href="Advertising.html">线下广告</a></li>
+									<li><a href="GiftPurchasing.html">礼品采购</a></li>
+								</ul>
+							</li>
+							<li><a href="ShopTransfer.html">店铺转让</a></li>
+						</ul>
+					</nav>
+					<div class="nav_small">
+						<button class="nav_btn" id="btnnav">
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+						<div class="clear"></div>
+						<ul class="clear small_nav orgin" id="snav">
+							<li><a>首页</a></li>
+							<li><a href="TeSe.html">找特色会场</a></li>
+							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="PartTime.html">找兼职</a></li>
+							<li><a id="smnavbtn">会议配套服务</a>
+								<ul class="clear smallnav2 smycxiala" id="smnav2">
+									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+									<li><a href="Lease.html">活动道具租赁</a></li>
+									<li><a href="Advertising.html">线下广告</a></li>
+									<li><a href="GiftPurchasing.html">礼品采购</a></li>
+								</ul>
+							</li>
+							<li><a href="ShopTransfer.html">店铺转让</a></li>
+							<li><a href="Login.html">登录注册</a></li>
+							<li class="li_bg"><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
+			
+					<!--个人中心-->
+					<div class="head_abnoutus">
+						<ul class="clear">
+							<li><a href="Login.html">登录注册</a></li>
+							<li class="active"><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
+					<div class="me_rk" style="float: right">
+						<div class="btn_me"><img id="btn_me" src="../img/meicon.png" /></div>
+			
+						<ul class="me_list" id="me_list">
+							<li><a href="Login.html">登录注册</a></li>
+							<li><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
+						</ul>
+					</div>
+			
+				</div>
+			</header>
+			<div class="mycenter">
+				<div>
+					<div>
+						<ul class="my_tab clear">
+							<li><a :class="currentId==0?'orderclick':''" @click="tab('0')">我的预约</a></li>
+							<li><a :class="currentId==1?'orderclick':''" @click="tab('1')">待确认</a></li>
+							<li><a :class="currentId==2?'orderclick':''" @click="tab('2')">进行中</a></li>
+							<li><a :class="currentId==3?'orderclick':''" @click="tab('3')">待评价</a></li>
+							<li><a :class="currentId==4?'orderclick':''" @click="tab('4')">已评价</a></li>
+							<li><a :class="currentId==5?'orderclick':''" @click="tab('5')">已取消</a></li>
+						</ul>
+					</div>
+					<section class="orderlist" v-for="(item,index) in mainData"  v-if="item.products&&item.products[0]&&item.products[0].product_id!=0&&!isRemark">
+						<ul class="clear orderhead">
+							<li>{{item.create_time}}</li>
+							<li>商家名称</li>
+							<li v-if="item.order_step=='0'">待确认<a class="deleteicon"></a></li>
+							<li v-if="item.order_step=='1'">进行中<a class="deleteicon"></a></li>
+							<li v-if="item.order_step=='2'">待评价<a class="deleteicon"></a></li>
+							<li v-if="item.order_step=='3'">已评价<a class="deleteicon"></a></li>
+							<li v-if="item.order_step=='4'">已取消<a class="deleteicon"></a></li>
+						</ul>
+						<div class="orderdeatil">
+							<div class="clear">
+								<div class="orderleft">
+									<img :src="item&&item.products&&item.products[0]&&item.products[0].snap_product&&item.products[0].snap_product.mainImg&&item.products[0].snap_product.mainImg[0]?
+									item.products[0].snap_product.mainImg[0].url:''" />
+								</div>
+								
+								<div class="orderright">
+									<h2 class="ordertitle">{{item&&item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.title:''}}</h2>
+									
+									<div class="content ql-editor ">
+										<p class="p1 " v-html="item&&item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.content:''"></p>
+									</div>
+								
+									<p><span class="ordertab">预约项目：{{item.passage1}}</span></p>
+									<a class="closeorder" v-if="item.order_step=='0'">取消预约</a>
+									<a class="closeorder" v-if="item.order_step=='2'" @click="goRemark(item.products[0].product_id,item.order_no,index)">去评价</a>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section class="orderlist" v-for="(item,index) in mainData"  v-if="item.products&&item.products[0]&&item.products[0].sku_id!=0&&!isRemark">
+						<ul class="clear orderhead">
+							<li>{{item.create_time}}</li>
+							<li>商家名称</li>
+							<li v-if="item.order_step=='0'">待确认<a class="deleteicon"></a></li>
+							<li v-if="item.order_step=='1'">进行中<a class="deleteicon"></a></li>
+							<li v-if="item.order_step=='2'">待评价<a class="deleteicon"></a></li>
+							<li v-if="item.order_step=='3'">已评价<a class="deleteicon"></a></li>
+							<li v-if="item.order_step=='4'">已取消<a class="deleteicon"></a></li>
+						</ul>
+						<div class="orderdeatil">
+							<div class="clear">
+								<div class="orderleft">
+									<img :src="item.products&&item.products[0]&&item.products[0].snap_product&&item.products[0].snap_product.product.mainImg&&item.products[0].snap_product.product.mainImg[0]?
+									item.products[0].snap_product.product.mainImg[0].url:''" />
+								</div>
+								
+								<div class="orderright">
+									<h2 class="ordertitle">{{item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.title:''}}</h2>
+									<p class="ordercont">{{item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.content:''}}</p>
+									<p><span class="ordertab">预约项目：{{item.passage1}}</span></p>
+									<a class="closeorder" v-if="item.order_step=='0'">取消预约</a>
+									<a class="closeorder" v-if="item.order_step=='2'" @click="goRemark(item.products[0].snap_product.product.id,item.order_no,index)">去评价</a>
+								</div>
+							</div>
+						</div>
+					</section>
+					
+					
+					<section class="mesdetail0" v-if="isRemark&&mainData&&mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].product_id!=0">
+						<div class="meshead" style=""><span style="">评论服务</span></div>
+						<div class="mesdetail">
+							<div class="clear">
+								<div class="mesleft">
+									
+										<img :src="mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product&&mainData[remarkIndex].products[0].snap_product.mainImg&&mainData[remarkIndex].products[0].snap_product.mainImg[0]?
+										mainData[remarkIndex].products[0].snap_product.mainImg[0].url:''" />
+									
+								</div>
+								
+								<div class="mesright">
+									<h2 class="ordertitle">{{mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.title:''}}</h2>
+									
+										<div class="content ql-editor ">
+											<p class="p1 " v-html="mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.content:''"></p>
+										</div>
+									
+									<p><span class="ordertab">预约项目：{{mainData[remarkIndex].passage1}}</span></p>
+								</div>
+								<div style="margin-top: 40px;">
+									<textarea placeholder="亲，写点评论吧，您的评论对其他买家有很大的帮助" class="mescont" v-model="content"></textarea>
+								</div>
+								<div style="line-height: 95px;"><span style="font-size: 22px;color: #ff556f">星级评论</span>
+									<div style="display: inline-block;margin-left: 30px;">
+										<span style="background: url('../img/messtaricon.png');" class="mesicon"></span>
+										<span style="background: url('../img/messtaricon.png');" class="mesicon"></span>
+										<span style="background: url('../img/messtaricon.png');" class="mesicon"></span>
+										<span style="background: url('../img/messtaricon.png');" class="mesicon"></span>
+										<span style="background: url('../img/messtaricon.png');" class="mesicon"></span>
+									</div>
+								</div>
+							</div>
+					</section>
+					
+					<section class="mesdetail0" v-if="isRemark&&mainData&&mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].sku_id!=0">
+						<div class="meshead" style=""><span style="">评论服务</span></div>
+						<div class="mesdetail">
+							<div class="clear">
+								<div class="mesleft">
+									
+										<img :src="mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product&&mainData[remarkIndex].products[0].snap_product.product.mainImg&&mainData[remarkIndex].products[0].snap_product.product.mainImg[0]?
+										mainData[remarkIndex].products[0].snap_product.product.mainImg[0].url:''" />
+									
+								</div>
+								
+								<div class="mesright">
+									<h2 class="ordertitle">{{mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.title:''}}</h2>
+									
+										<div class="content ql-editor ">
+											<p class="p1 " v-html="mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.content:''"></p>
+										</div>
+										
+									<p><span class="ordertab">预约项目：{{mainData[remarkIndex].passage1}}</span></p>
+								</div>
+								<div style="margin-top: 40px;">
+									<textarea placeholder="亲，写点评论吧，您的评论对其他买家有很大的帮助" class="mescont" v-model="content"></textarea>
+								</div>
+								<div style="line-height: 95px;"><span style="font-size: 22px;color: #ff556f">星级评论</span>
+									<div style="display: inline-block;margin-left: 30px;">
+										<span style="background: url('../img/messtaricon.png');" class="mesicon"></span>
+										<span style="background: url('../img/messtaricon.png');" class="mesicon"></span>
+										<span style="background: url('../img/messtaricon.png');" class="mesicon"></span>
+										<span style="background: url('../img/messtaricon.png');" class="mesicon"></span>
+										<span style="background: url('../img/messtaricon.png');" class="mesicon"></span>
+									</div>
+								</div>
+							</div>
+					</section>
+					<div style="text-align: center;margin:50px 0px;" v-if="isRemark"><button class="sendmes" @click="addMessage">发表评论</button></div>
+			
+				</div>
+			</div>
+			<include src="footer.html"></include>
+		</div>
 
-            <!--个人中心-->
-            <div class="head_abnoutus">
-                <ul class="clear">
-                    <li><a href="Login.html">登录注册</a></li>
-                    <li class="active"><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
-            <div class="me_rk" style="float: right">
-                <div class="btn_me"><img id="btn_me" src="/img/meicon.png" /></div>
-
-                <ul class="me_list" id="me_list">
-                    <li><a href="Login.html">登录注册</a></li>
-                    <li><a href="MyCenter.html">个人中心</a></li>
-                    <li><a href="Apply.html">申请入驻</a></li>
-                    <li><a href="Help.html">帮助中心</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </header>
-    <div class="mycenter">
-        <div>
-            <div>
-                <ul class="my_tab clear">
-                    <li><a class="orderclick">我的预约</a></li>
-                    <li><a>待确认</a></li>
-                    <li><a>进行中</a></li>
-                    <li><a>待评价</a></li>
-                    <li><a>已评价</a></li>
-                    <li><a>已取消</a></li>
-                </ul>
-            </div>
-            <section class="orderlist">
-                <ul class="clear orderhead">
-                    <li>2019-02-23</li>
-                    <li>商家名称</li>
-                    <li>待确认<a class="deleteicon"></a></li>
-                </ul>
-                <div class="orderdeatil">
-                    <div class="clear">
-                        <div class="orderleft">
-                            <a></div>
-                        </a>
-                        <div class="orderright">
-                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
-                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                            <p><span class="ordertab">预约项目：家政服务</span></p>
-                            <a class="closeorder">取消预约</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="orderlist">
-                <ul class="clear orderhead">
-                    <li>2019-02-23</li>
-                    <li>商家名称</li>
-                    <li>进行中<a class="deleteicon"></a></li>
-                </ul>
-                <div class="orderdeatil">
-                    <div class="clear">
-                        <div class="orderleft">
-                            <a></div>
-                        </a>
-                        <div class="orderright">
-                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
-                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                            <p><span class="ordertab">预约项目：家政服务</span></p>
-                            <a class="closeorder">取消预约</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="orderlist">
-                <ul class="clear orderhead">
-                    <li>2019-02-23</li>
-                    <li>商家名称</li>
-                    <li>待评价<a class="deleteicon"></a></li>
-                </ul>
-                <div class="orderdeatil">
-                    <div class="clear">
-                        <div class="orderleft">
-                            <a></div>
-                        </a>
-                        <div class="orderright">
-                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
-                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                            <p><span class="ordertab">预约项目：家政服务</span></p>
-                            <a class="closeorder">去评价</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="orderlist">
-                <ul class="clear orderhead">
-                    <li>2019-02-23</li>
-                    <li>商家名称</li>
-                    <li>已评价<a class="deleteicon"></a></li>
-                </ul>
-                <div class="orderdeatil">
-                    <div class="clear">
-                        <div class="orderleft">
-                            <a></div>
-                        </a>
-                        <div class="orderright">
-                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
-                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                            <p><span class="ordertab">预约项目：家政服务</span></p>
-                            <a class="closeorder"></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="orderlist">
-                <ul class="clear orderhead">
-                    <li>2019-02-23</li>
-                    <li>商家名称</li>
-                    <li>已取消<a class="deleteicon"></a></li>
-                </ul>
-                <div class="orderdeatil">
-                    <div class="clear">
-                        <div class="orderleft">
-                            <a></div>
-                        </a>
-                        <div class="orderright">
-                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
-                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                            <p><span class="ordertab">预约项目：家政服务</span></p>
-                            <a class="closeorder"></a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="mesdetail0">
-                <div class="meshead" style=""><span style="">评论服务</span></div>
-                <div class="mesdetail">
-                    <div class="clear">
-                        <div class="mesleft">
-                            <a></div>
-                        </a>
-                        <div class="mesright">
-                            <h2 class="ordertitle">标题标题标题标题标题标题标题标题</h2>
-                            <p class="ordercont">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</p>
-                            <p><span class="ordertab">预约项目：家政服务</span></p>
-                        </div>
-                        <div style="margin-top: 40px;">
-                            <textarea placeholder="亲，写点评论吧，您的评论对其他买家有很大的帮助" class="mescont"></textarea>
-                        </div>
-                        <div style="line-height: 95px;"><span style="font-size: 22px;color: #ff556f">星级评论</span>
-                            <div style="display: inline-block;margin-left: 30px;">
-                                <span style="background: url('/img/messtaricon.png');" class="mesicon"></span>
-                                <span style="background: url('/img/messtaricon.png');" class="mesicon"></span>
-                                <span style="background: url('/img/messtaricon.png');" class="mesicon"></span>
-                                <span style="background: url('/img/messtaricon.png');" class="mesicon"></span>
-                                <span style="background: url('/img/messtaricon.png');" class="mesicon"></span>
-                            </div>
-                        </div>
-                    </div>
-            </section>
-            <div style="text-align: center;margin:50px 0px;"><button class="sendmes">发表评论</button></div>
-
-        </div>
-    </div>
-    <footer class="clear">
-        <div class="foot_k">
-            <ul class="clear ul_1 clear">
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">找特色会场</h4>
-                        <ul class="ul_2 clear">
-                            <li>年会场地</li>
-                            <li>品牌推广专区</li>
-                            <li>发布会场地</li>
-                            <li>婚宴场地</li>
-                            <li>商务会议场地</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">找印刷商</h4>
-                        <ul class="ul_2">
-                            <li>印刷厂</li>
-                            <li>印刷喷绘安装一体式服务</li>
-                            <li>其他</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">找兼职</h4>
-                        <ul class="ul_2">
-                            <li>演出人员</li>
-                            <li>模特</li>
-                            <li>翻译</li>
-                            <li>摄影摄像</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">店铺转让</h4>
-                        <ul class="ul_2">
-                            <li>酒吧夜店</li>
-                            <li>购物中心</li>
-                            <li>剧院剧场</li>
-                            <li>培训场地</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">会议自助餐</h4>
-                        <ul class="ul_2">
-                            <li>西餐自助餐</li>
-                            <li>中式桌餐</li>
-                            <li>茶歇</li>
-                            <li>中式自助</li>
-                            <li>自助酒会</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">活动道具租赁</h4>
-                        <ul class="ul_2">
-                            <li>DIY暖场</li>
-                            <li>车辆租赁</li>
-                            <li>仿真展品</li>
-                            <li>花艺布置</li>
-                            <li>活动服装租赁</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">线下广告</h4>
-                        <ul class="ul_2">
-                            <li>酒店夜店</li>
-                            <li>购物中心</li>
-                            <li>共享空间</li>
-                            <li>校园场地</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="foot_list">
-                        <h4 class="foot_title">礼品采购</h4>
-                        <ul class="ul_2">
-                            <li>厂家直销</li>
-                            <li>定制礼品</li>
-                            <li>其他</li>
-                        </ul>
-                    </div>
-                </li>
-
-            </ul>
-        </div>
-        <div class="foot_contact">
-            <ul class="clear">
-                <li><span class="cion"></span>北京相予科技有限公司</li>
-                <li><span class="cion"></span>13126608897/1355128433</li>
-                <li><span class="cion"></span>北京石墨山万达F座</li>
-                <li><span class="cion"></span>1193549646@qq.com</li>
-                <li style="position: relative"><span class="cion" id="wechatbtn"></span>
-                    <div id="wechatk">
-                        <div><img src="/img/wechat1.jpg" /></div>
-                        <div><img src="/img/wechat1.jpg" /></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </footer>
-</body>
-
+	</body>
+	<script type="text/javascript">
+		var app = new Vue({
+				el: '#app',
+				data: function() {
+					return {
+						currentId: 0,
+						mainData: [],
+						paginate: {
+							count: 0,
+							currentPage: 1,
+							pagesize: 10,
+							is_page: true,
+						},
+						searchItem:{
+							status:1
+						},
+						isRemark:false,
+						id:'',
+						order_no:'',
+						remarkIndex:'',
+						content:''
+					}
+		
+				},
+				
+				
+				
+				
+				created: function() {
+					const self = this;
+				
+					
+					  
+					  self.getMainData()
+					  
+					
+					
+				},
+		
+				methods: {
+					
+					goRemark(id,order_no,index){
+						const self = this;
+						self.relation_id = id;
+						self.order_no = order_no;
+						self.remarkIndex = index;
+						self.isRemark = true;
+						console.log(self.relation_id)
+						console.log(self.order_no)
+						
+					},
+					
+					addMessage(){
+						const self = this;
+						const postData = {
+							token:localStorage.getItem('user_token'),
+							data:{
+								content:self.content,
+								relation_id:self.relation_id,
+								user_no:localStorage.getItem('user_no'),
+								type:3
+							}
+						};
+						postData.saveAfter = [{
+							tableName: 'Order',
+							FuncName: 'update',
+							searchItem:{
+								order_no:self.order_no
+							},
+							data: {
+								order_step:3
+							}
+						}];
+						const callback = (res) => {
+							if (res.solely_code == 100000) {
+								
+								
+							} else {
+								alert('网络故障')
+							};
+							
+							
+							console.log('getMainData', self.mainData)
+						};
+						window.base.messageAdd(postData, callback);
+					},
+		
+					getMainData(isNew) {
+						const self = this;
+						if (isNew) {
+							self.paginate = {
+								count: 0,
+								currentPage: 1,
+								pagesize: 10,
+								is_page: true,
+							}
+						};
+						const postData = {};
+						postData.paginate = window.base.cloneForm(self.paginate);
+						postData.token=localStorage.getItem('user_token');
+						postData.searchItem = window.base.cloneForm(self.searchItem);
+						postData.searchItem.user_no= localStorage.getItem('user_no');
+						
+						postData.order = {
+							create_time: 'desc'
+						};
+					
+						const callback = (res) => {
+							if (res.solely_code == 100000) {
+								if (res.info.data.length > 0) {
+									self.mainData.push.apply(self.mainData, res.info.data);
+								} 
+		
+							} else {
+								alert('网络故障')
+							};
+							
+							
+							console.log('getMainData', self.mainData)
+						};
+						window.base.orderGet(postData, callback);
+					},
+		
+					deleteOrder(e) {
+						const self = this;
+						const postData = {};
+						postData.token = localStorage.getItem('user_token');
+						postData.searchItem = {};
+						postData.searchItem.id = window.base.getDataSet(e, 'id').id;
+						const callback = res => {
+							if (res.solely_code == 100000) {
+								self.mainData = [];
+								self.getMainData(true);
+							}
+					
+						};
+						window.base.orderDelete(postData, callback);
+					},
+		
+					orderUpdate(e) {
+						const self = this;
+						var index = window.base.getDataSet(e, 'index');
+						console.log('index', index)
+						const postData = {};
+						postData.token = localStorage.getItem('user_token');
+						postData.data = {
+							transport_status: 2,
+						}
+						postData.searchItem = {};
+						postData.searchItem.id = window.base.getDataSet(e, 'id').id;
+					
+						const callback = res => {
+							alert('已收货')
+							self.mainData = [];
+							self.getMainData(true);
+						};
+						window.base.orderUpdate(postData, callback);
+					},
+					
+					
+		
+		
+					tab(currentId) {
+						const self = this;
+						self.currentId = currentId;
+						self.searchItem = {};
+						if (currentId == '0') {
+							
+						} else if (currentId == '1') {
+							self.searchItem.order_step = '0'
+						} else if (currentId == '2') {
+							self.searchItem.order_step = '1'
+						} else if(currentId == '3'){
+							self.searchItem.order_step = '2'
+						} else if(currentId == '4'){
+							self.searchItem.order_step = '3'
+						}else if(currentId == '5'){
+							self.searchItem.order_step = '4'
+						}
+						self.mainData = [];
+						self.getMainData(true);
+					
+					},
+		
+					intoPath(url,id) {
+						var into_url = url;
+						window.location.href = into_url + '.html'+'?id='+id
+					}
+		
+				}
+		
+			});
+		</script>
 </html>
-<script type="text/javascript" src="/js/pubilc.js"></script>
+<script type="text/javascript" src="../js/pubilc.js"></script>
 <script>
-    var 
+	/*PC端*/
+	var btnnav = document.getElementById("nav2btn");
+	var nav2 = document.getElementById("nav2");
+	var flag = true;
+	btnnav.onclick = function() {
+		if (flag) {
+			nav2.classList.remove("ycxiala");
+			nav2.classList.add("xiala");
+			flag = false;
+		} else {
+			nav2.classList.remove("xiala");
+			nav2.classList.add("ycxiala");
+			flag = true;
+		}
+	}
+	/*手机端*/
+	var btnnav1 = document.getElementById("smnavbtn");
+	var nav21 = document.getElementById("smnav2");
+	var flag1 = true;
+	btnnav1.onclick = function() {
+		if (flag1) {
+			nav21.classList.remove("smycxiala");
+			nav21.classList.add("smxiala");
+			flag1 = false;
+		} else {
+			nav21.classList.remove("smxiala");
+			nav21.classList.add("smycxiala");
+			flag1 = true;
+		}
+	}
 </script>

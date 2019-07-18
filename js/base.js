@@ -1,5 +1,5 @@
 window.base = {
-	g_restUrl: 'http://www.leeno-energy.cn/api/public/index.php/api/v1/',
+	g_restUrl: 'https://tongchoubang.com/api/public/index.php/api/v1/',
 
 
 
@@ -38,42 +38,42 @@ window.base = {
 
 	}, */
 
-/* 	realPay(param, callback) {
+	/* 	realPay(param, callback) {
 
-		function onBridgeReady(param) {
-			WeixinJSBridge.invoke(
-				'getBrandWCPayRequest', {
-					"appId": "wx7cd6c5fcb1acb373", //公众号名称，由商户传入     
-					'timeStamp': param.timeStamp,
-					'nonceStr': param.nonceStr,
-					'package': param.package,
-					'signType': param.signType,
-					'paySign': param.paySign,
-				},
-				function(res) {
+			function onBridgeReady(param) {
+				WeixinJSBridge.invoke(
+					'getBrandWCPayRequest', {
+						"appId": "wx7cd6c5fcb1acb373", //公众号名称，由商户传入     
+						'timeStamp': param.timeStamp,
+						'nonceStr': param.nonceStr,
+						'package': param.package,
+						'signType': param.signType,
+						'paySign': param.paySign,
+					},
+					function(res) {
 
-					if (res.err_msg == "get_brand_wcpay_request:ok") {
-						// 使用以上方式判断前端返回,微信团队郑重提示：
-						//res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
-						callback && callback(1);
-					} else {
-						callback && callback(0);
-					}
-				});
-		}
-		if (typeof WeixinJSBridge == "undefined") {
-			if (document.addEventListener) {
-				document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-			} else if (document.attachEvent) {
-				document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-				document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+						if (res.err_msg == "get_brand_wcpay_request:ok") {
+							// 使用以上方式判断前端返回,微信团队郑重提示：
+							//res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+							callback && callback(1);
+						} else {
+							callback && callback(0);
+						}
+					});
 			}
-		} else {
-			onBridgeReady(param);
-		}
+			if (typeof WeixinJSBridge == "undefined") {
+				if (document.addEventListener) {
+					document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+				} else if (document.attachEvent) {
+					document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+					document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+				}
+			} else {
+				onBridgeReady(param);
+			}
 
-	},
- */
+		},
+	 */
 	directPay: function(param, callback) {
 		var allParams = {
 			url: 'Base/Pay/directPay',
@@ -85,21 +85,21 @@ window.base = {
 		};
 		this.getData(allParams);
 	},
-	
-	uploadByUrl:function(param,callback) {
-	  
-	    var allParams = {
-	        url:'Base/FtpFile/uploadByUrl',
-	        type:'post',
-	        data:param,
-	        sCallback: function(data){
-	            callback&&callback(data);
-	        }
-	    }; 
-	    this.getData(allParams)
+
+	uploadByUrl: function(param, callback) {
+
+		var allParams = {
+			url: 'Base/FtpFile/uploadByUrl',
+			type: 'post',
+			data: param,
+			sCallback: function(data) {
+				callback && callback(data);
+			}
+		};
+		this.getData(allParams)
 	},
 
-	addItemInArray:function(array, fieldName) {
+	addItemInArray: function(array, fieldName) {
 		var count = 0;
 		for (var i = 0; i < array.length; i++) {
 			if (array[i][fieldName]) {
@@ -147,7 +147,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	getQrCommonCode:function(param, callback) {
+	getQrCommonCode: function(param, callback) {
 		var allParams = {
 			url: 'Base/Qr/CommonQrGet',
 			type: 'post',
@@ -159,7 +159,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	qrcodeGet:function(param, callback) {
+	qrcodeGet: function(param, callback) {
 		var allParams = {
 			url: 'Common/Qrcode/get',
 			type: 'post',
@@ -171,7 +171,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	qrcodeUpdate:function(param, callback) {
+	qrcodeUpdate: function(param, callback) {
 		var allParams = {
 			url: 'Common/Qrcode/update',
 			type: 'post',
@@ -210,16 +210,13 @@ window.base = {
 					window.location.href = loca.origin + loca.pathname;
 				} else if (res.solely_code == 200000) {
 					console.log(that.GetUrlRelativePath().substr(1, 2));
-					if (that.GetUrlRelativePath().substr(1, 2) == 'wx') {
+					
 
-						localStorage.removeItem('merchant_token');
-						localStorage.removeItem('merchant_no');
-						window.location.href = './wxBusinessLogin.html'
-					} else {
 						localStorage.removeItem('user_token');
 						localStorage.removeItem('user_no');
-						that.getUserToken();
-					};
+						localStorage.removeItem('user_info');
+						window.location.href = './Login.html'
+					
 				} else {
 					params.sCallback && params.sCallback(res);
 				};
@@ -496,7 +493,7 @@ window.base = {
 		this.getData(allParams)
 	},
 
-	addOrder:function(param, callback) {
+	addOrder: function(param, callback) {
 		var allParams = {
 			url: 'Func/Order/addOrder',
 			type: 'post',
@@ -534,7 +531,7 @@ window.base = {
 
 	register: function(param, callback) {
 		var allParams = {
-			url: 'Project/Solely/register',
+			url: 'Project/Solely/signup',
 			type: 'post',
 			data: param,
 			sCallback: function(data) {
@@ -663,7 +660,7 @@ window.base = {
 		this.getData(allParams)
 	},
 
-	flowLogCompute:function(param, callback) {
+	flowLogCompute: function(param, callback) {
 		var allParams = {
 			url: 'Common/FlowLog/compute',
 			type: 'post',
@@ -675,7 +672,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	flowLogGet:function(param, callback) {
+	flowLogGet: function(param, callback) {
 		var allParams = {
 			url: 'Common/FlowLog/get',
 			type: 'post',
@@ -687,7 +684,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	flowLogUpdate:function(param, callback) {
+	flowLogUpdate: function(param, callback) {
 		var allParams = {
 			url: 'Common/FlowLog/update',
 			type: 'post',
@@ -699,7 +696,7 @@ window.base = {
 		this.getData(allParams);
 	},
 
-	flowLogAdd:function(param, callback) {
+	flowLogAdd: function(param, callback) {
 		var allParams = {
 			url: 'Common/FlowLog/add',
 			type: 'post',
@@ -765,13 +762,11 @@ window.base = {
 		};
 		this.getData(allParams)
 	},
-
-
-
-	messages: function(param, callback) {
-
+	
+	relationGet: function(param, callback) {
+	
 		var allParams = {
-			url: 'UserMessage/addMessage',
+			url: 'Common/Relation/get',
 			type: 'post',
 			data: param,
 			sCallback: function(data) {
@@ -779,6 +774,19 @@ window.base = {
 			}
 		};
 		this.getData(allParams)
+	},
+
+
+	addMessage: function(param, callback) {
+		var allParams = {
+			url: 'Project/Solely/addMessage',
+			type: 'post',
+			data: param,
+			sCallback: function(data) {
+				callback && callback(data);
+			}
+		};
+		this.getData(allParams);
 	},
 
 
@@ -811,7 +819,11 @@ window.base = {
 	        console.log(pass);
 	    }, */
 
-	checkComplete:function(obj) {
+	inArray:function(value, array) {
+		return array.indexOf(parseInt(value));
+	},
+
+	checkComplete: function(obj) {
 		var pass = true;
 		for (var key in obj) {
 			if (!obj[key] || JSON.stringify(obj[key]) == '[]' || JSON.stringify(obj[key]) == '{}') {
@@ -980,7 +992,7 @@ window.base = {
 		return theRequest;
 	},
 
-	getUrlVars:function() {
+	getUrlVars: function() {
 		var vars = [],
 			hash;
 		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
@@ -1050,7 +1062,7 @@ window.base = {
 
 	},
 
-	dealRes:function(res) {
+	dealRes: function(res) {
 		if (res.solely_code == 100000) {
 
 			wx.showToast({
@@ -1073,7 +1085,7 @@ window.base = {
 		}
 	},
 
-	footOne:function(res, name, limit, objName) {
+	footOne: function(res, name, limit, objName) {
 		var self = this;
 		if (localStorage.getItem(objName)) {
 			var history = localStorage.getItem(objName);
@@ -1107,7 +1119,7 @@ window.base = {
 
 	},
 
-	updateFootOne:function(name, objName, fieldName, field) {
+	updateFootOne: function(name, objName, fieldName, field) {
 		var self = this;
 		if (localStorage.getItem(objName)) {
 			var history = localStorage.getItem(objName);
@@ -1122,7 +1134,7 @@ window.base = {
 
 	},
 
-	deleteFootOne:function(name, objName) {
+	deleteFootOne: function(name, objName) {
 		var self = this;
 		if (localStorage.getItem(objName)) {
 			var history = localStorage.getItem(objName);
@@ -1137,7 +1149,7 @@ window.base = {
 
 	},
 
-	getJsonLength:function(json) {
+	getJsonLength: function(json) {
 		var length = 0;
 		for (var item in json) {
 			length++
@@ -1145,25 +1157,25 @@ window.base = {
 		return length;
 	},
 
-/* 	jsonToArray:function(obj, type) {
+	/* 	jsonToArray:function(obj, type) {
 
-		var result = [];
-		for (let key in obj) {
-			//result.push(key);
-			if (type == 'push') {
-				result.push(obj[key]);
+			var result = [];
+			for (let key in obj) {
+				//result.push(key);
+				if (type == 'push') {
+					result.push(obj[key]);
+				}
+
+				if (type == 'unshift') {
+					result.unshift(obj[key]);
+				}
+
+
 			}
+			return result;
+		}, */
 
-			if (type == 'unshift') {
-				result.unshift(obj[key]);
-			}
-
-
-		}
-		return result;
-	}, */
-
-	getStorageArray:function(storageName, key, value) {
+	getStorageArray: function(storageName, key, value) {
 		var self = this;
 		var array = JSON.parse(localStorage.getItem(storageName));
 		if (key && value && array) {
@@ -1176,7 +1188,7 @@ window.base = {
 		};
 	},
 
-	/* setStorageArray:function(storageName, item, key, limit, type = 'unshift') {
+	setStorageArray:function(storageName, item, key, limit, type = 'unshift') {
 
 		var self = this;
 		if (localStorage.getItem(storageName)) {
@@ -1199,9 +1211,9 @@ window.base = {
 		localStorage.setItem(storageName, array);
 		return true;
 
-	}, */
+	},
 
-	delStorageArray:function(storageName, item, key) {
+	delStorageArray: function(storageName, item, key) {
 
 		var self = this;
 		var array = JSON.parse(localStorage.getItem(storageName));
@@ -1214,7 +1226,7 @@ window.base = {
 	},
 
 
-	findItemInArray:function(array, fieldName, field) {
+	findItemInArray: function(array, fieldName, field) {
 
 		for (var i = 0; i < array.length; i++) {
 			if (array[i][fieldName] == field) {
@@ -1241,7 +1253,7 @@ window.base = {
 	},
  */
 
-	timestampToTime:function(timestamp) {
+	timestampToTime: function(timestamp) {
 
 		timestamp = parseInt(timestamp);
 		var date = new Date(timestamp * 1000);
