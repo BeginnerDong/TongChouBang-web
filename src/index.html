@@ -67,10 +67,9 @@
 				<div class="clear">
 					<!--logo-->
 					<div class="head_logo">
-						<span class="logo">统筹帮</span>
-						<select class="tab_adress">
-							<option v-for="item in cityData">{{item.title}}</option>
-						
+						<span class="logo">统筹帮{{cityId}}</span>
+						<select class="tab_adress" v-model="cityId" @change="chooseCity($event)">
+							<option v-for="item in cityData" :value="item.id" >{{item.title}}{{item.id}}</option>
 						</select>
 					</div>
 					<!--导航栏-->
@@ -438,7 +437,8 @@
 				searchItem:{
 					status:1
 				},
-				title:''
+				title:'',
+				cityId:0
 			}
 		},
 		created: function() {
@@ -447,6 +447,16 @@
 		},
 
 		methods: {
+
+			chooseCity:function(e){
+				const self = this;
+				var index = e.target.options.selectedIndex;
+				var nowCity = localStorage.getItem('cityId');
+				if(self.cityData[index].id!=nowCity){
+					self.cityId = self.cityData[index].id;
+					localStorage.setItem('cityId', self.cityData[index].id);
+				};	
+			},
 			init: function(e) {
 				var self = this;
 				self.getSliderData();
@@ -488,11 +498,10 @@
 			
 			getCityData: function(id) {
 				var self = this;
+
 				var postData = {};
-			
 				postData.searchItem = {
 					type: 11
-			
 				};
 				postData.order = {
 					listorder: 'desc'
@@ -500,10 +509,17 @@
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
 						self.cityData.push.apply(self.cityData, res.info.data);
-					}
+						var nowCity = localStorage.getItem('cityId');
+						if(!nowCity){
+							self.cityId = self.cityData[2].id;
+							localStorage.setItem('cityId', self.cityData[0].id);
+						}else{
+							self.cityId = nowCity;
+						};
+					};
 				};
-				console.log('self.city', self.city)
 				window.base.labelGet(postData, callback);
+
 			},
 			
 			getMainData: function(id) {

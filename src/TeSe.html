@@ -274,7 +274,25 @@
 				
 				allSelect(index){
 					const self = this;
+					var hasOne = false;
+					for (var i = 0; i < self.labelData[index].child.length; i++) {
+						var position = self.spuArray.indexOf(self.labelData[index]['child'][i].id);
+						if(position >= 0){	
+							hasOne = true;		
+							self.spuArray.splice(position, 1);					
+						}
+					};
 					
+					if(hasOne){
+						self.mainData = [];
+						self.paginate= { 
+							count: 0, 
+							currentPage: 1, 
+							pagesize:6, 
+							is_page: true, 
+						},
+						self.getMainData()
+					}
 				},
 				
 				check(id){
