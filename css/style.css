@@ -346,7 +346,13 @@ html,
             position: relative;
             width: 24%;
             margin-top: 15px;
+			height: 240px;
         }
+		
+		  .yearlist ul li a img{
+			   width: 100%;
+			   height: 100%;
+			}
 
         .yearlist ul li:nth-of-type(1) {
             margin-left: 0;
@@ -690,7 +696,7 @@ html,
             background-size:100% 100%;
         }
         #wechatk{
-            margin-top: 20px;position: absolute;bottom: 28px;right: -7px;display: none;
+            margin-top: 20px;position: absolute;bottom: 28px;right: -7px;
         }
         #wechatk>div:nth-of-type(1){
             display: block;
@@ -813,6 +819,7 @@ html,
 
         .type_list1 a {
             margin-left: 30px;
+			cursor: pointer;
         }
 
         /*产品列表内容*/
@@ -872,6 +879,7 @@ html,
             font-size: 20px;
             padding: 27px 27px;
             color: #666666;
+			cursor: pointer;
         }
         .tab_rank ul li  span{
             font-size: 22px;
@@ -949,6 +957,7 @@ html,
             right: 20px;
             top: 50%;
             transform: translateY(-50%);
+			cursor: pointer;
         }
 
         .nowbind {
@@ -1191,7 +1200,7 @@ html,
 }
 
 .tab_tese li {
-    width: 33.333%;
+    width: 30%;
     float: left;
     list-style-type: none;
     margin-top: 20px;
@@ -1465,9 +1474,11 @@ html,
 }
 
 .aboutus_t_d {
-    margin-top: -12px;
+
     float: left;
     width: 89%;
+	height: 103px;
+	 line-height: 103px;
 }
 
 .aboutus_t_d a {
@@ -1510,11 +1521,12 @@ html,
 
 .jdimglist li img {
     width: 100%;
+	height: 200px;
 }
 
 .jdimglist li p {
     position: absolute;
-    bottom: 3px;
+    bottom: 0px;
     width: 100%;
     background: #57575770;
     line-height: 40px;
@@ -2348,14 +2360,18 @@ select:focus{
         padding: 2px 8px;
         margin-top: 10px;
         color: #9e9d9d;
+		cursor: pointer;
     }
     .tab_rank ul li{
         width: 25%;
         line-height: 37px;
+		cursor: pointer;
     }
     .tab_rank ul li a{
         font-size: 14px;
         padding:10px 10px;
+		cursor: pointer;
+		z-index: 999;
     }
     .tab_rank{
         height: 37px;

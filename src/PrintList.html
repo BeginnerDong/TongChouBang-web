@@ -247,7 +247,7 @@
 		            <ul class="clear">
 		                <li><a href="index.html">首页</a></li>
 		                <li class="active"><a href="TeSe.html">找特色会场</a></li>
-		                <li><a href="Print.html">找应刷商</a></li>
+		                <li><a href="Print.html">找印刷商</a></li>
 		                <li><a href="PartTime.html">找兼职</a></li>
 		                <li id="nav2btn"><a>会议配套服务</a>
 		                    <ul class="clear nav_2 ycxiala" id="nav2">
@@ -270,7 +270,7 @@
 		            <ul class="clear small_nav orgin" id="snav">
 		                <li><a href="index.html">首页</a></li>
 		                <li class="li_bg"><a href="TeSe.html">找特色会场</a></li>
-		                <li><a href="Print.html">找应刷商</a></li>
+		                <li><a href="Print.html">找印刷商</a></li>
 		                <li><a href="PartTime.html">找兼职</a></li>
 		                <li><a id="smnavbtn">会议配套服务</a>
 		                    <ul class="clear smallnav2 smycxiala" id="smnav2">
@@ -337,7 +337,7 @@
 		                </p>
 		                <p class="t_p">详细地址：{{mainData.address}}</p>
 		                <hr stype="" />
-		                <ul class="tab_tese clear">
+		                <ul class=" clear">
 		                   <div class="content ql-editor " style="clear: both;">
 		                   	<p class="p1 " v-html="mainData.content"></p>
 		                   </div>
@@ -353,7 +353,7 @@
 		<div class="tesedetail_1">
 		    <div class="tesedetail_2">
 		        <div class="tesedetali_top clear">
-		            <div class="teseimg"><img src="../img/tesedetail_top.jpg" /></div>
+		            <div class="teseimg"><img :src="mainData.mainImg&&mainData.mainImg[0]?mainData.mainImg[0].url:''" /></div>
 		            <div class="teseintro">
 		                <h3 class="tese_t">{{mainData.small_title}}</h3>
 		                <p class="tesedetail_c">
@@ -473,7 +473,7 @@
 		
 		</div>
 		<div class="yyct" id="yyct" v-if="isReserve">
-			<a class="close_tc" id="close_tc">x</a>
+			<div class="close_tc"  @click="close">x</div>
 			<div class="yyct_1">
 				<h1 class="yy_title1">预约信息</h1>
 				<ul class="clear">
@@ -504,7 +504,7 @@
 							<textarea v-model="submitData.remarks" placeholder="请简单描述您需要的设施与服务，如投影仪、白板等（非必填）" style="width: 500px;height: 100px;resize: none;margin-top: 15px"></textarea></div>
 					</li>
 				</ul>
-				<h1 class="yy_title1">联系1信息</h1>
+				<h1 class="yy_title1">联系信息</h1>
 				<ul class="clear">
 					<li class="tr1">
 						<div class="yy_tt_t">*联系人姓名</div>
@@ -658,6 +658,13 @@
 					}
 				},
 				
+				close(){
+					const self = this;
+					self.buyId = '';
+					self.buyType = '';
+					self.isReserve = false;	
+				},
+				
 				submit(index) {
 					const self = this;
 					self.buyId = self.mainData.sku[index].id;
@@ -708,7 +715,15 @@
 						console.log('self.userData', self.userData)
 						const callback = (res) => {
 							if (res && res.solely_code == 100000) {
-								
+								alert('预约成功');
+								self.submitData ={
+									time: '',
+									scale: '',
+									remarks: '',
+									name: '',
+									phone: '',
+									email: ''
+								}
 							} else {
 								alert(res.msg);
 							};

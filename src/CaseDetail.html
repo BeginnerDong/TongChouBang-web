@@ -127,10 +127,13 @@
                 font-weight: 500;
             }
 
-            .c_d_r_c {}
+            .c_d_r_c {
+				
+			}
 
             .c_d_r_c img {
                 width: 100%;
+				height:260px
             }
         }
 
@@ -232,6 +235,7 @@
                 padding-left: 20px;
                 border: 1px solid #d8d7d7;
                 background: #f5f5f5;
+				cursor: pointer;
             }
 
             .c_l_c li a {
@@ -249,6 +253,7 @@
                 list-style-type: none;
                 float: left;
                 margin-left: 4%;
+				cursor: pointer;
             }
 
             .casedeatilright .c_d_r li .c_d_r_c img {
@@ -315,8 +320,8 @@
 					<nav class="head_nav">
 						<ul class="clear">
 							<li><a href="index.html">首页</a></li>
-							<li class="active"><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找应刷商</a></li>
+							<li ><a href="TeSe.html">找特色会场</a></li>
+							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
 							<li><a>会议配套服务</a></li>
 							<li><a>店铺转让</a></li>
@@ -332,7 +337,7 @@
 						<ul class="clear small_nav orgin" id="snav">
 							<li class="li_bg"><a>首页</a></li>
 							<li><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
 							<li><a>会议配套服务</a></li>
 							<li><a>店铺转让</a></li>
@@ -389,7 +394,7 @@
 						<div class="casedeatilright">
 							<ul class="c_d_r clear">
 								<li v-for="item in mainData">
-									<div class="c_d_r_c"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" />
+									<div class="c_d_r_c" @click="intoDetail('CaseContent.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" />
 										<h3 class="c_d_r_t">{{item.title}}</h3>
 									</div>
 								</li>
@@ -471,6 +476,14 @@
 					};
 					console.log('self.city', self.city)
 					window.base.labelGet(postData, callback);
+				},
+				
+				intoDetail: function(url, id) {
+					var self = this;
+					var toUrl = url;
+					console.log(toUrl);
+					window.location.href = toUrl + '?id=' + id;
+				
 				},
 				
 				changeType(id){

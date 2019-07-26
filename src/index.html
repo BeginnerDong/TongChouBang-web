@@ -35,10 +35,14 @@
         position: absolute;
         top: 0;
     }
+	.case_kk img{
+		width: 100%;
+		height:260px
+	}
 
     .head_top .logo,
     .head_nav ul li a {
-        color: #ffffff !important;
+        color: #ffffff;
     }
 
     .head_abnoutus ul li {
@@ -67,9 +71,9 @@
 				<div class="clear">
 					<!--logo-->
 					<div class="head_logo">
-						<span class="logo">统筹帮{{cityId}}</span>
+						<span class="logo">统筹帮</span>
 						<select class="tab_adress" v-model="cityId" @change="chooseCity($event)">
-							<option v-for="item in cityData" :value="item.id" >{{item.title}}{{item.id}}</option>
+							<option v-for="item in cityData" :value="item.id" >{{item.title}}</option>
 						</select>
 					</div>
 					<!--导航栏-->
@@ -77,7 +81,7 @@
 						<ul class="clear">
 							<li class="active"><a href="index.html">首页</a></li>
 							<li><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
 							<li id="nav2btn"><a>会议配套服务</a>
 								<ul class="clear nav_2 ycxiala" id="nav2">
@@ -100,7 +104,7 @@
 						<ul class="clear small_nav orgin" id="snav">
 							<li class="li_bg"><a>首页</a></li>
 							<li><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
 							<li><a id="smnavbtn">会议配套服务</a>
 								<ul class="clear smallnav2 smycxiala" id="smnav2">
@@ -169,7 +173,7 @@
 						</div>
 						
 						<div>
-							<div style="position: relative;height:350px">
+							<div style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productOneData[0].id)">
 								<img :src="productOneData&&productOneData[0]&&productOneData[0].mainImg&&productOneData[0].mainImg[0]?productOneData[0].mainImg[0].url:''" 
 								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
@@ -179,14 +183,14 @@
 							</div>
 							<div class="yearlist">
 								<ul class="clear">
-									<li v-for="(item,index) in productOneData" v-if="index>0&&index<5">
+									<li v-for="(item,index) in productOneData" v-if="index>0&&index<5" @click="intoDetail('TeSeDetail.html',item.id)">
 										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
 										<span class="yearcion">推荐</span>
 										<div class="y_info">
 											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
 											<span class="intro">
-												<div class="content ql-editor " style="clear: both;">
+												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
 											</span>
@@ -206,9 +210,9 @@
 						</div>
 						
 						<div>
-							<div style="position: relative">
+							<div style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
 								<img :src="productTwoData&&productTwoData[0]&&productTwoData[0].mainImg&&productTwoData[0].mainImg[0]?productTwoData[0].mainImg[0].url:''" 
-								alt="场地预订" />
+								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
 									<h2>场地预订</h2>
 									<span>你们想要什么我们都有</span>
@@ -216,14 +220,14 @@
 							</div>
 							<div class="yearlist">
 								<ul class="clear">
-									<li v-for="(item,index) in productTwoData" v-if="index>0&&index<5">
+									<li v-for="(item,index) in productTwoData" v-if="index>0&&index<5" @click="intoDetail('TeSeDetail.html',item.id)">
 										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
 										<span class="yearcion">推荐</span>
 										<div class="y_info">
 											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
 											<span class="intro">
-												<div class="content ql-editor " style="clear: both;">
+												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
 											</span>
@@ -244,9 +248,9 @@
 						</div>
 						
 						<div>
-							<div style="position: relative">
+							<div style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
 								<img :src="productThreeData&&productThreeData[0]&&productThreeData[0].mainImg&&productThreeData[0].mainImg[0]?productThreeData[0].mainImg[0].url:''" 
-								alt="场地预订" />
+								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
 									<h2>场地预订</h2>
 									<span>你们想要什么我们都有</span>
@@ -254,14 +258,14 @@
 							</div>
 							<div class="yearlist">
 								<ul class="clear">
-									<li v-for="(item,index) in productThreeData" v-if="index>0&&index<5">
+									<li v-for="(item,index) in productThreeData" v-if="index>0&&index<5" @click="intoDetail('TeSeDetail.html',item.id)">
 										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
 										<span class="yearcion">推荐</span>
 										<div class="y_info">
 											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
 											<span class="intro">
-												<div class="content ql-editor " style="clear: both;">
+												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
 											</span>
@@ -281,9 +285,9 @@
 						</div>
 						
 						<div>
-							<div style="position: relative">
+							<div style="position: relative;height: 350px;" @click="intoDetail('TeSeDetail.html',productFourData[0].id)">
 								<img :src="productFourData&&productFourData[0]&&productFourData[0].mainImg&&productFourData[0].mainImg[0]?productFourData[0].mainImg[0].url:''" 
-								alt="场地预订" />
+								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
 									<h2>场地预订</h2>
 									<span>你们想要什么我们都有</span>
@@ -291,14 +295,14 @@
 							</div>
 							<div class="yearlist">
 								<ul class="clear">
-									<li v-for="(item,index) in productFourData" v-if="index>0&&index<5">
+									<li v-for="(item,index) in productFourData" v-if="index>0&&index<5" @click="intoDetail('TeSeDetail.html',item.id)">
 										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
 										<span class="yearcion">推荐</span>
 										<div class="y_info">
 											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
 											<span class="intro">
-												<div class="content ql-editor " style="clear: both;">
+												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
 											</span>
@@ -318,9 +322,9 @@
 						</div>
 						
 						<div>
-							<div style="position: relative">
+							<div style="position: relative;height: 350px;" @click="intoDetail('TeSeDetail.html',productFiveData[0].id)">
 								<img :src="productFiveData&&productFiveData[0]&&productFiveData[0].mainImg&&productFiveData[0].mainImg[0]?productFiveData[0].mainImg[0].url:''" 
-								alt="场地预订" />
+								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
 									<h2>场地预订</h2>
 									<span>你们想要什么我们都有</span>
@@ -328,14 +332,14 @@
 							</div>
 							<div class="yearlist">
 								<ul class="clear">
-									<li v-for="(item,index) in productFiveData" v-if="index>0&&index<5">
+									<li v-for="(item,index) in productFiveData" v-if="index>0&&index<5" @click="intoDetail('TeSeDetail.html',item.id)">
 										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
 										<span class="yearcion">推荐</span>
 										<div class="y_info">
 											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
 											<span class="intro">
-												<div class="content ql-editor " style="clear: both;">
+												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
 											</span>
@@ -355,9 +359,9 @@
 						</div>
 						
 						<div>
-							<div style="position: relative">
+							<div style="position: relative;height: 350px;" @click="intoDetail('TeSeDetail.html',productSixData[0].id)">
 								<img :src="productSixData&&productSixData[0]&&productSixData[0].mainImg&&productSixData[0].mainImg[0]?productSixData[0].mainImg[0].url:''" 
-								alt="场地预订" />
+								alt="场地预订" style="height:100%" />
 								<div class="adree_yd">
 									<h2>场地预订</h2>
 									<span>你们想要什么我们都有</span>
@@ -365,14 +369,14 @@
 							</div>
 							<div class="yearlist">
 								<ul class="clear">
-									<li v-for="(item,index) in productSixData" v-if="index>0&&index<5">
+									<li v-for="(item,index) in productSixData" v-if="index>0&&index<5" @click="intoDetail('TeSeDetail.html',item.id)">
 										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
 										<span class="yearcion">推荐</span>
 										<div class="y_info">
 											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
 											<span class="intro">
-												<div class="content ql-editor " style="clear: both;">
+												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
 											</span>
@@ -404,12 +408,12 @@
 				<div class="caselsit">
 					<ul class="clear">
 						<li v-for="item in mainData">
-							<a href="CaseContent.html">
+							<div  @click="intoDetail('CaseContent.html',item.id)">
 								<div class="case_kk">
 									<div><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 									<p>{{item.title}}</p>
 								</div>
-							</a>
+							</div>
 						</li>
 					</ul>
 				</div>
@@ -435,7 +439,8 @@
 				mainData:[],
 				cityData:[],
 				searchItem:{
-					status:1
+					status:1,
+					
 				},
 				title:'',
 				cityId:0
@@ -455,8 +460,28 @@
 				if(self.cityData[index].id!=nowCity){
 					self.cityId = self.cityData[index].id;
 					localStorage.setItem('cityId', self.cityData[index].id);
+					self.cityInit()
 				};	
+			
 			},
+			
+			cityInit(){
+				var self = this;
+				self.productOneData=[];
+				self.productTwoData=[];
+				self.productThreeData=[];
+				self.productFourData=[];
+				self.productFiveData=[];
+				self.productSixData=[];
+				self.getLabelOneData();
+				self.getLabelTwoData();
+				self.getLabelThreeData();
+				self.getLabelFourData();
+				self.getLabelFiveData();
+				self.getLabelSixData();
+	
+			},
+			
 			init: function(e) {
 				var self = this;
 				self.getSliderData();
@@ -477,6 +502,14 @@
 				}else{
 					alert('请输入标题搜索')
 				}
+			},
+			
+			intoDetail: function(url, id) {
+				var self = this;
+				var toUrl = url;
+				console.log(toUrl);
+				window.location.href = toUrl + '?id=' + id;
+			
 			},
 			
 			getSliderData() {
@@ -582,6 +615,7 @@
 				
 				postData.searchItem = {
 					status:1,
+					passage2:localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -627,7 +661,8 @@
 				var postData = {};
 				
 				postData.searchItem = {
-					status:1
+					status:1,
+					passage2:localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -643,7 +678,7 @@
 				};
 				var callback = function(res) {
 					if(res.info.data.length>0){
-						self.productTwo.push.apply(self.productTwo,res.info.data)
+						self.productTwoData.push.apply(self.productTwoData,res.info.data)
 					}
 				};
 				
@@ -673,7 +708,8 @@
 				var postData = {};
 				
 				postData.searchItem = {
-					status:1
+					status:1,
+					passage2:localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -689,7 +725,7 @@
 				};
 				var callback = function(res) {
 					if(res.info.data.length>0){
-						self.productThree.push.apply(self.productThree,res.info.data)
+						self.productThreeData.push.apply(self.productThreeData,res.info.data)
 					}
 				};
 				
@@ -719,7 +755,8 @@
 				var postData = {};
 				
 				postData.searchItem = {
-					status:1
+					status:1,
+					passage2:localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -735,7 +772,7 @@
 				};
 				var callback = function(res) {
 					if(res.info.data.length>0){
-						self.productFour.push.apply(self.productFour,res.info.data)
+						self.productFourData.push.apply(self.productFourData,res.info.data)
 					}
 				};
 				
@@ -765,7 +802,8 @@
 				var postData = {};
 				
 				postData.searchItem = {
-					status:1
+					status:1,
+					passage2:localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -781,7 +819,7 @@
 				};
 				var callback = function(res) {
 					if(res.info.data.length>0){
-						self.productFive.push.apply(self.productFive,res.info.data)
+						self.productFiveData.push.apply(self.productFiveData,res.info.data)
 					}
 				};
 				
@@ -811,7 +849,8 @@
 				var postData = {};
 				
 				postData.searchItem = {
-					status:1
+					status:1,
+					passage2:localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -827,7 +866,7 @@
 				};
 				var callback = function(res) {
 					if(res.info.data.length>0){
-						self.productSix.push.apply(self.productSix,res.info.data)
+						self.productSixData.push.apply(self.productSixData,res.info.data)
 					}
 				};
 				

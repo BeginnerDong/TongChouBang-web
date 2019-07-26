@@ -29,9 +29,8 @@
 					<!--logo-->
 					<div class="head_logo">
 						<span class="logo">统筹帮</span>
-						<select class="tab_adress">
-							<option v-for="item in cityData">{{item.title}}</option>
-							
+						<select class="tab_adress" v-model="cityId" @change="chooseCity($event)">
+							<option v-for="item in cityData" :value="item.id" >{{item.title}}</option>
 						</select>
 					</div>
 					<!--导航栏-->
@@ -39,7 +38,7 @@
 						<ul class="clear">
 							<li><a href="index.html">首页</a></li>
 							<li><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
 							<li class="active" id="nav2btn"><a>会议配套服务</a>
 								<ul class="clear nav_2 ycxiala" id="nav2">
@@ -62,7 +61,7 @@
 						<ul class="clear small_nav orgin" id="snav">
 							<li><a href="index.html">首页</a></li>
 							<li class="li_bg"><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
 							<li><a id="smnavbtn">会议配套服务</a>
 								<ul class="clear smallnav2 smycxiala" id="smnav2">
@@ -123,7 +122,7 @@
 								<div class="type_1">
 									<span>{{item.title[1]}}</span>
 								</div>
-								<div class="type_all">
+								<div class="type_all" @click="allSelect(index)">
 									<span>不限</span>
 								</div>
 								<div class="type_list1">
@@ -181,7 +180,7 @@
 													<span class="zk_price">{{item.discount}}折</span>
 												</p>
 										</div>
-										<div class="probind  nowbind" @click="intoPath('TeSeDetail.html',item.id)">立即绑定</div>
+										<div class="probind  nowbind" @click="intoPath('PrintList.html',item.id)">立即预约</div>
 									</div>
 								</li>
 
@@ -233,7 +232,8 @@
 					pageArray: [],
 					allPages: 0,
 					linkPage: '',
-					title:''
+					title:'',
+					cityId:''
 				}
 			},
 
@@ -262,6 +262,25 @@
 					self.getCityData()
 				},
 				
+				chooseCity:function(e){
+					const self = this;
+					var index = e.target.options.selectedIndex;
+					var nowCity = localStorage.getItem('cityId');
+					if(self.cityData[index].id!=nowCity){
+						self.cityId = self.cityData[index].id;
+						localStorage.setItem('cityId', self.cityData[index].id);
+						self.mainData = [];
+						self.paginate= { 
+							count: 0, 
+							currentPage: 1, 
+							pagesize:6, 
+							is_page: true, 
+						},
+						self.getMainData()
+					};	
+				
+				},
+				
 				check(id){
 					const self = this;
 					var position = self.spuArray.indexOf(id);
@@ -269,6 +288,29 @@
 						return true
 					}else{
 						return false
+					}
+				},
+				
+				allSelect(index){
+					const self = this;
+					var hasOne = false;
+					for (var i = 0; i < self.labelData[index].child.length; i++) {
+						var position = self.spuArray.indexOf(self.labelData[index]['child'][i].id);
+						if(position >= 0){	
+							hasOne = true;		
+							self.spuArray.splice(position, 1);					
+						}
+					};
+					
+					if(hasOne){
+						self.mainData = [];
+						self.paginate= { 
+							count: 0, 
+							currentPage: 1, 
+							pagesize:6, 
+							is_page: true, 
+						},
+						self.getMainData()
 					}
 				},
 				
@@ -393,7 +435,8 @@
 					var postData = {};
 					postData.paginate = window.base.cloneForm(self.paginate);
 					postData.searchItem = {
-						category_id: 100
+						category_id: 100,
+						passage2:localStorage.getItem('cityId')
 					};
 					postData.order = {
 						listorder: 'desc'

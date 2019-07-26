@@ -46,6 +46,7 @@
             float: left;
             width: 50%;
             text-align: center;
+			cursor: pointer;
         }
 
         .update_lab1 {
@@ -254,7 +255,7 @@
 						<ul class="clear">
 							<li><a href="index.html">首页</a></li>
 							<li><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
 							<li id="nav2btn"><a>会议配套服务</a>
 								<ul class="clear nav_2 ycxiala" id="nav2">
@@ -277,7 +278,7 @@
 						<ul class="clear small_nav orgin" id="snav">
 							<li><a href="index.html">首页</a></li>
 							<li><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
 							<li><a id="smnavbtn">会议配套服务</a>
 								<ul class="clear smallnav2 smycxiala" id="smnav2">
@@ -325,20 +326,20 @@
 							<div class="login_lab2"  id="logintab" @click="changeType('login')"><span :class="isLogin?'active':''">账号登录</span></div>
 							<div class="login_lab2"  id="signintab" @click="changeType('register')"><span :class="!isLogin?'active':''">账号注册</span></div>
 						</div>
-						<div class="clear tab_login sign_in" id="updatesign">
+						<div class="clear tab_login sign_in" id="updatesign" >
 							<div class="update_lab1" id="updatetab"><span>修改密码</span></div>
 						</div>
-						<div class="txt_login_k" v-if="isLogin">			
+						<div class="txt_login_k" v-if="isLogin&&!isPsd">			
 							<div class="k_name login_li login_yc" >
 								<span class="l_name login_icon"></span><input type="text" id="i_name" class="txt_sr" placeholder="账号" v-model="submitData.login_name"/>
 							</div>
 							<div class="k_pwd login_li login_yc">
 								<span class="l_pwd login_icon"></span><input type="text" id="i_pwd" class="txt_sr" placeholder="用户密码" v-model="submitData.password"/>
 							</div>	
-							<a class="update_pwd" id="updatebtn">修改密码</a>
+							<a class="update_pwd" id="updatebtn" @click="changeType('psd')">修改密码</a>
 							<button id="loginbtn" @click="submit">登录</button>						
 						</div>
-						<div class="txt_login_k" v-if="!isLogin">
+						<div class="txt_login_k" v-if="!isLogin&&!isPsd">
 							<div class="k_user login_li  sign_yc"  >
 								<span class="l_user login_icon"></span><input type="text"  class="txt_sr" placeholder="姓名" v-model="submitData.name"/>
 							</div>
@@ -365,16 +366,16 @@
 						<div class="txt_login_k" v-if="isPsd">
 							
 							<div class="k_adress login_li  update_yc" v-if="isPsd">
-								<span class="l_adress  login_icon"></span><input type="text" id="i_adress" class="txt_sr" placeholder="旧密码" />
+								<span class="l_adress  login_icon"></span><input type="text" id="i_adress" class="txt_sr" placeholder="手机号" v-model="psd.phone"/>
 							</div>
 							<div class="k_name login_li  update_yc">
-								<span class="l_name login_icon"></span><input type="text" id="i_name" class="txt_sr" placeholder="新密码" />
+								<span class="l_name login_icon"></span><input type="text" id="i_name" class="txt_sr" placeholder="新密码" v-model="psd.password"/>
 							</div>
 							<div class="k_pwd login_li  update_yc">
-								<span class="l_pwd login_icon"></span><input type="text" id="i_pwd" class="txt_sr" placeholder="确认新密码" />
+								<span class="l_pwd login_icon"></span><input type="text" id="i_pwd" class="txt_sr" placeholder="确认新密码" v-model="psd.passwordNew"/>
 							</div>
 							
-							<button id="updatebtn1" class=" update_yc">提交</button>
+							<button id="updatebtn1" class=" update_yc" @click="resetPassword">提交</button>
 						</div>
 					</div>
 				</div>
@@ -425,7 +426,11 @@
 						address:'',
 						thirdapp_id:2
 					},
-
+					psd:{
+						phone:'',
+						password:'',
+						passwordNew:''
+					}
 
 				}
 			},
@@ -446,10 +451,9 @@
 				
 				init: function(e) {
 					const self = this;
-					var user_no = window.base.GetRequest().user_no;
-					if (user_no) {
-						self.submitData.invitation = window.base.GetRequest().user_no;
-						self.isLogin = false;
+					
+					if (localStorage.getItem('user_token')) {
+						window.location.href = './MyCenter.html'
 					}
 
 				},
@@ -516,6 +520,39 @@
 						alert('请补全信息', 'none')
 					};
 				},
+				
+				resetPassword() {
+					const self = this;
+					
+					const postData = {
+						phone:self.psd.phone,
+						password:self.psd.password
+					}
+					
+					var newObject = window.base.cloneForm(self.psd);
+					
+					console.log('test',postData)
+					if (window.base.checkComplete(newObject)) {
+						const callback = (res) => {
+							if (res.solely_code == 100000) {
+								alert(res.msg)
+								self.psd = {
+									passwordNew:'',
+									password: '',
+									
+									phone:'',
+									
+								};
+								self.isPsd = false;
+							} else {
+								alert(res.msg)
+							}
+						}
+						window.base.resetPassword(postData, callback);
+					} else {
+						alert('请补全信息', 'none')
+					};
+				},
 
 				changeType: function(type) {
 					const self = this;
@@ -523,8 +560,13 @@
 					console.log(type)
 					if (type == "login") {
 						self.isLogin = true
+						self.isPsd = false
 					} else if (type == "register") {
 						self.isLogin = false
+						self.isPsd = false
+					}else if(type=='psd'){
+						self.isPsd = true
+						
 					}
 					console.log(self.isLogin)
 				},

@@ -210,13 +210,13 @@ window.base = {
 					window.location.href = loca.origin + loca.pathname;
 				} else if (res.solely_code == 200000) {
 					console.log(that.GetUrlRelativePath().substr(1, 2));
-					
 
-						localStorage.removeItem('user_token');
-						localStorage.removeItem('user_no');
-						localStorage.removeItem('user_info');
-						window.location.href = './Login.html'
-					
+
+					localStorage.removeItem('user_token');
+					localStorage.removeItem('user_no');
+					localStorage.removeItem('user_info');
+					window.location.href = './Login.html'
+
 				} else {
 					params.sCallback && params.sCallback(res);
 				};
@@ -540,8 +540,18 @@ window.base = {
 		};
 		this.getData(allParams);
 	},
-
-
+	
+	resetPassword: function(param, callback) {
+		var allParams = {
+			url: 'Project/Solely/resetPassword',
+			type: 'post',
+			data: param,
+			sCallback: function(data) {
+				callback && callback(data);
+			}
+		};
+		this.getData(allParams);
+	},
 
 	orderGet: function(param, callback) {
 		var allParams = {
@@ -762,9 +772,9 @@ window.base = {
 		};
 		this.getData(allParams)
 	},
-	
+
 	relationGet: function(param, callback) {
-	
+
 		var allParams = {
 			url: 'Common/Relation/get',
 			type: 'post',
@@ -819,7 +829,7 @@ window.base = {
 	        console.log(pass);
 	    }, */
 
-	inArray:function(value, array) {
+	inArray: function(value, array) {
 		return array.indexOf(parseInt(value));
 	},
 
@@ -1188,7 +1198,7 @@ window.base = {
 		};
 	},
 
-	setStorageArray:function(storageName, item, key, limit, type = 'unshift') {
+	setStorageArray: function(storageName, item, key, limit, type = 'unshift') {
 
 		var self = this;
 		if (localStorage.getItem(storageName)) {

@@ -234,7 +234,7 @@
 						<ul class="clear">
 							<li><a href="index.html">首页</a></li>
 							<li><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
 							<li id="nav2btn"><a>会议配套服务</a>
 								<ul class="clear nav_2 ycxiala" id="nav2">
@@ -257,7 +257,7 @@
 						<ul class="clear small_nav orgin" id="snav">
 							<li><a href="index.html">首页</a></li>
 							<li><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找应刷商</a></li>
+							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
 							<li><a id="smnavbtn">会议配套服务</a>
 								<ul class="clear smallnav2 smycxiala" id="smnav2">
@@ -412,7 +412,7 @@
 						content:'',
 						relation_id:'',
 						type:2,
-						user_type:0
+						
 					},
 					cityData:[],
 					type:[{name:'找特色会场',isSelect:false},{name:'找印刷商',isSelect:false},{name:'找兼职',isSelect:false},
@@ -458,7 +458,7 @@
 					const postData = {};
 					postData.data = {};
 					postData.data = window.base.cloneForm(self.submitData);
-					
+					postData.data.user_type = 0;
 					const callback = (res) => {
 						if (res.solely_code == 100000) {
 							alert('申请成功');
@@ -484,6 +484,7 @@
 					delete newObject.content;
 					const pass = window.base.checkComplete(newObject);
 					console.log('pass', pass)
+				
 					if (pass) {
 						
 						self.messageAdd();
