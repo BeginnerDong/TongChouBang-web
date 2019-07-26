@@ -18,13 +18,17 @@
 		<style>
         /*转盘样式*/
         .turntable{ background: rgba(0,0,0,0.6); position:fixed; top: 0;right: 0;bottom: 0; left: 0; z-index: 666;}
-        /* 大转盘样式 */
-        .turnBox{display:block;width:340px;height:340px; position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);}
+        .turnBox{display:block;width:450px;height:450px; position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);}
         .turnBox .turnplate{display:block;width:100%;position:relative;}
         .turnBox .turnplate canvas.item{width:100%; display: block;}
         .turnBox .turnplate img.pointer{position:absolute;width:31.5%;height:42.5%;left:34.6%;top:23%;}
+        /* 关闭按钮 */
+        .turntable .closeTbtn{ width: 600px; position: fixed; top: 20%; left: 50%; transform:translate(-50%,0); z-index: 55; } 
+        .turntable .closeTbtn span{ width: 40px; height:40px; border:1px solid #f0f0f0;border-radius: 50%; color: #f0f0f0; line-height: 40px; text-align: center; font-size: 36px; display: block; float: right;}
 
-			.mycenter {
+        /* 转盘样式eend */
+
+		.mycenter {
             max-width: 1200px;
             width: 80%;
             margin: 0 auto;
@@ -538,8 +542,10 @@
 			<include src="footer.html"></include>
 		</div>
 
-        <!-- 显示转盘 -->
+        <!-- 添加 显示转盘 弹框 -->
+
         <div class="turntable">
+            <div class="closeTbtn"><span>×</span></div>
             <img src="../img/zp1.png" id="shan-img" style="display:none;" />
             <img src="../img/zp2.png" id="sorry-img" style="display:none;" />
             <div class="turnBox">
@@ -551,6 +557,11 @@
         </div>
         <script type="text/javascript" src="../js/awardRotate.js"></script>
         <script type="text/javascript" src="../js/turntable.js"></script>
+        <script type="text/javascript">
+        $(".turntable .closeTbtn span").click(function(){
+            $(".turntable").hide()
+        })
+        </script>
         <!-- 显示转盘 end -->
 
 	</body>
