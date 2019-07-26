@@ -16,6 +16,14 @@
 		<script src="../js/rem.js"></script>
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
 		<style>
+        /*转盘样式*/
+        .turntable{ background: rgba(0,0,0,0.6); position:fixed; top: 0;right: 0;bottom: 0; left: 0; z-index: 666;}
+        /* 大转盘样式 */
+        .turnBox{display:block;width:340px;height:340px; position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);}
+        .turnBox .turnplate{display:block;width:100%;position:relative;}
+        .turnBox .turnplate canvas.item{width:100%; display: block;}
+        .turnBox .turnplate img.pointer{position:absolute;width:31.5%;height:42.5%;left:34.6%;top:23%;}
+
 			.mycenter {
             max-width: 1200px;
             width: 80%;
@@ -453,11 +461,7 @@
 									</div>
 								</div>
 							</div>
-						</section>
-					
-					
-
-
+					   </section>
 					<section class="mesdetail0" v-if="isRemark&&mainData&&mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].product_id!=0">
 						<div class="meshead" style=""><span style="">评论服务</span></div>
 						<div class="mesdetail">
@@ -529,11 +533,25 @@
 					</section>
 					</div>
 					<div style="text-align: center;margin:50px 0px;" v-if="isRemark"><button class="sendmes" @click="addMessage">发表评论</button></div>
-
 				</div>
 			</div>
 			<include src="footer.html"></include>
 		</div>
+
+        <!-- 显示转盘 -->
+        <div class="turntable">
+            <img src="../img/zp1.png" id="shan-img" style="display:none;" />
+            <img src="../img/zp2.png" id="sorry-img" style="display:none;" />
+            <div class="turnBox">
+                <div class="turnplate" style="background-image:url(../img/turnplate-bg.png);background-size:100% 100%;">
+                    <canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+                    <img class="pointer" src="../img/turnplate-pointer.png"/>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="../js/awardRotate.js"></script>
+        <script type="text/javascript" src="../js/turntable.js"></script>
+        <!-- 显示转盘 end -->
 
 	</body>
 	<script type="text/javascript">
