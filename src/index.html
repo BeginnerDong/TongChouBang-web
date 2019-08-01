@@ -153,7 +153,7 @@
 							 :class="index=='0'?'active':''"></li>
 						</ol>
 						<div role="listbox" class="carousel-inner">
-							<div class="item" v-for="(item, index) in swiperData.mainImg" :class="index=='0'?'active':''" style="height:7.7rem;border: none;">
+							<div class="item" v-for="(item, index) in swiperData.mainImg" :class="index=='0'?'active':''" style="height:7rem;border: none;">
 								<img :src="item.url" class="img-responsive banner_img" style="height: 100%;width: 100%">
 							</div>
 							
@@ -892,11 +892,22 @@
 		if (gdtop > wheight) {
 			actig.classList.remove("act_big_0");
 			actig.classList.add("act_big_1");
-		} else {
+		} else{
 			actig.classList.remove("act_big_1");
 			actig.classList.add("act_big_0");
 		}
+		$(window).scroll(function(){
+		　　var scrollTop = $(this).scrollTop();
+		　　var scrollHeight = $(document).height();
+		　　var windowHeight = $(this).height();
+		　　if(scrollHeight-scrollTop-windowHeight <=400){
+				actig.classList.remove("act_big_1");
+				actig.classList.add("act_big_2");
+			}
+		});
 	}
+	
+	
 </script>
 <script>
 	/*PC端*/

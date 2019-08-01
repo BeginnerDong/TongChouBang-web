@@ -69,6 +69,7 @@ html,
             margin-left: 24px;
             font-size: 20px;
             font-family: "MicrosoftYaHei";
+			width: 82px;
         }
 
         .tab_adress:focus {
@@ -249,7 +250,7 @@ html,
         }
 
         .yearsite {
-            max-width: 1204px;
+            max-width: 62.5%;
             /*width: 100%;*/
             margin: 0px auto;
 
@@ -903,9 +904,11 @@ html,
             list-style-type: none;
             margin-left: 1.25%;
             width: 24%;
+			height:140.78px;
         }
         .pro_b_l ul li img{
             width: 100%;
+			height:100%
         }
 
         .pro_b_l ul li:nth-of-type(1) {
@@ -1470,30 +1473,29 @@ html,
     font-weight: 700;
     color: #222222;
     font-family: "MicrosoftYaHei";
-    line-height: 103px;
+    line-height: 100px;
 }
 
 .aboutus_t_d {
 
     float: left;
     width: 89%;
-	height: 103px;
-	 line-height: 103px;
+	
+	 line-height: 100px;
+	  margin-left: 35px;
 }
 
 .aboutus_t_d a {
     text-decoration: none;
-    margin-left: 35px;
-    display: inline-block;
-    line-height: 50px;
+   
+   
     font-size: 18px;
     color: #666666;
     font-family: "MicrosoftYaHei";
 }
 
 .aboutus_b {
-    padding-top: 50px;
-    padding-bottom: 17px;
+	min-height: 100px;
     border-bottom: 1px solid #a7a7a7;
 }
 
@@ -1550,6 +1552,10 @@ html,
 
 .map_a {
     text-align: center;
+}
+.map_a img{
+	width: 72%;
+	height: 600px;
 }
 
 .activelist li {
@@ -2245,7 +2251,10 @@ select:focus{
  }
  
  .act_big_0{
-     position: absolute;top:0px;right: 0px;
+     position: absolute;top:60px;right:20px;
+ }
+ .act_big_2{
+     position: absolute;right:20px;
  }
  .active_big_k>div{
      padding: 20px;
@@ -2432,7 +2441,8 @@ select:focus{
 /*二级导航栏*/
 .nav_2{
     position: absolute;
-    background: #30303079;
+    background: black;
+	opacity: 0.8;
     margin-left: -1px;
     
 }

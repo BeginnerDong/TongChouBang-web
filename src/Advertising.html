@@ -156,10 +156,7 @@
 					<div class="peo_list">
 						<div class="pro_b_l">
 							<ul class="clear">
-								<li><img src="../img/pro1.jpg" /></li>
-								<li><img src="../img/pro2.jpg" /></li>
-								<li><img src="../img/pro3.jpg" /></li>
-								<li><img src="../img/pro1.jpg" /></li>
+								<li  v-for="(item,index) in mainData" v-if="index<4" @click="intoPath('PrintList.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></li>
 							</ul>
 						</div>
 						<div class="pro_n_list">

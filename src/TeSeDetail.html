@@ -190,9 +190,7 @@
         }
 
         @media screen and (min-width:1200px) {
-            .tese_intro {
-                width: 1200px;
-            }
+          
 
             .t_p {
                 line-height: 35px;
@@ -314,17 +312,24 @@
 				<div class="tese_intro clear">
 					<div class="tese_intro_left">
 						<div class="banner">
-							<div id="carousel-example-generic" data-ride="carousel" class="carousel slide">
+							<div id="carousel-example-generic" data-ride="carousel" class="carousel slide" style="position:relative">
 								<ol class="carousel-indicators">
 									<li v-for="(item, index) in mainData.bannerImg" data-target="#carousel-example-generic" :data-slide-to="index"
 									 :class="index=='0'?'active':''"></li>
 								</ol>
 								<div role="listbox" class="carousel-inner">
-									<div class="item" v-for="(item, index) in mainData.bannerImg" :class="index=='0'?'active':''" style="height:520px;border: none;">
+									<div class="item" v-for="(item, index) in mainData.bannerImg" :class="index=='0'?'active':''" style="height:600px;border: none;">
 										<img :src="item.url" class="img-responsive banner_img" style="height: 100%;width: 100%">
+										<!-- <div :data-slide-to="index"  style="font-size:20px;color: #fff;position: absolute;width:40px;height:60px;left:0;background: #000000;opacity: 0.5;top: 50%;text-align: center;line-height: 60px;">
+											<
+										</div>
+										<div :data-slide-to="index" style="font-size:20px;color: #fff;position: absolute;width:40px;height:60px;right:0;background: #000000;opacity: 0.5;top: 50%;text-align: center;line-height: 60px;">
+											>
+										</div> -->
 									</div>
 
 								</div>
+								
 							</div>
 						</div>
 					</div>
@@ -509,8 +514,8 @@
 			<div class="review_big">
 				<div class="review">
 
-					<h1 style="padding-left: 50px;font-size: 32px;color: #212121;font-family: 'MicrosoftYaHei'">评论</h1>
-					<section class="review_s" v-for="item in messageData">
+					<h1 style="padding-left: 50px;font-size: 32px;color: #212121;font-family: 'MicrosoftYaHei'">场地评论</h1>
+					<section class="review_s" v-for="item in messageData" v-if="messageData.length>0">
 						<div class="review_k">
 							<div class="review_title">
 								<h3 style="color: #212121;font-size: 20px;font-family: 'MicrosoftYaHei'">用户姓名：{{item.UserInfo?item.UserInfo.name:''}}</h3>
@@ -529,10 +534,12 @@
 							</p>
 						</div>
 					</section>
-					
-					<div class="review_btn">
+					<section class="review_s" style="padding-left: 50px;padding-bottom:30px;" v-if="messageData.length==0">
+						暂无评论，您可以发布第一个评论哦
+					</section>
+					<!-- <div class="review_btn">
 						<p style="text-align: center"><a>加载更多<span class="b_cion"></span></a></p>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<include src="footer.html"></include>
@@ -610,6 +617,14 @@
 				</div>
 				<a id="closeimgbtn" @click="closeImg">x</a>
 			</div>
+			
+			<div style="width: 40%;height: 500px;background: #000000;opacity: 0.6;position: fixed;left:30%;top: 200px;" v-if="hasOrder">
+				<div style="height: 30%;text-align: right;padding: 20px;">
+					<img src="../img/close.png" style="height: 35px;height: 35px;" @click="intoPath('MyCenter.html')"/>
+				</div>
+				<div style="font-size: 25px;color: #fff;text-align: center;line-height: 100px;">提交预约成功，负责人会在八小时之内联系你，请注意接听电话</div>
+				<div style="font-size: 25px;color: #fff;text-align: center;line-height: 100px">咨询热线：13126608897</div>
+			</div>
 		</div>
 
 	</body>
@@ -639,7 +654,8 @@
 					messageData:[],
 					previewImgData:[],
 					num:0,
-					stars:[1,2,3,4,5]
+					stars:[1,2,3,4,5],
+					hasOrder:false
 				}
 			},
 			created() {
@@ -649,7 +665,18 @@
 
 			methods: {
 
-		
+				changeBanner(index,type){
+					const self = this;
+					
+				},
+				
+				intoPath: function(url) {
+					var self = this;
+					var toUrl = url;
+					console.log(toUrl);
+					window.location.href = toUrl;
+				
+				},
 
 				init: function(e) {
 					const self = this;
@@ -796,6 +823,7 @@
 									phone: '',
 									email: ''
 								}
+								self.hasOrder = true
 							} else {
 								alert(res.msg);
 							};

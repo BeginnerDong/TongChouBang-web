@@ -29,8 +29,8 @@
 					<!--logo-->
 					<div class="head_logo">
 						<span class="logo">统筹帮</span>
-						<select class="tab_adress" v-model="cityId" @change="chooseCity($event)">
-							<option v-for="item in cityData" :value="item.id" >{{item.title}}</option>
+						<select class="tab_adress" style="width: 82px;" v-model="cityId" @change="chooseCity($event)">
+							<option v-for="item in cityData" :value="item.id" >{{item&&item.title?item.title:'定位中'}}</option>
 						</select>
 					</div>
 					<!--导航栏-->
@@ -155,17 +155,14 @@
 					</div>
 					<div class="peo_list">
 						<div class="pro_b_l">
-							<ul class="clear">
-								<li><img src="../img/pro1.jpg" /></li>
-								<li><img src="../img/pro2.jpg" /></li>
-								<li><img src="../img/pro3.jpg" /></li>
-								<li><img src="../img/pro1.jpg" /></li>
+							<ul class="clear" >
+								<li  v-for="(item,index) in mainData" v-if="index<4" @click="intoPath('TeSeDetail.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></li>
 							</ul>
 						</div>
 						<div class="pro_n_list">
 							<ul class="clear">
 								<li v-for="item in mainData" >
-									<div class="product_d">
+									<div class="product_d" @click="intoPath('TeSeDetail.html',item.id)">
 										<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 										<div class="procont">
 											<h3 class="pro_title">{{item.title}}</h2>
@@ -180,7 +177,7 @@
 													<span class="zk_price">{{item.discount}}折</span>
 												</p>
 										</div>
-										<div class="probind  nowbind" @click="intoPath('TeSeDetail.html',item.id)">立即预约</div>
+										<div class="probind  nowbind" >立即预约</div>
 									</div>
 								</li>
 								
