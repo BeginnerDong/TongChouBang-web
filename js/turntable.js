@@ -59,6 +59,7 @@ $(document).ready(function(){
 		turnplate.bRotate = !turnplate.bRotate;
 		//获取随机数(奖品个数范围内)
 		var item = rnd(1,turnplate.restaraunts.length);
+		localStorage.setItem('gift',turnplate.restaraunts[item-1]);
 		//奖品数量等于10,指针落在对应奖品区域的中心角度[252, 216, 180, 144, 108, 72, 36, 360, 324, 288]
 		rotateFn(item, turnplate.restaraunts[item-1]);
 		console.log(item);

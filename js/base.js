@@ -1,6 +1,6 @@
 window.base = {
 	g_restUrl: 'https://tongchoubang.com/api/public/index.php/api/v1/',
-
+	bus:new Vue(),
 
 
 	/* getUserToken: function(callback) {
@@ -90,6 +90,19 @@ window.base = {
 
 		var allParams = {
 			url: 'Base/FtpFile/uploadByUrl',
+			type: 'post',
+			data: param,
+			sCallback: function(data) {
+				callback && callback(data);
+			}
+		};
+		this.getData(allParams)
+	},
+
+	sendCode: function(param, callback) {
+
+		var allParams = {
+			url: 'Base/BaiduSms/sendCode',
 			type: 'post',
 			data: param,
 			sCallback: function(data) {

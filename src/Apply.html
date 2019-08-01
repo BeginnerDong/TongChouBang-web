@@ -314,8 +314,8 @@
 								</li>
 								<li>
 									<div class="app_tab"><span>*</span><label class="applay_li1">短信验证码</label></div>
-									<div class="app_txt" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码" /><a
-										 class="hqnum">获取验证码</a></div>
+									<div class="app_txt" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码" v-model="smsCode" /><a
+										 class="hqnum" @click="sendCode" >{{hasSend?'已发送':'获取验证码'}}</a></div>
 								</li>
 							</ul>
 						</div>
@@ -416,7 +416,9 @@
 					},
 					cityData:[],
 					type:[{name:'找特色会场',isSelect:false},{name:'找印刷商',isSelect:false},{name:'找兼职',isSelect:false},
-					{name:'会议自助餐',isSelect:false},{name:'活动道具租赁',isSelect:false},{name:'线下广告',isSelect:false},{name:'礼品采购',isSelect:false},{name:'店铺转让',isSelect:false}]
+					{name:'会议自助餐',isSelect:false},{name:'活动道具租赁',isSelect:false},{name:'线下广告',isSelect:false},{name:'礼品采购',isSelect:false},{name:'店铺转让',isSelect:false}],
+					smsCode:'',
+					hasSend:false	
 
 				}
 			},
@@ -426,6 +428,31 @@
 			},
 
 			methods: {
+
+				sendCode:function(){
+					var self = this;
+					
+					if(self.hasSend){
+						return;
+					};
+					if(!self.submitData.phone){
+						alert('请输入11位手机号码');
+						return;
+					};
+					var postData = {
+						params:{
+							PhoneNumbers:self.submitData.phone
+						}
+					};
+					var callback = function(res){
+						if(res.solely_code==100000){
+							self.hasSend = true;
+						}else{
+							alert('发送失败');
+						};
+					};
+					window.base.sendCode(postData, callback);
+				},
 				
 				cityChange(e){
 					const self = this;
@@ -459,6 +486,10 @@
 					postData.data = {};
 					postData.data = window.base.cloneForm(self.submitData);
 					postData.data.user_type = 0;
+					postData.smsAuth = {
+						phone:self.submitData.phone,
+						code:self.smsCode
+					};
 					const callback = (res) => {
 						if (res.solely_code == 100000) {
 							alert('申请成功');

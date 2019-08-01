@@ -29,7 +29,7 @@
 				</li>
 				<li class="clear active_tab">
 					<div class="act_t_1">短信验证</div>
-					<div class="act_t_2"><input class="act_i_2" placeholder="" /><label class="sendyzm">短信验证</label>
+					<div class="act_t_2"><input class="act_i_2" placeholder="" v-model="smsCode" /><a class="sendyzm" :style="hasSend?'text-decoration:none':''" @click="sendCode">{{hasSend?'已发送':'短信验证'}}</a>
 					</div>
 				</li>
 				<li class="clear active_tab">
@@ -63,10 +63,12 @@
 					type: 1,
 					user_type:0
 				},
+				smsCode:'',
 				labelData: [],
 				searchItem: {
 					status: 1
 				},
+				hasSend:false
 
 			}
 		},
@@ -77,6 +79,31 @@
 		},
 
 		methods: {
+
+			sendCode:function(){
+				var self = this;
+				
+				if(self.hasSend){
+					return;
+				};
+				if(!self.submitData.phone){
+					alert('请输入11位手机号码');
+					return;
+				};
+				var postData = {
+					params:{
+						PhoneNumbers:self.submitData.phone
+					}
+				};
+				var callback = function(res){
+					if(res.solely_code==100000){
+						self.hasSend = true;
+					}else{
+						alert('发送失败');
+					};
+				};
+				window.base.sendCode(postData, callback);
+			},
 
 			changeType(e) {
 				const self = this;
@@ -89,11 +116,14 @@
 				const postData = {};
 				postData.data = {};
 				postData.data = window.base.cloneForm(self.submitData);
-
+				postData.smsAuth = {
+					phone:self.submitData.phone,
+					code:self.smsCode
+				};
 				const callback = (res) => {
 					if (res.solely_code == 100000) {
 						alert('提交成功');
-						window.location.reload()
+						//window.location.reload()
 					} else {
 						alert(res.msg)
 					}
