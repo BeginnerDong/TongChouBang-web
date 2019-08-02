@@ -16,14 +16,16 @@
 		<script src="../js/rem.js"></script>
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
 		<style>
-			.casedetail_con{
-        background: #f6f6f6;
-        padding: 50px;
-    }
-    .cont_de_con{
-        background: #fff;
-        padding: 1px 30px;
-    }
+		.casedetail_con{
+			background: #f6f6f6;
+			padding: 50px;
+		}
+		.cont_de_con{
+			background: #fff;
+			padding: 1px 30px;
+		}
+		.casedetail_con .ql-editor p{ line-height: 24px; padding-bottom: 10px;}
+		.casedetail_con .ql-editor p img{ display: block; width: 100%;}
     @media screen and (min-width: 1200px){
         .cont_de_con{
             width: 1200px;
@@ -40,15 +42,16 @@
     @media screen and (max-width: 700px)
     {
         .cont_de_con{
-            width: 90%;
+            width: 100%;
             margin: 0 auto;
         }
         .casedetail_con{
-        padding: 10px;
-    }
-    .cont_de_con{
-        padding: 10px;
-    }
+			padding: 10px;
+		}
+		.cont_de_con{
+			padding: 10px;
+		}
+		.addstlyhesdPic{ height: 218px!important;}
     }
     </style>
 	</head>
@@ -134,12 +137,12 @@
 
 				</div>
 			</header>
-			<div style="width: 100%;height: 600px;">
+			<div class="addstlyhesdPic" style="width: 100%;height: 600px;">
 				<img :src="mainData.mainImg&&mainData.bannerImg&&mainData.bannerImg[0]?mainData.bannerImg[0].url:''" style="width: 100%;height: 100%;"/>
 			</div>
 			<div class="casedetail_con">
 				<div class="cont_de_con">
-					<div style="margin:40px 15px">
+					<div>
 
 						<h2 style="font-size: 24px;color:#212121">{{mainData.title}}</h2>
 						<div>

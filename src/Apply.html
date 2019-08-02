@@ -38,6 +38,7 @@
         .applay_li1 {
             font-size: 20px;
             color: #666666;
+			margin-left: 5px;
         }
 
 
@@ -156,6 +157,8 @@
             border: none;
             font-size: 22px;
             color: #fff;
+			margin: 30px auto 0 auto;
+			display: block;
         }
 
         .bookcion1 {
@@ -177,6 +180,7 @@
         @media screen and (max-width: 700px) {
             .app_tab {
                 width: 100%;
+				line-height: 36px;
             }
 
             .app_txt {
@@ -184,11 +188,10 @@
             }
 
             .applay_input {
-                height: 35px;
-            }
-
-            .applay_input {
+				height: 36px;
                 font-size: 14px;
+				padding: 0 10px;
+				box-sizing: border-box;
             }
 
             .fwtype {
@@ -196,8 +199,9 @@
             }
 
             .sendmes {
-                width: 155px;
-                height: 40px;
+                width: 200px;
+				height: 40px;
+				font-size: 18px;
             }
 
             .app_kk {
@@ -212,6 +216,18 @@
                 width: 122px;
                 margin-left: 0px;
             }
+			
+			
+			.cont_applay{ width: 90%;}
+			.applayContBox .tit span{ font-size: 20px!important;padding-left: 10px!important; line-height: 30px!important;}
+			.applayContBox .msgeLisinfo{ padding:20px 10px!important;}
+			.applayContBox .msgeLisinfo .app_ul1 li{ margin-bottom: 30px;}
+			.applayContBox .msgeLisinfo .app_ul1 li .applay_li1{ font-size: 18px;}
+			.applayContBox .msgeLisinfo .app_ul1 li .fwtype{ padding: 20px; box-sizing: border-box;}
+			.applayContBox .msgeLisinfo .app_ul1 li .textarea_0{padding:10px; box-sizing: border-box;}
+			.zdc_2 .zdcTit{ font-size: 24px!important;padding-bottom: 10px!important;}
+			.zdc_2 .zdcText p{ font-size: 14px!important; line-height: 24px!important;padding-bottom: 10px;}
+			.zdc_2 .contbox{ padding: 30px 20px!important;}
         }
     </style>
 	</head>
@@ -303,10 +319,10 @@
 			</div>
 			<div>
 				<div class="cont_applay">
-					<div>
-						<h2><span style="font-size:32px;color: #222222;display: inline-block;padding-left: 30px;border-left: 4px solid #ff556f;line-height: 50px;">注册信息</span>
+					<div class="applayContBox">
+						<h2 class="tit"><span style="font-size:32px;color: #222222;display: inline-block;padding-left: 30px;border-left: 4px solid #ff556f;line-height: 50px;">注册信息</span>
 						</h2>
-						<div style="padding: 30px;">
+						<div class="msgeLisinfo" style="padding: 30px;">
 							<ul class="app_ul1">
 								<li>
 									<div class="app_tab"><span>*</span><label class="applay_li1">手机号码</label></div>
@@ -320,10 +336,10 @@
 							</ul>
 						</div>
 					</div>
-					<div>
-						<h2><span style="font-size:32px;color: #222222;display: inline-block;padding-left: 30px;border-left: 4px solid #ff556f;line-height: 50px;">商家信息</span>
+					<div class="applayContBox">
+						<h2 class="tit"><span style="font-size:32px;color: #222222;display: inline-block;padding-left: 30px;border-left: 4px solid #ff556f;line-height: 50px;">商家信息</span>
 						</h2>
-						<div class="app_kk">
+						<div class="app_kk msgeLisinfo">
 							<ul class="app_ul1">
 								<li>
 									<div class="app_tab"><span class="bitian_x">*</span><label class="applay_li1">联系人姓名</label>
@@ -360,12 +376,14 @@
 									</div>
 								</li>
 							</ul>
-							<div style="float: right;margin-right: 20px">
-								<div style="line-height: 35px"><input type="radio" id="radiologin" name="radio1" class="" />
-									<span class="" style="margin-left: 10px" id="openmz">免责条款</span><span class="bookcion1"></span></div>
-								<button class="sendmes" @click="submit">提交入驻申请</button>
-
+							<div style=" overflow: hidden;">
+								<div style="line-height: 35px; margin-right:10%;float: right;"><input type="radio" id="radiologin" name="radio1" class="" />
+									<span class="" style="margin:0 5px; font-size: 16px;" id="openmz">免责条款</span><span class="bookcion1"></span></div>
 							</div>
+							<div>
+								<button class="sendmes" @click="submit">提交入驻申请</button>
+							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -377,9 +395,9 @@
 			</div>
 			<div class="zdc_2 sign_in" id="zdc2" style="">
 				<span class="close_tk" id="closetkbtn"></span>
-				<div style="padding: 50px;">
-					<h2 style="font-size: 30px;color: #222222;text-align: center">免责条款</h2>
-					<div>
+				<div class="contbox" style="padding: 50px;">
+					<h2 class="zdcTit" style="font-size: 30px;color: #222222;text-align: center">免责条款</h2>
+					<div class="zdcText">
 						<p style="font-size: 18px;color: #666666;line-height: 35px;">
 							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
 						</p>
@@ -568,7 +586,6 @@
 	var zdc1 = document.getElementById("zdc1");
 	var zdc2 = document.getElementById("zdc2");
 	closetkbtn.onclick = function() {
-
 		zdc1.classList.add("sign_in");
 		zdc2.classList.add("sign_in");
 	}

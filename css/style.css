@@ -70,6 +70,8 @@ html,
             font-size: 20px;
             font-family: "MicrosoftYaHei";
 			width: 82px;
+			background: rgba(0,0,0,0.3);
+			border-radius: 3px;
         }
 
         .tab_adress:focus {
@@ -469,19 +471,19 @@ html,
         }
 
         .likecion {
-            background: url("/img/likecion.png") no-repeat center;
+            background: url("../img/likecion.png") no-repeat center;
         }
 
         .servecion {
-            background: url("/img/servecion.png") no-repeat center;
+            background: url("../img/servecion.png") no-repeat center;
         }
 
         .linkcion {
-            background: url("/img/linkcion.png") no-repeat center;
+            background: url("../img/linkcion.png") no-repeat center;
         }
 
         .pricecion {
-            background: url("/img/pricecion.png") no-repeat center;
+            background: url("../img/pricecion.png") no-repeat center;
         }
 
         /*精选案例*/
@@ -568,6 +570,7 @@ html,
             }
             .case_title span{
                 font-size: 20px;
+				line-height: 36px
             }
             .case_detail{
                 top:-40px;
@@ -1222,27 +1225,27 @@ html,
 }
 
 .tab_tese li:nth-of-type(1) .tese_img {
-    background: url("/img/pficon.jpg") center no-repeat;
+    background: url("../img/pficon.jpg") center no-repeat;
 }
 
 .tab_tese li:nth-of-type(2) .tese_img {
-    background: url("/img/manicon.jpg") center no-repeat;
+    background: url("../img/manicon.jpg") center no-repeat;
 }
 
 .tab_tese li:nth-of-type(3) .tese_img {
-    background: url("/img/schoolicon.jpg") center no-repeat;
+    background: url("../img/schoolicon.jpg") center no-repeat;
 }
 
 .tab_tese li:nth-of-type(4) .tese_img {
-    background: url("/img/priceicon.jpg") center no-repeat;
+    background: url("../img/priceicon.jpg") center no-repeat;
 }
 
 .tab_tese li:nth-of-type(5) .tese_img {
-    background: url("/img/roomicon.jpg") center no-repeat;
+    background: url("../img/roomicon.jpg") center no-repeat;
 }
 
 .tab_tese li:nth-of-type(6) .tese_img {
-    background: url("/img/stopicon.jpg") center no-repeat;
+    background: url("../img/stopicon.jpg") center no-repeat;
 }
 
 .tese_gg {
@@ -1960,7 +1963,7 @@ html,
     float: right;
     position: absolute;
     z-index: 999999;
-    right: 2px;
+    right: 10px;
 }
 
 .small_nav {
@@ -2324,13 +2327,16 @@ select:focus{
     }
  }
  @media screen and (max-width:500px) {
+	.head_top{ padding: 10px 0;}
+	.head_top .nav_btn{ top: 15px;}
+	.head_top .logo{ font-size: 28px;}
     .search_k_1{
         width: 90%;
     }
     .search_text1{
         width: 100%;
         font-size: 15px;
-        height: 30px;
+        height: 34px;
     }
     .sp_0_0{
  width: 70%;
@@ -2526,7 +2532,7 @@ select:focus{
     width: 28px;
     height: 28px;
     display: block;
-    background: url("/img/closeicon.png");
+    background: url("../img/closeicon.png");
     position: absolute;
     right: 20px;
     top:20px;
@@ -2627,3 +2633,20 @@ select:focus{
     } */
 }
 /*图片加载end*/
+
+
+@media screen and (max-width: 500px){
+	div.addstlyPeoLis{padding: 0px 10px;}
+	div.addstlyPeoLis .pro_b_l ul li{ margin-left: 0;}
+	div.addstlyPeoLis .pro_n_list ul li{ height: auto; float: none;}
+	div.addstlyPeoLis .pro_n_list ul li div.proimg{float: none;}
+	div.addstlyPeoLis .pro_n_list ul li div.procont{ padding: 10px;}
+	div.addstlyPeoLis .pro_n_list ul li .pro_title{ font-size: 18px;margin: 10px 0;}
+	div.addstlyPeoLis .pro_n_list ul li .ql-editor{padding: 10px 0;}
+	div.addstlyPeoLis .pro_n_list ul li .pro_p_f{margin-top: 10px;}
+	div.addstlyPeoLis .pro_n_list ul li .y_price1{ margin-top: 5px;}
+	div.addstlyPeoLis .pro_n_list ul li div.probind{ position: static;width: 105px;clear: both;right: auto;top: auto;transform: translateY(0); margin: 10px auto 20px auto;}
+}
+
+
+

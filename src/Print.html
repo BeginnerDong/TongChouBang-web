@@ -11,11 +11,11 @@
 		<link type="text/css" rel="stylesheet" href="../css/style.css" />
 		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
 		<script src="../js/base.js" type="application/javascript"></script>
 		<script src="../js/rem.js"></script>
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
 	</head>
+
 	<body>
 		<!-- 头部 -->
 		<div id="app">
@@ -146,13 +146,13 @@
 							</ul>
 						</div>
 					</div>
-					<div class="peo_list">
+					<div class="peo_list addstlyPeoLis">
 						<div class="pro_b_l">
 							<ul class="clear">
 								<li  v-for="(item,index) in mainData" v-if="index<4" @click="intoPath('PrintList.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></li>
 							</ul>
 						</div>
-						<div class="pro_n_list">
+						<div class="pro_n_list ">
 							<ul class="clear">
 								<li v-for="item in mainData">
 									<div class="product_d">

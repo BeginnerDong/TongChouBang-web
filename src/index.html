@@ -62,6 +62,25 @@
         top: 60px;
         right: 20px;
     }
+	
+	
+	@media screen and (max-width: 500px){
+		.addIndStyle{ padding: 0 10px; min-width: 100%;}
+		.addIndStyle .oneTj{ display: none;}
+		.addIndStyle .y_info{left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5);padding:10px 5px 0 5px}
+		.addIndStyle .y_info .intro{ padding: 5px 0; display: block;}
+		.addIndStyle h2.c_title_1{margin: 0; line-height: 50px;}
+		.addIndStyle .selectdetai1{ line-height: 50px;}
+		.addIndStyle .intro .ql-editor{ line-height: 20px; max-height: 60px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 3;overflow: hidden;}
+		.addIndStyle .intro .ql-editor p span{color: #fff!important;}
+		div.addIndMeT{padding: 0 0 10px 0 ;}
+		div.addIndMeT ul{ width: 90%;padding-top: 0;}
+		div.addIndMeT ul li{  margin: 10px 0;}
+		div.addIndMeT li .m_cion{ width: 75px; height: 75px; background-size: 100%;}
+		div.addIndMeT li .cionintro{ padding-top: 10px; font-size: 20px; line-height: 26px;}
+		.addTitmore{top: auto;right: auto;display: block;text-align: center;width: 100%;position: static;}
+		div.indecaseLis.caselsit ul li{ border-bottom: 1px solid #eee;}
+		.indecaseLis .case_kk p{padding-top: 10px;}
 </style>
 
 	<body>
@@ -167,13 +186,13 @@
 			<div class="big_div">
 				<!--年会场地推荐-->
 				<div class="content bg_1" v-if="productOneData.length>0">
-					<div class="yearsite">
+					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">年会场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
 						
 						<div>
-							<div style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productOneData[0].id)">
+							<div class="oneTj" style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productOneData[0].id)">
 								<img :src="productOneData&&productOneData[0]&&productOneData[0].mainImg&&productOneData[0].mainImg[0]?productOneData[0].mainImg[0].url:''" 
 								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
@@ -204,13 +223,13 @@
 				</div>
 				<!--品牌推广专区-->
 				<div class="content bg_2" v-if="productTwoData.length>0">
-					<div class="yearsite">
+					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">品牌推广专区</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
 						
 						<div>
-							<div style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
+							<div class="oneTj" style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
 								<img :src="productTwoData&&productTwoData[0]&&productTwoData[0].mainImg&&productTwoData[0].mainImg[0]?productTwoData[0].mainImg[0].url:''" 
 								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
@@ -242,13 +261,13 @@
 				
 				<!--发布会场地-->
 				<div class="content bg_1" v-if="productThreeData.length>0">
-					<div class="yearsite">
+					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">发布会场地</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
 						
 						<div>
-							<div style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
+							<div class="oneTj" style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
 								<img :src="productThreeData&&productThreeData[0]&&productThreeData[0].mainImg&&productThreeData[0].mainImg[0]?productThreeData[0].mainImg[0].url:''" 
 								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
@@ -279,13 +298,13 @@
 				</div>
 				<!--婚宴场地推荐-->
 				<div class="content bg_2" v-if="productFourData.length>0">
-					<div class="yearsite">
+					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">婚宴场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
 						
 						<div>
-							<div style="position: relative;height: 350px;" @click="intoDetail('TeSeDetail.html',productFourData[0].id)">
+							<div class="oneTj" style="position: relative;height: 350px;" @click="intoDetail('TeSeDetail.html',productFourData[0].id)">
 								<img :src="productFourData&&productFourData[0]&&productFourData[0].mainImg&&productFourData[0].mainImg[0]?productFourData[0].mainImg[0].url:''" 
 								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
@@ -316,13 +335,13 @@
 				</div>
 				<!--商务会议场地推荐-->
 				<div class="content bg_1" v-if="productFiveData.length>0">
-					<div class="yearsite">
+					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">商务会议场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
 						
 						<div>
-							<div style="position: relative;height: 350px;" @click="intoDetail('TeSeDetail.html',productFiveData[0].id)">
+							<div class="oneTj" style="position: relative;height: 350px;" @click="intoDetail('TeSeDetail.html',productFiveData[0].id)">
 								<img :src="productFiveData&&productFiveData[0]&&productFiveData[0].mainImg&&productFiveData[0].mainImg[0]?productFiveData[0].mainImg[0].url:''" 
 								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
@@ -353,13 +372,13 @@
 				</div>
 				<!--团建场地推荐-->
 				<div class="content bg_2" v-if="productSixData.length>0">
-					<div class="yearsite">
+					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">团建场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
 						
 						<div>
-							<div style="position: relative;height: 350px;" @click="intoDetail('TeSeDetail.html',productSixData[0].id)">
+							<div class="oneTj" style="position: relative;height: 350px;" @click="intoDetail('TeSeDetail.html',productSixData[0].id)">
 								<img :src="productSixData&&productSixData[0]&&productSixData[0].mainImg&&productSixData[0].mainImg[0]?productSixData[0].mainImg[0].url:''" 
 								alt="场地预订" style="height:100%" />
 								<div class="adree_yd">
@@ -391,7 +410,7 @@
 				<include src="form.html" ></include>
 			</div>
 			<!--优点-->
-			<div class="merit">
+			<div class="merit addIndMeT">
 				<ul class="clear">
 					<li><span class="likecion m_cion"></span><span class="cionintro">海量资源</span></li>
 					<li><span class="servecion m_cion"></span><span class="cionintro">高效服务</span></li>
@@ -401,11 +420,11 @@
 			</div>
 			
 			<div style="margin-top: 60px;">
-				<div>
+				<div >
 					<h2 class="case_title"><span>精选案例</span>Selected Case</h2>
-					<p class="case_p"><a class="case_detail" href="CaseDetail.html">查看更多></a></p>
+					<p class="case_pa"><a class="case_detail addTitmore" href="CaseDetail.html">查看更多></a></p>
 				</div>
-				<div class="caselsit">
+				<div class="caselsit indecaseLis">
 					<ul class="clear">
 						<li v-for="item in mainData">
 							<div  @click="intoDetail('CaseContent.html',item.id)">
