@@ -390,7 +390,7 @@
 							self.cityData.push.apply(self.cityData, res.info.data);
 							var nowCity = localStorage.getItem('cityId');
 							if(!nowCity){
-								self.cityId = self.cityData[2].id;
+								self.cityId = self.cityData[0].id;
 								localStorage.setItem('cityId', self.cityData[0].id);
 							}else{
 								self.cityId = nowCity;
@@ -415,13 +415,15 @@
 							middleKey: 'id',
 							key: 'parentid',
 							searchItem: {
-								status: 1
+								status: 1,
+								
 							},
+							
 							condition: '='
 						}
 					};
 					postData.order = {
-						listorder: 'desc'
+						create_time: 'asc'
 					};
 					
 					var callback = function(res) {

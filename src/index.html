@@ -563,7 +563,7 @@
 						self.cityData.push.apply(self.cityData, res.info.data);
 						var nowCity = localStorage.getItem('cityId');
 						if(!nowCity){
-							self.cityId = self.cityData[2].id;
+							self.cityId = self.cityData[0].id;
 							localStorage.setItem('cityId', self.cityData[0].id);
 						}else{
 							self.cityId = nowCity;

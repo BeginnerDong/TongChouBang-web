@@ -357,8 +357,10 @@
 								<span class="l_pwd login_icon"></span><input type="text"  class="txt_sr" placeholder="用户密码"  v-model="submitData.password"/>
 							</div>
 							
-							<input type="radio" id="radiologin" name="radio1" class=" sign_yc" /><span class=" sign_yc" style="margin-left: 10px"
-							 id="openmz">免责条款<span class="bookcion  sign_yc"></span></span>
+							<img src="../img/checkbox.png" v-if="!isSelect" style="width: 16px;height: 16px;" @click="select"/>
+							<img src="../img/checkbox-a.png" v-if="isSelect" style="width: 16px;height: 16px;" @click="select"/>
+							<span class=" sign_yc" style="margin-left: 10px"
+							 @click="isShowRule">免责条款<span class="bookcion  sign_yc"></span></span>
 
 							<button id="loginbtn" @click="register" >注册</button>
 						
@@ -382,27 +384,21 @@
 			</div>
 			<!--免责条款-->
 
-			<div class="zdc_1 sign_in" id="zdc1" style="">
+			<div class="zdc_1" id="zdc1" style="" v-if="showRule">
 			</div>
-			<div class="zdc_2 sign_in" id="zdc2" style="">
-				<span class="close_tk" id="closetkbtn"></span>
-				<div class="zdc_3">
-					<h2 style="font-size: 30px;color: #222222;text-align: center">免责条款</h2>
-					<div>
+			<div class="zdc_2" id="zdc2" style="position: fixed;" v-if="showRule">
+				<span class="close_tk"  @click="isShowRule"></span>
+				<div class="contbox" style="padding: 50px;">
+					<h2 class="zdcTit" style="font-size: 30px;color: #222222;text-align: center">{{artData.title}}</h2>
+					<div class="zdcText">
 						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
+							<div class="content ql-editor " style="clear: both;">
+								<p class="p1 " v-html="artData.content"></p>
+							</div>
+			
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 
@@ -430,8 +426,10 @@
 						phone:'',
 						password:'',
 						passwordNew:''
-					}
-
+					},
+					isSelect:false,
+					artData:{},
+					showRule:false
 				}
 			},
 			
@@ -451,11 +449,48 @@
 				
 				init: function(e) {
 					const self = this;
-					
+					self.getArticleData();
 					if (localStorage.getItem('user_token')) {
 						window.location.href = './MyCenter.html'
 					}
 
+				},
+				
+				getArticleData() {
+					const self = this;
+					const postData = {};
+					postData.searchItem = {
+						thirdapp_id: 2,
+					};
+				
+					postData.getBefore = {
+						caseData: {
+							tableName: 'Label',
+							searchItem: {
+								title: ['=', ['免责声明']],
+							},
+							middleKey: 'menu_id',
+							key: 'id',
+							condition: 'in',
+						},
+					};
+					const callback = (res) => {
+						if (res.info.data.length > 0) {
+							self.artData = res.info.data[0];	
+						} 
+						
+					};
+					window.base.articleGet(postData, callback);
+				},
+				
+				select(){
+					const self = this;
+					self.isSelect = !self.isSelect
+				},
+				
+				isShowRule(){
+					const self = this;
+					self.showRule = !self.showRule
 				},
 
 				submit: function() {
@@ -500,6 +535,10 @@
 					var newObject = window.base.cloneForm(self.submitData);
 					console.log('test',postData)
 					if (window.base.checkComplete(newObject)) {
+						if(!self.isSelect){
+							alert('请阅读条款并同意');
+							return
+						};
 						const callback = (res) => {
 							if (res.solely_code == 100000) {
 								alert(res.msg)

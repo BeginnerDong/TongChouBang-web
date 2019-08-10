@@ -640,7 +640,7 @@
                         postData.searchItem = {};
                         postData.searchItem.order_no = self.gift_order_no;
                         postData.data = {
-                            express_info:gift
+                            express_info:gift+'%'
                         };
                         var callback = res => {
                             if (res.solely_code==100000) {

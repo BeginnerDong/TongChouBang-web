@@ -314,8 +314,8 @@
 				</div>
 			</header>
 			<!--顶部图片-->
-			<div>
-				<img src="../img/apply_bg.jpg" style="width: 100%" />
+			<div style="width: 100%;height: 700px;">
+				<img :src="bannerData.mainImg&&bannerData.mainImg[0]?bannerData.mainImg[0].url:''" style="width: 100%;height:100%" />
 			</div>
 			<div>
 				<div class="cont_applay">
@@ -369,7 +369,7 @@
 										</select></div>
 								</li>
 								<li>
-									<div class="app_tab" style="float: left;margin-top:0px"><span class="bitian_x">*</span><label class="applay_li1">备注</label></div>
+									<div class="app_tab" style="float: left;margin-top:0px"><span class="bitian_x"></span><label class="applay_li1">备注</label></div>
 									<div class="app_txt">
 										<textarea placeholder="请简单描述，非必填" class="textarea_0" v-model="submitData.content">
 			                        </textarea>
@@ -377,8 +377,12 @@
 								</li>
 							</ul>
 							<div style=" overflow: hidden;">
-								<div style="line-height: 35px; margin-right:10%;float: right;"><input type="radio" id="radiologin" name="radio1" class="" />
-									<span class="" style="margin:0 5px; font-size: 16px;" id="openmz">免责条款</span><span class="bookcion1"></span></div>
+								<div style="line-height: 35px; margin-right:10%;float: right;">
+									<img src="../img/checkbox.png" v-if="!isSelect" style="width: 16px;height: 16px;" @click="select"/>
+									<img src="../img/checkbox-a.png" v-if="isSelect" style="width: 16px;height: 16px;" @click="select"/>
+									<span class="" style="margin:0 5px; font-size: 16px;" id="openmz">免责条款</span>
+									<span class="bookcion1"></span>
+								</div>
 							</div>
 							<div>
 								<button class="sendmes" @click="submit">提交入驻申请</button>
@@ -393,29 +397,23 @@
 
 			<div class="zdc_1 sign_in" id="zdc1" style="">
 			</div>
-			<div class="zdc_2 sign_in" id="zdc2" style="">
+			<div class="zdc_2 sign_in" id="zdc2" style="position: fixed;">
 				<span class="close_tk" id="closetkbtn"></span>
 				<div class="contbox" style="padding: 50px;">
-					<h2 class="zdcTit" style="font-size: 30px;color: #222222;text-align: center">免责条款</h2>
+					<h2 class="zdcTit" style="font-size: 30px;color: #222222;text-align: center">{{artData.title}}</h2>
 					<div class="zdcText">
 						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							1、内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-						</p>
+							<div class="content ql-editor " style="clear: both;">
+								<p class="p1 " v-html="artData.content"></p>
+							</div>
+
 					</div>
 				</div>
 			</div>
 		</div>
 
 	</body>
+	
 	<script type="text/javascript">
 		var app = new Vue({
 			el: '#app',
@@ -436,13 +434,17 @@
 					type:[{name:'找特色会场',isSelect:false},{name:'找印刷商',isSelect:false},{name:'找兼职',isSelect:false},
 					{name:'会议自助餐',isSelect:false},{name:'活动道具租赁',isSelect:false},{name:'线下广告',isSelect:false},{name:'礼品采购',isSelect:false},{name:'店铺转让',isSelect:false}],
 					smsCode:'',
-					hasSend:false	
-
+					hasSend:false,
+					bannerData:{},
+					isSelect:false,
+					artData:{}
 				}
 			},
 			created() {
 				const self = this;
-				self.getCityData()
+				self.getCityData();
+				self.getBannerData()
+				self.getArticleData()
 			},
 
 			methods: {
@@ -472,6 +474,38 @@
 					window.base.sendCode(postData, callback);
 				},
 				
+				getArticleData() {
+					const self = this;
+					const postData = {};
+					postData.searchItem = {
+						thirdapp_id: 2,
+					};
+				
+					postData.getBefore = {
+						caseData: {
+							tableName: 'Label',
+							searchItem: {
+								title: ['=', ['免责声明']],
+							},
+							middleKey: 'menu_id',
+							key: 'id',
+							condition: 'in',
+						},
+					};
+					const callback = (res) => {
+						if (res.info.data.length > 0) {
+							self.artData = res.info.data[0];	
+						} 
+		
+					};
+					window.base.articleGet(postData, callback);
+				},
+				
+				select(){
+					const self = this;
+					self.isSelect = !self.isSelect
+				},
+				
 				cityChange(e){
 					const self = this;
 					console.log(e)
@@ -495,6 +529,22 @@
 						}
 					};
 					console.log('self.city', self.city)
+					window.base.labelGet(postData, callback);
+				},
+				
+				getBannerData() {
+					var self = this;
+					var postData = {};
+							
+					postData.searchItem = {
+						title:'申请入驻图'
+							
+					};
+					var callback = function(res) {
+						if (res.info.data.length > 0) {
+							self.bannerData = res.info.data[0]
+						}
+					};
 					window.base.labelGet(postData, callback);
 				},
 				
@@ -535,7 +585,10 @@
 					console.log('pass', pass)
 				
 					if (pass) {
-						
+						if(!self.isSelect){
+							alert('请阅读条款并同意');
+							return
+						};
 						self.messageAdd();
 					} else {
 						alert('请补全信息');
@@ -595,8 +648,7 @@
 		zdc1.classList.remove("sign_in");
 		zdc2.classList.remove("sign_in");
 		/* alert(document.body.scrollTop); */
-		document.body.scrollTop = 0;
-		document.documentElement.scrollTop = 0;
+
 	}
 </script>
 <script>

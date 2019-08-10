@@ -19,7 +19,7 @@ var turnplate={
 
 $(document).ready(function(){
 	//动态添加大转盘的奖品与奖品区域背景颜色
-	turnplate.restaraunts = ["0积分", "1积分", "1.5积分", "2积分", "2.5积分", "3积分", "3.5积分 ", "4积分", "4.5积分", "5积分"];
+	turnplate.restaraunts = ["0", "1", "1.5", "2", "2.5", "3", "3.5 ", "4", "4.5", "5"];
 	turnplate.colors = ["#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF","#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF","#FFF4D6", "#FFFFFF"];
 
 	
@@ -48,7 +48,7 @@ $(document).ready(function(){
 			animateTo:angles+1800,
 			duration:8000,
 			callback:function (){
-				alert(txt);
+				/* alert(txt); */
 				turnplate.bRotate = !turnplate.bRotate;
 			}
 		});
@@ -58,6 +58,9 @@ $(document).ready(function(){
 		if(turnplate.bRotate)return;
 		turnplate.bRotate = !turnplate.bRotate;
 		//获取随机数(奖品个数范围内)
+		if(localStorage.getItem('gift')){
+			return
+		}
 		var item = rnd(1,turnplate.restaraunts.length);
 		localStorage.setItem('gift',turnplate.restaraunts[item-1]);
 		//奖品数量等于10,指针落在对应奖品区域的中心角度[252, 216, 180, 144, 108, 72, 36, 360, 324, 288]
