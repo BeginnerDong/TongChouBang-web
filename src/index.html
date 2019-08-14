@@ -62,6 +62,37 @@
         top: 60px;
         right: 20px;
     }
+	.yearlist .intro{
+		max-height: 80px;
+		display: block;
+	}
+	.yearlist .intro .ql-editor{
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		line-height: 20px;
+	}
+	.yearlist .y_price{ font-weight: bold;}
+	.yearlist .y_info{left: 15px; right: 15px;}
+	.yearlist .intro .ql-editor p,.yearlist .intro .ql-editor span{
+		color: #fff!important;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		word-break: break-all;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2; 
+	}
+	.active_big_k{ width: 250px;}
+	.active_big_k>div{padding: 15px;}
+	.active_big_k .act_t_1{ width: 35%;}
+	.active_big_k .select_t_1,.active_big_k .act_t_2,.active_big_k .activ_Input{width:65%;padding-left: 5px;box-sizing: border-box;color: #333;}
+	.active_big_k .act_t_2 textarea{width: 100%;box-sizing: border-box;height: 60px;padding: 5px;background: #f5f5f5;}
+	.active_big_k .sendyzm{width: 45%;}
+	.active_big_k .act_i_2{ width: 55%;}
+	.active_big_k .act_plan{margin: 10px auto;}
+	.active_big_k .act_btn{  height: 40px;font-size: 20px;margin: 15px auto;}
+	
 	
 	
 	@media screen and (max-width: 500px){
@@ -192,7 +223,7 @@
 						</div>
 						
 						<div>
-							<div class="oneTj" style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productOneData[0].id)">
+							<div class="oneTj" style="position: relative;height:237px" @click="intoDetail('TeSeDetail.html',productOneData[0].id)">
 								<img :src="productOneData&&productOneData[0]&&productOneData[0].mainImg&&productOneData[0].mainImg[0]?productOneData[0].mainImg[0].url:''" 
 								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
@@ -229,7 +260,7 @@
 						</div>
 						
 						<div>
-							<div class="oneTj" style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
+							<div class="oneTj" style="position: relative;height:237px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
 								<img :src="productTwoData&&productTwoData[0]&&productTwoData[0].mainImg&&productTwoData[0].mainImg[0]?productTwoData[0].mainImg[0].url:''" 
 								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
@@ -267,7 +298,7 @@
 						</div>
 						
 						<div>
-							<div class="oneTj" style="position: relative;height:350px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
+							<div class="oneTj" style="position: relative;height:237px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
 								<img :src="productThreeData&&productThreeData[0]&&productThreeData[0].mainImg&&productThreeData[0].mainImg[0]?productThreeData[0].mainImg[0].url:''" 
 								alt="场地预订" style="height:100%"/>
 								<div class="adree_yd">
