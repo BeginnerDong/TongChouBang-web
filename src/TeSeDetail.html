@@ -575,7 +575,10 @@
 						</li>
 						<li class="tr1">
 							<div>*使用时段</div>
-							<div>0:00-24:00</div>
+							<div>
+								<input type="time" style="text-align: center;" v-model="startTime"/>
+								<input type="time" style="text-align: center;" v-model="endTime"/>
+							</div>
 						</li>
 						<li class="tr1">
 							<div class="yy_tt_t">*购买数量</div>
@@ -660,9 +663,10 @@
 						remarks: '',
 						name: '',
 						phone: '',
-						email: ''
+						email: '',
+						group_no:''
 					},
-					count: 40,
+					count: 1,
 					cityData:[],
 					skuData:[],
 					imgData:[],
@@ -672,7 +676,9 @@
 					previewImgData:[],
 					num:0,
 					stars:[1,2,3,4,5],
-					hasOrder:false
+					hasOrder:false,
+					startTime:'',
+					endTime:''
 				}
 			},
 			created() {
@@ -798,11 +804,13 @@
 				addOrder() {
 
 					const self = this;
+					self.submitData.group_no = self.startTime +'-'+self.endTime;
 					var newObject = window.base.cloneForm(self.submitData);
 					delete newObject.remarks;
 					delete newObject.scale;
 					delete newObject.email;
 					const pass = window.base.checkComplete(newObject);
+					console.log(self.submitData)
 					if (pass) {
 						const postData = {
 							token: localStorage.getItem('user_token'),
