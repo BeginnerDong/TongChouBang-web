@@ -83,14 +83,14 @@ html,
         .head_nav >ul>li {
             float: left;
             list-style-type: none;
-            padding: 0 24px;
+            padding: 0 15px;
             line-height: 60px;
             cursor: pointer;
         }
 
         .head_nav >ul >li a {
             color: #fff;
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 500;
             text-decoration: none;
             font-family: "MicrosoftYaHei";
@@ -103,9 +103,10 @@ html,
         .head_abnoutus ul li {
             float: left;
             list-style-type: none;
-            padding: 0 20px;
+            padding: 0 10px;
             line-height: 54px;
         }
+		.head_top .logo{font-size: 30px; line-height: 60px;}
 
         .head_logo,
         .head_nav {
@@ -117,10 +118,9 @@ html,
         }
 
         .head_nav {
-            width: 890px;
+            /* width: 600px; */
             margin: 0 auto;
-
-            margin-left: 40px;
+            margin-left: 20px;
         }
 
         .head_abnoutus li {
@@ -129,7 +129,7 @@ html,
         }
 
         .head_abnoutus a {
-            font-size: 18px;
+            font-size: 16px;
             color: #fff;
         }
 
@@ -153,15 +153,16 @@ html,
 
         /*搜索*/
         .search {
-            width: 700px;
-            height: 80px;
+            width: 75%;
+            height: 100%;
             font-size: 20px;
             border: none;
-            line-height: 60px;
+            line-height: 100%;
             background: #ececec;
             color: #999999;
             padding-left: 20px;
             font-family: "McirosoftYaHei";
+			float: left;
         }
 
         .search:focus {
@@ -170,14 +171,16 @@ html,
 
         .search_btn {
             background: #ff556f;
-            height: 80px;
-            width: 120px;
+            height: 100%;
+            width: 25%;
             font-size: 20px;
             border: none;
-            margin-top: 2px;
-            line-height: 80px;
+            margin-top: 0px;
+            line-height: 100%;
             font-family: "McirosoftYaHei";
             color: #ffffff;
+			float: left;
+			
         }
 
         .search_btn:foucs {
@@ -190,49 +193,31 @@ html,
 
         .top_search {
             position: absolute;
-            bottom: 140px;
-            width: 910px;
+			width: 40%;
+            bottom: 20%;
+			height: 70px;
             left: 50%;
-            transform: translateX(-50%)
+			z-index: 99998;
+            transform: translateX(-50%);
         }
 
-        @media screen and (max-width: 1542px) {
-            .search {
-                width: 600px !important;
-            }
-            .top_search{
-                width: 720px;
-            }
-        }
+
         @media screen and (max-width: 764px){
             .top_search {
-                width: 524px;
+				width: 60%;
                 height: 60px;
-            }
-            .search{
-                width: 400px !important;
-                height: 60px;
-            }
-            .search_btn{
-                width: 120px;
-                height: 60px;
-                line-height:60px;
+				bottom: 20%;
             }
         }
         @media screen and (max-width: 525px){
             .top_search {
-                width: 300px;
+				width: 80%;
                 height: 40px;
             }
             .search{
-                width: 226px !important;
-                height: 40px;
                 font-size: 14px;
             }
             .search_btn{
-                width: 74px;
-                height: 40px;
-                line-height:40px;
                 font-size: 14px;
             }
         }
@@ -435,7 +420,7 @@ html,
         }
 
         .merit ul {
-            max-width: 1204px;
+            max-width: 62.5%;
             width: 80%;
             margin: 0 auto;
             padding: 0px 0px;
@@ -446,9 +431,8 @@ html,
             list-style-type: none;
             line-height: 180px;
             vertical-align: middle;
-            margin-left: 2%;
-            width: 23%;
-            text-align: center;
+            width: 25%;
+			box-sizing: border-box;
         }
 
         .merit ul li:nth-of-type(1) {
@@ -459,32 +443,31 @@ html,
         }
         .m_cion {
             display: inline-block;
-            width: 90px;
-            height: 90px;
-
+            width: 85px;
+            height: 85px;
             vertical-align: middle;
         }
 
         .cionintro {
             display: inline-block;
-            margin-left: 30px;
-            font-size: 24px;
+            margin-left: 12px;
+            font-size: 22px;
         }
 
         .likecion {
-            background: url("../img/likecion.png") no-repeat center;
+            background: url("../img/likecion.png") no-repeat center/100%;
         }
 
         .servecion {
-            background: url("../img/servecion.png") no-repeat center;
+            background: url("../img/servecion.png") no-repeat center/100%;
         }
 
         .linkcion {
-            background: url("../img/linkcion.png") no-repeat center;
+            background: url("../img/linkcion.png") no-repeat center/100%;
         }
 
         .pricecion {
-            background: url("../img/pricecion.png") no-repeat center;
+            background: url("../img/pricecion.png") no-repeat center/100%;
         }
 
         /*精选案例*/
@@ -492,11 +475,18 @@ html,
             padding: 20px 0px;
         }
         .case_kk p{
-            line-height: 35px;
-            font-size: 18px;
+            line-height: 26px;
+            font-size: 16px;
             font-family: "MicrosoftYaHei";
             color:#212121;
-            margin-top: 20px;
+            margin-top: 10px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			display: -webkit-box;
+			word-break: break-all;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			
         }
         .case_title {
             text-align: center;
@@ -510,10 +500,11 @@ html,
             text-align: center;
             position: relative;
             color: #0a0a0a;
-            font-size: 40px;
+            font-size: 36px;
         }
         @media screen and (min-width: 1192px){
-            .case_title span::before,
+		
+        .case_title span::before,
         .case_title span::after {
             content: "";
             position: absolute;
@@ -548,7 +539,7 @@ html,
         }
 
         .caselsit {
-            max-width: 1204px;
+            max-width: 62.5%;
             width: auto;
             margin: 0 auto;
         }
@@ -578,6 +569,10 @@ html,
             }
         }
         @media screen and (max-width: 1192px){
+			.top_search {
+				width: 60%;
+				height: 60px;
+			}
             .merit ul li{
                 line-height:unset;
             }
@@ -1838,17 +1833,17 @@ html,
     }
 }
 
-@media screen and (max-width:1700px) {
-    .head_abnoutus {
+/* @media screen and (max-width:1700px) {
+   .head_abnoutus {
         display: none;
     }
 
     .me_rk {
         display: block;
     }
-}
+} */
 
-@media screen and (min-width:1700px) {
+/* @media screen and (min-width:1700px) {
     .me_rk {
         display: none;
     }
@@ -1856,28 +1851,15 @@ html,
     .head_abnoutus {
         display: block;
     }
-}
+} */
 @media screen and (max-width:1390px) {
     .yearsite {
         padding: 0px 20px;
     }
 
-    .head_nav ul li a {
-        font-size: 21px;
-    }
-
-    .head_nav ul li {
-        padding: 0 8px;
-    }
-
-    .head_nav {
-        width: 600px;
-    }
-
-    .head_top>div {
-        padding: 10px 17px;
-    }
+    
 }
+
 @media screen and (max-width:330px) {
 .head_top .logo {
     font-size: 40px;
@@ -1892,6 +1874,7 @@ html,
     position: absolute;
     top: 30px;
     right: 21px;
+	display: none;
 }
 
 .btn_me {
@@ -2140,6 +2123,7 @@ color: #fff
 }
 
 @media screen and (min-width:959px) {
+	
     .head_nav {
         display: block;
     }
@@ -2152,6 +2136,13 @@ color: #fff
 
 
     @media screen and (max-width:900px) {
+		.head_abnoutus {
+		     display: none;
+		 }
+		
+		 .me_rk {
+		     display: block;
+		 }
         .caselsit ul li {
             width: 100%;
             margin-left: 0;
