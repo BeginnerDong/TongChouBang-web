@@ -298,24 +298,25 @@ html,
     background: rgba(0,0,0,0.4);
     color: #fff;
 }
-        .c_title_1 {
-            float: left;
-            font-size: 34px;
-            color:#222222;
-            font-family: "MicrosoftYaHei";
-            font-weight: normal;
-        }
 
-        .selectdetai1 {
-            float: right;
-            line-height: 78px;
-        }
+.c_title_1 {
+	float: left;
+	font-size: 30px;
+	color:#222222;
+	font-family: "MicrosoftYaHei";
+	font-weight: normal;
+}
 
-        .selectdetai1 a {
-            color: #999999;
-            font-family: "MicrosoftYaHei";
-            font-size: 16px;
-        }
+.selectdetai1 {
+	float: right;
+	line-height: 70px;
+}
+
+.selectdetai1 a {
+	color: #999999;
+	font-family: "MicrosoftYaHei";
+	font-size: 16px;
+}
 .adree_yd{
     position: absolute;top:42px;left:42px;color:#fff;
 }
