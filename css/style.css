@@ -56,8 +56,8 @@ html,
         .head_top .logo {
             font-family:'MicrosoftYaHei';
             color: #fff;
-			font-size: 30px; 
-			line-height: 60px;
+			font-size: 26px; 
+			line-height: 50px;
         }
 
         .tab_adress {
@@ -67,7 +67,7 @@ html,
             vertical-align: middle;
             margin-bottom: 14px;
             margin-left: 15px;
-            font-size: 20px;
+            font-size: 16px;
             font-family: "MicrosoftYaHei";
 			width: 82px;
 			background: rgba(0,0,0,0.3);
@@ -83,14 +83,14 @@ html,
         .head_nav >ul>li {
             float: left;
             list-style-type: none;
-            padding: 0 15px;
-            line-height: 60px;
+            padding: 0 12px;
+            line-height: 50px;
             cursor: pointer;
         }
 
         .head_nav >ul >li a {
             color: #fff;
-            font-size: 20px;
+            font-size: 16px;
             text-decoration: none;
             font-family: "MicrosoftYaHei";
         }
@@ -154,7 +154,7 @@ html,
         .search {
             width: 75%;
             height: 100%;
-            font-size: 20px;
+            font-size: 16px;
             border: none;
             line-height: 100%;
             background: #ececec;
@@ -172,7 +172,7 @@ html,
             background: #ff556f;
             height: 100%;
             width: 25%;
-            font-size: 20px;
+            font-size: 16px;
             border: none;
             margin-top: 0px;
             line-height: 100%;
@@ -194,7 +194,7 @@ html,
             position: absolute;
 			width: 40%;
             bottom: 20%;
-			height: 60px;
+			height: 50px;
             left: 50%;
 			z-index: 99998;
             transform: translateX(-50%);
@@ -288,24 +288,26 @@ html,
 
 .c_title_1 {
 	float: left;
-	font-size: 30px;
+	font-size: 24px;
 	color:#222222;
 	font-family: "MicrosoftYaHei";
 	font-weight: normal;
+	margin-bottom: 20px;
 }
 
 .selectdetai1 {
 	float: right;
-	line-height: 70px;
+	line-height: 60px;
+    margin-top: 6px;
 }
 
 .selectdetai1 a {
-	color: #999999;
+	color: #999;
 	font-family: "MicrosoftYaHei";
-	font-size: 16px;
+	font-size: 14px;
 }
 .adree_yd{
-    position: absolute;top:42px;left:42px;color:#fff;
+    position: absolute;top:0px;left:20px;color:#fff;
 }
         .tab_1 {
             margin-bottom: 20px;
@@ -445,15 +447,15 @@ html,
         }
         .m_cion {
             display: inline-block;
-            width: 85px;
-            height: 85px;
+            width: 75px;
+            height: 75px;
             vertical-align: middle;
         }
 
         .cionintro {
             display: inline-block;
-            margin-left: 12px;
-            font-size: 22px;
+            margin-left: 10px;
+            font-size: 18px;
         }
 
         .likecion {
@@ -492,8 +494,9 @@ html,
         }
         .case_title {
             text-align: center;
-            color: #a0a0a0;
-            line-height: 50px;
+            color: #999;
+            line-height: 40px;
+			font-size: 26px;
             
         }
 
@@ -502,7 +505,7 @@ html,
             text-align: center;
             position: relative;
             color: #0a0a0a;
-            font-size: 36px;
+            font-size: 28px;
         }
         @media screen and (min-width: 1192px){
 		
@@ -573,7 +576,6 @@ html,
         @media screen and (max-width: 1192px){
 			.top_search {
 				width: 60%;
-				height: 60px;
 			}
             .merit ul li{
                 line-height:unset;
