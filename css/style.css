@@ -50,14 +50,14 @@ html,
         }
 
         .head_top>div {
-            padding: 10px 50px;
+            padding: 0px 40px;
         }
 
         .head_top .logo {
             font-family:'MicrosoftYaHei';
-            font-size: 40px;
             color: #fff;
-            font-weight: bold;
+			font-size: 30px; 
+			line-height: 60px;
         }
 
         .tab_adress {
@@ -66,7 +66,7 @@ html,
             color: #fff;
             vertical-align: middle;
             margin-bottom: 14px;
-            margin-left: 24px;
+            margin-left: 15px;
             font-size: 20px;
             font-family: "MicrosoftYaHei";
 			width: 82px;
@@ -91,7 +91,6 @@ html,
         .head_nav >ul >li a {
             color: #fff;
             font-size: 20px;
-            font-weight: 500;
             text-decoration: none;
             font-family: "MicrosoftYaHei";
         }
@@ -103,10 +102,10 @@ html,
         .head_abnoutus ul li {
             float: left;
             list-style-type: none;
-            padding: 0 10px;
+            padding-left: 15px;
             line-height: 54px;
         }
-		.head_top .logo{font-size: 30px; line-height: 60px;}
+		
 
         .head_logo,
         .head_nav {
@@ -120,7 +119,7 @@ html,
         .head_nav {
             /* width: 600px; */
             margin: 0 auto;
-            margin-left: 20px;
+            margin:0 10px;
         }
 
         .head_abnoutus li {
@@ -129,7 +128,7 @@ html,
         }
 
         .head_abnoutus a {
-            font-size: 16px;
+            font-size: 14px;
             color: #fff;
         }
 
@@ -195,7 +194,7 @@ html,
             position: absolute;
 			width: 40%;
             bottom: 20%;
-			height: 70px;
+			height: 60px;
             left: 50%;
 			z-index: 99998;
             transform: translateX(-50%);
@@ -203,19 +202,22 @@ html,
 
 
         @media screen and (max-width: 764px){
+			.head_top>div{
+				padding: 0 15px;
+			}
             .top_search {
 				width: 60%;
-                height: 60px;
 				bottom: 20%;
             }
         }
         @media screen and (max-width: 525px){
             .top_search {
-				width: 80%;
-                height: 40px;
+				width: 70%!important;
+                height: 36px!important;
             }
             .search{
                 font-size: 14px;
+				padding-left: 10px;
             }
             .search_btn{
                 font-size: 14px;
@@ -1914,8 +1916,8 @@ html,
 }
 
 .nav_btn {
-    width: 50px;
-    height: 50px;
+    width: 36px;
+    height: 36px;
     background: #3e3e3e;
     border-radius: 8px;
     transition: 1s;
@@ -1926,7 +1928,7 @@ html,
     display: block;
     border: 1px solid #807e7e;
     height: 1px;
-    margin-top: 10px;
+    margin-top: 6px;
     transition: 1s;
 }
 
@@ -2092,9 +2094,18 @@ color: #fff
         left: 37px;
         display: block;
     }
+	.head_abnoutus{
+		display: none;
+	}
+	.banner .carousel-indicators{
+		bottom: 5px!important;
+		line-height: 20px;
+		margin-bottom: 0!important;
+	}
 }
 
 @media screen and (max-width:959px) {
+	
     .head_nav {
         display: none;
     }
@@ -2328,7 +2339,8 @@ select:focus{
  @media screen and (max-width:500px) {
 	.head_top{ padding: 10px 0;}
 	.head_top .nav_btn{ top: 15px;}
-	.head_top .logo{ font-size: 28px;}
+	.head_top .logo{ font-size: 22px; line-height: 40px;}
+	.tab_adress{font-size: 16px;}
     .search_k_1{
         width: 90%;
     }
