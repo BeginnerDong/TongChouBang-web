@@ -309,6 +309,9 @@ html,
 .adree_yd{
     position: absolute;top:0px;left:20px;color:#fff;
 }
+.adree_yd h2{
+	font-size: 22px;
+}
         .tab_1 {
             margin-bottom: 20px;
         }
@@ -385,7 +388,7 @@ html,
 
         .y_name {
             float: left;
-            font-size: 18px;
+            font-size: 16px;
             color: #fff;
             font-family: "MicrosoftYaHei";
         }
@@ -1160,7 +1163,7 @@ html,
 /*找特色会场css*/
 .tese_intro {
     max-width: 1390px;
-    width: 100%;
+    width: 90%;
     margin: 50px auto;
 }
 
@@ -1267,8 +1270,15 @@ html,
 }
 
 .tesedetail_1 {
+	
     background: #f6f6f6;
     width: 100%;
+}
+.tesedetali_top{
+	width: 100%;
+	padding:20px 5%;
+	box-sizing: border-box;
+	margin: 0 auto;
 }
 
 .tesedetail_2 {
@@ -1338,7 +1348,7 @@ html,
 }
 
 .tab_head {
-    padding: 0px 40px;
+    padding: 0px 5%;
     background: #eeeeee;
 }
 
@@ -1353,7 +1363,8 @@ html,
 }
 
 .tesedetail_m {
-    padding: 0 40px 40px 40px;
+	
+    padding: 0 5% 40px 5%;
     position: relative;
 }
 
@@ -1363,7 +1374,9 @@ html,
     color: #666666;
     height: 100%;
 }
-
+.aboutus_t_b{
+	padding: 0 5%;
+}
 .tab_mes_t {
     float: left;
     font-size: 18px;
@@ -1469,7 +1482,7 @@ html,
 }
 
 .aboutus_t_t {
-    width: 8%;
+    width: 12%;
     float: left;
     height: 100%;
     font-size: 26px;
@@ -1482,7 +1495,7 @@ html,
 .aboutus_t_d {
 
     float: left;
-    width: 89%;
+    width: 82%;
 	
 	 line-height: 100px;
 	  margin-left: 35px;
@@ -1731,24 +1744,20 @@ html,
 /*找会场结束*/
 /*index.兼容出来css*/
 @media screen and (max-width:1169px) {
-    .yearlist ul li {
-        width: 49%;
-        margin-left: 2%;
-        margin-top: 6px;
-    }
+    
 
     .yearlist ul li:nth-of-type(3) {
-        margin-left: 0%;
+        /* margin-left: 0%; */
     }
 }
 
 @media screen and (max-width:900px) {
-    .yearlist ul li {
-        width: 100%;
-		height: 614px;
-        margin-left: 0%;
-        margin-top: 6px;
-    }
+	.yearlist ul li {
+	    width: 49%;
+	    margin-left: 2%;
+	    margin-top: 6px;
+	}
+    
 
     .yearlist ul li:nth-of-type(3) {
         margin-left: 0%;
@@ -1783,12 +1792,15 @@ html,
 }
 
 @media screen and (max-width:500px) {
+	.yearlist ul li {
+	    width: 100%;
+		height:  322px;
+	    margin-left: 0%;
+	    margin-top: 6px;
+	}
     .yearsite {
         padding: 20px 20px;
     }
-	.yearlist ul li{
-		height: 322px;
-	}
 
     .c_title_1 {
         font-size: 22px;
@@ -2661,5 +2673,29 @@ select:focus{
 	div.addstlyPeoLis .pro_n_list ul li div.probind{ position: static;width: 105px;clear: both;right: auto;top: auto;transform: translateY(0); margin: 10px auto 20px auto;}
 }
 
+
+
+@media only screen and (min-width: 1441px) and (max-width: 1600px){
+	.yearlist ul li{height: 181px;}
+	.carousel-indicators .carousel-inner .item{
+		height: 516px;
+	}
+	.tese_intro .tese_intro_left{height: 516px;}
+}
+@media only screen and (min-width: 1300px) and (max-width: 1440px){
+	.yearlist ul li{height: 168px;}
+	.carousel-indicators .carousel-inner .item{
+		height: 540px;
+	}
+	.tese_intro .tese_intro_left{height: 540px;}
+}
+@media only screen and (min-width: 1000px) and (max-width: 1280px){
+	.yearlist ul li{height: 120px;}
+	.carousel-indicators .carousel-inner .item{
+		height: 390px;
+	}
+	.tese_intro .tese_intro_left{height: 390px;}
+	.tese_intro_right{margin-left: 2%;}
+}
 
 
