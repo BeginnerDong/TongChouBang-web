@@ -1182,6 +1182,7 @@ html,
 
 .tese_intro_right {
     width: 27%;
+	height: 100%;
     float: left;
     margin-left: 3%;
 }
@@ -1455,7 +1456,7 @@ html,
     background: #fe546e;
     display: block;
     position: absolute;
-    left: 0;
+    left: 4%;
     top: 20px;
 }
 
@@ -2680,22 +2681,31 @@ select:focus{
 	.carousel-indicators .carousel-inner .item{
 		height: 516px;
 	}
-	.tese_intro .tese_intro_left{height: 516px;}
+	.tese_intro{height: 516px;}
+	.tese_intro .tese_intro_left{height: 100%;}
 }
 @media only screen and (min-width: 1300px) and (max-width: 1440px){
 	.yearlist ul li{height: 168px;}
 	.carousel-indicators .carousel-inner .item{
 		height: 540px;
 	}
-	.tese_intro .tese_intro_left{height: 540px;}
+	.tese_intro{height: 540px;}
+	.tese_intro .tese_intro_left{height: 100%;}
+	
 }
 @media only screen and (min-width: 1000px) and (max-width: 1280px){
 	.yearlist ul li{height: 120px;}
-	.carousel-indicators .carousel-inner .item{
-		height: 390px;
-	}
-	.tese_intro .tese_intro_left{height: 390px;}
-	.tese_intro_right{margin-left: 2%;}
+	.carousel-indicators .carousel-inner .item{height: 390px;}
+	.tese_intro{ height: 390px;}
+	.tese_intro .tese_intro_left{height: 100%;}
+}
+
+@media only screen and (min-width: 801px) and (max-width: 1280px){
+	.tese_intro_right{padding-left: 15px; width: 30%;box-sizing: border-box;margin-left: 0;}
+	.tese_intro_right .tese_mes h3{margin-top: 0;font-size: 22px;}
+	.tese_intro_right .t_p:nth-of-type(1){ margin-top: 10px;}
+	.tese_intro_right .tese_mes .t_p{font-size: 14px; margin-top: 5px;}
+	.tese_intro_right .tese_mes hr{margin: 15px 0;}
 }
 
 
