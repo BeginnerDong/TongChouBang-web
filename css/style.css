@@ -859,7 +859,7 @@ html,
 
         /*产品排序选择*/
         .tab_rank {
-            height: 80px;
+            height: 60px;
             background: #fff;
             border-top: 1px solid #ff4f73;
         }
@@ -869,7 +869,7 @@ html,
         }
 
         .tab_rank ul li {
-            line-height: 80px;
+            line-height: 60px;
             width: 15%;
             float: left;
             list-style-type: none;
@@ -884,9 +884,11 @@ html,
         .tab_rank ul li a {
             font-family: "MicrosoftYaHei";
             font-size: 20px;
-            padding: 27px 27px;
+            padding: 0px 27px;
+			line-height: 60px;
             color: #666666;
 			cursor: pointer;
+			display: block;
         }
         .tab_rank ul li  span{
             font-size: 22px;
@@ -898,7 +900,7 @@ html,
         }
 
         .peo_list {
-            margin-top: 50px;
+            margin-top: 30px;
         }
 
         .pro_b_l ul {
@@ -1165,13 +1167,14 @@ html,
     max-width: 1390px;
     width: 90%;
     margin: 50px auto;
+	height: 500px;
 }
 
 .tese_intro_left {
     float: left;
     width: 70%;
+	height: 100%;
     overflow: hidden;
-    height: 600px;
     text-align: center;
 }
 
@@ -1185,6 +1188,7 @@ html,
 	height: 100%;
     float: left;
     margin-left: 3%;
+	position: relative;
 }
 
 .tese_mes {
@@ -1199,7 +1203,7 @@ html,
 }
 
 .tese_mes hr {
-    margin: 26px 0px;
+    margin: 20px 0px;
     padding: 0px;
 }
 
@@ -1213,7 +1217,7 @@ html,
     width: 30%;
     float: left;
     list-style-type: none;
-    margin-top: 20px;
+    margin: 10px 0;
 }
 
 .tab_tese {
@@ -1277,7 +1281,7 @@ html,
 }
 .tesedetali_top{
 	width: 100%;
-	padding:20px 5%;
+	padding:20px 2%;
 	box-sizing: border-box;
 	margin: 0 auto;
 }
@@ -1293,7 +1297,7 @@ html,
 .teseimg {
     position: relative;
     width: 240px;
-    height: 240px;
+    height: 180px;
     float: left;
 }
 
@@ -1310,7 +1314,7 @@ html,
 .tesedetail_c {
     height: 124px;
     font-size: 18px;
-    color: #666666;
+    color: #333;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -1504,11 +1508,8 @@ html,
 
 .aboutus_t_d a {
     text-decoration: none;
-   
-   
     font-size: 18px;
-    color: #666666;
-    font-family: "MicrosoftYaHei";
+    color: #333;
 }
 
 .aboutus_b {
@@ -1540,7 +1541,7 @@ html,
 
 .jdimglist li img {
     width: 100%;
-	height: 200px;
+	height: 170px;
 }
 
 .jdimglist li p {
@@ -2573,7 +2574,7 @@ select:focus{
     line-height: 30px;
 }
 .t_p:nth-of-type(1){
-    margin-top:73px; 
+    margin-top:40px; 
 }
 /*图片点击加载*/
 .imgbig_kk {
@@ -2674,30 +2675,35 @@ select:focus{
 	div.addstlyPeoLis .pro_n_list ul li div.probind{ position: static;width: 105px;clear: both;right: auto;top: auto;transform: translateY(0); margin: 10px auto 20px auto;}
 }
 
-
-
 @media only screen and (min-width: 1441px) and (max-width: 1600px){
 	.yearlist ul li{height: 181px;}
-	.carousel-indicators .carousel-inner .item{
-		height: 516px;
-	}
+	.carousel-indicators .carousel-inner .item{height: 516px;}
 	.tese_intro{height: 516px;}
-	.tese_intro .tese_intro_left{height: 100%;}
+	.top .banner{ height: 540px!important;}
+	
+	
+	/* .jdimglist li img {width: 100%;height: 200px;} */
 }
 @media only screen and (min-width: 1300px) and (max-width: 1440px){
 	.yearlist ul li{height: 168px;}
 	.carousel-indicators .carousel-inner .item{
 		height: 540px;
 	}
-	.tese_intro{height: 540px;}
-	.tese_intro .tese_intro_left{height: 100%;}
+	.tese_intro{height: 400px;}
+	.t_p:nth-of-type(1){margin-top: 10px;}
+	.jdimglist li img{ height: 170px;}
+	.activelist li img{ height: 290px!important;}
+	.tese_intro_right .tese_mes hr{ margin: 10px 0px;}
+	
+	.top .banner{ height: 460px!important;}
+	
 	
 }
 @media only screen and (min-width: 1000px) and (max-width: 1280px){
 	.yearlist ul li{height: 120px;}
 	.carousel-indicators .carousel-inner .item{height: 390px;}
-	.tese_intro{ height: 390px;}
-	.tese_intro .tese_intro_left{height: 100%;}
+	.tese_intro{ height: 330px;}
+	.top .banner{ height: 395px!important;}
 }
 
 @media only screen and (min-width: 801px) and (max-width: 1280px){
@@ -2705,7 +2711,9 @@ select:focus{
 	.tese_intro_right .tese_mes h3{margin-top: 0;font-size: 22px;}
 	.tese_intro_right .t_p:nth-of-type(1){ margin-top: 10px;}
 	.tese_intro_right .tese_mes .t_p{font-size: 14px; margin-top: 5px;}
-	.tese_intro_right .tese_mes hr{margin: 15px 0;}
+	.tese_intro_right .tese_mes hr{margin: 10px 0;}
+	.jdimglist li img{height: 130px;}
+	.activelist li img{ height: 220px!important;}
 }
 
 

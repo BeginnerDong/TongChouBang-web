@@ -34,6 +34,8 @@
         background: transparent;
         position: absolute;
         top: 0;
+		padding: 10px 0;
+		background: rgba(0,0,0,0.5);
     }
 	.case_kk img{
 		width: 100%;
@@ -92,7 +94,7 @@
 	.active_big_k .act_i_2{ width: 55%;}
 	.active_big_k .act_plan{margin: 10px auto;}
 	.active_big_k .act_btn{  height: 40px;font-size: 20px;margin: 15px auto;}
-	
+	.top .banner{ height: 690px;}
 	
 	
 	@media screen and (max-width: 500px){
@@ -113,8 +115,6 @@
 		div.indecaseLis.caselsit ul li{ border-bottom: 1px solid #eee;}
 		.indecaseLis .case_kk p{padding-top: 10px;}
 	}
-	
-	
 
 </style>
 
@@ -201,13 +201,13 @@
 			<!--轮播图-->
 			<div class="top">
 				<div class="banner">
-					<div id="carousel-example-generic" data-ride="carousel" class="carousel slide">
+					<div id="carousel-example-generic" data-ride="carousel" class="carousel slide" style="height: 100%;">
 						<ol class="carousel-indicators">
 							<li v-for="(item, index) in swiperData.mainImg" data-target="#carousel-example-generic" :data-slide-to="index"
 							 :class="index=='0'?'active':''"></li>
 						</ol>
-						<div role="listbox" class="carousel-inner">
-							<div class="item" v-for="(item, index) in swiperData.mainImg" :class="index=='0'?'active':''" style="height:65%;border: none;">
+						<div role="listbox" class="carousel-inner" style="height: 100%;">
+							<div class="item" v-for="(item, index) in swiperData.mainImg" :class="index=='0'?'active':''" style="height:100%;border: none;">
 								<img :src="item.url" class="img-responsive banner_img" style="height: 100%;width: 100%">
 							</div>
 							

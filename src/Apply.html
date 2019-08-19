@@ -27,7 +27,7 @@
 
         .app_ul1 li {
             list-style-type: none;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
 
         }
 
@@ -36,7 +36,7 @@
         }
 
         .applay_li1 {
-            font-size: 20px;
+            font-size: 16px;
             color: #666666;
 			margin-left: 5px;
         }
@@ -48,17 +48,18 @@
             }
 
             .app_tab {
-                width: 150px;
+                width: 110px;
                 height: 100%;
-                margin-top: -20px;
             }
 
             .applay_input {
-                font-size: 20px;
-                color: #666666;
+                font-size:14px;
+                color: #333;
                 width: 700px;
-                height: 60px;
+                height: 40px;
                 border: 1px solid #eaeaea;
+				box-sizing: border-box;
+				padding: 0 10px;
             }
 
             .fwtype {
@@ -116,8 +117,8 @@
             .hqnum {
                 position: absolute;
                 right: 20px;
-                line-height: 60px;
-                font-size: 20px;
+                line-height: 40px;
+                font-size: 14px;
                 color: #ff556f;
             }
 
@@ -314,13 +315,13 @@
 				</div>
 			</header>
 			<!--顶部图片-->
-			<div style="width: 100%;height: 700px;">
+			<div style="width: 100%;height: 300px;">
 				<img :src="bannerData.mainImg&&bannerData.mainImg[0]?bannerData.mainImg[0].url:''" style="width: 100%;height:100%" />
 			</div>
 			<div>
 				<div class="cont_applay">
 					<div class="applayContBox">
-						<h2 class="tit"><span style="font-size:32px;color: #222222;display: inline-block;padding-left: 30px;border-left: 4px solid #ff556f;line-height: 50px;">注册信息</span>
+						<h2 class="tit"><span style="font-size:20px;color: #222222;display: inline-block;padding-left: 10px;border-left: 4px solid #ff556f;line-height: 24px;">注册信息</span>
 						</h2>
 						<div class="msgeLisinfo" style="padding: 30px;">
 							<ul class="app_ul1">
@@ -337,7 +338,7 @@
 						</div>
 					</div>
 					<div class="applayContBox">
-						<h2 class="tit"><span style="font-size:32px;color: #222222;display: inline-block;padding-left: 30px;border-left: 4px solid #ff556f;line-height: 50px;">商家信息</span>
+						<h2 class="tit"><span style="font-size:20px;color: #222222;display: inline-block;padding-left: 10px;border-left: 4px solid #ff556f;line-height: 24px;">商家信息</span>
 						</h2>
 						<div class="app_kk msgeLisinfo">
 							<ul class="app_ul1">

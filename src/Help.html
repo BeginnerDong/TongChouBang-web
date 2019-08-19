@@ -22,10 +22,11 @@
             margin-bottom:50px; 
         }
         .helplist li .helpintro{
-            padding: 30px;
+            padding: 20px;
         }
-		.helpintro h2{ font-size: 26px; line-height: 40px; margin:0 0 15px 0 ;}
-		.helpintro p{ font-size: 16px; line-height: 30px;}
+		.helpintro h2{ font-size: 20px; line-height: 30px; margin:0 0 10px 0 ;}
+		.helpintro h2 .more{font-size: 12px; color: #0066CC;float: right;}
+		.helpintro p{ font-size: 14px; line-height: 30px; color: #666;}
         .helpintro a{
             
             color: #212121;
@@ -136,7 +137,7 @@
 						<li v-for="item in mainData" @click="intoPath('HelpDetail.html',item.id)">
 							<div class="helpintro">
 								
-									<h2>{{item.title}}</h2>
+									<h2>{{item.title}} <span class="more">查看更多&gt;&gt;</span></h2>
 									<p>{{item.description}}
 									</p>
 								
