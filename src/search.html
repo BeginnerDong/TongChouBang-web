@@ -24,7 +24,7 @@
             /* border: 1px solid red; */
             padding-bottom: 110px;
         }
-
+		.top .banner{ height: 690px;}
         .app_ul1 li {
             list-style-type: none;
             margin-bottom: 50px;
@@ -280,7 +280,7 @@
 						<ul class="clear">
 							<li><a href="Login.html">登录注册</a></li>
 							<li><a href="MyCenter.html">个人中心</a></li>
-							<li class="active"><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
@@ -298,8 +298,22 @@
 				</div>
 			</header>
 			<!--顶部图片-->
-			<div>
-				<img src="../img/apply_bg.jpg" style="width: 100%" />
+		
+			<div class="top">
+				<div class="banner">
+					<div id="carousel-example-generic" data-ride="carousel" class="carousel slide" style="height: 100%;">
+						<ol class="carousel-indicators">
+							<li v-for="(item, index) in swiperData.mainImg" data-target="#carousel-example-generic" :data-slide-to="index"
+							 :class="index=='0'?'active':''"></li>
+						</ol>
+						<div role="listbox" class="carousel-inner" style="height: 100%;">
+							<div class="item" v-for="(item, index) in swiperData.mainImg" :class="index=='0'?'active':''" style="height:100%;border: none;">
+								<img :src="item.url" class="img-responsive banner_img" style="height: 100%;width: 100%">
+							</div>
+							
+						</div>
+					</div>
+				</div>
 			</div>
 			<div>
 				<div class="product_c">
@@ -314,7 +328,7 @@
 									<li><a :class="num==2?'pro_active':''" @click="changeOrder('2')">价格排序</a></li>
 									<li><a :class="num==3?'pro_active':''" @click="changeOrder('3')">销量排序</a></li>
 									<li><a :class="num==4?'pro_active':''" @click="changeOrder('4')">折扣排序</a></li>
-									<li>共有<span>{{totalCount?totalCount:''}}</span>个产品满足条件</li>
+									<li>共有<span>{{totalCount?totalCount:'0'}}</span>个产品满足条件</li>
 								</ul>
 							</div>
 						</div>
@@ -397,15 +411,34 @@
 					pageArray: [],
 					allPages: 0,
 					linkPage: '',
+					swiperData:{}
 				}
 			},
 			created() {
 				const self = this;
 				self.getCityData();
-				self.getMainData()
+				self.getMainData();
+				self.getSliderData()
 			},
 
 			methods: {
+				
+				getSliderData() {
+					const self = this;
+					const postData = {};
+					postData.searchItem = {
+						thirdapp_id: 2,
+						title: '首页轮播',
+					};
+				
+					const callback = (res) => {
+						if (res.info.data.length > 0) {
+							self.swiperData = res.info.data[0]
+							console.log('swiperData',self.swiperData)
+						};
+					};
+					window.base.labelGet(postData, callback);
+				},
 
 				changeOrder(num) {
 					const self = this;

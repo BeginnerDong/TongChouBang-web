@@ -118,7 +118,7 @@
 						<div class="type_list">
 							<!--场地类型-->
 
-							<div class="adresstype type_s clear" v-for="item in labelData">
+							<div class="adresstype type_s clear" v-for="(item,index) in labelData">
 								<div class="type_1">
 									<span>{{item.title[1]}}</span>
 								</div>
@@ -149,7 +149,7 @@
 								<li><a :class="num==2?'pro_active':''" @click="changeOrder('2')">价格排序</a></li>
 								<li><a :class="num==3?'pro_active':''" @click="changeOrder('3')">销量排序</a></li>
 								<li><a :class="num==4?'pro_active':''" @click="changeOrder('4')">折扣排序</a></li>
-								<li>共有<span>{{totalCount?totalCount:''}}</span>个产品满足条件</li>
+								<li>共有<span>{{totalCount?totalCount:'0'}}</span>个产品满足条件</li>
 							</ul>
 						</div>
 					</div>
