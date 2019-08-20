@@ -106,11 +106,12 @@ html,
             line-height: 54px;
         }
 		
-
+		.logoTIcon{float: left; margin-top: 5px; width: 120px; height: 46px;}
         .head_logo,
         .head_nav {
             float: left;
         }
+		.head_logo {line-height: 60px;}
 
         .head_abnoutus {
             float: right;
@@ -2680,15 +2681,11 @@ select:focus{
 	.carousel-indicators .carousel-inner .item{height: 516px;}
 	.tese_intro{height: 516px;}
 	.top .banner{ height: 540px!important;}
-	
-	
 	/* .jdimglist li img {width: 100%;height: 200px;} */
 }
 @media only screen and (min-width: 1300px) and (max-width: 1440px){
 	.yearlist ul li{height: 168px;}
-	.carousel-indicators .carousel-inner .item{
-		height: 540px;
-	}
+	.carousel-indicators .carousel-inner .item{height: 540px;}
 	.tese_intro{height: 400px;}
 	.t_p:nth-of-type(1){margin-top: 10px;}
 	.jdimglist li img{ height: 170px;}
@@ -2703,7 +2700,6 @@ select:focus{
 	.yearlist ul li{height: 120px;}
 	.carousel-indicators .carousel-inner .item{height: 390px;}
 	.tese_intro{ height: 330px;}
-	.top .banner{ height: 395px!important;}
 }
 
 @media only screen and (min-width: 801px) and (max-width: 1280px){
@@ -2716,4 +2712,7 @@ select:focus{
 	.activelist li img{ height: 220px!important;}
 }
 
+@media only screen and (max-width: 1280px){
+	.top .banner{ height: 395px!important;}
+}
 
