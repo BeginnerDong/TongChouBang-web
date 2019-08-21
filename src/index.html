@@ -127,7 +127,7 @@
 					<!--logo-->
 					<div class="head_logo">
 						<select class="tab_adress" v-model="cityId" @change="chooseCity($event)">
-							<option v-for="item in cityData" :value="item.id" >{{item.title}}</option>
+							<option v-for="item in cityData" :value="item.id">{{item.title}}</option>
 						</select>
 					</div>
 					<!--导航栏-->
@@ -211,13 +211,15 @@
 							<div class="item" v-for="(item, index) in swiperData.mainImg" :class="index=='0'?'active':''" style="height:100%;border: none;">
 								<img :src="item.url" class="img-responsive banner_img" style="height: 100%;width: 100%">
 							</div>
-							
+
 						</div>
 					</div>
 				</div>
 				<div class="top_search">
-					<input type="text" class="search" placeholder="搜索团建游，目的地等" v-model="title"/><input type="button" value="搜索服务" class="search_btn" @click="goSearch"/>
+					<input type="text" id="inputtext" v-on:keyup.13="search" class="search" placeholder="搜索团建游，目的地等" v-model="title" /><input
+					 type="button" value="搜索服务" class="search_btn" @click="goSearch" />
 				</div>
+
 			</div>
 			<div class="big_div">
 				<!--年会场地推荐-->
@@ -226,11 +228,11 @@
 						<div class="clear">
 							<h2 class="c_title_1">年会场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
-						
+
 						<div>
 							<div class="oneTj" style="position: relative;height:237px" @click="intoDetail('TeSeDetail.html',productOneData[0].id)">
-								<img :src="productOneData&&productOneData[0]&&productOneData[0].mainImg&&productOneData[0].mainImg[0]?productOneData[0].mainImg[0].url:''" 
-								alt="场地预订" style="height:100%"/>
+								<img :src="productOneData&&productOneData[0]&&productOneData[0].mainImg&&productOneData[0].mainImg[0]?productOneData[0].mainImg[0].url:''"
+								 alt="场地预订" style="height:100%" />
 								<div class="adree_yd">
 									<h2>场地预订</h2>
 									<span>你们想要什么我们都有</span>
@@ -251,7 +253,7 @@
 											</span>
 										</div>
 									</li>
-									
+
 								</ul>
 							</div>
 						</div>
@@ -263,11 +265,11 @@
 						<div class="clear">
 							<h2 class="c_title_1">品牌推广专区</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
-						
+
 						<div>
 							<div class="oneTj" style="position: relative;height:237px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
-								<img :src="productTwoData&&productTwoData[0]&&productTwoData[0].mainImg&&productTwoData[0].mainImg[0]?productTwoData[0].mainImg[0].url:''" 
-								alt="场地预订" style="height:100%"/>
+								<img :src="productTwoData&&productTwoData[0]&&productTwoData[0].mainImg&&productTwoData[0].mainImg[0]?productTwoData[0].mainImg[0].url:''"
+								 alt="场地预订" style="height:100%" />
 								<div class="adree_yd">
 									<h2>场地预订</h2>
 									<span>你们想要什么我们都有</span>
@@ -288,24 +290,24 @@
 											</span>
 										</div>
 									</li>
-									
+
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
-				
+
 				<!--发布会场地-->
 				<div class="content bg_1" v-if="productThreeData.length>0">
 					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">发布会场地</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
-						
+
 						<div>
 							<div class="oneTj" style="position: relative;height:237px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
-								<img :src="productThreeData&&productThreeData[0]&&productThreeData[0].mainImg&&productThreeData[0].mainImg[0]?productThreeData[0].mainImg[0].url:''" 
-								alt="场地预订" style="height:100%"/>
+								<img :src="productThreeData&&productThreeData[0]&&productThreeData[0].mainImg&&productThreeData[0].mainImg[0]?productThreeData[0].mainImg[0].url:''"
+								 alt="场地预订" style="height:100%" />
 								<div class="adree_yd">
 									<h2>场地预订</h2>
 									<span>你们想要什么我们都有</span>
@@ -326,7 +328,7 @@
 											</span>
 										</div>
 									</li>
-									
+
 								</ul>
 							</div>
 						</div>
@@ -338,11 +340,11 @@
 						<div class="clear">
 							<h2 class="c_title_1">婚宴场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
-						
+
 						<div>
 							<div class="oneTj" style="position: relative;height:237px" @click="intoDetail('TeSeDetail.html',productFourData[0].id)">
-								<img :src="productFourData&&productFourData[0]&&productFourData[0].mainImg&&productFourData[0].mainImg[0]?productFourData[0].mainImg[0].url:''" 
-								alt="场地预订" style="height:100%"/>
+								<img :src="productFourData&&productFourData[0]&&productFourData[0].mainImg&&productFourData[0].mainImg[0]?productFourData[0].mainImg[0].url:''"
+								 alt="场地预订" style="height:100%" />
 								<div class="adree_yd">
 									<h2>场地预订</h2>
 									<span>你们想要什么我们都有</span>
@@ -363,7 +365,7 @@
 											</span>
 										</div>
 									</li>
-									
+
 								</ul>
 							</div>
 						</div>
@@ -375,11 +377,11 @@
 						<div class="clear">
 							<h2 class="c_title_1">商务会议场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
-						
+
 						<div>
 							<div class="oneTj" style="position: relative;height:237px" @click="intoDetail('TeSeDetail.html',productFiveData[0].id)">
-								<img :src="productFiveData&&productFiveData[0]&&productFiveData[0].mainImg&&productFiveData[0].mainImg[0]?productFiveData[0].mainImg[0].url:''" 
-								alt="场地预订" style="height:100%"/>
+								<img :src="productFiveData&&productFiveData[0]&&productFiveData[0].mainImg&&productFiveData[0].mainImg[0]?productFiveData[0].mainImg[0].url:''"
+								 alt="场地预订" style="height:100%" />
 								<div class="adree_yd">
 									<h2>场地预订</h2>
 									<span>你们想要什么我们都有</span>
@@ -400,7 +402,7 @@
 											</span>
 										</div>
 									</li>
-									
+
 								</ul>
 							</div>
 						</div>
@@ -412,11 +414,11 @@
 						<div class="clear">
 							<h2 class="c_title_1">团建场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
 						</div>
-						
+
 						<div>
 							<div class="oneTj" style="position: relative;height:237px" @click="intoDetail('TeSeDetail.html',productSixData[0].id)">
-								<img :src="productSixData&&productSixData[0]&&productSixData[0].mainImg&&productSixData[0].mainImg[0]?productSixData[0].mainImg[0].url:''" 
-								alt="场地预订" style="height:100%" />
+								<img :src="productSixData&&productSixData[0]&&productSixData[0].mainImg&&productSixData[0].mainImg[0]?productSixData[0].mainImg[0].url:''"
+								 alt="场地预订" style="height:100%" />
 								<div class="adree_yd">
 									<h2>场地预订</h2>
 									<span>你们想要什么我们都有</span>
@@ -437,13 +439,13 @@
 											</span>
 										</div>
 									</li>
-									
+
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
-				<include src="form.html" ></include>
+				<include src="form.html"></include>
 			</div>
 			<!--优点-->
 			<div class="merit addIndMeT">
@@ -454,16 +456,16 @@
 					<li><span class="pricecion m_cion"></span><span class="cionintro">省钱省力</span></li>
 				</ul>
 			</div>
-			
+
 			<div style="margin-top: 60px;">
-				<div >
+				<div>
 					<h2 class="case_title"><span>精选案例</span>Selected Case</h2>
 					<p class="case_pa"><a class="case_detail addTitmore" href="CaseDetail.html">查看更多></a></p>
 				</div>
 				<div class="caselsit indecaseLis">
 					<ul class="clear">
 						<li v-for="item in mainData">
-							<div  @click="intoDetail('CaseContent.html',item.id)">
+							<div @click="intoDetail('CaseContent.html',item.id)">
 								<div class="case_kk">
 									<div><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 									<p>{{item.title}}</p>
@@ -473,10 +475,10 @@
 					</ul>
 				</div>
 			</div>
-			<include src="footer.html" ></include>
+			<include src="footer.html"></include>
 		</div>
-		
-	</body>	
+
+	</body>
 
 </html>
 <script type="text/javascript">
@@ -484,21 +486,21 @@
 		el: '#app',
 		data: function() {
 			return {
-				swiperData:[],
-				productOneData:[],
-				productTwoData:[],
-				productThreeData:[],
-				productFourData:[],
-				productFiveData:[],
-				productSixData:[],
-				mainData:[],
-				cityData:[],
-				searchItem:{
-					status:1,
-					
+				swiperData: [],
+				productOneData: [],
+				productTwoData: [],
+				productThreeData: [],
+				productFourData: [],
+				productFiveData: [],
+				productSixData: [],
+				mainData: [],
+				cityData: [],
+				searchItem: {
+					status: 1,
+
 				},
-				title:'',
-				cityId:0
+				title: '',
+				cityId: 0
 			}
 		},
 		created: function() {
@@ -508,35 +510,35 @@
 
 		methods: {
 
-			chooseCity:function(e){
+			chooseCity: function(e) {
 				const self = this;
 				var index = e.target.options.selectedIndex;
 				var nowCity = localStorage.getItem('cityId');
-				if(self.cityData[index].id!=nowCity){
+				if (self.cityData[index].id != nowCity) {
 					self.cityId = self.cityData[index].id;
 					localStorage.setItem('cityId', self.cityData[index].id);
 					self.cityInit()
-				};	
-			
+				};
+
 			},
-			
-			cityInit(){
+
+			cityInit() {
 				var self = this;
-				self.productOneData=[];
-				self.productTwoData=[];
-				self.productThreeData=[];
-				self.productFourData=[];
-				self.productFiveData=[];
-				self.productSixData=[];
+				self.productOneData = [];
+				self.productTwoData = [];
+				self.productThreeData = [];
+				self.productFourData = [];
+				self.productFiveData = [];
+				self.productSixData = [];
 				self.getLabelOneData();
 				self.getLabelTwoData();
 				self.getLabelThreeData();
 				self.getLabelFourData();
 				self.getLabelFiveData();
 				self.getLabelSixData();
-	
+
 			},
-			
+
 			init: function(e) {
 				var self = this;
 				self.getSliderData();
@@ -549,24 +551,51 @@
 				self.getLabelSixData();
 				self.getMainData()
 			},
-			
-			goSearch(){
+
+			goSearch() {
 				const self = this;
-				if(self.title!=''){
-					window.location.href = 'search.html?title='+self.title
-				}else{
+				if (self.title != '') {
+					window.location.href = 'search.html?title=' + self.title
+				} else {
 					alert('请输入标题搜索')
 				}
 			},
-			
+
+			search() {
+				const self = this;
+			/* 	$('#inputtext').bind('keyup', function(event) {
+					//13 代表的是回车健 
+					alert(111)
+					
+					if (event.keyCode == 13) {
+						if (self.title != '') {
+							window.location.href = 'search.html?title=' + self.title
+						} else {
+							alert('请输入标题搜索')
+						}
+					}
+				}); */
+				
+				$(".search").keydown(function(event){  
+				    if(event.which == "13")      
+					   if (self.title != '') {
+						window.location.href = 'search.html?title=' + self.title
+					   } else {
+						alert('请输入标题搜索')
+					   }
+				});  
+			},
+
+
+
 			intoDetail: function(url, id) {
 				var self = this;
 				var toUrl = url;
 				console.log(toUrl);
 				window.location.href = toUrl + '?id=' + id;
-			
+
 			},
-			
+
 			getSliderData() {
 				const self = this;
 				const postData = {};
@@ -574,16 +603,16 @@
 					thirdapp_id: 2,
 					title: '首页轮播',
 				};
-			
+
 				const callback = (res) => {
 					if (res.info.data.length > 0) {
 						self.swiperData = res.info.data[0]
-						console.log('swiperData',self.swiperData)
+						console.log('swiperData', self.swiperData)
 					};
 				};
 				window.base.labelGet(postData, callback);
 			},
-			
+
 			getCityData: function(id) {
 				var self = this;
 
@@ -598,10 +627,10 @@
 					if (res.info.data.length > 0) {
 						self.cityData.push.apply(self.cityData, res.info.data);
 						var nowCity = localStorage.getItem('cityId');
-						if(!nowCity){
+						if (!nowCity) {
 							self.cityId = self.cityData[0].id;
 							localStorage.setItem('cityId', self.cityData[0].id);
-						}else{
+						} else {
 							self.cityId = nowCity;
 						};
 					};
@@ -609,27 +638,27 @@
 				window.base.labelGet(postData, callback);
 
 			},
-			
+
 			getMainData: function(id) {
 				var self = this;
 				var postData = {};
-				postData.paginate = { 
-					count: 0, 
-					currentPage: 1, 
-					pagesize:3, 
-					is_page: true, 
-				},
-				postData.searchItem = {
-					status:1
-				};
+				postData.paginate = {
+						count: 0,
+						currentPage: 1,
+						pagesize: 3,
+						is_page: true,
+					},
+					postData.searchItem = {
+						status: 1
+					};
 				postData.getBefore = {
 					Label: {
 						tableName: 'Label',
 						middleKey: 'menu_id',
 						key: 'id',
 						searchItem: {
-							status: ['in',[1]],
-							parentid:['in',[106]]
+							status: ['in', [1]],
+							parentid: ['in', [106]]
 						},
 						condition: 'in'
 					}
@@ -660,17 +689,17 @@
 						self.getProductOneData(res.info.data[0].id)
 					}
 				};
-				
+
 				window.base.labelGet(postData, callback);
 			},
 
 			getProductOneData: function(id) {
 				var self = this;
 				var postData = {};
-				
+
 				postData.searchItem = {
-					status:1,
-					passage2:localStorage.getItem('cityId')
+					status: 1,
+					passage2: localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -678,46 +707,46 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							status: ['in',[1]],
-							relation_two:['in',[id]]
+							status: ['in', [1]],
+							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				var callback = function(res) {
-					if(res.info.data.length>0){
-						self.productOneData.push.apply(self.productOneData,res.info.data)
+					if (res.info.data.length > 0) {
+						self.productOneData.push.apply(self.productOneData, res.info.data)
 					}
 				};
-				
+
 				window.base.productGet(postData, callback);
 			},
-			
+
 			getLabelTwoData: function(id) {
 				var self = this;
 				var postData = {};
-			
+
 				postData.searchItem = {
 					parentid: 4,
 					title: '品牌推广场地'
 				};
-			
+
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
 						self.getProductTwoData(res.info.data[0].id)
 					}
 				};
-				
+
 				window.base.labelGet(postData, callback);
 			},
-			
+
 			getProductTwoData: function(id) {
 				var self = this;
 				var postData = {};
-				
+
 				postData.searchItem = {
-					status:1,
-					passage2:localStorage.getItem('cityId')
+					status: 1,
+					passage2: localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -725,46 +754,46 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							status: ['in',[1]],
-							relation_two:['in',[id]]
+							status: ['in', [1]],
+							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				var callback = function(res) {
-					if(res.info.data.length>0){
-						self.productTwoData.push.apply(self.productTwoData,res.info.data)
+					if (res.info.data.length > 0) {
+						self.productTwoData.push.apply(self.productTwoData, res.info.data)
 					}
 				};
-				
+
 				window.base.productGet(postData, callback);
 			},
-			
+
 			getLabelThreeData: function(id) {
 				var self = this;
 				var postData = {};
-			
+
 				postData.searchItem = {
 					parentid: 4,
 					title: '发布会场地'
 				};
-			
+
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
 						self.getProductThreeData(res.info.data[0].id)
 					}
 				};
-				
+
 				window.base.labelGet(postData, callback);
 			},
-			
+
 			getProductThreeData: function(id) {
 				var self = this;
 				var postData = {};
-				
+
 				postData.searchItem = {
-					status:1,
-					passage2:localStorage.getItem('cityId')
+					status: 1,
+					passage2: localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -772,46 +801,46 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							status: ['in',[1]],
-							relation_two:['in',[id]]
+							status: ['in', [1]],
+							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				var callback = function(res) {
-					if(res.info.data.length>0){
-						self.productThreeData.push.apply(self.productThreeData,res.info.data)
+					if (res.info.data.length > 0) {
+						self.productThreeData.push.apply(self.productThreeData, res.info.data)
 					}
 				};
-				
+
 				window.base.productGet(postData, callback);
 			},
-			
+
 			getLabelFourData: function(id) {
 				var self = this;
 				var postData = {};
-			
+
 				postData.searchItem = {
 					parentid: 4,
 					title: '婚宴场地'
 				};
-			
+
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
 						self.getProductFourData(res.info.data[0].id)
 					}
 				};
-				
+
 				window.base.labelGet(postData, callback);
 			},
-			
+
 			getProductFourData: function(id) {
 				var self = this;
 				var postData = {};
-				
+
 				postData.searchItem = {
-					status:1,
-					passage2:localStorage.getItem('cityId')
+					status: 1,
+					passage2: localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -819,46 +848,46 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							status: ['in',[1]],
-							relation_two:['in',[id]]
+							status: ['in', [1]],
+							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				var callback = function(res) {
-					if(res.info.data.length>0){
-						self.productFourData.push.apply(self.productFourData,res.info.data)
+					if (res.info.data.length > 0) {
+						self.productFourData.push.apply(self.productFourData, res.info.data)
 					}
 				};
-				
+
 				window.base.productGet(postData, callback);
 			},
-			
+
 			getLabelFiveData: function(id) {
 				var self = this;
 				var postData = {};
-			
+
 				postData.searchItem = {
 					parentid: 4,
 					title: '商务会议场地'
 				};
-			
+
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
 						self.getProductFiveData(res.info.data[0].id)
 					}
 				};
-				
+
 				window.base.labelGet(postData, callback);
 			},
-			
+
 			getProductFiveData: function(id) {
 				var self = this;
 				var postData = {};
-				
+
 				postData.searchItem = {
-					status:1,
-					passage2:localStorage.getItem('cityId')
+					status: 1,
+					passage2: localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -866,46 +895,46 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							status: ['in',[1]],
-							relation_two:['in',[id]]
+							status: ['in', [1]],
+							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				var callback = function(res) {
-					if(res.info.data.length>0){
-						self.productFiveData.push.apply(self.productFiveData,res.info.data)
+					if (res.info.data.length > 0) {
+						self.productFiveData.push.apply(self.productFiveData, res.info.data)
 					}
 				};
-				
+
 				window.base.productGet(postData, callback);
 			},
-			
+
 			getLabelSixData: function(id) {
 				var self = this;
 				var postData = {};
-			
+
 				postData.searchItem = {
 					parentid: 4,
 					title: '团建场地'
 				};
-			
+
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
 						self.getProductSixData(res.info.data[0].id)
 					}
 				};
-				
+
 				window.base.labelGet(postData, callback);
 			},
-			
+
 			getProductSixData: function(id) {
 				var self = this;
 				var postData = {};
-				
+
 				postData.searchItem = {
-					status:1,
-					passage2:localStorage.getItem('cityId')
+					status: 1,
+					passage2: localStorage.getItem('cityId')
 				};
 				postData.getBefore = {
 					Label: {
@@ -913,21 +942,21 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							status: ['in',[1]],
-							relation_two:['in',[id]]
+							status: ['in', [1]],
+							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				var callback = function(res) {
-					if(res.info.data.length>0){
-						self.productSixData.push.apply(self.productSixData,res.info.data)
+					if (res.info.data.length > 0) {
+						self.productSixData.push.apply(self.productSixData, res.info.data)
 					}
 				};
-				
+
 				window.base.productGet(postData, callback);
 			},
-			
+
 			intoPath(url) {
 				console.log(url);
 				var into_url = url;
@@ -947,22 +976,20 @@
 		if (gdtop > wheight) {
 			actig.classList.remove("act_big_0");
 			actig.classList.add("act_big_1");
-		} else{
+		} else {
 			actig.classList.remove("act_big_1");
 			actig.classList.add("act_big_0");
 		}
-		$(window).scroll(function(){
-		　　var scrollTop = $(this).scrollTop();
-		　　var scrollHeight = $(document).height();
-		　　var windowHeight = $(this).height();
-		　　if(scrollHeight-scrollTop-windowHeight <=400){
+		$(window).scroll(function() {
+			var scrollTop = $(this).scrollTop();
+			var scrollHeight = $(document).height();
+			var windowHeight = $(this).height();
+			if (scrollHeight - scrollTop - windowHeight <= 400) {
 				actig.classList.remove("act_big_1");
 				actig.classList.add("act_big_2");
 			}
 		});
 	}
-	
-	
 </script>
 <script>
 	/*PC端*/

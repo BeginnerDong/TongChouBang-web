@@ -417,7 +417,7 @@
 					</div>
 					<div style="min-height: 400px;">
 						<!-- 无数据时显示 -->
-						<div class="nodata"></div>
+						<!-- <div class="nodata"></div> -->
 						<!-- 无数据时显示 end -->
 						<section class="orderlist" v-for="(item,index) in mainData" v-if="item.products&&item.products[0]&&item.products[0].product_id!=0&&!isRemark">
 							
@@ -448,7 +448,7 @@
 										<a class="closeorder" v-if="item.order_step=='0'"  @click="deleteOrder(index)">取消预约</a>
 										<a class="closeorder" v-if="item.order_step=='2'" @click="goRemark(item.products[0].product_id,item.order_no,index)">去评价</a>
 										
-										<div class="xingPfbox" style="position: absolute; bottom: 0px; right: 30px; display: flex; justify-content: flex-end; align-items: center;">	
+										<!-- <div class="xingPfbox" style="position: absolute; bottom: 0px; right: 30px; display: flex; justify-content: flex-end; align-items: center;">	
 											<div style="font-size: 16px; color: #ff556f; line-height:25px">星级评分</div>
 											<div style="margin-left: 10px;">
 												
@@ -458,7 +458,7 @@
 												</span>
 												
 												</div>
-										</div>
+										</div> -->
 										
 									</div>
 								</div>

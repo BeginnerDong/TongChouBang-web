@@ -332,7 +332,7 @@
 						</div>
 						<div class="txt_login_k" v-if="isLogin&&!isPsd">			
 							<div class="k_name login_li login_yc" >
-								<span class="l_name login_icon"></span><input type="text" id="i_name" class="txt_sr" placeholder="账号" v-model="submitData.login_name"/>
+								<span class="l_name login_icon"></span><input onkeyup="this.value=this.value.replace(/[^\w_]/g,'');" id="i_name" class="txt_sr" placeholder="账号" v-model="submitData.login_name"/>
 							</div>
 							<div class="k_pwd login_li login_yc">
 								<span class="l_pwd login_icon"></span><input type="password" id="i_pwd" class="txt_sr" placeholder="用户密码" v-model="submitData.password"/>
@@ -346,13 +346,13 @@
 							</div>
 						
 							<div class="k_tel login_li  sign_yc">
-								<span class="l_tel login_icon"></span><input type="text"  class="txt_sr" placeholder="手机号"  v-model="submitData.phone" onkeyup="this.value=this.value.replace(/\D/g,'')"  maxlength="11"/>
+								<span class="l_tel login_icon"></span><input type="number"  class="txt_sr" placeholder="手机号"  v-model="submitData.phone" onkeyup="this.value=this.value.replace(/\D/g,'')"  maxlength="11"/>
 							</div>
 							<div class="k_adress login_li  sign_yc">
 								<span class="l_adress  login_icon"></span><input type="text"  class="txt_sr" placeholder="地区"  v-model="submitData.address"/>
 							</div>
 							<div class="k_name login_li login_yc" >
-								<span class="l_name login_icon"></span><input type="text"  class="txt_sr" placeholder="账号"  v-model="submitData.login_name"/>
+								<span class="l_name login_icon"></span><input onkeyup="this.value=this.value.replace(/[^\w_]/g,'');"  class="txt_sr" placeholder="账号"  v-model="submitData.login_name"/>
 							</div>
 							<div class="k_pwd login_li login_yc" >
 								<span class="l_pwd login_icon"></span><input type="text"  class="txt_sr" placeholder="用户密码"  v-model="submitData.password"/>
@@ -369,7 +369,10 @@
 						<div class="txt_login_k" v-if="isPsd">
 							
 							<div class="k_adress login_li  update_yc" v-if="isPsd">
-								<span class="l_adress  login_icon"></span><input type="text" id="i_adress" class="txt_sr" placeholder="手机号" v-model="psd.phone"/>
+								<span class="l_adress  login_icon"></span><input type="number" id="i_adress" class="txt_sr" placeholder="手机号" v-model="psd.phone"/>
+							</div>
+							<div class="k_adress login_li  update_yc" v-if="isPsd">
+								<span class="l_adress  login_icon"></span><input onkeyup="this.value=this.value.replace(/[^\w_]/g,'');" id="i_adress" class="txt_sr" placeholder="账号" v-model="psd.login_name"/>
 							</div>
 							<div class="k_name login_li  update_yc">
 								<span class="l_name login_icon"></span><input type="text" id="i_name" class="txt_sr" placeholder="新密码" v-model="psd.password"/>
@@ -377,7 +380,11 @@
 							<div class="k_pwd login_li  update_yc">
 								<span class="l_pwd login_icon"></span><input type="text" id="i_pwd" class="txt_sr" placeholder="确认新密码" v-model="psd.passwordNew"/>
 							</div>
-							
+							<div class="k_pwd login_li  update_yc">
+								<span class="l_pwd login_icon"></span>
+								<input style="width: 60%;" type="text" id="i_pwd" class="txt_sr" placeholder="验证码" v-model="psd.code"/>
+								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;" @click="sendCode">{{hasSend?'已发送':'获取验证码'}}</div>
+							</div>
 							<button id="updatebtn1" class=" update_yc" @click="resetPassword">提交</button>
 						</div>
 					</div>
@@ -424,11 +431,14 @@
 					psd:{
 						phone:'',
 						password:'',
-						passwordNew:''
+						passwordNew:'',
+						code:'',
+						login_name:''
 					},
 					isSelect:false,
 					artData:{},
-					showRule:false
+					showRule:false,
+					hasSend:false
 				}
 			},
 			
@@ -453,6 +463,34 @@
 						window.location.href = './MyCenter.html'
 					}
 
+				},
+				
+				sendCode:function(){
+					var self = this;
+					
+					if(self.hasSend){
+						return;
+					};
+					var phone = self.psd.phone;
+					
+					if (phone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(phone)) {
+						
+						alert('请输入正确的手机号码');
+						return;
+					}
+					var postData = {
+						params:{
+							PhoneNumbers:self.psd.phone
+						}
+					};
+					var callback = function(res){
+						if(res.solely_code==100000){
+							self.hasSend = true;
+						}else{
+							alert('发送失败');
+						};
+					};
+					window.base.sendCode(postData, callback);
 				},
 				
 				getArticleData() {
@@ -570,9 +608,13 @@
 					
 					const postData = {
 						phone:self.psd.phone,
-						password:self.psd.password
+						password:self.psd.password,
+						login_name:self.psd.login_name
 					}
-					
+					postData.smsAuth = {
+						phone:self.psd.phone,
+						code:self.psd.code
+					};
 					var newObject = window.base.cloneForm(self.psd);
 					
 					console.log('test',postData)
@@ -602,6 +644,14 @@
 					const self = this;
 					console.log(111)
 					console.log(type)
+					self.submitData = {
+						login_name: '',
+						password: '',
+						name:'',
+						phone:'',
+						address:'',
+						thirdapp_id:2
+					};
 					if (type == "login") {
 						self.isLogin = true
 						self.isPsd = false
