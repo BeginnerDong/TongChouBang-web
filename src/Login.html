@@ -242,14 +242,15 @@
 		<div id="app">
 			<header class="clear head_top">
 				<div class="clear">
+					<img class="logoTIcon" src="../img/logo2.png" alt="">
 					<!--logo-->
-					<div class="head_logo">
+					<!-- <div class="head_logo">
 						<span class="logo">统筹帮</span>
-						<!-- <select class="tab_adress">
+						<select class="tab_adress">
 							<option>北京</option>
 							<option>上海</option>
-						</select> -->
-					</div>
+						</select>
+					</div> -->
 					<!--导航栏-->
 					<nav class="head_nav">
 						<ul class="clear">
@@ -345,7 +346,7 @@
 							</div>
 						
 							<div class="k_tel login_li  sign_yc">
-								<span class="l_tel login_icon"></span><input type="text"  class="txt_sr" placeholder="手机号"  v-model="submitData.phone"/>
+								<span class="l_tel login_icon"></span><input type="text"  class="txt_sr" placeholder="手机号"  v-model="submitData.phone" onkeyup="this.value=this.value.replace(/\D/g,'')"  maxlength="11"/>
 							</div>
 							<div class="k_adress login_li  sign_yc">
 								<span class="l_adress  login_icon"></span><input type="text"  class="txt_sr" placeholder="地区"  v-model="submitData.address"/>
@@ -386,16 +387,14 @@
 
 			<div class="zdc_1" id="zdc1" style="" v-if="showRule">
 			</div>
-			<div class="zdc_2" id="zdc2" style="position: fixed;" v-if="showRule">
+			<div class="zdc_2" id="zdc2" style="position: fixed; top: 50%;left: 50%;transform: translate(-50%,-50%);overflow: auto; min-height: auto;" v-if="showRule">
 				<span class="close_tk"  @click="isShowRule"></span>
-				<div class="contbox" style="padding: 50px;">
-					<h2 class="zdcTit" style="font-size: 30px;color: #222222;text-align: center">{{artData.title}}</h2>
-					<div class="zdcText">
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							<div class="content ql-editor " style="clear: both;">
-								<p class="p1 " v-html="artData.content"></p>
-							</div>
-			
+				<div class="contbox" style="padding: 30px; ">
+					<h2 class="zdcTit" style="font-size: 24px;color: #222222;text-align: center;margin-top: 0;">{{artData.title}}</h2>
+					<div class="zdcText" style="font-size: 16px;color: #666666;line-height: 30px;height:400px; overflow: auto; ">
+						<div class="content ql-editor " style="clear: both;">
+							<p class="p1 " v-html="artData.content"></p>
+						</div>
 					</div>
 				</div>
 			</div>

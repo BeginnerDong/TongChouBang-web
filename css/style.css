@@ -102,8 +102,8 @@ html,
         .head_abnoutus ul li {
             float: left;
             list-style-type: none;
-            padding-left: 15px;
-            line-height: 54px;
+            margin-left: 15px;
+            line-height: 36px;
         }
 		
 		.logoTIcon{float: left; margin-top: 5px; width: 120px; height: 46px;}
@@ -260,7 +260,7 @@ html,
     color: #333;
 }
 .fenye a{
-    font-size: 0.2rem;
+    font-size: 14px;
     padding: 0.1rem 0.2rem;
     background: #fff;
     color: #53728f;
@@ -270,7 +270,9 @@ html,
     
 }
 .fenye span{
-    font-size: 0.2rem;
+    font-size: 16px;
+	margin-right: 10px;
+	
 }
 .fenye span input{
     width: 1.5rem;
@@ -283,8 +285,8 @@ html,
     cursor: pointer;
 }
 .fenye a:hover,.fenye a.active{
-    background: rgba(0,0,0,0.4);
-    color: #fff;
+    background: #e23f5f;
+    color: #fff!important;
 }
 
 .c_title_1 {
@@ -648,7 +650,8 @@ html,
             float: left;
             list-style-type: none;
             color: #fff;
-            font-size: 20px;
+            font-size: 16px;
+			text-align: center;
         }
         .foot_contact ul li:nth-of-type(1){
             width: 20%;
@@ -710,8 +713,10 @@ html,
             display: block;
         }
         #wechatk>div:nth-of-type(2){
-            margin-top: 10px;display:block;
+          
+			margin-top: 10px;display:block;
         }
+		#wechatk img{ width: 88px; height: 88px; display: block;}
         /*找特色会场css*/
         /*分页导航栏*/
         .head_nav ul li a,
@@ -727,12 +732,13 @@ html,
             padding-bottom: 20px;
             border-bottom: 1px solid #96858b;
         }
+		.nodata{ width:150px; height: 200px; margin:40px auto; background: url(../img/nodata.png) no-repeat 0 0 /100%;}
 
         /*内容*/
         .typelist {
             max-width: 1200px;
             width: 90%;
-            margin: 50px auto;
+            margin: 30px auto;
         }
 
         .search_k {
@@ -753,10 +759,10 @@ html,
         }
         .search_text1 {
             width: 100%;
-            height: 56px;
+            height: 58px;
             border: 2px solid #fc5473;
             border-right: none;
-            font-size: 20px;
+            font-size: 16px;
             padding-left: 10px;
             color: #999999;
         }
@@ -764,9 +770,9 @@ html,
         .search_btn1 {
             border: 0;
             width: 93px;
-            height: 60px;
+            height: 58px;
             background: #fc5473;
-            font-size: 20px;
+            font-size:16px;
             color: #fff;
         }
 
@@ -1710,9 +1716,11 @@ html,
 }
 
 .yy_title1 {
-    padding-left: 30px;
+    padding-left: 15px;
     border-left: 5px solid red;
-    line-height: 50px;
+    line-height: 30px;
+	font-size: 24px;
+	 margin-bottom: 10px;
 }
 
 .txt_s {
@@ -1737,11 +1745,11 @@ html,
 
 #btn_yy {
     width: 60%;
-    height: 35px;
+    height: 45px;
     background: #fe546f;
     border: none;
-    border-radius: 10px;
-    font-size: 20px;
+    border-radius: 0px;
+    font-size: 16px;
     color: #fff;
 }
 /*找会场结束*/
@@ -2487,13 +2495,15 @@ select:focus{
 }
 .nav_2 li a{
     color: #fff !important;
-    font-size: 20px !important;
+    font-size: 14px !important;
 }
+#nav2.xiala{ height: auto;}
 .xiala{
     height: 240px;
     transition: 2s;
     z-index: 1;
 }
+.xiala li{ height: 40px;}
 .ycxiala{
     height: 0px;
     transition: 2s;

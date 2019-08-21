@@ -152,11 +152,11 @@
 
         .sendmes {
             width: 300px;
-            height: 60px;
+            height: 50px;
             background: #ff556f;
             border-radius: 8px;
             border: none;
-            font-size: 22px;
+            font-size: 18px;
             color: #fff;
 			margin: 30px auto 0 auto;
 			display: block;
@@ -239,13 +239,14 @@
 		<div id="app">
 			<header class="clear head_top">
 				<div class="clear">
+					<img class="logoTIcon" src="../img/logo2.png" alt="">
 					<!--logo-->
-					<div class="head_logo">
+					<!-- <div class="head_logo">
 						<span class="logo">统筹帮</span>
-						<!-- <select class="tab_adress">
+						<select class="tab_adress">
 							<option v-for="item in cityData">{{item.title}}</option>		
-						</select> -->
-					</div>
+						</select>
+					</div> -->
 					<!--导航栏-->
 					<nav class="head_nav">
 						<ul class="clear">
@@ -327,11 +328,11 @@
 							<ul class="app_ul1">
 								<li>
 									<div class="app_tab"><span>*</span><label class="applay_li1">手机号码</label></div>
-									<div class="app_txt"><input class="applay_input" type="text" placeholder="请输入手机号码" v-model="submitData.phone" /></div>
+									<div class="app_txt"><input class="applay_input" type="text" placeholder="请输入手机号码" v-model="submitData.phone" onkeyup="this.value=this.value.replace(/\D/g,'')"  maxlength="11" /></div>
 								</li>
 								<li>
 									<div class="app_tab"><span>*</span><label class="applay_li1">短信验证码</label></div>
-									<div class="app_txt" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码" v-model="smsCode" /><a
+									<div class="app_txt" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码" v-model="smsCode" onkeyup="this.value=this.value.replace(/\D/g,'')" /><a
 										 class="hqnum" @click="sendCode" >{{hasSend?'已发送':'获取验证码'}}</a></div>
 								</li>
 							</ul>
@@ -398,16 +399,14 @@
 
 			<div class="zdc_1 sign_in" id="zdc1" style="">
 			</div>
-			<div class="zdc_2 sign_in" id="zdc2" style="position: fixed;">
+			<div class="zdc_2 sign_in" id="zdc2" style="position: fixed; top: 50%;left: 50%;transform: translate(-50%,-50%);overflow: auto; min-height: auto;" >
 				<span class="close_tk" id="closetkbtn"></span>
-				<div class="contbox" style="padding: 50px;">
-					<h2 class="zdcTit" style="font-size: 30px;color: #222222;text-align: center">{{artData.title}}</h2>
-					<div class="zdcText">
-						<p style="font-size: 18px;color: #666666;line-height: 35px;">
-							<div class="content ql-editor " style="clear: both;">
-								<p class="p1 " v-html="artData.content"></p>
-							</div>
-
+				<div class="contbox" style="padding: 30px;">
+					<h2 class="zdcTit" style="font-size: 30px;color: #222222;text-align: center;margin-top: 0;">{{artData.title}}</h2>
+					<div class="zdcText" style="font-size: 16px;color: #666666;line-height: 30px;height:400px; overflow: auto; ">
+						<div class="content ql-editor " style="clear: both;">
+							<p class="p1 " v-html="artData.content"></p>
+						</div>
 					</div>
 				</div>
 			</div>

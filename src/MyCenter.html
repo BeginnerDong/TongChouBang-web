@@ -46,8 +46,8 @@
         }
 
         .my_tab li a {
-            padding: 0 30px;
-            font-size: 26px;
+            padding: 0 20px;
+            font-size: 18px;
             color: #212121;
         }
 
@@ -97,7 +97,7 @@
 
         .orderdeatil {
             border: 2px solid #e2f4ff;
-            padding: 40px;
+            padding: 20px;
         }
 
         .ordertab {
@@ -109,12 +109,12 @@
             position: absolute;
             top: 0;
             right: 0;
-            line-height: 60px;
-            width: 140px;
+            line-height: 40px;
+            width: 100px;
             background: #ff556f;
             text-align: center;
             border-radius: 8px;
-            font-size: 20px;
+            font-size: 16px;
             color: #fff;
             top: 26%;
         }
@@ -125,7 +125,7 @@
             float: left;
             width: 188px;
             height: 141px;
-            margin: 6px 15px 0 0;
+            margin: 0px 15px 0 0;
             overflow: hidden;
         }
 
@@ -133,12 +133,18 @@
             padding-right: 200px;
             margin-left: 200px;
             position: relative;
+			min-height: 141px;
         }
 
         .ordertitle {
-            font-size: 16px;
+            font-size: 18px;
             color: #212121;
+			margin-top: 0px;
         }
+		 .orderright .content{
+			padding-bottom: 40px;
+			padding-top: 20px;
+		 }
 
         .ordercont {
             font-size: 16px;
@@ -149,21 +155,20 @@
 
         @media screen and (min-width:1040px) {
             .orderclick {
-                font-size: 28px !important;
                 color: #ff556f !important;
             }
         }
 
 
         .meshead {
-            line-height: 59px;
+            line-height: 50px;
             width: 100%;
             background: #f0f0f0f0;
             border-bottom: 2px solid #ff556f;
         }
 
         .meshead span {
-            width: 180px;
+            width: 150px;
             display: inline-block;
             background: #ff556f;
             text-align: center;
@@ -197,14 +202,15 @@
         }
 
         .mescont {
-            font-size: 20px;
+            font-size: 14px;
             color: #999999;
             width: 100%;
             resize: none;
-            min-height: 300px;
+            min-height: 200px;
             background: #f5f5f5;
             border: none;
-            /* padding: 20px 30px; */
+			padding: 20px;
+			box-sizing: border-box;
         }
 
         .mescont:focus {
@@ -221,11 +227,11 @@
 
         .sendmes {
             width: 300px;
-            height: 60px;
+            height: 40px;
             background: #ff556f;
-            border-radius: 8px;
+            border-radius: 0px;
             border: none;
-            font-size: 22px;
+            font-size: 16px;
             color: #fff;
         }
 
@@ -293,7 +299,7 @@
                 bottom: -3px;
             }
             .orderdeatil {
-                padding: 20px;
+                padding: 10px;
             }
             .mesdetail{
                 margin:10px; 
@@ -319,14 +325,15 @@
 		<div id="app">
 			<header class="clear head_top">
 				<div class="clear">
+					<img class="logoTIcon" src="../img/logo2.png" alt="">
 					<!--logo-->
-					<div class="head_logo">
+					<!-- <div class="head_logo">
 						<span class="logo">统筹帮</span>
-						<!-- <select class="tab_adress">
+						<select class="tab_adress">
 							<option>北京</option>
 							<option>上海</option>
-						</select> -->
-					</div>
+						</select>
+					</div> -->
 					<!--导航栏-->
 					<nav class="head_nav">
 						<ul class="clear">
@@ -409,16 +416,19 @@
 						</ul>
 					</div>
 					<div style="min-height: 400px;">
+						<!-- 无数据时显示 -->
+						<div class="nodata"></div>
+						<!-- 无数据时显示 end -->
 						<section class="orderlist" v-for="(item,index) in mainData" v-if="item.products&&item.products[0]&&item.products[0].product_id!=0&&!isRemark">
 							
 							<ul class="clear orderhead">
 								<li>{{item.create_time}}</li>
 								<li>商家名称</li>
-								<li v-if="item.order_step=='0'">待确认<a class="deleteicon"></a></li>
-								<li v-if="item.order_step=='1'">进行中<a class="deleteicon"></a></li>
-								<li v-if="item.order_step=='2'">待评价<a class="deleteicon"></a></li>
-								<li v-if="item.order_step=='3'">已评价 {{item.express_info?'奖品：'+item.express_info:''}}<a class="deleteicon"></a></li>
-								<li v-if="item.order_step=='4'">已取消<a class="deleteicon"></a></li>
+								<li v-if="item.order_step=='0'">待确认<!-- <a class="deleteicon"></a> --></li>
+								<li v-if="item.order_step=='1'">进行中<!-- <a class="deleteicon"></a> --></li>
+								<li v-if="item.order_step=='2'">待评价<!-- <a class="deleteicon"></a> --></li>
+								<li v-if="item.order_step=='3'">已评价 {{item.express_info?'奖品：'+item.express_info:''}}<!-- <a class="deleteicon"></a> --></li>
+								<li v-if="item.order_step=='4'">已取消<!-- <a class="deleteicon"></a> --></li>
 							</ul>
 							<div class="orderdeatil">
 								<div class="clear">
@@ -437,6 +447,19 @@
 										<p><span class="ordertab">预约项目：{{item.passage1}}</span></p>
 										<a class="closeorder" v-if="item.order_step=='0'"  @click="deleteOrder(index)">取消预约</a>
 										<a class="closeorder" v-if="item.order_step=='2'" @click="goRemark(item.products[0].product_id,item.order_no,index)">去评价</a>
+										
+										<div class="xingPfbox" style="position: absolute; bottom: 0px; right: 30px; display: flex; justify-content: flex-end; align-items: center;">	
+											<div style="font-size: 16px; color: #ff556f; line-height:25px">星级评分</div>
+											<div style="margin-left: 10px;">
+												
+												<span v-for="(item,index) in stars" style="margin-right: 10px;" >
+													<img src="../img/messtaricon1.png" v-if="score>=item" style="width:25px;height:25px"/>
+													<img src="../img/messtaricon.png" v-else style="width:25px;height:25px"/>
+												</span>
+												
+												</div>
+										</div>
+										
 									</div>
 								</div>
 							</div>
@@ -445,11 +468,11 @@
 							<ul class="clear orderhead">
 								<li>{{item.create_time}}</li>
 								<li>商家名称</li>
-								<li v-if="item.order_step=='0'">待确认<a class="deleteicon"></a></li>
-								<li v-if="item.order_step=='1'">进行中<a class="deleteicon"></a></li>
-								<li v-if="item.order_step=='2'">待评价<a class="deleteicon"></a></li>
-								<li v-if="item.order_step=='3'">已评价 {{item.express_info?'奖品：'+item.express_info:''}}<a class="deleteicon"></a></li>
-								<li v-if="item.order_step=='4'">已取消<a class="deleteicon"></a></li>
+								<li v-if="item.order_step=='0'">待确认<!-- <a class="deleteicon"></a> --></li>
+								<li v-if="item.order_step=='1'">进行中<!-- <a class="deleteicon"></a> --></li>
+								<li v-if="item.order_step=='2'">待评价<!-- <a class="deleteicon"></a> --></li>
+								<li v-if="item.order_step=='3'">已评价 {{item.express_info?'奖品：'+item.express_info:''}}<!-- <a class="deleteicon"></a> --></li>
+								<li v-if="item.order_step=='4'">已取消<!-- <a class="deleteicon"></a> --></li>
 							</ul>
 							<div class="orderdeatil">
 								<div class="clear">
@@ -491,8 +514,8 @@
 								<div style="margin-top: 40px;">
 									<textarea placeholder="亲，写点评论吧，您的评论对其他买家有很大的帮助" class="mescont" v-model="content"></textarea>
 								</div>
-								<div style="line-height: 95px;"><span style="font-size: 22px;color: #ff556f">星级评论</span>
-									<div style="display: inline-block;margin-left: 30px;">
+								<div style="line-height: 95px;"><span style="font-size: 18px;color: #ff556f">星级评论</span>
+									<div style="display: inline-block;margin-left: 20px;">
 										<span v-for="(item,index) in stars" style="margin-right: 10px;" @click="selectStar(item)">
 											<img src="../img/messtaricon1.png" v-if="score>=item" style="width:25px;height:25px"/>
 											<img src="../img/messtaricon.png" v-else style="width:25px;height:25px"/>

@@ -282,9 +282,10 @@
 		<div id="app">
 			<header class="clear head_top">
 				<div class="clear">
+					<img class="logoTIcon" src="../img/logo2.png" alt="">
 					<!--logo-->
 					<div class="head_logo">
-						<span class="logo">统筹帮</span>
+						<!-- <span class="logo">统筹帮</span> -->
 						<select class="tab_adress">
 							<option v-for="item in cityData">{{item.title}}</option>
 							
@@ -379,8 +380,6 @@
 									<img src="../img/icon-right.png" alt="">
 								</a>
 							</div>
-						
-						
 						</div>
 					</div>
 					
@@ -599,9 +598,9 @@
 			<div class="yytc" id="yytc" v-if="isReserve">
 
 			</div>
-			<div class="yyct" id="yyct" v-if="isReserve">
+			<div class="yyct" id="yyct" v-if="isReserve" style="padding: 30px;box-sizing: border-box; top: 50%;transform: translate(-50%,-50%);">
 				<a class="close_tc" id="close_tc"  @click="close">x</a>
-				<div class="yyct_1">
+				<div class="yyct_1" style="height: 450px; overflow: auto;">
 					<h1 class="yy_title1">预约信息</h1>
 					<ul class="clear">
 						<li class="tr1 clear">

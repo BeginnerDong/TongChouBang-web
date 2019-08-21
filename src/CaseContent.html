@@ -24,8 +24,16 @@
 			background: #fff;
 			padding: 1px 30px;
 		}
+		
+		.tese_intro_left .banner,.banner .carousel,.banner .carousel-inner{ height: 100%;}
+		.carousel-inner > .item{ width: 100%; height: 100%;}
 		.casedetail_con .ql-editor p{ line-height: 24px; padding-bottom: 10px;}
 		.casedetail_con .ql-editor p img{ display: block; width: 100%;}
+		.tese_intro_left .carousel-control{opacity: 1;text-shadow: 0 1px 2px rgba(0, 0, 0, .3);}
+		.carousel-control img{ width: 18px; height: 30px; display: block; position: absolute;top: 50%;transform: translateY(-50%);}
+		.carousel-control.left img{left: 15px;}
+		.carousel-control.right img{right: 15px;}
+		
     @media screen and (min-width: 1200px){
         .cont_de_con{
             width: 1200px;
@@ -61,14 +69,11 @@
 		<div id="app">
 			<header class="clear head_top">
 				<div class="clear">
+					<img class="logoTIcon" src="../img/logo2.png" alt="">
 					<!--logo-->
-					<div class="head_logo">
+					<!-- <div class="head_logo">
 						<span class="logo">统筹帮</span>
-						<!-- <select class="tab_adress">
-							<option v-for="item in cityData">{{item.title}}</option>
-
-						</select> -->
-					</div>
+					</div> -->
 					<!--导航栏-->
 					<nav class="head_nav">
 						<ul class="clear">
@@ -137,9 +142,33 @@
 
 				</div>
 			</header>
-			<div class="addstlyhesdPic" style="width: 100%;height: 600px;">
-				<img :src="mainData.mainImg&&mainData.bannerImg&&mainData.bannerImg[0]?mainData.bannerImg[0].url:''" style="width: 100%;height: 100%;"/>
+			<div class="tese_intro">
+				<div class="tese_intro_left" style="margin: 0 auto;float: none;">
+					<div class="banner">
+						<div id="carousel-example-generic" data-ride="carousel" class="carousel slide" style="position:relative">
+							<ol class="carousel-indicators">
+								<li v-for="(item, index) in mainData.bannerImg" data-target="#carousel-example-generic" :data-slide-to="index" :class="index=='0'?'active':''"></li>
+							</ol>
+							<div role="listbox" class="carousel-inner">
+								<div class="item" v-for="(item, index) in mainData.bannerImg" :class="index=='0'?'active':''" style="border: none;">
+									<img :src="item.url" class="img-responsive banner_img" style="height: 100%;width: 100%">
+								</div>
+							</div>	
+							<!-- 轮播（Carousel）导航 -->
+							<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+								<img src="../img/icon-left.png" alt="">
+							</a>
+							<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+								<img src="../img/icon-right.png" alt="">
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
+			
+			<!-- <div class="addstlyhesdPic" style="width: 100%;height: 600px;">
+				<img :src="mainData.mainImg&&mainData.bannerImg&&mainData.bannerImg[0]?mainData.bannerImg[0].url:''" style="width: 100%;height: 100%;"/>
+			</div> -->
 			<div class="casedetail_con">
 				<div class="cont_de_con">
 					<div>

@@ -29,7 +29,7 @@
 				</li>
 				<li class="clear active_tab">
 					<div class="act_t_1">短信验证</div>
-					<div class="act_t_2"><input class="act_i_2" placeholder="" v-model="smsCode" /><a class="sendyzm" :style="hasSend?'text-decoration:none':''" @click="sendCode">{{hasSend?'已发送':'短信验证'}}</a>
+					<div class="act_t_2"><input class="act_i_2" placeholder="" v-model="smsCode"  onkeyup="this.value=this.value.replace(/\D/g,'')" /><a class="sendyzm" :style="hasSend?'text-decoration:none':''" @click="sendCode">{{hasSend?'已发送':'短信验证'}}</a>
 					</div>
 				</li>
 				<li class="clear active_tab">
