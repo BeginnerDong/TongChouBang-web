@@ -31,7 +31,7 @@
 					<div class="head_logo">
 						<!-- <span class="logo">统筹帮</span> -->
 						<select class="tab_adress" v-model="cityId" @change="chooseCity($event)">
-							<option v-for="item in cityData" :value="item.id" >{{item.title}}</option>
+							<option v-for="item in cityData" :value="item.id">{{item.title}}</option>
 						</select>
 					</div>
 					<!--导航栏-->
@@ -73,8 +73,9 @@
 								</ul>
 							</li>
 							<li><a href="ShopTransfer.html">店铺转让</a></li>
-							<li><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -83,8 +84,9 @@
 					<!--个人中心-->
 					<div class="head_abnoutus">
 						<ul class="clear">
-							<li><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -110,9 +112,9 @@
 						<div class="search_k">
 							<div class="search_k_1">
 								<span class="sp_1 sp_0_0">
-									<input type="text" class="search_text1" placeholder="搜索团建游，目的地等" v-model="title"/></span>
+									<input type="text" class="search_text1" placeholder="搜索团建游，目的地等" v-model="title" /></span>
 								<span class="sp_1 sp_0_1">
-									<input type="button" class="search_btn1" value="搜索" @click="goSearch"/></span>
+									<input type="button" class="search_btn1" value="搜索" @click="goSearch" /></span>
 							</div>
 						</div>
 						<!--条件选择-->
@@ -140,8 +142,8 @@
 			</div>
 			<div class="product_c">
 				<div class="product_c_z">
-					<div class="pro_top">
-						<img src="../img/peoduct_top.jpg">
+					<div class="pro_top" style="height: 160px;">
+						<img style="height: 160px;" :src="noticeData.mainImg&&noticeData.mainImg[0]?noticeData.mainImg[0].url:''">
 					</div>
 					<div class="pro_middle">
 						<div class="tab_rank">
@@ -157,11 +159,12 @@
 					<div class="peo_list addstlyPeoLis">
 						<div class="pro_b_l">
 							<ul class="clear">
-								<li  v-for="(item,index) in mainData" v-if="index<4" @click="intoPath('PrintList.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></li>
+								<li v-for="(item,index) in mainData" v-if="index<4" @click="intoPath('PrintList.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></li>
 							</ul>
 						</div>
 						<div class="pro_n_list">
 							<ul class="clear">
+								<div class="nodata" v-if="mainData.length==0"></div>
 								<li v-for="item in mainData">
 									<div class="product_d">
 										<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
@@ -175,7 +178,7 @@
 												<p class="pro_p_f clear">
 													<span class="x_price">现价：{{item.score}}元/<span class="x_q">起</span> </span>
 													<span class="y_price1">原价:{{item.price}}元/<span class="y_q">起</span></span>
-													<span class="zk_price">{{item.discount}}折</span>
+													<span class="zk_price">{{item.discount&&item.discount!=0?item.discount:'10'}}折</span>
 												</p>
 										</div>
 										<div class="probind  nowbind" @click="intoPath('PrintList.html',item.id)">立即预约</div>
@@ -184,25 +187,27 @@
 
 							</ul>
 						</div>
-						<include src="form.html" ></include>
+						<include src="form.html"></include>
 					</div>
 					<div class="fenye">
 						<span>
 							共:{{allPages}}页
 						</span>
-						<a class="pages backPage" data-type="back" @click="changePage">上一页</a>
+						<a class="pages backPage" data-type="back" @click="goStart">
+							<<</a> <a class="pages backPage" data-type="back" @click="changePage">上一页
+						</a>
 						<span v-for="item in pageArray">
 							<a v-if="item == paginate.currentPage" class="currentpages active">{{item}}</a>
 							<a v-if="item != paginate.currentPage" class="currentpages" :data-page="item" @click="linkTo">{{item}}</a>
 						</span>
 						<sapn class="currentpages" v-if="pageArray[pageArray.length-1]!=allPages">...</sapn>
 						<a class="pages nextPage" data-type="next" @click="changePage">下一页</a>
-					
+						<a class="pages backPage" data-type="back" @click="goEnd">>></a>
 					</div>
 				</div>
 
 			</div>
-			<include src="footer.html" ></include>
+			<include src="footer.html"></include>
 		</div>
 
 	</body>
@@ -221,17 +226,19 @@
 					labelData: [],
 					mainData: [],
 					totalCount: 0,
-					cityData:[],
+					cityData: [],
 					num: 1,
 					order: {
 						listorder: 'desc'
 					},
-					spuArray:[],
+					spuArray: [],
 					pageArray: [],
 					allPages: 0,
 					linkPage: '',
-					title:'',
-					cityId:''
+					title: '',
+					cityId: '',
+					hasLogin: false,
+					noticeData:{}
 				}
 			},
 
@@ -243,8 +250,8 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							
-							relation_two:['in',[self.spuArray]]
+
+							relation_two: ['in', [self.spuArray]]
 						},
 						condition: 'in'
 					}
@@ -255,84 +262,136 @@
 			methods: {
 				init: function(e) {
 					var self = this;
+					if (localStorage.getItem('user_token')) {
+						self.hasLogin = true
+					};
 					self.getLableData();
 					self.getMainData();
 					self.getCityData()
+					self.getNoticeData()
 				},
-				
-				
-				chooseCity:function(e){
+
+				getNoticeData() {
+					const self = this;
+					const postData = {};
+					postData.searchItem = {
+						thirdapp_id: 2,
+						title: '广告条',
+					};
+					const callback = (res) => {
+						if (res.info.data.length > 0) {
+							self.noticeData = res.info.data[0]
+							console.log('swiperData', self.swiperData)
+						};
+					};
+					window.base.labelGet(postData, callback);
+				},
+
+				goStart() {
+					const self = this;
+					self.mainData = [];
+					self.paginate = {
+							count: 0,
+							currentPage: 1,
+							pagesize: 6,
+							is_page: true,
+						},
+						self.getMainData()
+				},
+
+				goEnd() {
+					const self = this;
+					self.mainData = [];
+					self.paginate = {
+							count: 0,
+							currentPage: self.allPages,
+							pagesize: 6,
+							is_page: true,
+						},
+						self.getMainData()
+				},
+
+
+				loginOff() {
+					const self = this;
+					localStorage.removeItem('user_token');
+					localStorage.removeItem('user_info');
+					localStorage.removeItem('user_no');
+					location.reload()
+				},
+
+				chooseCity: function(e) {
 					const self = this;
 					var index = e.target.options.selectedIndex;
 					var nowCity = localStorage.getItem('cityId');
-					if(self.cityData[index].id!=nowCity){
+					if (self.cityData[index].id != nowCity) {
 						self.cityId = self.cityData[index].id;
 						localStorage.setItem('cityId', self.cityData[index].id);
 						self.mainData = [];
-						self.paginate= { 
-							count: 0, 
-							currentPage: 1, 
-							pagesize:6, 
-							is_page: true, 
-						},
-						self.getMainData()
-					};	
-				
+						self.paginate = {
+								count: 0,
+								currentPage: 1,
+								pagesize: 6,
+								is_page: true,
+							},
+							self.getMainData()
+					};
+
 				},
-				
-				check(id){
+
+				check(id) {
 					const self = this;
 					var position = self.spuArray.indexOf(id);
-					if(position >= 0){
+					if (position >= 0) {
 						return true
-					}else{
+					} else {
 						return false
 					}
 				},
-				
-				allSelect(index){
+
+				allSelect(index) {
 					const self = this;
 					var hasOne = false;
 					for (var i = 0; i < self.labelData[index].child.length; i++) {
 						var position = self.spuArray.indexOf(self.labelData[index]['child'][i].id);
-						if(position >= 0){	
-							hasOne = true;		
-							self.spuArray.splice(position, 1);					
+						if (position >= 0) {
+							hasOne = true;
+							self.spuArray.splice(position, 1);
 						}
 					};
-					
-					if(hasOne){
+
+					if (hasOne) {
 						self.mainData = [];
-						self.paginate= { 
-							count: 0, 
-							currentPage: 1, 
-							pagesize:6, 
-							is_page: true, 
-						},
-						self.getMainData()
+						self.paginate = {
+								count: 0,
+								currentPage: 1,
+								pagesize: 6,
+								is_page: true,
+							},
+							self.getMainData()
 					}
 				},
-				
-				select(id){
+
+				select(id) {
 					const self = this;
-					
+
 					var position = self.spuArray.indexOf(id);
-					if(position >= 0){			
-						self.spuArray.splice(position, 1);					
-					}else{
-						self.spuArray.push(id);		
+					if (position >= 0) {
+						self.spuArray.splice(position, 1);
+					} else {
+						self.spuArray.push(id);
 					}
 					console.log(self.spuArray)
 					self.mainData = [];
-					self.paginate= { 
-						count: 0, 
-						currentPage: 1, 
-						pagesize:6, 
-						is_page: true, 
-					},
-					self.getMainData()
+					self.paginate = {
+							count: 0,
+							currentPage: 1,
+							pagesize: 6,
+							is_page: true,
+						},
+						self.getMainData()
 				},
-				
+
 				changeOrder(num) {
 					const self = this;
 					if (self.num != num) {
@@ -407,12 +466,12 @@
 					postData.order = {
 						create_time: 'asc'
 					};
-					
+
 					var callback = function(res) {
 						if (res.info.data.length > 0) {
 							self.labelData.push.apply(self.labelData, res.info.data);
 							for (var i = 0; i < self.labelData.length; i++) {
-								self.labelData[i].title=self.labelData[i].title.split('-')
+								self.labelData[i].title = self.labelData[i].title.split('-')
 							}
 						}
 					};
@@ -422,16 +481,17 @@
 
 				getMainData: function(id) {
 					var self = this;
+					self.mainData = [];
 					var postData = {};
 					postData.paginate = window.base.cloneForm(self.paginate);
 					postData.searchItem = {
 						category_id: 97,
-						passage2:localStorage.getItem('cityId')
+						passage2: localStorage.getItem('cityId')
 					};
 					postData.order = {
 						listorder: 'desc'
 					};
-					if(self.spuArray.length>0){
+					if (self.spuArray.length > 0) {
 						postData.getBefore = window.base.cloneForm(self.getBefore);
 					};
 					var callback = function(res) {
@@ -447,23 +507,23 @@
 					console.log('self.mainData', self.mainData)
 					window.base.productGet(postData, callback);
 				},
-				
-				goSearch(){
+
+				goSearch() {
 					const self = this;
-					if(self.title!=''){
-						window.location.href = 'search.html?title='+self.title
-					}else{
+					if (self.title != '') {
+						window.location.href = 'search.html?title=' + self.title
+					} else {
 						alert('请输入标题搜索')
 					}
 				},
-				
-				changePage:function(e) {
+
+				changePage: function(e) {
 					var self = this;
 					var dataSet = window.base.getDataSet(e);
 					window.base.changePage(dataSet, self);
 				},
-				
-				linkTo:function(e) {
+
+				linkTo: function(e) {
 					var self = this;
 					console.log(e);
 					self.linkPage = window.base.getDataSet(e).page;

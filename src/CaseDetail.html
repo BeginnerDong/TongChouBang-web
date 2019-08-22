@@ -321,11 +321,18 @@
 					<nav class="head_nav">
 						<ul class="clear">
 							<li><a href="index.html">首页</a></li>
-							<li ><a href="TeSe.html">找特色会场</a></li>
+							<li><a href="TeSe.html">找特色会场</a></li>
 							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
-							<li><a>会议配套服务</a></li>
-							<li><a>店铺转让</a></li>
+							<li id="nav2btn"><a>会议配套服务</a>
+								<ul class="clear nav_2 ycxiala" id="nav2">
+									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+									<li><a href="Lease.html">活动道具租赁</a></li>
+									<li><a href="Advertising.html">线下广告</a></li>
+									<li><a href="GiftPurchasing.html">礼品采购</a></li>
+								</ul>
+							</li>
+							<li><a href="ShopTransfer.html">店铺转让</a></li>
 						</ul>
 					</nav>
 					<div class="nav_small">
@@ -340,16 +347,29 @@
 							<li><a href="TeSe.html">找特色会场</a></li>
 							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
-							<li><a>会议配套服务</a></li>
-							<li><a>店铺转让</a></li>
+							<li><a id="smnavbtn">会议配套服务</a>
+								<ul class="clear smallnav2 smycxiala" id="smnav2">
+									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
+									<li><a href="Lease.html">活动道具租赁</a></li>
+									<li><a href="Advertising.html">线下广告</a></li>
+									<li><a href="GiftPurchasing.html">礼品采购</a></li>
+								</ul>
+							</li>
+							<li><a href="ShopTransfer.html">店铺转让</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
-
+					
 					<!--个人中心-->
 					<div class="head_abnoutus">
 						<ul class="clear">
-							<li><a href="Login.html">登录</a>/<a href="Login.html">注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -394,6 +414,7 @@
 						</div>
 						<div class="casedeatilright">
 							<ul class="c_d_r clear">
+								<div class="nodata" v-if="mainData.length==0"></div>
 								<li v-for="item in mainData">
 									<div class="c_d_r_c" @click="intoDetail('CaseContent.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" />
 										<h3 class="c_d_r_t">{{item.title}}</h3>
@@ -409,6 +430,7 @@
 				<span>
 					共:{{allPages}}页
 				</span>
+				<a class="pages backPage" data-type="back" @click="goStart"><<</a>
 				<a class="pages backPage" data-type="back" @click="changePage">上一页</a>
 				<span v-for="item in pageArray">
 					<a v-if="item == paginate.currentPage" class="currentpages active">{{item}}</a>
@@ -416,7 +438,7 @@
 				</span>
 				<sapn class="currentpages" v-if="pageArray[pageArray.length-1]!=allPages">...</sapn>
 				<a class="pages nextPage" data-type="next" @click="changePage">下一页</a>
-			
+				<a class="pages backPage" data-type="back" @click="goEnd">>></a>
 			</div>
 			<include src="footer.html" ></include>
 		</div>
@@ -442,7 +464,7 @@
 					pageArray: [],
 					allPages: 0,
 					linkPage: '',
-
+					hasLogin:false
 				}
 			},
 
@@ -452,8 +474,44 @@
 			},
 
 			methods: {
+				
+				goStart(){
+					const self = this;
+					self.mainData = [];
+					self.paginate = {
+						count: 0,
+						currentPage: 1,
+						pagesize: 6,
+						is_page: true,
+					},
+					self.getMainData()
+				},
+				
+				goEnd(){
+					const self = this;
+					self.mainData = [];
+					self.paginate = {
+						count: 0,
+						currentPage: self.allPages,
+						pagesize: 6,
+						is_page: true,
+					},
+					self.getMainData()
+				},
+				
+				loginOff(){
+					const self = this;
+					localStorage.removeItem('user_token');
+					localStorage.removeItem('user_info');
+					localStorage.removeItem('user_no');
+					location.reload()
+				},
+				
 				init: function(e) {
 					var self = this;
+					if (localStorage.getItem('user_token')) {
+						self.hasLogin = true
+					};
 					self.getCityData();
 					self.getLabelData();
 					self.getMainData();
@@ -526,6 +584,7 @@
 
 				getMainData: function(id) {
 					var self = this;
+					self.mainData = [];
 					var postData = {};
 					postData.paginate = window.base.cloneForm(self.paginate);
 					postData.searchItem = window.base.cloneForm(self.searchItem);

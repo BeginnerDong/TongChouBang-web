@@ -11,7 +11,7 @@
 		<link type="text/css" rel="stylesheet" href="../css/style.css" />
 		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		
+
 		<script src="../js/base.js" type="application/javascript"></script>
 		<script src="../js/rem.js"></script>
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
@@ -90,14 +90,20 @@
 								</ul>
 							</li>
 							<li class="li_bg"><a href="ShopTransfer.html">店铺转让</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
 
 					<!--个人中心-->
 					<div class="head_abnoutus">
 						<ul class="clear">
-							<li><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -127,7 +133,7 @@
 					</div>
 				</div>
 			</div>
-			<include src="footer.html" ></include>
+			<include src="footer.html"></include>
 		</div>
 
 	</body>
@@ -144,7 +150,7 @@
 					},
 
 					mainData: {},
-
+					hasLogin:false
 				}
 			},
 
@@ -156,9 +162,19 @@
 			methods: {
 				init: function(e) {
 					var self = this;
-
+					if (localStorage.getItem('user_token')) {
+						self.hasLogin = true
+					};
 					self.getMainData();
 
+				},
+				
+				loginOff(){
+					const self = this;
+					localStorage.removeItem('user_token');
+					localStorage.removeItem('user_info');
+					localStorage.removeItem('user_no');
+					location.reload()
 				},
 
 

@@ -169,8 +169,9 @@
 								</ul>
 							</li>
 							<li><a href="ShopTransfer.html">店铺转让</a></li>
-							<li><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -179,9 +180,9 @@
 					<!--个人中心-->
 					<div class="head_abnoutus">
 						<ul class="clear">
-							<li><a href="#">退出登录</a></li>
-							<li><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
+							<li  v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li  v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li  v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -500,7 +501,8 @@
 
 				},
 				title: '',
-				cityId: 0
+				cityId: 0,
+				hasLogin:false
 			}
 		},
 		created: function() {
@@ -538,9 +540,20 @@
 				self.getLabelSixData();
 
 			},
+			
+			loginOff(){
+				const self = this;
+				localStorage.removeItem('user_token');
+				localStorage.removeItem('user_info');
+				localStorage.removeItem('user_no');
+				location.reload()
+			},
 
 			init: function(e) {
 				var self = this;
+				if (localStorage.getItem('user_token')) {
+					self.hasLogin = true
+				};
 				self.getSliderData();
 				self.getCityData();
 				self.getLabelOneData();

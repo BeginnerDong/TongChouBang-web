@@ -11,7 +11,7 @@
 		<link type="text/css" rel="stylesheet" href="../css/style.css" />
 		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		
+
 		<script src="../js/base.js" type="application/javascript"></script>
 		<script src="../js/rem.js"></script>
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
@@ -286,8 +286,9 @@
 								</ul>
 							</li>
 							<li><a href="ShopTransfer.html">店铺转让</a></li>
-							<li><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -296,9 +297,10 @@
 					<!--个人中心-->
 					<div class="head_abnoutus">
 						<ul class="clear">
-							<li><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
-							<li class="active"><a href="Apply.html">申请入驻</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
+							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
@@ -328,12 +330,13 @@
 							<ul class="app_ul1">
 								<li>
 									<div class="app_tab"><span>*</span><label class="applay_li1">手机号码</label></div>
-									<div class="app_txt"><input class="applay_input" type="text" placeholder="请输入手机号码" v-model="submitData.phone" onkeyup="this.value=this.value.replace(/\D/g,'')"  maxlength="11" /></div>
+									<div class="app_txt"><input class="applay_input" type="text" placeholder="请输入手机号码" v-model="submitData.phone"
+										 onkeyup="this.value=this.value.replace(/\D/g,'')" maxlength="11" /></div>
 								</li>
 								<li>
 									<div class="app_tab"><span>*</span><label class="applay_li1">短信验证码</label></div>
-									<div class="app_txt" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码" v-model="smsCode" onkeyup="this.value=this.value.replace(/\D/g,'')" /><a
-										 class="hqnum" @click="sendCode" >{{hasSend?'已发送':'获取验证码'}}</a></div>
+									<div class="app_txt" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码"
+										 v-model="smsCode" onkeyup="this.value=this.value.replace(/\D/g,'')" /><a class="hqnum" @click="sendCode">{{hasSend?'已发送':'获取验证码'}}</a></div>
 								</li>
 							</ul>
 						</div>
@@ -346,12 +349,12 @@
 								<li>
 									<div class="app_tab"><span class="bitian_x">*</span><label class="applay_li1">联系人姓名</label>
 									</div>
-									<div class="app_txt"><input class="applay_input" type="text" placeholder="姓名只需填一个" v-model="submitData.passage1"/></div>
+									<div class="app_txt"><input class="applay_input" type="text" placeholder="姓名只需填一个" v-model="submitData.passage1" /></div>
 								</li>
 								<li>
 									<div class="app_tab"><span class="bitian_x">*</span><label class="applay_li1">商家名称</label>
 									</div>
-									<div class="app_txt"><input class="applay_input" type="text" placeholder="请输入商家名称" v-model="submitData.title"/></div>
+									<div class="app_txt"><input class="applay_input" type="text" placeholder="请输入商家名称" v-model="submitData.title" /></div>
 								</li>
 								<li>
 									<div class="app_tab" style="float: left;margin-top:0px"><span class="bitian_x">*</span><label class="applay_li1">服务类型</label></div>
@@ -359,7 +362,7 @@
 										<span class="applytype0" v-for="(item,index) in type" @click="selectType(index)">
 											<img :src="item.isSelect?'../img/checkbox-a.png':'../img/checkbox.png'" />{{item.name}}
 										</span>
-										
+
 									</div>
 								</li>
 								<li>
@@ -380,8 +383,8 @@
 							</ul>
 							<div style=" overflow: hidden;">
 								<div style="line-height: 35px; margin-right:10%;float: right;">
-									<img src="../img/checkbox.png" v-if="!isSelect" style="width: 16px;height: 16px;" @click="select"/>
-									<img src="../img/checkbox-a.png" v-if="isSelect" style="width: 16px;height: 16px;" @click="select"/>
+									<img src="../img/checkbox.png" v-if="!isSelect" style="width: 16px;height: 16px;" @click="select" />
+									<img src="../img/checkbox-a.png" v-if="isSelect" style="width: 16px;height: 16px;" @click="select" />
 									<span class="" style="margin:0 5px; font-size: 16px;" id="openmz">免责条款</span>
 									<span class="bookcion1"></span>
 								</div>
@@ -389,17 +392,17 @@
 							<div>
 								<button class="sendmes" @click="submit">提交入驻申请</button>
 							</div>
-							
+
 						</div>
 					</div>
 				</div>
 			</div>
-			<include src="footer.html" ></include>
+			<include src="footer.html"></include>
 			<!--免责条款-->
 
 			<div class="zdc_1 sign_in" id="zdc1" style="">
 			</div>
-			<div class="zdc_2 sign_in" id="zdc2" style="position: fixed; top: 50%;left: 50%;transform: translate(-50%,-50%);overflow: auto; min-height: auto;" >
+			<div class="zdc_2 sign_in" id="zdc2" style="position: fixed; top: 50%;left: 50%;transform: translate(-50%,-50%);overflow: auto; min-height: auto;">
 				<span class="close_tk" id="closetkbtn"></span>
 				<div class="contbox" style="padding: 30px;">
 					<h2 class="zdcTit" style="font-size: 30px;color: #222222;text-align: center;margin-top: 0;">{{artData.title}}</h2>
@@ -413,7 +416,7 @@
 		</div>
 
 	</body>
-	
+
 	<script type="text/javascript">
 		var app = new Vue({
 			el: '#app',
@@ -421,68 +424,105 @@
 				return {
 
 					submitData: {
-						phone:'',
-						passage1:'',
-						title:'',
-						passage_array:[],
-						content:'',
-						relation_id:'',
-						type:2,
-						
+						phone: '',
+						passage1: '',
+						title: '',
+						passage_array: [],
+						content: '',
+						relation_id: '',
+						type: 2,
+
 					},
-					cityData:[],
-					type:[{name:'找特色会场',isSelect:false},{name:'找印刷商',isSelect:false},{name:'找兼职',isSelect:false},
-					{name:'会议自助餐',isSelect:false},{name:'活动道具租赁',isSelect:false},{name:'线下广告',isSelect:false},{name:'礼品采购',isSelect:false},{name:'店铺转让',isSelect:false}],
-					smsCode:'',
-					hasSend:false,
-					bannerData:{},
-					isSelect:false,
-					artData:{}
+					cityData: [],
+					type: [{
+							name: '找特色会场',
+							isSelect: false
+						}, {
+							name: '找印刷商',
+							isSelect: false
+						}, {
+							name: '找兼职',
+							isSelect: false
+						},
+						{
+							name: '会议自助餐',
+							isSelect: false
+						}, {
+							name: '活动道具租赁',
+							isSelect: false
+						}, {
+							name: '线下广告',
+							isSelect: false
+						}, {
+							name: '礼品采购',
+							isSelect: false
+						}, {
+							name: '店铺转让',
+							isSelect: false
+						}
+					],
+					smsCode: '',
+					hasSend: false,
+					bannerData: {},
+					isSelect: false,
+					artData: {},
+					hasLogin:false
 				}
 			},
 			created() {
 				const self = this;
+				if (localStorage.getItem('user_token')) {
+					self.hasLogin = true
+				};
 				self.getCityData();
 				self.getBannerData()
 				self.getArticleData()
 			},
 
 			methods: {
+				
+				loginOff(){
+					const self = this;
+					localStorage.removeItem('user_token');
+					localStorage.removeItem('user_info');
+					localStorage.removeItem('user_no');
+					location.reload()
+				},
 
-				sendCode:function(){
+				sendCode: function() {
 					var self = this;
-					
-					if(self.hasSend){
+
+					if (self.hasSend) {
 						return;
 					};
 					var phone = self.submitData.phone;
 					if (phone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(phone)) {
-						
+
 						alert('请输入正确的手机号码');
 						return;
 					}
 					var postData = {
-						params:{
-							PhoneNumbers:self.submitData.phone
+						params: {
+							PhoneNumbers: self.submitData.phone
 						}
 					};
-					var callback = function(res){
-						if(res.solely_code==100000){
+					var callback = function(res) {
+						if (res.solely_code == 100000) {
 							self.hasSend = true;
-						}else{
+						} else {
 							alert('发送失败');
 						};
 					};
 					window.base.sendCode(postData, callback);
 				},
-				
+
 				getArticleData() {
 					const self = this;
 					const postData = {};
 					postData.searchItem = {
 						thirdapp_id: 2,
 					};
-				
+
 					postData.getBefore = {
 						caseData: {
 							tableName: 'Label',
@@ -496,31 +536,31 @@
 					};
 					const callback = (res) => {
 						if (res.info.data.length > 0) {
-							self.artData = res.info.data[0];	
-						} 
-		
+							self.artData = res.info.data[0];
+						}
+
 					};
 					window.base.articleGet(postData, callback);
 				},
-				
-				select(){
+
+				select() {
 					const self = this;
 					self.isSelect = !self.isSelect
 				},
-				
-				cityChange(e){
+
+				cityChange(e) {
 					const self = this;
 					console.log(e)
-					self.submitData.relation_id = self.cityData[e.target.options.selectedIndex-1].id
+					self.submitData.relation_id = self.cityData[e.target.options.selectedIndex - 1].id
 				},
-				
+
 				getCityData: function(id) {
 					var self = this;
 					var postData = {};
-							
+
 					postData.searchItem = {
 						type: 11
-							
+
 					};
 					postData.order = {
 						listorder: 'desc'
@@ -533,14 +573,14 @@
 					console.log('self.city', self.city)
 					window.base.labelGet(postData, callback);
 				},
-				
+
 				getBannerData() {
 					var self = this;
 					var postData = {};
-							
+
 					postData.searchItem = {
-						title:'申请入驻图'
-							
+						title: '申请入驻图'
+
 					};
 					var callback = function(res) {
 						if (res.info.data.length > 0) {
@@ -549,7 +589,7 @@
 					};
 					window.base.labelGet(postData, callback);
 				},
-				
+
 				messageAdd() {
 					const self = this;
 					const postData = {};
@@ -557,8 +597,8 @@
 					postData.data = window.base.cloneForm(self.submitData);
 					postData.data.user_type = 0;
 					postData.smsAuth = {
-						phone:self.submitData.phone,
-						code:self.smsCode
+						phone: self.submitData.phone,
+						code: self.smsCode
 					};
 					const callback = (res) => {
 						if (res.solely_code == 100000) {
@@ -578,16 +618,16 @@
 
 				submit() {
 					const self = this;
-					
+
 					console.log(self.submitData)
 
 					var newObject = window.base.cloneForm(self.submitData);
 					delete newObject.content;
 					const pass = window.base.checkComplete(newObject);
 					console.log('pass', pass)
-				
+
 					if (pass) {
-						if(!self.isSelect){
+						if (!self.isSelect) {
 							alert('请阅读条款并同意');
 							return
 						};
@@ -602,18 +642,18 @@
 					const self = this;
 					console.log(index)
 					console.log(self.submitData.passage_array)
-					console.log(window.base.inArray(self.type[index].name,self.submitData.passage_array))
+					console.log(window.base.inArray(self.type[index].name, self.submitData.passage_array))
 					var position = self.submitData.passage_array.indexOf(self.type[index].name);
-					if(position >= 0){
-						
+					if (position >= 0) {
+
 						self.submitData.passage_array.splice(position, 1);
 						self.type[index].isSelect = false;
-							
-					}else{
+
+					} else {
 						self.submitData.passage_array.push(self.type[index].name);
 						self.type[index].isSelect = true;
 					}
-					
+
 				}
 
 			}

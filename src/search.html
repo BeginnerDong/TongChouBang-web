@@ -270,8 +270,9 @@
 								</ul>
 							</li>
 							<li><a href="ShopTransfer.html">店铺转让</a></li>
-							<li><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -280,8 +281,9 @@
 					<!--个人中心-->
 					<div class="head_abnoutus">
 						<ul class="clear">
-							<li><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -300,7 +302,7 @@
 				</div>
 			</header>
 			<!--顶部图片-->
-		
+
 			<div class="top">
 				<div class="banner">
 					<div id="carousel-example-generic" data-ride="carousel" class="carousel slide" style="height: 100%;">
@@ -312,7 +314,7 @@
 							<div class="item" v-for="(item, index) in swiperData.mainImg" :class="index=='0'?'active':''" style="height:100%;border: none;">
 								<img :src="item.url" class="img-responsive banner_img" style="height: 100%;width: 100%">
 							</div>
-							
+
 						</div>
 					</div>
 				</div>
@@ -320,8 +322,8 @@
 			<div>
 				<div class="product_c">
 					<div class="product_c_z">
-						<div class="pro_top">
-							<img src="../img/peoduct_top.jpg">
+						<div class="pro_top" style="height: 160px;">
+							<img style="height: 160px;" :src="noticeData.mainImg&&noticeData.mainImg[0]?noticeData.mainImg[0].url:''">
 						</div>
 						<div class="pro_middle">
 							<div class="tab_rank">
@@ -337,11 +339,12 @@
 						<div class="peo_list">
 							<div class="pro_b_l">
 								<ul class="clear">
-									<li  v-for="(item,index) in mainData" v-if="index<4" @click="intoPath('TeSeDetail.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></li>
+									<li v-for="(item,index) in mainData" v-if="index<4" @click="intoPath('TeSeDetail.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></li>
 								</ul>
 							</div>
 							<div class="pro_n_list">
 								<ul class="clear">
+									<div class="nodata" v-if="mainData.length==0"></div>
 									<li v-for="item in mainData">
 										<div class="product_d">
 											<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
@@ -355,7 +358,7 @@
 													<p class="pro_p_f clear">
 														<span class="x_price">现价：{{item.score}}元/<span class="x_q">起</span> </span>
 														<span class="y_price1">原价:{{item.price}}元/<span class="y_q">起</span></span>
-														<span class="zk_price">{{item.discount}}折</span>
+														<span class="zk_price">{{item.discount&&item.discount!=0?item.discount:'10'}}折</span>
 													</p>
 											</div>
 											<div class="probind  nowbind" @click="intoPath('TeSeDetail.html',item.id)">立即预约</div>
@@ -370,14 +373,16 @@
 							<span>
 								共:{{allPages}}页
 							</span>
-							<a class="pages backPage" data-type="back" @click="changePage">上一页</a>
+							<a class="pages backPage" data-type="back" @click="goStart">
+								<<</a> <a class="pages backPage" data-type="back" @click="changePage">上一页
+							</a>
 							<span v-for="item in pageArray">
 								<a v-if="item == paginate.currentPage" class="currentpages active">{{item}}</a>
 								<a v-if="item != paginate.currentPage" class="currentpages" :data-page="item" @click="linkTo">{{item}}</a>
 							</span>
 							<sapn class="currentpages" v-if="pageArray[pageArray.length-1]!=allPages">...</sapn>
 							<a class="pages nextPage" data-type="next" @click="changePage">下一页</a>
-
+							<a class="pages backPage" data-type="back" @click="goEnd">>></a>
 						</div>
 					</div>
 
@@ -394,37 +399,91 @@
 			data() {
 				return {
 
-					paginate: { 
-					    count: 0, 
-					    currentPage: 1, 
-					    pagesize:6, 
-					    is_page: true, 
+					paginate: {
+						count: 0,
+						currentPage: 1,
+						pagesize: 6,
+						is_page: true,
 					},
-					
+
 					labelData: [],
-					mainData:[],
-					totalCount:0,
-					cityData:[],
-					num:1,
-					order:{
-						listorder:'desc'
+					mainData: [],
+					totalCount: 0,
+					cityData: [],
+					num: 1,
+					order: {
+						listorder: 'desc'
 					},
-					spuArray:[],
+					spuArray: [],
 					pageArray: [],
 					allPages: 0,
 					linkPage: '',
-					swiperData:{}
+					swiperData: {},
+					hasLogin: false,
+					noticeData:{}
 				}
 			},
 			created() {
 				const self = this;
+				if (localStorage.getItem('user_token')) {
+					self.hasLogin = true
+				};
 				self.getCityData();
 				self.getMainData();
 				self.getSliderData()
+				self.getNoticeData()
+			},
+
+			getNoticeData() {
+				const self = this;
+				const postData = {};
+				postData.searchItem = {
+					thirdapp_id: 2,
+					title: '广告条',
+				};
+				const callback = (res) => {
+					if (res.info.data.length > 0) {
+						self.noticeData = res.info.data[0]
+						console.log('swiperData', self.swiperData)
+					};
+				};
+				window.base.labelGet(postData, callback);
 			},
 
 			methods: {
-				
+
+				goStart() {
+					const self = this;
+					self.mainData = [];
+					self.paginate = {
+							count: 0,
+							currentPage: 1,
+							pagesize: 6,
+							is_page: true,
+						},
+						self.getMainData()
+				},
+
+				goEnd() {
+					const self = this;
+					self.mainData = [];
+					self.paginate = {
+							count: 0,
+							currentPage: self.allPages,
+							pagesize: 6,
+							is_page: true,
+						},
+						self.getMainData()
+				},
+
+				loginOff() {
+					const self = this;
+					localStorage.removeItem('user_token');
+					localStorage.removeItem('user_info');
+					localStorage.removeItem('user_no');
+					location.reload()
+				},
+
 				getSliderData() {
 					const self = this;
 					const postData = {};
@@ -432,11 +491,11 @@
 						thirdapp_id: 2,
 						title: '首页轮播',
 					};
-				
+
 					const callback = (res) => {
 						if (res.info.data.length > 0) {
 							self.swiperData = res.info.data[0]
-							console.log('swiperData',self.swiperData)
+							console.log('swiperData', self.swiperData)
 						};
 					};
 					window.base.labelGet(postData, callback);
@@ -497,13 +556,14 @@
 
 				getMainData: function(id) {
 					var self = this;
+					self.mainData = [];
 					var postData = {};
 					postData.paginate = window.base.cloneForm(self.paginate);
 					postData.searchItem = {
 						title: ['LIKE', ['%' + window.base.GetRequest().title + '%']]
 					};
 					postData.order = window.base.cloneForm(self.order);
-				
+
 					var callback = function(res) {
 						if (res.info.data.length > 0) {
 							self.mainData.push.apply(self.mainData, res.info.data);

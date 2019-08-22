@@ -816,7 +816,7 @@ window.base = {
 	login: function(param, callback) {
 
 		var allParams = {
-			url: 'Func/Common/loginByUp',
+			url: 'Project/Solely/loginByUp',
 			type: 'post',
 			data: param,
 			sCallback: function(data) {
@@ -1060,7 +1060,7 @@ window.base = {
 				alert('已经到底啦')
 			} else {
 				self.paginate.currentPage++;
-				self.getMainData();
+				self.getMainData(true);
 			}
 		};
 		if (dataSet.type == 'back') {
@@ -1068,7 +1068,7 @@ window.base = {
 				alert('已经没有啦')
 			} else {
 				self.paginate.currentPage--;
-				self.getMainData();
+				self.getMainData(true);
 			}
 		};
 

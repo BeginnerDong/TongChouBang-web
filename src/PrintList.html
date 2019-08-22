@@ -300,22 +300,24 @@
 		                    </ul>
 		                </li>
 		                <li><a href="ShopTransfer.html">店铺转让</a></li>
-		                <li><a href="Login.html">登录注册</a></li>
-		                <li><a href="MyCenter.html">个人中心</a></li>
-		                <li><a href="Apply.html">申请入驻</a></li>
-		                <li><a href="Help.html">帮助中心</a></li>
-		            </ul>
-		        </div>
-		
-		        <!--个人中心-->
-		        <div class="head_abnoutus">
-		            <ul class="clear">
-		                <li><a href="Login.html">登录注册</a></li>
-		                <li><a href="MyCenter.html">个人中心</a></li>
-		                <li><a href="Apply.html">申请入驻</a></li>
-		                <li><a href="Help.html">帮助中心</a></li>
-		            </ul>
-		        </div>
+		                <li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+		                		<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+		                		<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
+		                		<li><a href="Apply.html">申请入驻</a></li>
+		                		<li><a href="Help.html">帮助中心</a></li>
+		                	</ul>
+		                </div>
+		                
+		                <!--个人中心-->
+		                <div class="head_abnoutus">
+		                	<ul class="clear">
+		                		<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+		                		<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+		                		<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
+		                		<li><a href="Apply.html">申请入驻</a></li>
+		                		<li><a href="Help.html">帮助中心</a></li>
+		                	</ul>
+		                </div>
 		        <div class="me_rk" style="float: right">
 		            <div class="btn_me"><img id="btn_me" src="../img/meicon.png" /></div>
 		
@@ -603,7 +605,8 @@
 					previewImgData:[],
 					num:0,
 					startTime:'',
-					endTime:''
+					endTime:'',
+					hasLogin:false
 				}
 			},
 			created() {
@@ -614,8 +617,19 @@
 			methods: {
 				init: function(e) {
 					const self = this;
-					
+					if (localStorage.getItem('user_token')) {
+						self.hasLogin = true
+					};
 					self.getCityData()
+				},
+				
+				
+				loginOff(){
+					const self = this;
+					localStorage.removeItem('user_token');
+					localStorage.removeItem('user_info');
+					localStorage.removeItem('user_no');
+					location.reload()
 				},
 				
 				lastImg(){

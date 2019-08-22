@@ -290,22 +290,24 @@
 								</ul>
 							</li>
 							<li><a href="ShopTransfer.html">店铺转让</a></li>
-							<li class="li_bg"><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
-							<li><a href="Apply.html">申请入驻</a></li>
-							<li><a href="Help.html">帮助中心</a></li>
-						</ul>
-					</div>
-
-					<!--个人中心-->
-					<div class="head_abnoutus">
-						<ul class="clear">
-							<li class="active"><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
-							<li><a href="Apply.html">申请入驻</a></li>
-							<li><a href="Help.html">帮助中心</a></li>
-						</ul>
-					</div>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+									<li v-if="!hasLogin" class="li_bg"><a href="Login.html">登录注册</a></li>
+									<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
+									<li><a href="Apply.html">申请入驻</a></li>
+									<li><a href="Help.html">帮助中心</a></li>
+								</ul>
+							</div>
+							
+							<!--个人中心-->
+							<div class="head_abnoutus">
+								<ul class="clear">
+									<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+									<li v-if="!hasLogin" class="active"><a href="Login.html">登录注册</a></li>
+									<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
+									<li><a href="Apply.html">申请入驻</a></li>
+									<li><a href="Help.html">帮助中心</a></li>
+								</ul>
+							</div>
 					<div class="me_rk" style="float: right">
 						<div class="btn_me"><img id="btn_me" src="../img/meicon.png" /></div>
 
@@ -332,12 +334,17 @@
 						</div>
 						<div class="txt_login_k" v-if="isLogin&&!isPsd">			
 							<div class="k_name login_li login_yc" >
-								<span class="l_name login_icon"></span><input onkeyup="this.value=this.value.replace(/[^\w_]/g,'');" id="i_name" class="txt_sr" placeholder="账号" v-model="submitData.login_name"/>
+								<span class="l_name login_icon"></span><input type="number" id="i_name" class="txt_sr" placeholder="手机号" v-model="submitData.login_name"/>
 							</div>
-							<div class="k_pwd login_li login_yc">
+							<!-- <div class="k_pwd login_li login_yc">
 								<span class="l_pwd login_icon"></span><input type="password" id="i_pwd" class="txt_sr" placeholder="用户密码" v-model="submitData.password"/>
-							</div>	
-							<a class="update_pwd" id="updatebtn" @click="changeType('psd')">修改密码</a>
+							</div>	 -->
+							<div class="k_pwd login_li  update_yc">
+								<span class="l_pwd login_icon"></span>
+								<input style="width: 60%;" type="number" id="i_pwd" class="txt_sr" placeholder="验证码" v-model="submitData.code"/>
+								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;" @click="sendCode">{{hasSend?'已发送':'获取验证码'}}</div>
+							</div>
+							<!-- <a class="update_pwd" id="updatebtn" @click="changeType('psd')">修改密码</a> -->
 							<button id="loginbtn" @click="submit">登录</button>						
 						</div>
 						<div class="txt_login_k" v-if="!isLogin&&!isPsd">
@@ -348,16 +355,24 @@
 							<div class="k_tel login_li  sign_yc">
 								<span class="l_tel login_icon"></span><input type="number"  class="txt_sr" placeholder="手机号"  v-model="submitData.phone" onkeyup="this.value=this.value.replace(/\D/g,'')"  maxlength="11"/>
 							</div>
+							<div class="k_pwd login_li  update_yc">
+								<span class="l_pwd login_icon"></span>
+								<input style="width: 60%;" type="number" id="i_pwd" class="txt_sr" placeholder="验证码" v-model="submitData.code"/>
+								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;" @click="sendCodeTwo">{{hasSendTwo?'已发送':'获取验证码'}}</div>
+							</div>
 							<div class="k_adress login_li  sign_yc">
 								<span class="l_adress  login_icon"></span><input type="text"  class="txt_sr" placeholder="地区"  v-model="submitData.address"/>
 							</div>
-							<div class="k_name login_li login_yc" >
+							<!-- <div class="k_name login_li login_yc" >
 								<span class="l_name login_icon"></span><input onkeyup="this.value=this.value.replace(/[^\w_]/g,'');"  class="txt_sr" placeholder="账号"  v-model="submitData.login_name"/>
 							</div>
 							<div class="k_pwd login_li login_yc" >
-								<span class="l_pwd login_icon"></span><input type="text"  class="txt_sr" placeholder="用户密码"  v-model="submitData.password"/>
+								<span class="l_pwd login_icon"></span><input type="password"  class="txt_sr" placeholder="用户密码"  v-model="submitData.password"/>
 							</div>
-							
+							<div class="k_pwd login_li login_yc" >
+								<span class="l_pwd login_icon"></span><input type="password"  class="txt_sr" placeholder="请确认密码"  
+								v-model="submitData.passwordNew"/>
+							</div> -->
 							<img src="../img/checkbox.png" v-if="!isSelect" style="width: 16px;height: 16px;" @click="select"/>
 							<img src="../img/checkbox-a.png" v-if="isSelect" style="width: 16px;height: 16px;" @click="select"/>
 							<span class=" sign_yc" style="margin-left: 10px"
@@ -366,7 +381,7 @@
 							<button id="loginbtn" @click="register" >注册</button>
 						
 						</div>
-						<div class="txt_login_k" v-if="isPsd">
+						<!-- <div class="txt_login_k" v-if="isPsd">
 							
 							<div class="k_adress login_li  update_yc" v-if="isPsd">
 								<span class="l_adress  login_icon"></span><input type="number" id="i_adress" class="txt_sr" placeholder="手机号" v-model="psd.phone"/>
@@ -375,18 +390,18 @@
 								<span class="l_adress  login_icon"></span><input onkeyup="this.value=this.value.replace(/[^\w_]/g,'');" id="i_adress" class="txt_sr" placeholder="账号" v-model="psd.login_name"/>
 							</div>
 							<div class="k_name login_li  update_yc">
-								<span class="l_name login_icon"></span><input type="text" id="i_name" class="txt_sr" placeholder="新密码" v-model="psd.password"/>
+								<span class="l_name login_icon"></span><input type="password" id="i_name" class="txt_sr" placeholder="新密码" v-model="psd.password"/>
 							</div>
 							<div class="k_pwd login_li  update_yc">
-								<span class="l_pwd login_icon"></span><input type="text" id="i_pwd" class="txt_sr" placeholder="确认新密码" v-model="psd.passwordNew"/>
+								<span class="l_pwd login_icon"></span><input type="password" id="i_pwd" class="txt_sr" placeholder="确认新密码" v-model="psd.passwordNew"/>
 							</div>
 							<div class="k_pwd login_li  update_yc">
 								<span class="l_pwd login_icon"></span>
-								<input style="width: 60%;" type="text" id="i_pwd" class="txt_sr" placeholder="验证码" v-model="psd.code"/>
+								<input style="width: 60%;" type="number" id="i_pwd" class="txt_sr" placeholder="验证码" v-model="psd.code"/>
 								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;" @click="sendCode">{{hasSend?'已发送':'获取验证码'}}</div>
 							</div>
 							<button id="updatebtn1" class=" update_yc" @click="resetPassword">提交</button>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -419,26 +434,27 @@
 					is_toggle: true,
 					isLogin: true,
 					isPsd:false,
-
+					hasSendTwo:false,
 					submitData: {
 						login_name: '',
-						password: '',
 						name:'',
 						phone:'',
 						address:'',
-						thirdapp_id:2
+						thirdapp_id:2,
+						code:'',
+						
 					},
 					psd:{
 						phone:'',
-						password:'',
-						passwordNew:'',
+						
 						code:'',
 						login_name:''
 					},
 					isSelect:false,
 					artData:{},
 					showRule:false,
-					hasSend:false
+					hasSend:false,
+					hasLogin:false
 				}
 			},
 			
@@ -465,13 +481,13 @@
 
 				},
 				
-				sendCode:function(){
+				sendCodeTwo:function(){
 					var self = this;
 					
-					if(self.hasSend){
+					if(self.hasSendTwo){
 						return;
 					};
-					var phone = self.psd.phone;
+					var phone = self.submitData.phone;
 					
 					if (phone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(phone)) {
 						
@@ -480,7 +496,35 @@
 					}
 					var postData = {
 						params:{
-							PhoneNumbers:self.psd.phone
+							PhoneNumbers:self.submitData.phone
+						}
+					};
+					var callback = function(res){
+						if(res.solely_code==100000){
+							self.hasSendTwo = true;
+						}else{
+							alert('发送失败');
+						};
+					};
+					window.base.sendCode(postData, callback);
+				},
+				
+				sendCode:function(){
+					var self = this;
+					
+					if(self.hasSend){
+						return;
+					};
+					var phone = self.submitData.login_name;
+					
+					if (phone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(phone)) {
+						
+						alert('请输入正确的手机号码');
+						return;
+					}
+					var postData = {
+						params:{
+							PhoneNumbers:self.submitData.login_name
 						}
 					};
 					var callback = function(res){
@@ -534,7 +578,11 @@
 					const self = this;
 					const postData = {
 						login_name: self.submitData.login_name,
-						password: self.submitData.password,
+						
+					};
+					postData.smsAuth = {
+						phone:self.submitData.login_name,						
+						code:self.submitData.code					,
 					};
 					var newObject = window.base.cloneForm(self.submitData);
 					delete newObject.name;
@@ -567,12 +615,24 @@
 				register() {
 					const self = this;
 					
-					const postData = window.base.cloneForm(self.submitData)
-					
+					const postData = {
+						
+						thirdapp_id:2,
+						name:self.submitData.name,
+						phone:self.submitData.phone,
+						address:self.submitData.address
+					}
+					postData.smsAuth = {						
+						phone:self.submitData.phone,						
+						code:self.submitData.code					,
+					};
 					var newObject = window.base.cloneForm(self.submitData);
 					var phone = newObject.phone;
+					delete newObject.login_name;
 					console.log('test',postData)
+					console.log(newObject)
 					if (window.base.checkComplete(newObject)) {
+						
 						if (phone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(phone)) {
 							
 							alert('请输入正确的手机号码');
@@ -586,11 +646,12 @@
 							if (res.solely_code == 100000) {
 								alert(res.msg)
 								self.submitData = {
-									login_name: '',
-									password: '',
+									
+									
 									name:'',
 									phone:'',
-									address:''
+									address:'',
+									code:''
 								};
 								self.isLogin = true;
 							} else {
@@ -646,7 +707,7 @@
 					console.log(type)
 					self.submitData = {
 						login_name: '',
-						password: '',
+						
 						name:'',
 						phone:'',
 						address:'',

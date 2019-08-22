@@ -17,7 +17,7 @@
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
 
 		<style>
-        /*转盘样式*/
+			/*转盘样式*/
         .turntable{ background: rgba(0,0,0,0.6); position:fixed; top: 0;right: 0;bottom: 0; left: 0; z-index: 666;}
         .turnBox{display:block;width:450px;height:450px; position: absolute; top: 50%; left: 50%; transform:translate(-50%,-50%);}
         .turnBox .turnplate{display:block;width:100%;position:relative;}
@@ -373,8 +373,9 @@
 								</ul>
 							</li>
 							<li><a href="ShopTransfer.html">店铺转让</a></li>
-							<li><a href="Login.html">登录注册</a></li>
-							<li class="li_bg"><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin" class="li_bg"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -383,8 +384,9 @@
 					<!--个人中心-->
 					<div class="head_abnoutus">
 						<ul class="clear">
-							<li><a href="Login.html">登录注册</a></li>
-							<li class="active"><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin" class="active"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -403,196 +405,226 @@
 				</div>
 			</header>
 			<div class="mycenter">
-                <template>
-				<div>
+				<template>
 					<div>
-						<ul class="my_tab clear">
-							<li><a :class="currentId==0?'orderclick':''" @click="tab('0')">我的预约</a></li>
-							<li><a :class="currentId==1?'orderclick':''" @click="tab('1')">待确认</a></li>
-							<li><a :class="currentId==2?'orderclick':''" @click="tab('2')">进行中</a></li>
-							<li><a :class="currentId==3?'orderclick':''" @click="tab('3')">待评价</a></li>
-							<li><a :class="currentId==4?'orderclick':''" @click="tab('4')">已评价</a></li>
-							<li><a :class="currentId==5?'orderclick':''" @click="tab('5')">已取消</a></li>
-						</ul>
-					</div>
-					<div style="min-height: 400px;">
-						<!-- 无数据时显示 -->
-						<!-- <div class="nodata"></div> -->
-						<!-- 无数据时显示 end -->
-						<section class="orderlist" v-for="(item,index) in mainData" v-if="item.products&&item.products[0]&&item.products[0].product_id!=0&&!isRemark">
-							
-							<ul class="clear orderhead">
-								<li>{{item.create_time}}</li>
-								<li>商家名称</li>
-								<li v-if="item.order_step=='0'">待确认<!-- <a class="deleteicon"></a> --></li>
-								<li v-if="item.order_step=='1'">进行中<!-- <a class="deleteicon"></a> --></li>
-								<li v-if="item.order_step=='2'">待评价<!-- <a class="deleteicon"></a> --></li>
-								<li v-if="item.order_step=='3'">已评价 {{item.express_info?'奖品：'+item.express_info:''}}<!-- <a class="deleteicon"></a> --></li>
-								<li v-if="item.order_step=='4'">已取消<!-- <a class="deleteicon"></a> --></li>
+						<div>
+							<ul class="my_tab clear">
+								<li><a :class="currentId==0?'orderclick':''" @click="tab('0')">我的预约</a></li>
+								<li><a :class="currentId==1?'orderclick':''" @click="tab('1')">待确认</a></li>
+								<li><a :class="currentId==2?'orderclick':''" @click="tab('2')">进行中</a></li>
+								<li><a :class="currentId==3?'orderclick':''" @click="tab('3')">待评价</a></li>
+								<li><a :class="currentId==4?'orderclick':''" @click="tab('4')">已评价</a></li>
+								<li><a :class="currentId==5?'orderclick':''" @click="tab('5')">已取消</a></li>
 							</ul>
-							<div class="orderdeatil">
-								<div class="clear">
-									<div class="orderleft">
-										<img :src="item&&item.products&&item.products[0]&&item.products[0].snap_product&&item.products[0].snap_product.mainImg&&item.products[0].snap_product.mainImg[0]?
-										item.products[0].snap_product.mainImg[0].url:''" />
-									</div>
-						
-									<div class="orderright">
-										<h2 class="ordertitle">{{item&&item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.title:''}}</h2>
-						
-										<div class="content ql-editor ">
-											<p class="p1 " v-html="item&&item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.content:''"></p>
-										</div>
-						
-										<p><span class="ordertab">预约项目：{{item.passage1}}</span></p>
-										<a class="closeorder" v-if="item.order_step=='0'"  @click="deleteOrder(index)">取消预约</a>
-										<a class="closeorder" v-if="item.order_step=='2'" @click="goRemark(item.products[0].product_id,item.order_no,index)">去评价</a>
-										
-										<!-- <div class="xingPfbox" style="position: absolute; bottom: 0px; right: 30px; display: flex; justify-content: flex-end; align-items: center;">	
-											<div style="font-size: 16px; color: #ff556f; line-height:25px">星级评分</div>
-											<div style="margin-left: 10px;">
-												
-												<span v-for="(item,index) in stars" style="margin-right: 10px;" >
-													<img src="../img/messtaricon1.png" v-if="score>=item" style="width:25px;height:25px"/>
-													<img src="../img/messtaricon.png" v-else style="width:25px;height:25px"/>
-												</span>
-												
-												</div>
-										</div> -->
-										
-									</div>
-								</div>
-							</div>
-						</section>
-						<section class="orderlist" v-for="(item,index) in mainData" v-if="item.products&&item.products[0]&&item.products[0].sku_id!=0&&!isRemark">
-							<ul class="clear orderhead">
-								<li>{{item.create_time}}</li>
-								<li>商家名称</li>
-								<li v-if="item.order_step=='0'">待确认<!-- <a class="deleteicon"></a> --></li>
-								<li v-if="item.order_step=='1'">进行中<!-- <a class="deleteicon"></a> --></li>
-								<li v-if="item.order_step=='2'">待评价<!-- <a class="deleteicon"></a> --></li>
-								<li v-if="item.order_step=='3'">已评价 {{item.express_info?'奖品：'+item.express_info:''}}<!-- <a class="deleteicon"></a> --></li>
-								<li v-if="item.order_step=='4'">已取消<!-- <a class="deleteicon"></a> --></li>
-							</ul>
-							<div class="orderdeatil">
-								<div class="clear">
-									<div class="orderleft">
-										<img :src="item.products&&item.products[0]&&item.products[0].snap_product&&item.products[0].snap_product.product.mainImg&&item.products[0].snap_product.product.mainImg[0]?
-										item.products[0].snap_product.product.mainImg[0].url:''" />
-									</div>
-						
-									<div class="orderright">
-										<h2 class="ordertitle">{{item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.title:''}}</h2>
-										<p class="ordercont">{{item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.content:''}}</p>
-										<p><span class="ordertab">预约项目：{{item.passage1}}</span></p>
-										<a class="closeorder" v-if="item.order_step=='0'" @click="deleteOrder(index)">取消预约</a>
-										<a class="closeorder" v-if="item.order_step=='2'" @click="goRemark(item.products[0].snap_product.product.id,item.order_no,index)">去评价</a>
-									</div>
-								</div>
-							</div>
-					   </section>
-					<section class="mesdetail0" v-if="isRemark&&mainData&&mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].product_id!=0">
-						<div class="meshead" style=""><span style="">评论服务</span></div>
-						<div class="mesdetail">
-							<div class="clear">
-								<div class="mesleft">
+						</div>
+						<div style="min-height: 400px;">
+							<!-- 无数据时显示 -->
+							<div class="nodata" v-if="mainData.length==0"></div>
+							<!-- 无数据时显示 end -->
+							<section class="orderlist" v-for="(item,index) in mainData" v-if="item.products&&item.products[0]&&item.products[0].product_id!=0&&!isRemark">
 
-									<img :src="mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product&&mainData[remarkIndex].products[0].snap_product.mainImg&&mainData[remarkIndex].products[0].snap_product.mainImg[0]?
+								<ul class="clear orderhead">
+									<li>{{item.create_time}}</li>
+									<li>商家名称</li>
+									<li v-if="item.order_step=='0'">待确认
+										<!-- <a class="deleteicon"></a> -->
+									</li>
+									<li v-if="item.order_step=='1'">进行中
+										<!-- <a class="deleteicon"></a> -->
+									</li>
+									<li v-if="item.order_step=='2'">待评价
+										<!-- <a class="deleteicon"></a> -->
+									</li>
+									<li v-if="item.order_step=='3'">已评价 {{item.express_info?'奖品：'+item.express_info:''}}<!-- <a class="deleteicon"></a> -->
+									</li>
+									<li v-if="item.order_step=='4'">已取消
+										<!-- <a class="deleteicon"></a> -->
+									</li>
+								</ul>
+								<div class="orderdeatil">
+									<div class="clear">
+										<div class="orderleft">
+											<img :src="item&&item.products&&item.products[0]&&item.products[0].snap_product&&item.products[0].snap_product.mainImg&&item.products[0].snap_product.mainImg[0]?
+										item.products[0].snap_product.mainImg[0].url:''" />
+										</div>
+
+										<div class="orderright">
+											<h2 class="ordertitle">{{item&&item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.title:''}}</h2>
+
+											<div class="content ql-editor ">
+												<p class="p1 " v-html="item&&item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.content:''"></p>
+											</div>
+
+											<p><span class="ordertab">预约项目：{{item.passage1}}</span></p>
+											<a class="closeorder" v-if="item.order_step=='0'" @click="deleteOrder(index)">取消预约</a>
+											<a class="closeorder" v-if="item.order_step=='2'" @click="goRemark(item.products[0].product_id,item.order_no,index)">去评价</a>
+
+											<div class="xingPfbox" v-if="item.order_step=='3'" style="position: absolute; bottom: 0px; right: 30px; display: flex; justify-content: flex-end; align-items: center;">
+												<div style="font-size: 16px; color: #ff556f; line-height:25px">星级评分</div>
+												<div style="margin-left: 10px;">
+
+													<span v-for="(c_item,c_index) in stars" style="margin-right: 10px;">
+														<img src="../img/messtaricon1.png" v-if="item.message&&item.message[0]&&item.message[0].score>=c_item" style="width:25px;height:25px" />
+														<img src="../img/messtaricon.png" v-else style="width:25px;height:25px" />
+													</span>
+
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</section>
+							<section class="orderlist" v-for="(item,index) in mainData" v-if="item.products&&item.products[0]&&item.products[0].sku_id!=0&&!isRemark">
+								<ul class="clear orderhead">
+									<li>{{item.create_time}}</li>
+									<li>商家名称</li>
+									<li v-if="item.order_step=='0'">待确认
+										<!-- <a class="deleteicon"></a> -->
+									</li>
+									<li v-if="item.order_step=='1'">进行中
+										<!-- <a class="deleteicon"></a> -->
+									</li>
+									<li v-if="item.order_step=='2'">待评价
+										<!-- <a class="deleteicon"></a> -->
+									</li>
+									<li v-if="item.order_step=='3'">已评价 {{item.express_info?'奖品：'+item.express_info:''}}<!-- <a class="deleteicon"></a> -->
+									</li>
+									<li v-if="item.order_step=='4'">已取消
+										<!-- <a class="deleteicon"></a> -->
+									</li>
+								</ul>
+								<div class="orderdeatil">
+									<div class="clear">
+										<div class="orderleft">
+											<img :src="item.products&&item.products[0]&&item.products[0].snap_product&&item.products[0].snap_product.product.mainImg&&item.products[0].snap_product.product.mainImg[0]?
+										item.products[0].snap_product.product.mainImg[0].url:''" />
+										</div>
+
+										<div class="orderright">
+											<h2 class="ordertitle">{{item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.title:''}}</h2>
+											<p class="ordercont">{{item.products&&item.products[0]&&item.products[0].snap_product?item.products[0].snap_product.content:''}}</p>
+											<p><span class="ordertab">预约项目：{{item.passage1}}</span></p>
+											<a class="closeorder" v-if="item.order_step=='0'" @click="deleteOrder(index)">取消预约</a>
+											
+											<a class="closeorder" v-if="item.order_step=='2'" @click="goRemark(item.products[0].snap_product.product.id,item.order_no,index)">去评价</a>
+											<div v-if="item.order_step=='3'" class="xingPfbox" style="position: absolute; bottom: 0px; right: 30px; display: flex; justify-content: flex-end; align-items: center;">
+												<div style="font-size: 16px; color: #ff556f; line-height:25px">星级评分</div>
+												<div style="margin-left: 10px;">
+											
+													<span v-for="(c_item,c_index) in stars" style="margin-right: 10px;">
+														<img src="../img/messtaricon1.png" v-if="item.message&&item.message[0].score>=c_item" style="width:25px;height:25px" />
+														<img src="../img/messtaricon.png" v-else style="width:25px;height:25px" />
+													</span>
+											
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
+							<section class="mesdetail0" v-if="isRemark&&mainData&&mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].product_id!=0">
+								<div class="meshead" style=""><span style="">评论服务</span></div>
+								<div class="mesdetail">
+									<div class="clear">
+										<div class="mesleft">
+
+											<img :src="mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product&&mainData[remarkIndex].products[0].snap_product.mainImg&&mainData[remarkIndex].products[0].snap_product.mainImg[0]?
 										mainData[remarkIndex].products[0].snap_product.mainImg[0].url:''" />
 
-								</div>
+										</div>
 
-								<div class="mesright">
-									<h2 class="ordertitle">{{mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.title:''}}</h2>
+										<div class="mesright">
+											<h2 class="ordertitle">{{mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.title:''}}</h2>
 
-									<div class="content ql-editor ">
-										<p class="p1 " v-html="mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.content:''"></p>
+											<div class="content ql-editor ">
+												<p class="p1 " v-html="mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.content:''"></p>
+											</div>
+
+											<p><span class="ordertab">预约项目：{{mainData[remarkIndex].passage1}}</span></p>
+										</div>
+										<div style="margin-top: 40px;">
+											<textarea placeholder="亲，写点评论吧，您的评论对其他买家有很大的帮助" class="mescont" v-model="content"></textarea>
+										</div>
+										<div style="line-height: 95px;"><span style="font-size: 18px;color: #ff556f">星级评论</span>
+											<div style="display: inline-block;margin-left: 20px;">
+												<span v-for="(item,index) in stars" style="margin-right: 10px;" @click="selectStar(item)">
+													<img src="../img/messtaricon1.png" v-if="score>=item" style="width:25px;height:25px" />
+													<img src="../img/messtaricon.png" v-else style="width:25px;height:25px" />
+												</span>
+
+											</div>
+										</div>
 									</div>
+							</section>
 
-									<p><span class="ordertab">预约项目：{{mainData[remarkIndex].passage1}}</span></p>
-								</div>
-								<div style="margin-top: 40px;">
-									<textarea placeholder="亲，写点评论吧，您的评论对其他买家有很大的帮助" class="mescont" v-model="content"></textarea>
-								</div>
-								<div style="line-height: 95px;"><span style="font-size: 18px;color: #ff556f">星级评论</span>
-									<div style="display: inline-block;margin-left: 20px;">
-										<span v-for="(item,index) in stars" style="margin-right: 10px;" @click="selectStar(item)">
-											<img src="../img/messtaricon1.png" v-if="score>=item" style="width:25px;height:25px"/>
-											<img src="../img/messtaricon.png" v-else style="width:25px;height:25px"/>
-										</span>
-									
-									</div>
-								</div>
-							</div>
-					</section>
+							<section class="mesdetail0" v-if="isRemark&&mainData&&mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].sku_id!=0">
+								<div class="meshead" style=""><span style="">评论服务</span></div>
+								<div class="mesdetail">
+									<div class="clear">
+										<div class="mesleft">
 
-					<section class="mesdetail0" v-if="isRemark&&mainData&&mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].sku_id!=0">
-						<div class="meshead" style=""><span style="">评论服务</span></div>
-						<div class="mesdetail">
-							<div class="clear">
-								<div class="mesleft">
-
-									<img :src="mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product&&mainData[remarkIndex].products[0].snap_product.product.mainImg&&mainData[remarkIndex].products[0].snap_product.product.mainImg[0]?
+											<img :src="mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product&&mainData[remarkIndex].products[0].snap_product.product.mainImg&&mainData[remarkIndex].products[0].snap_product.product.mainImg[0]?
 										mainData[remarkIndex].products[0].snap_product.product.mainImg[0].url:''" />
 
-								</div>
+										</div>
 
-								<div class="mesright">
-									<h2 class="ordertitle">{{mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.title:''}}</h2>
+										<div class="mesright">
+											<h2 class="ordertitle">{{mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.title:''}}</h2>
 
-									<div class="content ql-editor ">
-										<p class="p1 " v-html="mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.content:''"></p>
+											<div class="content ql-editor ">
+												<p class="p1 " v-html="mainData[remarkIndex]&&mainData[remarkIndex].products&&mainData[remarkIndex].products[0]&&mainData[remarkIndex].products[0].snap_product?mainData[remarkIndex].products[0].snap_product.content:''"></p>
+											</div>
+
+											<p><span class="ordertab">预约项目：{{mainData[remarkIndex].passage1}}</span></p>
+										</div>
+										<div style="margin-top: 40px;">
+											<textarea placeholder="亲，写点评论吧，您的评论对其他买家有很大的帮助" class="mescont" v-model="content"></textarea>
+										</div>
+										<div style="line-height: 95px;"><span style="font-size: 22px;color: #ff556f">星级评论</span>
+											<div style="display: inline-block;margin-left: 30px;">
+												<span v-for="(item,index) in stars" style="margin-right: 10px;" @click="selectStar(item)">
+													<img src="../img/messtaricon1.png" v-if="score>=item" style="width:25px;height:25px" />
+													<img src="../img/messtaricon.png" v-else style="width:25px;height:25px" />
+												</span>
+
+											</div>
+										</div>
 									</div>
-
-									<p><span class="ordertab">预约项目：{{mainData[remarkIndex].passage1}}</span></p>
-								</div>
-								<div style="margin-top: 40px;">
-									<textarea placeholder="亲，写点评论吧，您的评论对其他买家有很大的帮助" class="mescont" v-model="content"></textarea>
-								</div>
-								<div style="line-height: 95px;"><span style="font-size: 22px;color: #ff556f">星级评论</span>
-									<div style="display: inline-block;margin-left: 30px;">
-										<span v-for="(item,index) in stars" style="margin-right: 10px;" @click="selectStar(item)">
-											<img src="../img/messtaricon1.png" v-if="score>=item" style="width:25px;height:25px"/>
-											<img src="../img/messtaricon.png" v-else style="width:25px;height:25px"/>
-										</span>
-									
-									</div>
-								</div>
-							</div>
-					</section>
+							</section>
+						</div>
+						<div style="text-align: center;margin:50px 0px;" v-if="isRemark"><button class="sendmes" @click="addMessage">发表评论</button></div>
 					</div>
-					<div style="text-align: center;margin:50px 0px;" v-if="isRemark"><button class="sendmes" @click="addMessage">发表评论</button></div>
-				</div>
-                </template>
+				</template>
 			</div>
 			<include src="footer.html"></include>
-		
 
-        <!-- 添加 显示转盘 弹框 -->
-        <template>
-            <div class="turntable" v-show="turntable_show">
-                <div class="closeTbtn" @click="close"><span>×</span></div>
-                <img src="../img/zp1.png" id="shan-img" style="display:none;" />
-                <img src="../img/zp2.png" id="sorry-img" style="display:none;" />
-                <div class="turnBox">
-                    <div class="turnplate" style="background-image:url(../img/turnplate-bg.png);background-size:100% 100%;">
-                        <canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
-                        <img class="pointer" src="../img/turnplate-pointer.png"/>
-                    </div>
-                </div>
-            </div>
-        </template>
-            
-      
-        
-       <!--  <script type="text/javascript">
+
+			<!-- 添加 显示转盘 弹框 -->
+			<template>
+				<div class="turntable" v-show="turntable_show">
+					<div class="closeTbtn" @click="close"><span>×</span></div>
+					<img src="../img/zp1.png" id="shan-img" style="display:none;" />
+					<img src="../img/zp2.png" id="sorry-img" style="display:none;" />
+					<div class="turnBox">
+						<div class="turnplate" style="background-image:url(../img/turnplate-bg.png);background-size:100% 100%;">
+							<canvas class="item" id="wheelcanvas" width="422px" height="422px"></canvas>
+							<img class="pointer" src="../img/turnplate-pointer.png" />
+						</div>
+					</div>
+				</div>
+			</template>
+
+
+
+			<!--  <script type="text/javascript">
        $(".turntable .closeTbtn span").click(function(){
            $(".turntable").hide()
        })
                
        </script> -->
-        <!-- 显示转盘 end -->
-    </div>
+			<!-- 显示转盘 end -->
+		</div>
 	</body>
 	<script type="text/javascript">
 		var app = new Vue({
@@ -615,11 +647,12 @@
 					order_no: '',
 					remarkIndex: '',
 					content: '',
-					score:'',
-					stars:[1,2,3,4,5],
-                    turntable_show:false,
-                    gift_order_no:'',
-                    closeLock:false
+					score: '',
+					stars: [1, 2, 3, 4, 5],
+					turntable_show: false,
+					gift_order_no: '',
+					closeLock: false,
+					hasLogin: false
 				}
 
 			},
@@ -629,7 +662,9 @@
 
 			created: function() {
 				const self = this;
-
+				if (localStorage.getItem('user_token')) {
+					self.hasLogin = true
+				};
 
 
 				self.getMainData()
@@ -640,44 +675,52 @@
 
 			methods: {
 
-                test:function(order_no){
-                    var self = this;
-                    self.gift_order_no = order_no;
-                    self.closeLock = true;
-                    setTimeout(function(){
-                        self.closeLock = false;
-                    },8500);
-                    localStorage.removeItem('gift');
-                    self.turntable_show = true;
-                },
+				test: function(order_no) {
+					var self = this;
+					self.gift_order_no = order_no;
+					self.closeLock = true;
+					setTimeout(function() {
+						self.closeLock = false;
+					}, 8500);
+					localStorage.removeItem('gift');
+					self.turntable_show = true;
+				},
 
-                close:function(){
-                    var self = this;
-                    if(self.closeLock){
-                        return;
-                    };
-                    var gift = localStorage.getItem('gift');
-                    if(gift){
-                        var postData = {};
-                        postData.token=localStorage.getItem('user_token');
-                        postData.searchItem = {};
-                        postData.searchItem.order_no = self.gift_order_no;
-                        postData.data = {
-                            express_info:gift+'%'
-                        };
-                        var callback = res => {
-                            if (res.solely_code==100000) {
-                                this.turntable_show =false
-                                self.getMainData(true);
-                            }else{
-                                alert('抽奖失败');
-                            };
-                        };
-                        window.base.orderUpdate(postData, callback);
-                    }else{
-                        self.turntable_show =false
-                    };
-                },
+				close: function() {
+					var self = this;
+					if (self.closeLock) {
+						return;
+					};
+					var gift = localStorage.getItem('gift');
+					if (gift) {
+						var postData = {};
+						postData.token = localStorage.getItem('user_token');
+						postData.searchItem = {};
+						postData.searchItem.order_no = self.gift_order_no;
+						postData.data = {
+							express_info: gift + '%'
+						};
+						var callback = res => {
+							if (res.solely_code == 100000) {
+								this.turntable_show = false
+								self.getMainData(true);
+							} else {
+								alert('抽奖失败');
+							};
+						};
+						window.base.orderUpdate(postData, callback);
+					} else {
+						self.turntable_show = false
+					};
+				},
+
+				loginOff() {
+					const self = this;
+					localStorage.removeItem('user_token');
+					localStorage.removeItem('user_info');
+					localStorage.removeItem('user_no');
+					location.reload()
+				},
 
 				goRemark(id, order_no, index) {
 					const self = this;
@@ -692,24 +735,24 @@
 
 				deleteOrder(index) {
 					const self = this;
-					
+
 					const postData = {};
-					postData.token=localStorage.getItem('user_token');
+					postData.token = localStorage.getItem('user_token');
 					postData.searchItem = {};
 					postData.searchItem.id = self.mainData[index].id;
 					postData.data = {
 						order_step: 4
 					};
 					const callback = res => {
-						if (res.solely_code==100000) {
+						if (res.solely_code == 100000) {
 							alert('取消成功')
 						};
 						self.getMainData(true);
 					};
 					window.base.orderUpdate(postData, callback);
 				},
-				
-				selectStar(index){
+
+				selectStar(index) {
 					const self = this;
 					self.score = index;
 				},
@@ -723,7 +766,8 @@
 							relation_id: self.relation_id,
 							user_no: localStorage.getItem('user_no'),
 							type: 3,
-							score:self.score
+							score: self.score,
+							order_no:self.order_no
 						}
 					};
 					postData.saveAfter = [{
@@ -740,13 +784,13 @@
 						if (res.solely_code == 100000) {
 							alert('评论成功')
 							self.isRemark = false;
-                            self.gift_order_no = self.order_no;
-                            self.closeLock = true;
-                            setTimeout(function(){
-                                self.closeLock = false;
-                            },8500);
-                            localStorage.removeItem('gift');
-                            self.turntable_show = true;
+							self.gift_order_no = self.order_no;
+							self.closeLock = true;
+							setTimeout(function() {
+								self.closeLock = false;
+							}, 8500);
+							localStorage.removeItem('gift');
+							self.turntable_show = true;
 							self.getMainData(true)
 						} else {
 							alert('网络故障')
@@ -767,7 +811,7 @@
 							pagesize: 10,
 							is_page: true,
 						};
-                        self.mainData = [];
+						self.mainData = [];
 					};
 					const postData = {};
 					postData.paginate = window.base.cloneForm(self.paginate);
@@ -778,7 +822,18 @@
 					postData.order = {
 						create_time: 'desc'
 					};
-
+					postData.getAfter = {
+						message:{
+							tableName:'Message',
+							middleKey:'order_no',
+							key:'order_no',
+							condition:'=',
+							searchItem:{
+								status:1,
+								type:3
+							}
+						}
+					};
 					const callback = (res) => {
 						if (res.solely_code == 100000) {
 							if (res.info.data.length > 0) {

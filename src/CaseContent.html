@@ -16,7 +16,7 @@
 		<script src="../js/rem.js"></script>
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
 		<style>
-		.casedetail_con{
+			.casedetail_con{
 			background: #f6f6f6;
 			padding: 50px;
 		}
@@ -113,8 +113,9 @@
 								</ul>
 							</li>
 							<li><a href="ShopTransfer.html">店铺转让</a></li>
-							<li><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -123,8 +124,9 @@
 					<!--个人中心-->
 					<div class="head_abnoutus">
 						<ul class="clear">
-							<li><a href="Login.html">登录注册</a></li>
-							<li><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
@@ -147,13 +149,14 @@
 					<div class="banner">
 						<div id="carousel-example-generic" data-ride="carousel" class="carousel slide" style="position:relative">
 							<ol class="carousel-indicators">
-								<li v-for="(item, index) in mainData.bannerImg" data-target="#carousel-example-generic" :data-slide-to="index" :class="index=='0'?'active':''"></li>
+								<li v-for="(item, index) in mainData.bannerImg" data-target="#carousel-example-generic" :data-slide-to="index"
+								 :class="index=='0'?'active':''"></li>
 							</ol>
 							<div role="listbox" class="carousel-inner">
 								<div class="item" v-for="(item, index) in mainData.bannerImg" :class="index=='0'?'active':''" style="border: none;">
 									<img :src="item.url" class="img-responsive banner_img" style="height: 100%;width: 100%">
 								</div>
-							</div>	
+							</div>
 							<!-- 轮播（Carousel）导航 -->
 							<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
 								<img src="../img/icon-left.png" alt="">
@@ -165,7 +168,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<!-- <div class="addstlyhesdPic" style="width: 100%;height: 600px;">
 				<img :src="mainData.mainImg&&mainData.bannerImg&&mainData.bannerImg[0]?mainData.bannerImg[0].url:''" style="width: 100%;height: 100%;"/>
 			</div> -->
@@ -197,9 +200,9 @@
 						pagesize: 6,
 						is_page: true,
 					},
-					cityData:[],
+					cityData: [],
 					mainData: {},
-
+					hasLogin:false
 				}
 			},
 
@@ -211,9 +214,20 @@
 			methods: {
 				init: function(e) {
 					var self = this;
+					if (localStorage.getItem('user_token')) {
+						self.hasLogin = true
+					};
 					self.getCityData();
 					self.getMainData();
 
+				},
+				
+				loginOff(){
+					const self = this;
+					localStorage.removeItem('user_token');
+					localStorage.removeItem('user_info');
+					localStorage.removeItem('user_no');
+					location.reload()
 				},
 
 				getCityData: function(id) {
