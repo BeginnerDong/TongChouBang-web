@@ -15,6 +15,9 @@ html,
         a{
             text-decoration: none;
         }
+		textarea,input,select:focus{
+		outline: 0;
+		}
         
         /*解决浮动塌陷*/
         .clear::after {
