@@ -342,7 +342,8 @@
 							<div class="k_pwd login_li  update_yc">
 								<span class="l_pwd login_icon"></span>
 								<input style="width: 60%;" type="number" id="i_pwd" class="txt_sr" placeholder="验证码" v-model="submitData.code"/>
-								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;" @click="sendCode">{{hasSend?'已发送':'获取验证码'}}</div>
+								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;" @click="sendCode" v-if="!hasSend">{{text}}</div>
+								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;"  v-if="hasSend">{{text}}</div>
 							</div>
 							<!-- <a class="update_pwd" id="updatebtn" @click="changeType('psd')">修改密码</a> -->
 							<button id="loginbtn" @click="submit">登录</button>						
@@ -358,10 +359,16 @@
 							<div class="k_pwd login_li  update_yc">
 								<span class="l_pwd login_icon"></span>
 								<input style="width: 60%;" type="number" id="i_pwd" class="txt_sr" placeholder="验证码" v-model="submitData.code"/>
-								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;" @click="sendCodeTwo">{{hasSendTwo?'已发送':'获取验证码'}}</div>
+								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;" @click="sendCodeTwo" v-if="!hasSend">{{textTwo}}</div>
+								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;"  v-if="hasSend">{{textTwo}}</div>
 							</div>
 							<div class="k_adress login_li  sign_yc">
-								<span class="l_adress  login_icon"></span><input type="text"  class="txt_sr" placeholder="地区"  v-model="submitData.address"/>
+								<span class="l_adress  login_icon"></span>
+								<select  class="txt_sr"  v-model="submitData.address"/>
+									
+									<option  v-for="item in cityData" :value="item.title">{{item.title}}</option>
+									
+								</select>
 							</div>
 							<!-- <div class="k_name login_li login_yc" >
 								<span class="l_name login_icon"></span><input onkeyup="this.value=this.value.replace(/[^\w_]/g,'');"  class="txt_sr" placeholder="账号"  v-model="submitData.login_name"/>
@@ -454,7 +461,12 @@
 					artData:{},
 					showRule:false,
 					hasSend:false,
-					hasLogin:false
+					hasLogin:false,
+					cityData:[],
+					currentTime:61,
+					text:'获取验证码',
+					currentTimeTwo:61,
+					textTwo:'获取验证码'
 				}
 			},
 			
@@ -472,19 +484,40 @@
 
 			methods: {
 				
+				
 				init: function(e) {
 					const self = this;
+					 
+					      
 					self.getArticleData();
 					if (localStorage.getItem('user_token')) {
 						window.location.href = './MyCenter.html'
 					}
-
+					self.getCityData()
+				},
+				
+				getCityData() {
+					var self = this;
+					var postData = {};
+					postData.searchItem = {
+						type: 11
+					};
+					postData.order = {
+						listorder: 'desc'
+					};
+					var callback = function(res) {
+						if (res.info.data.length > 0) {
+							self.cityData.push.apply(self.cityData, res.info.data);
+						}
+					};
+					console.log('self.city', self.city)
+					window.base.labelGet(postData, callback);
 				},
 				
 				sendCodeTwo:function(){
 					var self = this;
 					
-					if(self.hasSendTwo){
+					if(self.hasSend){
 						return;
 					};
 					var phone = self.submitData.phone;
@@ -501,7 +534,23 @@
 					};
 					var callback = function(res){
 						if(res.solely_code==100000){
-							self.hasSendTwo = true;
+							self.hasSend = true;
+							var interval = setInterval(function() {
+								self.currentTimeTwo--; //每执行一次让倒计时秒数减一
+							
+								self.textTwo=self.currentTimeTwo + 's';//按钮文字变成倒计时对应秒数
+								
+								//如果当秒数小于等于0时 停止计时器 且按钮文字变成重新发送 且按钮变成可用状态 倒计时的秒数也要恢复成默认秒数 即让获取验证码的按钮恢复到初始化状态只改变按钮文字
+								if (self.currentTimeTwo <= 0) {
+									clearInterval(interval)
+									
+									self.hasSend = true;
+									self.textTwo='重新发送';
+									self.currentTimeTwo= 61;
+									
+								}
+								
+							}, 1000);
 						}else{
 							alert('发送失败');
 						};
@@ -530,6 +579,22 @@
 					var callback = function(res){
 						if(res.solely_code==100000){
 							self.hasSend = true;
+							var interval = setInterval(function() {
+								self.currentTime--; //每执行一次让倒计时秒数减一
+							
+								self.text=self.currentTime + 's';//按钮文字变成倒计时对应秒数
+								
+								//如果当秒数小于等于0时 停止计时器 且按钮文字变成重新发送 且按钮变成可用状态 倒计时的秒数也要恢复成默认秒数 即让获取验证码的按钮恢复到初始化状态只改变按钮文字
+								if (self.currentTime <= 0) {
+									clearInterval(interval)
+									
+									self.hasSend = true;
+									self.text='重新发送';
+									self.currentTime= 61;
+									
+								}
+								
+							}, 1000);
 						}else{
 							alert('发送失败');
 						};
@@ -579,7 +644,7 @@
 					const postData = {
 						login_name: self.submitData.login_name,
 						
-					};
+					};	
 					postData.smsAuth = {
 						phone:self.submitData.login_name,						
 						code:self.submitData.code					,
@@ -596,7 +661,14 @@
 								localStorage.setItem('user_no', res.info.user_no);
 								
 								window.base.setStorageArray('user_info', res.info, 'id', 999, 'unshift');
-								window.location.href = './MyCenter.html'
+								if(window.base.GetRequest().type&&window.base.GetRequest().type=='addOrder'){
+									window.location.href = './TeSeDetail.html'
+								}else if(window.base.GetRequest().type&&window.base.GetRequest().type=='addOrder1'){
+									window.location.href = './PrintList.html'
+								}else{
+									window.location.href = './MyCenter.html'
+								}
+								
 							} else {
 								alert(res.msg)
 							}
@@ -606,6 +678,8 @@
 						alert('请输入账号密码', 'none')
 					};
 				},
+				
+				
 				
 				test(){
 					const self = this;
@@ -645,15 +719,17 @@
 						const callback = (res) => {
 							if (res.solely_code == 100000) {
 								alert(res.msg)
-								self.submitData = {
-									
-									
+								self.submitData = {																
 									name:'',
 									phone:'',
 									address:'',
 									code:''
 								};
 								self.isLogin = true;
+								localStorage.setItem('user_token', res.token);
+								localStorage.setItem('user_no', res.info.user_no);								
+								window.base.setStorageArray('user_info', res.info, 'id', 999, 'unshift');								
+								window.location.href = './MyCenter.html'						
 							} else {
 								alert(res.msg)
 							}

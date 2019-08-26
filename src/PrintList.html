@@ -488,9 +488,11 @@
 		        		</p>
 		        	</div>
 		        </section>
-		       <section class="review_s" style="padding-left: 50px;padding-bottom:30px;" v-if="messageData.length==0">
-		       	暂无评论，您可以发布第一个评论哦
-		       </section>
+		      <section class="review_s" style="padding-bottom:30px;" v-if="messageData.length==0">
+		      	<div style="display: inline-block;width: 80%;">暂无评论，您可以发布第一个评论哦</div>
+		      	<a style="background: #fe546e;display: inline-block;padding: 9px 40px;border-radius: 8px;font-size: 24px;color: #fff;" 
+		      	href="MyCenter.html">我要评论</a>
+		      </section>
 		       <!-- <div class="review_btn">
 		            <p style="text-align: center"><a>加载更多<span class="b_cion"></span></a></p>
 		        </div> -->
@@ -707,6 +709,7 @@
 				
 				close(){
 					const self = this;
+					
 					self.buyId = '';
 					self.buyType = '';
 					self.isReserve = false;	
@@ -714,6 +717,10 @@
 				
 				submit(index) {
 					const self = this;
+					if(!localStorage.getItem('user_token')){
+						window.location.href = 'Login.html?type=addOrder1';
+						return
+					};
 					self.buyId = self.mainData.sku[index].id;
 					self.buyType = 'sku';
 					self.isReserve = true;
@@ -721,6 +728,10 @@
 				
 				submitTwo() {
 					const self = this;
+					if(!localStorage.getItem('user_token')){
+						window.location.href = 'Login.html?type=addOrder1';
+						return
+					};
 					self.buyId = self.mainData.id;
 					self.buyType = 'product';
 					self.isReserve = true;
@@ -729,6 +740,7 @@
 				addOrder() {
 				
 					const self = this;
+					
 					self.submitData.group_no = self.startTime +'-'+self.endTime;
 					var newObject = window.base.cloneForm(self.submitData);
 					delete newObject.remarks;

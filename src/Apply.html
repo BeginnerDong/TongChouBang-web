@@ -335,8 +335,10 @@
 								</li>
 								<li>
 									<div class="app_tab"><span>*</span><label class="applay_li1">短信验证码</label></div>
-									<div class="app_txt" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码"
-										 v-model="smsCode" onkeyup="this.value=this.value.replace(/\D/g,'')" /><a class="hqnum" @click="sendCode">{{hasSend?'已发送':'获取验证码'}}</a></div>
+									<div class="app_txt" v-if="!hasSend" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码"
+									v-model="smsCode" onkeyup="this.value=this.value.replace(/\D/g,'')" /><a class="hqnum" @click="sendCode">{{text}}</a></div>
+									<div class="app_txt" v-if="hasSend" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码"
+									v-model="smsCode" onkeyup="this.value=this.value.replace(/\D/g,'')" /><a class="hqnum">{{text}}</a></div>
 								</li>
 							</ul>
 						</div>
@@ -466,7 +468,9 @@
 					bannerData: {},
 					isSelect: false,
 					artData: {},
-					hasLogin:false
+					hasLogin:false,
+					currentTime:61,
+					text:'获取验证码',	
 				}
 			},
 			created() {
@@ -509,6 +513,22 @@
 					var callback = function(res) {
 						if (res.solely_code == 100000) {
 							self.hasSend = true;
+							var interval = setInterval(function() {
+								self.currentTime--; //每执行一次让倒计时秒数减一
+							
+								self.text=self.currentTime + 's';//按钮文字变成倒计时对应秒数
+								
+								//如果当秒数小于等于0时 停止计时器 且按钮文字变成重新发送 且按钮变成可用状态 倒计时的秒数也要恢复成默认秒数 即让获取验证码的按钮恢复到初始化状态只改变按钮文字
+								if (self.currentTime <= 0) {
+									clearInterval(interval)
+									
+								
+									self.text='重新发送';
+									self.currentTime= 61;
+									
+								}
+								
+							}, 1000);
 						} else {
 							alert('发送失败');
 						};

@@ -257,8 +257,7 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-
-							relation_two: ['in', [self.spuArray]]
+							relation_two: ['in',self.spuArray]
 						},
 						condition: 'in'
 					}
@@ -479,6 +478,9 @@
 					};
 					postData.getAfter = {
 						child: {
+							order:{
+								listorder:'desc'
+							},
 							tableName: 'Label',
 							middleKey: 'id',
 							key: 'parentid',
