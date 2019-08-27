@@ -1,0 +1,45 @@
+
+
+<div class="map" id="contentOne_app">
+    <div id="dituContent" style="min-height:5.15rem;overflow:hidden;"></div>
+</div>
+
+<script type="text/javascript">
+	 
+</script>
+<script type="text/javascript">
+	var contentOne_app = new Vue({
+	    el: '#contentOne_app',
+	    data:function(){
+	        return {
+	        	
+
+	        }
+	    },
+		created:function () {
+		    var self = this;
+		   
+			window.onload = function () {  
+				  window.base.bus.$on('to_map',(res)=>{
+				  console.log('to_map',res)	
+					
+					
+					var map = new BMap.Map("dituContent");          // 创建地图实例
+					var point = new BMap.Point(res.longitude,res.latitude);  // 创建点坐标  
+					map.centerAndZoom(point, 15);  
+					var marker = new BMap.Marker(point);        // 创建标注    
+					map.addOverlay(marker);  
+				  });
+			}  
+			//window.base.bus.$emit('from_contentTwo',{});
+			
+		},
+	    methods: {
+			/* to_map(res){
+				                // 初始化地图，设置中心点坐标和地图级别 
+			},
+				 */
+	
+	    }
+	});
+</script>

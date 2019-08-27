@@ -14,6 +14,7 @@
 		<script src="../js/base.js" type="application/javascript"></script>
 		<script src="../js/rem.js"></script>
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
+		<script src="https://api.map.baidu.com/api?v=3.0&ak=rRzGYLY5KAmBEXEmGXKrOWxkW9ylOMtv&s=1"></script>
 		<!--[if IE 9]>
  <style>
     .animatedOpacity{
@@ -430,7 +431,7 @@
 							</ul>
 							<hr />
 							<p class="t_p t-p-price">
-								<span>价格：￥{{mainData.price}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>优惠价格：￥{{mainData.score}}
+								<span>价格：{{mainData.price}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>优惠价格：￥{{mainData.score}}
 						</div>
 					</div>
 
@@ -444,7 +445,7 @@
 							<h3 class="tese_t">{{mainData.small_title}}</h3>
 							<p class="tesedetail_c">
 								{{mainData.description}}</p>
-							<p><span class="tese_gg1">￥{{mainData.score}}/人起</span><a class="y_bind yd_btn" @click="submitTwo">预定</a></p>
+							<p><span class="tese_gg1">{{mainData.price}}</span><a class="y_bind yd_btn" @click="submitTwo">预定</a></p>
 						</div>
 					</div>
 					<section class="sect" v-for="(item,index) in skuData">
@@ -460,7 +461,7 @@
 							<ul class="clear tab_m">
 								<li><span class="tab_m_s1">{{item.title}}</span></li>
 								<li><span>{{item.book_time}}</span></li>
-								<li><span class="tab_m_s2">￥{{item.price}}/人起</span></li>
+								<li><span class="tab_m_s2">{{item.price}}</span></li>
 							</ul>
 							<a class="btn_m_y yd_btn" @click="submit(index)">预定</a>
 							<hr class="tab_line_m" />
@@ -546,7 +547,13 @@
 						</section>
 						<section class="ts_kk">
 							<h2>位置地图</h2>
-							<div class="map_a" v-for="item in mapData"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
+							<!-- <div>
+								<include src="map.html"></include>
+							</div> -->
+							<div class="map_a">
+							    <div id="dituContent" style="min-height:5.15rem;overflow:hidden;"></div>
+							</div>
+							<!-- <div class="map_a" v-for="item in mapData"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div> -->
 						</section>
 						<section class="ts_kk">
 							<h2>历史活动</h2>
@@ -990,6 +997,12 @@
 								self.actData.push(self.mainData.sku[j])
 							}
 						}
+						var map = new BMap.Map("dituContent");          // 创建地图实例
+						var point = new BMap.Point(self.mainData.longitude,self.mainData.latitude);  // 创建点坐标  
+						map.centerAndZoom(point, 15);  
+						var marker = new BMap.Marker(point);        // 创建标注    
+						map.addOverlay(marker);  
+						//window.base.bus.$emit('to_map',{latitude:self.mainData.latitude,longitude:self.mainData.longitude});
 						console.log('self.skuData', self.skuData)
 						self.getMessageData()
 					};
