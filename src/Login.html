@@ -662,9 +662,9 @@
 								
 								window.base.setStorageArray('user_info', res.info, 'id', 999, 'unshift');
 								if(window.base.GetRequest().type&&window.base.GetRequest().type=='addOrder'){
-									window.location.href = './TeSeDetail.html'
+									window.location.href = './TeSeDetail.html?id='+window.base.GetRequest().id
 								}else if(window.base.GetRequest().type&&window.base.GetRequest().type=='addOrder1'){
-									window.location.href = './PrintList.html'
+									window.location.href = './PrintList.html?id='+window.base.GetRequest().id
 								}else{
 									window.location.href = './MyCenter.html'
 								}

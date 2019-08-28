@@ -417,8 +417,7 @@
 		                    </li>
 		                </ul>
 		            </div>
-		        </section>
-		       
+		        </section>	       
 		    </div>
 		</div>
 		<div>
@@ -722,7 +721,7 @@
 				submit(index) {
 					const self = this;
 					if(!localStorage.getItem('user_token')){
-						window.location.href = 'Login.html?type=addOrder1';
+						window.location.href = 'Login.html?type=addOrder1?id='+window.base.GetRequest().id;
 						return
 					};
 					self.buyId = self.mainData.sku[index].id;
@@ -733,7 +732,7 @@
 				submitTwo() {
 					const self = this;
 					if(!localStorage.getItem('user_token')){
-						window.location.href = 'Login.html?type=addOrder1';
+						window.location.href = 'Login.html?type=addOrder1?id='+window.base.GetRequest().id;
 						return
 					};
 					self.buyId = self.mainData.id;

@@ -14,7 +14,8 @@
 		<script src="../js/base.js" type="application/javascript"></script>
 		<script src="../js/rem.js"></script>
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
-		<script src="https://api.map.baidu.com/api?v=3.0&ak=rRzGYLY5KAmBEXEmGXKrOWxkW9ylOMtv&s=1"></script>
+		<!-- <script src="https://api.map.baidu.com/api?v=2.0&ak=rRzGYLY5KAmBEXEmGXKrOWxkW9ylOMtv"></script> -->
+		<script type="text/javascript" src="https://api.map.baidu.com/getscript?v=3.0&ak=rRzGYLY5KAmBEXEmGXKrOWxkW9ylOMtv"> </script> 
 		<!--[if IE 9]>
  <style>
     .animatedOpacity{
@@ -849,7 +850,7 @@
 				submit(index) {
 					const self = this;
 					if(!localStorage.getItem('user_token')){
-						window.location.href = 'Login.html?type=addOrder';
+						window.location.href = 'Login.html?type=addOrder?id='+window.base.GetRequest().id;
 						return
 					};
 					self.buyId = self.mainData.sku[index].id;
@@ -860,7 +861,7 @@
 				submitTwo() {
 					const self = this;
 					if(!localStorage.getItem('user_token')){
-						window.location.href = 'Login.html?type=addOrder';
+						window.location.href = 'Login.html?type=addOrder?id='+window.base.GetRequest().id;
 						return
 					};
 					self.buyId = self.mainData.id;
