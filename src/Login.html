@@ -6,6 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
 		<title>特色会场</title>
+		<script src="../js/include.js"></script>
 		<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
 		<link type="text/css" rel="stylesheet" href="../css/style.css" />
 		<script type="text/javascript" src="../js/jquery-2.1.4.min.js"></script>
@@ -344,14 +345,19 @@
 								<input style="width: 60%;" type="number" id="i_pwd" class="txt_sr" placeholder="验证码" v-model="submitData.code"/>
 								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;" @click="sendCode" v-if="!hasSend">{{text}}</div>
 								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;"  v-if="hasSend">{{text}}</div>
+	
+							</div>
+							<div class="k_pwd login_li  update_yc">
+								<span class="l_pwd login_icon"></span>
+								<input style="width: 60%;" type="text" id="i_pwd" class="txt_sr" placeholder="验证符" v-model="imgCode"/>
+							
+								<include src="imgCode.html"></include>
 							</div>
 							<!-- <a class="update_pwd" id="updatebtn" @click="changeType('psd')">修改密码</a> -->
 							<button id="loginbtn" @click="submit">登录</button>						
 						</div>
 						<div class="txt_login_k" v-if="!isLogin&&!isPsd">
-							<div class="k_user login_li  sign_yc"  >
-								<span class="l_user login_icon"></span><input type="text"  class="txt_sr" placeholder="姓名" v-model="submitData.name"/>
-							</div>
+							
 						
 							<div class="k_tel login_li  sign_yc">
 								<span class="l_tel login_icon"></span><input type="number"  class="txt_sr" placeholder="手机号"  v-model="submitData.phone" onkeyup="this.value=this.value.replace(/\D/g,'')"  maxlength="11"/>
@@ -362,6 +368,13 @@
 								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;" @click="sendCodeTwo" v-if="!hasSend">{{textTwo}}</div>
 								<div style="display: inline-block;font-size:15px;color: #ff556f;width: 30%;text-align: center;"  v-if="hasSend">{{textTwo}}</div>
 							</div>
+							<div class="k_pwd login_li  update_yc">
+								<span class="l_pwd login_icon"></span>
+								<input style="width: 60%;" type="text" id="i_pwd" class="txt_sr" placeholder="验证符" v-model="imgCode"/>							
+							</div>
+							<div class="k_user login_li  sign_yc"  >
+								<span class="l_user login_icon"></span><input type="text"  class="txt_sr" placeholder="姓名" v-model="submitData.name"/>
+							</div>
 							<div class="k_adress login_li  sign_yc">
 								<span class="l_adress  login_icon"></span>
 								<select  class="txt_sr"  v-model="submitData.address"/>
@@ -370,6 +383,7 @@
 									
 								</select>
 							</div>
+							
 							<!-- <div class="k_name login_li login_yc" >
 								<span class="l_name login_icon"></span><input onkeyup="this.value=this.value.replace(/[^\w_]/g,'');"  class="txt_sr" placeholder="账号"  v-model="submitData.login_name"/>
 							</div>
@@ -457,6 +471,7 @@
 						code:'',
 						login_name:''
 					},
+					imgCode:'',
 					isSelect:false,
 					artData:{},
 					showRule:false,
@@ -655,6 +670,15 @@
 					delete newObject.address;
 					delete newObject.thirdapp_id;
 					if (window.base.checkComplete(newObject)) {
+						if(self.imgCode==''){
+							alert('请输入验证符');
+							return
+						}else{
+							if(self.imgCode!=localStorage.getItem('imgCode')){
+								alert('验证符错误')
+							}
+							return
+						};
 						const callback = (res) => {
 							if (res.solely_code == 100000) {
 								localStorage.setItem('user_token', res.token);
@@ -711,7 +735,16 @@
 							
 							alert('请输入正确的手机号码');
 							return;
-						}
+						};
+						if(self.imgCode==''){
+							alert('请输入验证符');
+							return
+						}else{
+							if(self.imgCode!=localStorage.getItem('imgCode')){
+								alert('验证符错误')
+							}
+							return
+						};
 						if(!self.isSelect){
 							alert('请阅读条款并同意');
 							return

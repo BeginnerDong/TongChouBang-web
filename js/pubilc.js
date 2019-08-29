@@ -81,7 +81,7 @@ btnnav1.onclick = function () {
     }
 }
 //二维码鼠标移动事件
-document.getElementById("wechatbtn").onmouseover = function () {
+/* document.getElementById("wechatbtn").onmouseover = function () {
     document.getElementById("wechatk").style.display = "block";
 
 }
@@ -90,61 +90,5 @@ document.getElementById("wechatbtn"), onmouseout = function () {
     if (window.innerWidth > 1055) {
         document.getElementById("wechatk").style.display = "none";
     }
-}
+} */
 //图片点击
-var rightdetailbtn = document.getElementById("rightdetailbtn");
-var leftdetailbtn = document.getElementById("leftdetailbtn");
-var imglisttk = document.getElementById("imglisttk");
-var imgkk = document.getElementById("imgkk");
-var imgwidth = $("#imgkk li img").width();
-var imgnum = $("#imgkk li");
-console.log(imgnum + ".................");
-imgkk.style.width = imgnum.length * imgwidth + "px";
-var winwidth = window.innerWidth;
-$("#imgkk li img").css("width", winwidth + "px");
-if(winwidth<=800){
-    var imgwidth = $("#imgkk li img").width();
-}
-
-console.log(winwidth);
-/*  alert(imgwidth); */
-index = 0;
-rightdetailbtn.onclick = function () {
-    if (index < imgnum.length - 1) {
-        index++;
-        imgkk.style.marginLeft = -index * imgwidth + "px";
-    } else {
-        alert("到头了");
-    }
-}
-leftdetailbtn.onclick = function () {
-    if (index > 0) {
-        index--;
-        imgkk.style.marginLeft = -index * imgwidth + "px";
-    } else {
-        alert("到头了");
-    }
-}
-//关闭图片弹框
-var closeimgbtn = document.getElementById("closeimgbtn");
-closeimgbtn.onclick = function () {
-    /* alert(1); */
-    imgkk.style.marginLeft = "0px";
-    imglisttk.style.display = "none";
-}
-//加载图片弹框
-function imglistfc() {
-    var winwidth = window.innerWidth;
-    imglisttk.style.display = "block";
-    if (winwidth <= 800) {
-        var imgnum = $("#imgkk li");
-        var imgwidth = $("#imgkk li img").width();
-        imgkk.style.width = imgnum.length * imgwidth + "px";
-
-        $("#imgkk li img").css("width", winwidth + "px");
-    }else {
-        $("#imgkk li img").css("width", "800px");
-    }
-
-    index = 0;
-}
