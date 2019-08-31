@@ -496,7 +496,7 @@
 				const self = this;
 				console.log('window.my',window.my)
 				console.log('window.base',window.base)
-				self.init()
+				self.initMain()
 				
 			},
 
@@ -507,7 +507,7 @@
 			methods: {
 				
 				
-				init: function(e) {
+				initMain: function(e) {
 					const self = this;
 					 
 					      
@@ -680,10 +680,10 @@
 						if(self.imgCode==''){
 							alert('请输入验证符');
 							return
-						}else{
-							if(self.imgCode!=localStorage.getItem('imgCode')){
-								alert('验证符错误')
-							}
+						}
+						if(self.imgCode!=localStorage.getItem('imgCode')){
+							alert('验证符错误');
+							self.refresh();
 							return
 						};
 						const callback = (res) => {
@@ -710,7 +710,11 @@
 					};
 				},
 				
-				
+				refresh:function()
+				{
+					console.log(222)
+					window.base.bus.$emit('to_imgCode',{type:'refresh'});
+				},
 				
 				test(){
 					const self = this;
@@ -746,12 +750,14 @@
 						if(self.imgCode==''){
 							alert('请输入验证符');
 							return
-						}else{
-							if(self.imgCode!=localStorage.getItem('imgCode')){
-								alert('验证符错误')
-							}
+						}
+						if(self.imgCode!=localStorage.getItem('imgCode')){
+							alert('验证符错误');
+							self.refresh();
 							return
 						};
+							
+						
 						if(!self.isSelect){
 							alert('请阅读条款并同意');
 							return

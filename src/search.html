@@ -430,27 +430,31 @@
 				};
 				self.getCityData();
 				self.getMainData();
-				self.getSliderData()
+				self.getSliderData();
 				self.getNoticeData()
 			},
 
-			getNoticeData() {
-				const self = this;
-				const postData = {};
-				postData.searchItem = {
-					thirdapp_id: 2,
-					title: '广告条',
-				};
-				const callback = (res) => {
-					if (res.info.data.length > 0) {
-						self.noticeData = res.info.data[0]
-						console.log('swiperData', self.swiperData)
-					};
-				};
-				window.base.labelGet(postData, callback);
-			},
+			
+			
+			
 
 			methods: {
+				
+				getNoticeData() {
+					const self = this;
+					const postData = {};
+					postData.searchItem = {
+						thirdapp_id: 2,
+						title: '广告条',
+					};
+					const callback = (res) => {
+						if (res.info.data.length > 0) {
+							self.noticeData = res.info.data[0]
+							console.log('swiperData', self.swiperData)
+						};
+					};
+					window.base.labelGet(postData, callback);
+				},
 
 				goStart() {
 					const self = this;

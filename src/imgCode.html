@@ -11,6 +11,16 @@
 				width:120,height:58
 			}
 		},
+		
+		created:function () {
+		    var self = this;
+			window.base.bus.$on('to_imgCode',(res)=>{	
+				if(res.type){
+					 self.refresh()
+				};
+		    });
+		},
+		
 		mounted:function(){
 			var _self=this;
 			setTimeout(function(){

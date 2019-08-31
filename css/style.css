@@ -908,6 +908,7 @@ html,
 
         .peo_list {
             margin-top: 30px;
+			min-height: 600px;
         }
 
         .pro_b_l ul {
