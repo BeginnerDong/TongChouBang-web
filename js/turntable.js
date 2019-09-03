@@ -39,7 +39,7 @@ $(document).ready(function(){
 
 	//旋转转盘 item:奖品位置; txt：提示语;
 	var rotateFn = function (item, txt){
-		var angles = item * (360 / turnplate.restaraunts.length) - (360 / (turnplate.restaraunts.length*2));
+		var angles =  (turnplate.angleItem[item-1].s+turnplate.angleItem[item-1].e)/2*180;
 		if(angles<270){
 			angles = 270 - angles; 
 		}else{
@@ -64,7 +64,14 @@ $(document).ready(function(){
 		if(localStorage.getItem('gift')){
 			return
 		}
-		var item = rnd(1,turnplate.restaraunts.length);
+		var rndNum = rnd(1,200);
+		for (var i = 0; i < turnplate.angleItem.length; i++) {
+			var s = turnplate.angleItem[i]['s']*200;
+			var e = turnplate.angleItem[i]['e']*200;
+			if(rndNum>=s&&rndNum<e){
+				var item = i+1
+			};
+		};
 		localStorage.setItem('gift',turnplate.restaraunts[item-1]);
 		//奖品数量等于10,指针落在对应奖品区域的中心角度[252, 216, 180, 144, 108, 72, 36, 360, 324, 288]
 		rotateFn(item, turnplate.restaraunts[item-1]);
@@ -100,7 +107,7 @@ function drawRouletteWheel() {
 	  ctx.font = '16px Microsoft YaHei';      
 	  for(var i = 0; i < turnplate.restaraunts.length; i++) {      	  
 		  //var arc = (Math.PI * (turnplate.angleItemTwo[i])) / 180;
-		  //var angle = turnplate.startAngle + i * arc;
+		  var angle = turnplate.startAngle + i * arc;
 		 
 		  ctx.fillStyle = turnplate.colors[i];	
 		  ctx.beginPath();
@@ -117,7 +124,9 @@ function drawRouletteWheel() {
 		  var text = turnplate.restaraunts[i];
 		  var line_height = 17;
 		  //translate方法重新映射画布上的 (0,0) z
-		  ctx.translate(211 + Math.cos(turnplate.angleItem[i].e*Math.PI / 2) * turnplate.textRadius, 211 + Math.sin(turnplate.angleItem[i].e*Math.PI / 2) * turnplate.textRadius);
+		  console.log()
+		  //ctx.translate(211 + Math.cos(turnplate.angleItem[i].s + arc / 2) * turnplate.textRadius, 211 + Math.sin(angle + arc / 2) * turnplate.textRadius);
+		  ctx.translate(211 + Math.cos((turnplate.angleItem[i].e+turnplate.angleItem[i].s)*Math.PI / 2) * turnplate.textRadius, 211 + Math.sin((turnplate.angleItem[i].e+turnplate.angleItem[i].s)*Math.PI / 2) * turnplate.textRadius);
 		  
 		  //rotate方法旋转当前的绘图
 		  ctx.rotate(turnplate.angleItem[i].e*Math.PI / 2 + Math.PI / 2);
