@@ -682,20 +682,20 @@ html,
             margin-right: 20px;
         }
         .foot_contact ul li:nth-of-type(1) .cion{
-            background: url("/img/company_f_cion.png") center no-repeat;
+            background: url("../img/company_f_cion.png") center no-repeat;
         }
         .foot_contact ul li:nth-of-type(2) .cion{
-            background: url("/img/tel_f_cion.png") center no-repeat;
+            background: url("../img/tel_f_cion.png") center no-repeat;
         }
         .foot_contact ul li:nth-of-type(3) .cion{
-            background: url("/img/adress_f_cion.png") center no-repeat;
+            background: url("../img/adress_f_cion.png") center no-repeat;
             /* height: 29px !important; */
         }
         .foot_contact ul li:nth-of-type(4) .cion{
-            background: url("/img/email_f_cion.png") center no-repeat;
+            background: url("../img/email_f_cion.png") center no-repeat;
         }
         .foot_contact ul li:nth-of-type(5) .cion{
-            background: url("/img/wechaticon.png") center no-repeat;
+            background: url("../img/wechaticon.png") center no-repeat;
         }
         .foot_contact ul li:nth-of-type(1)  .cion{
             background-size:100% 100%;

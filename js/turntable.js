@@ -19,7 +19,10 @@ var turnplate={
 
 $(document).ready(function(){
 	//动态添加大转盘的奖品与奖品区域背景颜色
-	turnplate.restaraunts = ["0", "1", "1.5", "2", "2.5", "3", "3.5 ", "4", "4.5", "5"];
+	turnplate.restaraunts = ["0.5", "1", "1.5", "2", "2.5", "3", "3.5 ", "4", "4.5", "5"];
+	turnplate.angleItem = [{s:0,e:0.3},{s:0.3,e:0.6},{s:0.6,e:1},{s:1,e:1.4},{s:1.4,e:1.55},{s:1.55,e:1.7},{s:1.7,e:1.8},{s:1.8,e:1.9},{s:1.9,e:1.95},{s:1.95,e:2}];/* [9,9,18,18,27,27,54,54,72,72] */
+	turnplate.angleItemTwo = [36,36,36,36,36,36,36,36,36,36];
+	[]
 	turnplate.colors = ["#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF","#FFF4D6", "#FFFFFF", "#FFF4D6", "#FFFFFF","#FFF4D6", "#FFFFFF"];
 
 	
@@ -78,6 +81,7 @@ function rnd(n, m){
 
 //页面所有元素加载完毕后执行drawRouletteWheel()方法对转盘进行渲染
 window.onload=function(){
+	
 	drawRouletteWheel();
 };
 
@@ -89,17 +93,20 @@ function drawRouletteWheel() {
 	  var ctx = canvas.getContext("2d");
 	  //在给定矩形内清空一个矩形
 	  ctx.clearRect(0,0,422,422);
+	 
 	  //strokeStyle 属性设置或返回用于笔触的颜色、渐变或模式  
 	  ctx.strokeStyle = "#FFBE04";
 	  //font 属性设置或返回画布上文本内容的当前字体属性
 	  ctx.font = '16px Microsoft YaHei';      
-	  for(var i = 0; i < turnplate.restaraunts.length; i++) {       
-		  var angle = turnplate.startAngle + i * arc;
-		  ctx.fillStyle = turnplate.colors[i];
+	  for(var i = 0; i < turnplate.restaraunts.length; i++) {      	  
+		  //var arc = (Math.PI * (turnplate.angleItemTwo[i])) / 180;
+		  //var angle = turnplate.startAngle + i * arc;
+		 
+		  ctx.fillStyle = turnplate.colors[i];	
 		  ctx.beginPath();
 		  //arc(x,y,r,起始角,结束角,绘制方向) 方法创建弧/曲线（用于创建圆或部分圆）    
-		  ctx.arc(211, 211, turnplate.outsideRadius, angle, angle + arc, false);    
-		  ctx.arc(211, 211, turnplate.insideRadius, angle + arc, angle, true);
+		  ctx.arc(211, 211, turnplate.outsideRadius, turnplate.angleItem[i].s*Math.PI, turnplate.angleItem[i].e*Math.PI, false);    
+		  ctx.arc(211, 211, turnplate.insideRadius, turnplate.angleItem[i].e*Math.PI, turnplate.angleItem[i].s*Math.PI, true);
 		  ctx.stroke();  
 		  ctx.fill();
 		  //锁画布(为了保存之前的画布状态)
@@ -109,11 +116,11 @@ function drawRouletteWheel() {
 		  ctx.fillStyle = "#E5302F";
 		  var text = turnplate.restaraunts[i];
 		  var line_height = 17;
-		  //translate方法重新映射画布上的 (0,0) 位置
-		  ctx.translate(211 + Math.cos(angle + arc / 2) * turnplate.textRadius, 211 + Math.sin(angle + arc / 2) * turnplate.textRadius);
+		  //translate方法重新映射画布上的 (0,0) z
+		  ctx.translate(211 + Math.cos(turnplate.angleItem[i].e*Math.PI / 2) * turnplate.textRadius, 211 + Math.sin(turnplate.angleItem[i].e*Math.PI / 2) * turnplate.textRadius);
 		  
 		  //rotate方法旋转当前的绘图
-		  ctx.rotate(angle + arc / 2 + Math.PI / 2);
+		  ctx.rotate(turnplate.angleItem[i].e*Math.PI / 2 + Math.PI / 2);
 		  
 		  /** 下面代码根据奖品类型、奖品名称长度渲染不同效果，如字体、颜色、图片效果。(具体根据实际情况改变) **/
 		  if(text.indexOf("M")>0){//流量包
