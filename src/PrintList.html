@@ -242,14 +242,16 @@
                 margin-top: 47px;
             }
         }
-
+		[v-cloak]{
+			display: none!important;
+		}
         
     </style>
 </head>
 
 <body>
     <!-- 头部 -->
-	<div id="app">
+	<div id="app" v-cloak>
 		<header class="clear head_top">
 		    <div class="clear">
 				<img class="logoTIcon" src="../img/logo2.png" alt="">
@@ -470,9 +472,11 @@
 		    </div>
 		</div>
 		<div class="review_big">
-		    <div class="review">
+		    <div class="review" style="position: relative;">
 		
 		        <h1 style="padding-left: 50px;font-size: 32px;color: #212121;font-family: 'MicrosoftYaHei'">评论</h1>
+				<a v-if="messageData.length>0" style="position: absolute;right:65px;top:35px;background: #fe546e;display: inline-block;padding: 9px 40px;border-radius: 8px;font-size: 24px;color: #fff;"
+				href="MyCenter.html">我要评论</a>
 		        <section class="review_s" v-for="item in messageData" v-if="messageData.length">
 		        	<div class="review_k">
 		        		<div class="review_title">
@@ -513,7 +517,7 @@
 				<ul class="clear">
 					<li class="tr1 clear">
 						<div class="yy_tt_t">*活动时间</div>
-						<div style=""><input type="text" class="txt_s" v-model="submitData.time" /></div>
+						<div style=""><input type="date" class="txt_s" v-model="submitData.time" /></div>
 					</li>
 					<li class="tr1">
 						<div>*使用时段</div>
@@ -533,7 +537,7 @@
 					</li>
 					<li class="tr1">
 						<div class="yy_tt_t">活动规模</div>
-						<div><input type="text" class="txt_s" placeholder="请正确填写活动规模" v-model="submitData.scale" /></div>
+						<div><input type="text" class="txt_s" placeholder="请正确填写活动规模(/人)" v-model="submitData.scale" /></div>
 					</li>
 					<li class="tr1">
 						<div style="vertical-align: top;">备注信息</div>
@@ -549,7 +553,7 @@
 					</li>
 					<li class="tr1">
 						<div class="yy_tt_t">*联系电话</div>
-						<div><input type="text" class="txt_s" v-model="submitData.phone" /></div>
+						<div><input type="number" class="txt_s" v-model="submitData.phone" onkeyup="this.value=this.value.replace(/\D/g,'')" maxlength="11"/></div>
 					</li>
 					<li class="tr1">
 						<div>联系邮箱</div>
@@ -721,7 +725,7 @@
 				submit(index) {
 					const self = this;
 					if(!localStorage.getItem('user_token')){
-						window.location.href = 'Login.html?type=addOrder1?id='+window.base.GetRequest().id;
+						window.location.href = 'Login.html?type=addOrder1&id='+window.base.GetRequest().id;
 						return
 					};
 					self.buyId = self.mainData.sku[index].id;
@@ -732,7 +736,7 @@
 				submitTwo() {
 					const self = this;
 					if(!localStorage.getItem('user_token')){
-						window.location.href = 'Login.html?type=addOrder1?id='+window.base.GetRequest().id;
+						window.location.href = 'Login.html?type=addOrder1&id='+window.base.GetRequest().id;
 						return
 					};
 					self.buyId = self.mainData.id;

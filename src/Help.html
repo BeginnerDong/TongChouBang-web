@@ -100,7 +100,7 @@
 							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
 							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
-							<li><a href="Help.html">帮助中心</a></li>
+							<li  class="active"><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
 
@@ -111,7 +111,7 @@
 							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
 							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
-							<li><a href="Help.html">帮助中心</a></li>
+							<li  class="active"><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
 					<div class="me_rk" style="float: right">
@@ -121,7 +121,7 @@
 							<li><a href="Login.html">登录注册</a></li>
 							<li><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
-							<li><a href="Help.html">帮助中心</a></li>
+							<li  class="active"><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
 
@@ -239,11 +239,18 @@
 					postData.order = {
 						listorder: 'desc'
 					};
+				
+					if (self.spuArray.length > 0) {
+						postData.getBefore = window.base.cloneForm(self.getBefore);
+					};
 					var callback = function(res) {
 						if (res.info.data.length > 0) {
 							self.mainData.push.apply(self.mainData, res.info.data);
 							self.paginate['count'] = res.info.total;
 							window.base.computePageArr(self);
+							self.totalCount = res.info.total
+						} else {
+							self.totalCount = '0'
 						}
 					};
 					console.log('self.mainData', self.mainData)

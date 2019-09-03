@@ -24,6 +24,10 @@
             /* border: 1px solid red; */
             padding-bottom: 110px;
         }
+		
+		[v-cloak]{
+			display:none!important;
+		}
 
         .app_ul1 li {
             list-style-type: none;
@@ -219,6 +223,9 @@
             }
 			
 			
+			
+
+			
 			.cont_applay{ width: 90%;}
 			.applayContBox .tit span{ font-size: 20px!important;padding-left: 10px!important; line-height: 30px!important;}
 			.applayContBox .msgeLisinfo{ padding:20px 10px!important;}
@@ -289,7 +296,7 @@
 							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
 							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
 							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
-							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Apply.html" class="active">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
@@ -300,7 +307,7 @@
 							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
 							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
 							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
-							<li><a href="Apply.html">申请入驻</a></li>
+							<li  class="active"><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
@@ -310,7 +317,7 @@
 						<ul class="me_list" id="me_list">
 							<li><a href="Login.html">登录注册</a></li>
 							<li><a href="MyCenter.html">个人中心</a></li>
-							<li><a href="Apply.html">申请入驻</a></li>
+							<li><a href="Apply.html" class="active">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
@@ -330,16 +337,20 @@
 							<ul class="app_ul1">
 								<li>
 									<div class="app_tab"><span>*</span><label class="applay_li1">手机号码</label></div>
-									<div class="app_txt"><input class="applay_input" type="text" placeholder="请输入手机号码" v-model="submitData.phone"
+									<div class="app_txt"><input class="applay_input" type="number" placeholder="请输入手机号码" v-model="submitData.phone"
 										 onkeyup="this.value=this.value.replace(/\D/g,'')" maxlength="11" /></div>
 								</li>
 								<li>
-									<div class="app_tab"><span>*</span><label class="applay_li1">短信验证码</label></div>
-									<div class="app_txt" v-if="!hasSend" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码"
+									<div class="app_tab"><span>*</span><label class="applay_li1">验证符</label></div>
+									<!-- <div class="app_txt" v-if="!hasSend" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码"
 									v-model="smsCode" onkeyup="this.value=this.value.replace(/\D/g,'')" /><a class="hqnum" @click="sendCode">{{text}}</a></div>
 									<div class="app_txt" v-if="hasSend" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入短信验证码"
-									v-model="smsCode" onkeyup="this.value=this.value.replace(/\D/g,'')" /><a class="hqnum">{{text}}</a></div>
+									v-model="smsCode" onkeyup="this.value=this.value.replace(/\D/g,'')" /><a class="hqnum">{{text}}</a></div> -->
+									<div class="app_txt" style="position: relative;"><input class="applay_input" type="text" placeholder="请输入下方图形中的字母或数字"
+									v-model="imgCode" /></div>
+									
 								</li>
+								<include src="imgCode.html"></include>
 							</ul>
 						</div>
 					</div>
@@ -387,14 +398,20 @@
 								<div style="line-height: 35px; margin-right:10%;float: right;">
 									<img src="../img/checkbox.png" v-if="!isSelect" style="width: 16px;height: 16px;" @click="select" />
 									<img src="../img/checkbox-a.png" v-if="isSelect" style="width: 16px;height: 16px;" @click="select" />
-									<span class="" style="margin:0 5px; font-size: 16px;" id="openmz">免责条款</span>
-									<span class="bookcion1"></span>
+									<span class="" style="margin:0 5px; font-size: 16px;">免责条款</span>
+									<span class="bookcion1" id="openmz"></span>
 								</div>
 							</div>
 							<div>
 								<button class="sendmes" @click="submit">提交入驻申请</button>
 							</div>
-
+							<div style="width: 40%;height: 500px;background: #000000;opacity: 0.6;position: fixed;left:30%;top: 200px;" v-if="hasOrder" v-cloak>
+								<div style="height: 30%;text-align: right;padding: 20px;">
+									<img src="../img/close.png" style="height: 35px;height: 35px;" @click="close"/>
+								</div>
+								<div style="font-size: 25px;color: #fff;text-align: center;line-height: 100px;">提交预约成功，负责人会在八小时之内联系你，请注意接听电话</div>
+								<div style="font-size: 25px;color: #fff;text-align: center;line-height: 100px">咨询热线：13126608897</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -470,7 +487,9 @@
 					artData: {},
 					hasLogin:false,
 					currentTime:61,
-					text:'获取验证码',	
+					text:'获取验证码',
+					hasOrder:false,
+					imgCode:''
 				}
 			},
 			created() {
@@ -600,7 +619,6 @@
 
 					postData.searchItem = {
 						title: '申请入驻图'
-
 					};
 					var callback = function(res) {
 						if (res.info.data.length > 0) {
@@ -616,14 +634,11 @@
 					postData.data = {};
 					postData.data = window.base.cloneForm(self.submitData);
 					postData.data.user_type = 0;
-					postData.smsAuth = {
-						phone: self.submitData.phone,
-						code: self.smsCode
-					};
 					const callback = (res) => {
 						if (res.solely_code == 100000) {
 							alert('申请成功');
-							window.location.reload()
+							self.hasOrder = true;
+							
 						} else {
 							alert(res.msg)
 						}
@@ -633,20 +648,37 @@
 				},
 
 
-
+				close(){
+					const self = this;
+					window.location.reload()
+				},
 
 
 				submit() {
 					const self = this;
 
 					console.log(self.submitData)
-
+					var phone = self.submitData.phone;
 					var newObject = window.base.cloneForm(self.submitData);
 					delete newObject.content;
 					const pass = window.base.checkComplete(newObject);
 					console.log('pass', pass)
 
 					if (pass) {
+						if(self.imgCode==''){
+							alert('请输入验证符');
+							return
+						}
+						if(self.imgCode!=localStorage.getItem('imgCode')){
+							alert('验证符错误');
+							self.refresh();
+							return
+						};
+						if (phone.trim().length != 11 || !/^1[3|4|5|6|7|8|9]\d{9}$/.test(phone)) {
+						
+							alert('请输入正确的手机号码');
+							return;
+						}
 						if (!self.isSelect) {
 							alert('请阅读条款并同意');
 							return

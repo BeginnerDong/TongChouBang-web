@@ -170,6 +170,13 @@
 										<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 										<div class="procont">
 											<h3 class="pro_title">{{item.title}}</h2>
+											<div style="position: absolute;top: 35px;right:15px;">
+												<span v-for="(c_item,c_index) in stars" >
+													<img  src="../img/messtaricon1.png" v-if="item.averageScore>=c_item" 
+													style="width:20px;height:20px;margin-left: 10px;" />
+													<img src="../img/messtaricon.png" v-else style="width:20px;height:20px;margin-left: 10px;" />
+												</span>
+											</div>
 												<p class="pro_intro">
 													<div class="content ql-editor " style="clear: both;">
 														<p class="p1 " v-html="item.content"></p>
@@ -239,7 +246,8 @@
 					title: '',
 					cityId: '',
 					hasLogin: false,
-					noticeData:{}
+					noticeData:{},
+					stars: [1, 2, 3, 4, 5],
 				}
 			},
 
@@ -490,6 +498,33 @@
 					postData.order = {
 						listorder: 'desc'
 					};
+					postData.getAfter = {
+						message:{
+							tableName:'Message',
+							middleKey:'id',
+							key:'relation_id',
+							searchItem:{
+								status:1
+							},
+							condition:'=',
+							compute:{
+							  score:[
+							    'sum',
+							    'score',
+							    {
+							      status:1,
+							    }
+							  ],
+							  count:[
+							    'count',
+							    'count',
+							    {
+							      status:1,
+							    }
+							  ]
+							},
+						}
+					};
 					if (self.spuArray.length > 0) {
 						postData.getBefore = window.base.cloneForm(self.getBefore);
 					};
@@ -499,10 +534,12 @@
 							self.paginate['count'] = res.info.total;
 							window.base.computePageArr(self);
 							self.totalCount = res.info.total
+							for (var i = 0; i < self.mainData.length; i++) {
+								self.mainData[i].averageScore = self.mainData[i].message.score/self.mainData[i].message.count
+							}
 						} else {
-							self.totalCount = 0
+							self.totalCount = '0'
 						}
-
 					};
 					console.log('self.mainData', self.mainData)
 					window.base.productGet(postData, callback);

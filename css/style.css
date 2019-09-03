@@ -814,8 +814,8 @@ html,
         .type_list1 {
             width: 78%;
             float: left;
-            line-height: 35px;
-            margin-top: -12px;
+            line-height: 25px;
+            margin-top: -5px;
         }
 
         .type_all span {
@@ -827,12 +827,12 @@ html,
 
         .type_list1 a {
             display: inline-block;
-            font-size: 16px;
+            font-size: 14px;
             color: #222222;
         }
 
         .type_list1 a {
-            margin-left: 30px;
+            margin-left: 15px;
 			cursor: pointer;
         }
 
@@ -2290,7 +2290,7 @@ select:focus{
  }
  
  .act_big_0{
-     position: absolute;top:60px;right:20px;
+     position: absolute;top:0px;right:20px;
  }
  .act_big_2{
      position: absolute;right:20px;
