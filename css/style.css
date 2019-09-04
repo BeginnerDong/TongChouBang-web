@@ -213,24 +213,8 @@ html,
 			.head_top>div{
 				padding: 0 15px;
 			}
-            .top_search {
-				width: 60%;
-				bottom: 20%;
-            }
         }
-        @media screen and (max-width: 525px){
-            .top_search {
-				width: 70%!important;
-                height: 36px!important;
-            }
-            .search{
-                font-size: 14px;
-				padding-left: 10px;
-            }
-            .search_btn{
-                font-size: 14px;
-            }
-        }
+
         /*内容*/
         .content {
             width: 100%;
@@ -252,9 +236,9 @@ html,
             margin: 0px auto;
 
         }
-.yearsite img{
-    width: 100%;
-}
+		.yearsite img{
+			width: 100%;
+		}
 
 .fenye{
     width: 100%;
@@ -1784,6 +1768,9 @@ html,
 	.big_div .content.bg_2{ background: f5f5f5;padding: 0;}
 	.inidex_anli{margin-top: 30px;}
 	
+	.top-BannerBox{padding-top: 30px;}
+	.top_search{top: 10px; bottom: auto;width: 94%;border-radius:50px ;overflow: hidden;}
+	
 	.yearlist ul{
 		display: flex;
 		justify-content: space-around;
@@ -1839,6 +1826,19 @@ html,
 	    margin-left: 0%;
 	    margin-top: 6px;
 	} */
+	.top_search {
+	    height: 34px!important;
+		top: 0;
+	}
+	.top-BannerBox{padding-top: 15px;}
+	.search{
+	    font-size: 14px;
+		padding-left: 10px;
+	}
+	.search_btn{
+	    font-size: 14px;
+	}
+	
     .yearsite {
         padding: 20px 20px;
     }
@@ -2086,7 +2086,7 @@ color: #fff
 
 @media screen and (max-width:1064px) {
     footer{
-        height: 420px;
+        height: auto;
     }
     .foot_k .ul_1>li>div.foot_list .ul_2{
         display: none;
@@ -2120,26 +2120,41 @@ color: #fff
     }
     .foot_contact ul li:nth-of-type(5){
         width: 100%;
+		position: static;
     }
+	#wechatk>div:nth-of-type(1),#wechatk>div:nth-of-type(2){
+		display: inline-block;
+	}
+	#wechatk>div:nth-of-type(2){
+		margin: 0px 0 0 15px;
+	}
+	.foot_contact ul li span.adrs{width: auto;}
+
+	
     .foot_k{
         width: 50%;
         float: left;
+		padding: 30px 0px;
     }
     .foot_contact{
         width: 50%;
         float: left;
         margin: 0 auto;
-        padding: 50px 0px;
+        padding: 30px 0px;
     }
     .cion{
         width: 16px;
         height: 12px;
     }
     #wechatk{
-        top:-20px;
-        left: 37px;
+		position: static;
+        top:auto;
+        left: auto;
+		right: auto;
+		bottom: 0;
         display: block;
     }
+	.foot_contact ul li:nth-of-type(5) .cion{display: none;}
 	.head_abnoutus{
 		display: none;
 	}
@@ -2151,10 +2166,12 @@ color: #fff
 }
 
  @media screen and (max-width:900px) {
+	 
 	.yearsite{max-width: 100%;}
 	.me_rk{
 	    display: none !important; 
 	}
+	.copyRight{padding: 10px 0!important;border-top: 1px solid #666;line-height: 20px!important;font-size: 12px!important;padding:0 3%;box-sizing:border-box ;}
 	/* .nav_small{ display:block;} */
 	
 	.head_abnoutus {
@@ -2683,6 +2700,19 @@ select:focus{
 	.caselsit ul li img {
 		height: 140px;
 	}
+	.foot_k{
+	    width: 40%;
+		padding: 20px 0px;
+	}
+	.foot_contact{
+	    width: 60%;
+	    padding: 20px 0px;
+	}
+	.foot_contact ul li .cion{margin-right: 10px;}
+	.foot_contact ul li{line-height: 40px;}
+	.foot_k .ul_1>li .foot_list{padding: 0 8%;}
+	#wechatk{margin-top: 10px;}
+	
 }
 
 @media only screen and (min-width: 1441px) and (max-width: 1600px){
