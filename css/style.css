@@ -2094,14 +2094,13 @@ color: #fff
     .foot_k .foot_title{
         border: none;
         font-size: 14px;
-        line-height: 3px;
     }
     .foot_k .ul_1>li{
         width: 100%;
     }
     .foot_contact ul li{
         float: none;
-        line-height: 30px;
+        line-height: 40px;
         margin-top: 0px;
         font-size: 11px;
     }
@@ -2709,7 +2708,8 @@ select:focus{
 	    padding: 20px 0px;
 	}
 	.foot_contact ul li .cion{margin-right: 10px;}
-	.foot_contact ul li{line-height: 40px;}
+	.foot_contact ul li{line-height: 36px;}
+	.foot_k .foot_title{line-height: 36px;margin: 0;}
 	.foot_k .ul_1>li .foot_list{padding: 0 8%;}
 	#wechatk{margin-top: 10px;}
 	
