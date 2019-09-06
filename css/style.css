@@ -857,7 +857,7 @@ html,
 
         /*产品排序选择*/
         .tab_rank {
-            height: 60px;
+            height: 50px;
             background: #fff;
             border-top: 1px solid #ff4f73;
         }
@@ -867,11 +867,11 @@ html,
         }
 
         .tab_rank ul li {
-            line-height: 60px;
+            line-height: 50px;
             width: 15%;
             float: left;
             list-style-type: none;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .tab_rank ul li:nth-of-type(5) {
@@ -883,10 +883,11 @@ html,
             font-family: "MicrosoftYaHei";
             font-size: 20px;
             padding: 0px 27px;
-			line-height: 60px;
+			line-height: 50px;
             color: #666666;
 			cursor: pointer;
 			display: block;
+			text-align: center;
         }
         .tab_rank ul li  span{
             font-size: 22px;
@@ -1196,7 +1197,7 @@ html,
 }
 
 .tese_mes h3 {
-    font-size: 26px;
+    font-size: 24px;
     color: #222222;
     font-family: "MicrosoftYaHei";
 }
@@ -1708,16 +1709,18 @@ html,
 }
 
 .yy_title1 {
-    padding-left: 15px;
+    padding-left: 10px;
     border-left: 5px solid red;
-    line-height: 30px;
-	font-size: 24px;
-	 margin-bottom: 10px;
+    line-height: 24px;
+	font-size: 20px;
+	 margin-bottom: 15px;
 }
 
 .txt_s {
     width: 500px;
     height: 35px;
+	padding: 0 10px;
+	box-sizing: border-box;
 }
 
 .tr1 {
@@ -2743,7 +2746,7 @@ select:focus{
 
 @media only screen and (min-width: 801px) and (max-width: 1280px){
 	.tese_intro_right{padding-left: 15px; width: 30%;box-sizing: border-box;margin-left: 0;}
-	.tese_intro_right .tese_mes h3{margin-top: 0;font-size: 22px;}
+	.tese_intro_right .tese_mes h3{margin-top: 0;font-size: 20px;}
 	.tese_intro_right .t_p:nth-of-type(1){ margin-top: 10px;}
 	.tese_intro_right .tese_mes .t_p{font-size: 14px; margin-top: 5px;}
 	.tese_intro_right .tese_mes hr{margin: 10px 0;}

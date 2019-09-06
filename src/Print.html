@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
-		<title>特色会场</title>
+		<title>印刷商</title>
 		<script src="../js/include.js"></script>
 		<link type="text/css" rel="stylesheet" href="../css/bootstrap.css" />
 		<link type="text/css" rel="stylesheet" href="../css/style.css" />
@@ -14,6 +14,19 @@
 		<script src="../js/base.js" type="application/javascript"></script>
 		<script src="../js/rem.js"></script>
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
+		<style>
+			.type_list1 a{ margin-left: 0; margin-right: 30px;}
+			.tab_rank ul li{font-size: 16px;}
+			.tab_rank ul li a{ font-size: 18px;}
+			.pro_n_list ul li div.procont .pro_title{ font-size:16px;margin-top: 0;}
+			.pro_n_list ul li div.procont .content{}
+			.pro_n_list ul li .pro_p_f{ bottom: 35px;}
+			.x_price{ font-size: 16px;}
+			.zk_price{ font-size: 16px;}
+			.pro_intro{font-size: 14px;color: #666;}
+			.pro_intro .ql-editor{padding: 5px 0;}
+			
+		</style>
 	</head>
 
 	<body>
@@ -158,7 +171,7 @@
 						<div class="pro_n_list ">
 							<ul class="clear">
 								<div class="nodata" v-if="mainData.length==0"></div>
-								<li v-for="item in mainData">
+								<li v-for="item in mainData"  style="position: relative;">
 									<div class="product_d" @click="intoPath('PrintList.html',item.id)">
 										<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 										<div class="procont">
@@ -170,16 +183,16 @@
 													<img src="../img/messtaricon.png" v-else style="width:20px;height:20px;margin-left: 10px;" />
 												</span>
 											</div>
-												<p class="pro_intro">
-													<div class="content ql-editor " style="clear: both;">
-														<p class="p1 " v-html="item.content"></p>
-													</div>
-												</p>
-												<p class="pro_p_f clear">
-													<span class="x_price">现价：{{item.score}}</span>
-													<span class="y_price1">原价:{{item.price}}</span>
-													<span class="zk_price">{{item.discount&&item.discount!=0?item.discount:'10'}}折</span>
-												</p>
+											<div class="pro_intro">
+												<div class="content ql-editor " >
+													<p class="p1 " v-html="item.content"></p>
+												</div>
+											</div>
+											<p class="pro_p_f clear">
+												<span class="x_price">现价：{{item.score}}</span>
+												<span class="y_price1">原价:{{item.price}}</span>
+												<span class="zk_price">{{item.discount&&item.discount!=0?item.discount:'10'}}折</span>
+											</p>
 										</div>
 										<div class="probind  nowbind" @click="intoPath('PrintList.html',item.id)">立即预约</div>
 									</div>

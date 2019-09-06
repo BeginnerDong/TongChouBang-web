@@ -32,7 +32,7 @@
 <![endif]-->
 		<style>
 
-			.aboutus_b .aboutus_t_t{font-size: 18px;  height: auto;line-height: 32px;width: 10%;}
+		.aboutus_b .aboutus_t_t{font-size: 18px;  height: auto;line-height: 32px;width: 10%;}
 		.aboutus_t_b .aboutus_b{padding: 20px 0; }
 		.aboutus_t_b .aboutus_t_d{ line-height: normal;}
 		.aboutus_t_b .aboutus_t_d a{ line-height: 32px; display: block; font-size: 16px; }
@@ -60,6 +60,9 @@
 		.tesedetail_m ul li{font-size: 16px;}
 		.tesedetail_m .tab_line_m{ margin: 0px 0 15px 0;}
 		.tesedetail_m ul li .tab_mes_t{font-size: 16px; font-weight:bold;color: #444}
+		.tab_m_s1{font-size: 20px;}
+		.line_h_m{height: 28px;top: 22px;}
+		
 		[v-cloak]{
 			display:none!important;
 		}
@@ -494,15 +497,6 @@
 
 							</div>
 						</div>
-						<!--娱乐休闲-->
-						<!-- <div class="aboutus_b clear">
-							<div class="aboutus_t_t">娱乐休闲</div>
-							<div class="aboutus_t_d">
-								<a v-for="item in mainData.entertainment">{{item}}</a>
-
-							</div>
-						</div> -->
-						<!--通用设施-->
 						<div class="aboutus_b clear">
 							<div class="aboutus_t_t">通用设施</div>
 							<div class="aboutus_t_d">
@@ -604,8 +598,7 @@
 					</section>
 					<section class="review_s" style="padding-bottom:30px;" v-if="messageData.length==0">
 						<div style="display: inline-block;width: 80%;">暂无评论，您可以发布第一个评论哦</div>
-						<a style="background: #fe546e;display: inline-block;padding: 9px 40px;border-radius: 8px;font-size: 24px;color: #fff;" 
-						href="MyCenter.html">我要评论</a>
+						<a style="background: #fe546e;display: inline-block;padding: 9px 40px;border-radius: 8px;font-size: 24px;color: #fff;"  href="MyCenter.html">我要评论</a>
 					</section>
 					
 					<!-- <div class="review_btn">
@@ -620,7 +613,7 @@
 			</div>
 			<div class="yyct" id="yyct" v-if="isReserve" style="padding: 30px;box-sizing: border-box; top: 50%;transform: translate(-50%,-50%);">
 				<a class="close_tc" id="close_tc" @click="close">x</a>
-				<div class="yyct_1" style="height: 450px; overflow: auto;">
+				<div class="yyct_1" style="height: 450px; overflow: auto;padding-left: 15px;">
 					<h1 class="yy_title1">预约信息</h1>
 					<ul class="clear">
 						<li class="tr1 clear">
@@ -650,7 +643,7 @@
 						<li class="tr1">
 							<div style="vertical-align: top;">备注信息</div>
 							<div>
-								<textarea v-model="submitData.remarks" placeholder="请简单描述您需要的设施与服务，如投影仪、白板等（非必填）" style="width: 500px;height: 100px;resize: none;margin-top: 15px"></textarea></div>
+								<textarea v-model="submitData.remarks" placeholder="请简单描述您需要的设施与服务，如投影仪、白板等（非必填）" style="width: 500px;height: 100px;resize: none;margin-top: 15px;box-sizing: border-box;padding:10px"></textarea></div>
 						</li>
 					</ul>
 					<h1 class="yy_title1">联系信息</h1>
@@ -673,8 +666,7 @@
 				</div>
 			</div>
 			<!--图片集合弹层-->
-			<div id="imglisttk" style="position: fixed;left: 0;right: 0;top: 0;bottom: 0;background: rgb(114, 114, 114,0.81);z-index: 999999;"
-			 v-if="isPreview" v-cloak>
+			<div id="imglisttk" style="position: fixed;left: 0;right: 0;top: 0;bottom: 0;background: rgb(114, 114, 114,0.81);z-index: 999999;" v-if="isPreview" v-cloak>
 				<div class="imgbig_kk" style="">
 					<ul id="imgkk" class="imglistbanner clear">
 						<li v-for="(item,index) in previewImgData" v-if="num==index"><img :src="item.url" /></li>
@@ -682,7 +674,9 @@
 					</ul>
 					<div style="transform: translateY(-50%);top:50%;width: 100%;position: absolute">
 						<a id="leftdetailbtn" @click="preImg">
-							< </a> <a id="rightdetailbtn" @click="lastImg">
+							< 
+						</a> 
+						<a id="rightdetailbtn" @click="lastImg">
 								>
 						</a>
 					</div>

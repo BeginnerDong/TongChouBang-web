@@ -18,13 +18,16 @@
 	</head>
 	<style>
 		.type_list1 a{ margin-left: 0; margin-right: 30px;}
-		.tab_rank ul li{font-size: 16rpx;}
+		.tab_rank ul li{font-size: 16px;}
 		.tab_rank ul li a{ font-size: 18px;}
-		.pro_n_list ul li div.procont .pro_title{ font-size:16rpx;margin-top: 0;}
+		.pro_n_list ul li div.procont .pro_title{ font-size:16px;margin-top: 0;}
 		.pro_n_list ul li div.procont .content{}
 		.pro_n_list ul li .pro_p_f{ bottom: 35px;}
 		.x_price{ font-size: 16px;}
 		.zk_price{ font-size: 16px;}
+		.pro_intro{font-size: 14px;color: #666;}
+		.pro_intro .ql-editor{padding: 5px 0;}
+		
 	</style>
 
 	<body>
@@ -185,11 +188,11 @@
 													</span>
 												</div>
 												
-												<p class="pro_intro">
+												<div class="pro_intro">
 													<div class="content ql-editor ">
 														<p class="p1 " v-html="item.content"></p>
 													</div>
-												</p>
+												</div>
 												<p class="pro_p_f clear">
 													<span class="x_price">现价：{{item.score}}</span>
 													<span class="y_price1">原价:{{item.price}}</span>
