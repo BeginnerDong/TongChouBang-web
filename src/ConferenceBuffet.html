@@ -166,7 +166,7 @@
 							<ul class="clear">
 								<div class="nodata" v-if="mainData.length==0"></div>
 								<li v-for="item in mainData">
-									<div class="product_d">
+									<div class="product_d"  @click="intoPath('PrintList.html',item.id)">
 										<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 										<div class="procont">
 											<h3 class="pro_title">{{item.title}}</h2>

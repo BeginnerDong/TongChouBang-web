@@ -554,7 +554,13 @@
 					};
 					window.base.sendCode(postData, callback);
 				},
-
+				
+				refresh:function()
+				{
+					console.log(222)
+					window.base.bus.$emit('to_imgCode',{type:'refresh'});
+				},
+				
 				getArticleData() {
 					const self = this;
 					const postData = {};

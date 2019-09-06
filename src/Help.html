@@ -240,9 +240,7 @@
 						listorder: 'desc'
 					};
 				
-					if (self.spuArray.length > 0) {
-						postData.getBefore = window.base.cloneForm(self.getBefore);
-					};
+
 					var callback = function(res) {
 						if (res.info.data.length > 0) {
 							self.mainData.push.apply(self.mainData, res.info.data);

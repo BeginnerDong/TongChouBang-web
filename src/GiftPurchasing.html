@@ -166,7 +166,7 @@
 							<ul class="clear">
 								<div class="nodata" v-if="mainData.length==0"></div>
 								<li v-for="item in mainData">
-									<div class="product_d">
+									<div class="product_d"  @click="intoPath('PrintList.html',item.id)">
 										<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 										<div class="procont">
 											<h3 class="pro_title">{{item.title}}</h2>
@@ -267,37 +267,7 @@
 				self.init()
 			},
 
-			goStart() {
-				const self = this;
-				self.mainData = [];
-				self.paginate = {
-						count: 0,
-						currentPage: 1,
-						pagesize: 6,
-						is_page: true,
-					},
-					self.getMainData()
-			},
-
-			goEnd() {
-				const self = this;
-				self.mainData = [];
-				self.paginate = {
-						count: 0,
-						currentPage: self.allPages,
-						pagesize: 6,
-						is_page: true,
-					},
-					self.getMainData()
-			},
-
-			loginOff() {
-				const self = this;
-				localStorage.removeItem('user_token');
-				localStorage.removeItem('user_info');
-				localStorage.removeItem('user_no');
-				location.reload()
-			},
+			
 
 			methods: {
 				init: function(e) {
@@ -309,6 +279,38 @@
 					self.getMainData();
 					self.getCityData()
 					self.getNoticeData()
+				},
+				
+				goStart() {
+					const self = this;
+					self.mainData = [];
+					self.paginate = {
+							count: 0,
+							currentPage: 1,
+							pagesize: 6,
+							is_page: true,
+						},
+						self.getMainData()
+				},
+				
+				goEnd() {
+					const self = this;
+					self.mainData = [];
+					self.paginate = {
+							count: 0,
+							currentPage: self.allPages,
+							pagesize: 6,
+							is_page: true,
+						},
+						self.getMainData()
+				},
+				
+				loginOff() {
+					const self = this;
+					localStorage.removeItem('user_token');
+					localStorage.removeItem('user_info');
+					localStorage.removeItem('user_no');
+					location.reload()
 				},
 
 				getNoticeData() {
