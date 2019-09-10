@@ -18,7 +18,6 @@
 		<style>
 			.type_list1 a{ margin-left: 0; margin-right: 30px;}
 			.tab_rank ul li{font-size: 16px;}
-			.tab_rank ul li a{ font-size: 18px;}
 			.pro_n_list ul li div.procont .pro_title{ font-size:16px;margin-top: 0;}
 			.pro_n_list ul li div.procont .content{}
 			.pro_n_list ul li .pro_p_f{ bottom: 35px;}
@@ -126,9 +125,9 @@
 							</div>
 						</div>
 						<!--条件选择-->
-						<div class="type_list">
+						<div class="type_seltBtn" @click="showtypeBtn">条件筛选 ∨</div>
+						<div class="type_list" v-if="showtype">
 							<!--场地类型-->
-
 							<div class="adresstype type_s clear" v-for="(item,index) in labelData">
 								<div class="type_1">
 									<span>{{item.title[1]}}</span>
@@ -233,6 +232,7 @@
 						pagesize: 6,
 						is_page: true,
 					},
+					showtype:false,
 					labelData: [],
 					mainData: [],
 					totalCount: 0,
@@ -271,6 +271,10 @@
 			},
 
 			methods: {
+				showtypeBtn(){
+					var self = this;
+					self.showtype = !self.showtype;
+				},
 				init: function(e) {
 					var self = this;
 					if (localStorage.getItem('user_token')) {

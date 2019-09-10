@@ -781,7 +781,7 @@ html,
         .type_list {
             border: 1px solid rgb(230, 230, 230);
             padding: 10px 15px;
-            margin-top: 60px;
+            margin-top: 30px;
             box-shadow: #f9f9f9 0px -1px 1px;
             padding-bottom: 50px;
         }
@@ -837,11 +837,14 @@ html,
         .product_c_z {
             max-width: 1200px;
             width: 100%;
-            margin: 50px auto;
+            margin: 0px auto 40px auto;
             min-height: 500px;
             overflow: hidden;
             padding-top: 1px;
         }
+		
+		/* 显示分类列表 */
+		.type_seltBtn{width: 80%;height: 40px; line-height: 40px;background: #ff567f; color: #fff; margin: 20px auto;text-align: center; font-size: 16px;}
 
         /*产品顶部s*/
         .pro_top {
@@ -881,7 +884,7 @@ html,
 
         .tab_rank ul li a {
             font-family: "MicrosoftYaHei";
-            font-size: 20px;
+            font-size: 18px;
             padding: 0px 27px;
 			line-height: 50px;
             color: #666666;
@@ -1166,7 +1169,7 @@ html,
 .tese_intro {
     max-width: 1390px;
     width: 90%;
-    margin: 50px auto;
+    margin: 30px auto;
 	height: 500px;
 }
 
@@ -1289,9 +1292,9 @@ html,
 .tesedetail_2 {
     max-width: 1390px;
     width: 100%;
-    margin: 50px auto;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    margin: 0px auto 30px auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .teseimg {
@@ -1340,7 +1343,7 @@ html,
     float: right;
     padding: 9px 40px;
     background: #fe546e;
-    border-radius: 8px;
+    border-radius: 5px;
     font-size: 24px;
     color: #fff;
 }
@@ -1766,14 +1769,25 @@ html,
 	.head_nav{width: 100%; overflow: hidden;margin: 0;padding: 0 3%;box-sizing:border-box;background: #fff;}
 	.head_nav ul{overflow-x:auto;width:100%;white-space:nowrap;}
 	.head_nav ul li{ float: none; display: inline-block; font-size: 14px; line-height: 40px;}
+	.nav_2{left:0}
 	.big_div .content{padding: 10px 0;}
 	.big_div .yearsite{ background: #fff;}
 	.big_div .content.bg_2{ background: f5f5f5;padding: 0;}
 	.inidex_anli{margin-top: 30px;}
+	.ts_kk h2{font-size: 16px!important;  line-height: 40px!important;}
+	.review_big{padding: 20px 0;}
+	.aboutus_t_b{padding: 0;}
+	.aboutus_t_b .ts_kk{padding-bottom: 0;}
+	.imglistbanner li img{width: 80%!important; margin: 0 auto;display: block;}
+	#leftdetailbtn, #rightdetailbtn{padding: 10px; font-size: 30px;}
+	#closeimgbtn{padding:0px!important; width: 50px; height: 50px;border-radius: 50%; line-height:42px;text-align: center;box-sizing: border-box; display: block;font-size: 40px!important;}
+	.teseintro .tesedetail_c{height: auto!important;}
+	.teseintro .y_bind{font-size: 16px!important;}
+	.review_s .yd_btn{float: none;margin: 20px auto 0 auto; display: block; width: 120px;padding: 0 10px;text-align: center;font-size: 16px!important;line-height: 40px;}
 	
 	.top-BannerBox{padding-top: 30px;}
 	.top_search{top: 10px; bottom: auto;width: 94%;border-radius:50px ;overflow: hidden;}
-	
+	.btn_m_y{border-radius: 5px;}
 	.yearlist ul{
 		display: flex;
 		justify-content: space-around;
@@ -2430,17 +2444,18 @@ select:focus{
     }
     .tab_rank ul li{
         width: 25%;
-        line-height: 37px;
+        line-height: 40px;
 		cursor: pointer;
     }
     .tab_rank ul li a{
-        font-size: 14px;
-        padding:10px 10px;
+        padding:0px 10px;
 		cursor: pointer;
+		line-height: 40px;
 		z-index: 999;
+		font-size: 15px;
     }
     .tab_rank{
-        height: 37px;
+        height: 40px;
     }
     .tab_rank ul li:nth-of-type(5){
         width: 100%;

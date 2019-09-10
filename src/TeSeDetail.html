@@ -71,6 +71,7 @@
             .tese_intro_left {
                 height: auto;
             }
+			.teseintro .tese_t{margin-top: 10px;font-size: 16px;}
 			.addaboutstyle{ padding: 0 20px;}
 			/* .addaboutstyle .aboutus_b{padding: 0 10px;} */
 			.addaboutstyle .aboutus_t_t{ margin:0;}
@@ -80,7 +81,7 @@
             .tese_intro_left {
                 width: 100%;
             }
-			div.tesedemody3{ margin-bottom: 0;}
+			div.tesedemody3{ margin-bottom: 0; width: 96%!important;padding: 20px 0;}
 			div.aboutus3{ margin-top: 0;}
 
             .tese_intro_right {
@@ -101,7 +102,7 @@
                 width: 90%;
                 margin: 0 auto;
             }
-			.tese_intro_right .tese_mes h3 {margin-top: 20px; font-size: 20px;}
+			.tese_intro_right .tese_mes h3 {margin-top: 20px; font-size:18px;}
 			.tese_mes .t_p:nth-of-type(1){ margin-top: 20px;}
 			.tesedetali_top .teseintro .tese_t{ font-size: 20px;}
 
@@ -129,11 +130,12 @@
             }
 
             .tesedetail_c { margin-bottom: 20px;font-size: 16px;height: auto; line-height: 24px;}
-			.tese_gg1{ font-size: 24px;}
+			.teseintro .tese_gg1{ font-size: 16px;}
 
             .tab_head ul li {
-                line-height: 60px;
-                font-size: 20px;
+                line-height: 40px;
+                font-size:16px;
+				text-align: center;
             }
 
             .tab_head ul li:nth-of-type(1) {
@@ -149,10 +151,11 @@
             }
 
             .sect {
-                padding: 20px;
+                padding: 20px 10px;
+				margin-top: 20px;
             }
 
-            .btn_m_y {position: static;bottom: auto;top: auto;font-size: 16px;padding: 0;line-height: 36px;width: 120px;display: block;text-align: center;margin: 30px auto 10px auto;}
+            .btn_m_y {position: static;bottom: auto;top: auto;font-size: 16px;padding: 0;line-height: 36px;width: 120px;display: block;text-align: center;margin: 20px auto;}
 			.review_k{padding: 20px;}
 
             .tab_head {
@@ -164,7 +167,7 @@
             }
 
             .tesedetail_m {
-                padding: 46px 10px;
+                padding: 10px;
             }
 
             .tab_m li {
@@ -176,7 +179,7 @@
             }
 
             .tab_m_s1 {
-                font-size: 19px;
+                font-size: 14px;
             }
 
             .tab_mes_t {
@@ -236,9 +239,10 @@
                 width: 98px;
                 display: none;
             }
-			.tese_intro{ margin-top: 0;}
+			.tese_intro{ margin-top: 0;height: auto;}
+			.tese_intro_right .tese_mes .t-p-price{position: initial;}
 			.review_big .review{ padding: 30px 20px;}
-			.review_big .review h1{ padding-left: 0px!important; font-size:24px!important; margin: 10px 0;}
+			.review_big .review h1{ padding-left: 0px!important; margin: 10px 0;}
 			.review_big .review .review_s{ padding-left: 0px!important;}
 			.carousel-inner .item{ height: 218px!important;}
         }
@@ -444,7 +448,7 @@
 				</div>
 			</div>
 			<div class="tesedetail_1" style="background: #f6f6f6;">
-				<div class="tesedetail_2 tesedemody3" style="max-width: auto; width: 90%;margin: 50px auto;">
+				<div class="tesedetail_2 tesedemody3" style="max-width: auto; width: 90%;margin:30px auto;">
 					<div class="tesedetali_top clear">
 						<div class="teseimg"><img :src="mainData.mainImg&&mainData.mainImg[0]?mainData.mainImg[0].url:''" style="width: 100%;height: 100%;" /></div>
 						<div class="teseintro">
