@@ -21,7 +21,7 @@
 		.tab_rank ul li{font-size: 16px;}
 		.pro_n_list ul li div.procont .pro_title{ font-size:16px;margin-top: 0;}
 		.pro_n_list ul li div.procont .content{}
-		.pro_n_list ul li .pro_p_f{ bottom: 35px;}
+		.pro_n_list ul li .pro_p_f{ bottom: 0px;}
 		.x_price{ font-size: 16px;}
 		.zk_price{ font-size: 16px;}
 		.pro_intro{font-size: 14px;color: #666;}
@@ -177,7 +177,7 @@
 										<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 										<div class="procont">
 												<h3 class="pro_title">{{item.title}}</h2>
-												<div style="position: absolute;top: 35px;right:15px;">
+												<div class="xing" style="position: absolute;top: 0px;right:15px;">
 													<span v-for="(c_item,c_index) in stars" >
 														<img  src="../img/messtaricon1.png" v-if="item.averageScore>=c_item" 
 														style="width:20px;height:20px;margin-left: 10px;" />

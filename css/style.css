@@ -243,26 +243,28 @@ html,
 .fenye{
     width: 100%;
     text-align: center;
-    margin: 0.5rem auto;
+    margin: 30px auto;
     border-radius: 4px;
     overflow: hidden;
     display: inline-block;
-    font-size: 0.3rem;
+    font-size: 14px;
     color: #333;
+	padding: 0 3%;
 }
 .fenye a{
     font-size: 14px;
-    padding: 0.1rem 0.2rem;
+    padding: 5px 10px;
     background: #fff;
     color: #53728f;
     display: inline-block;
     border:1px #ddd solid;
-    margin-right:3px;
     
 }
 .fenye span{
-    font-size: 16px;
+    font-size: 14px;
 	margin-right: 10px;
+	margin-bottom: 10px;
+	display: inline-block;
 	
 }
 .fenye span input{
@@ -963,14 +965,15 @@ html,
         .pro_n_list ul li div.procont {
             padding-right: 143px;
             margin-left: 240px;
+			height: 100%;
+			position: relative;
 
         }
 
         .pro_n_list ul li div.probind {
             position: absolute;
             right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            bottom: 40px;
 			cursor: pointer;
         }
 
@@ -1788,6 +1791,7 @@ html,
 	.top-BannerBox{padding-top: 30px;}
 	.top_search{top: 10px; bottom: auto;width: 94%;border-radius:50px ;overflow: hidden;}
 	.btn_m_y{border-radius: 5px;}
+	
 	.yearlist ul{
 		display: flex;
 		justify-content: space-around;
@@ -2480,6 +2484,7 @@ select:focus{
         width: 100%;
         padding: 0px 0px;
     }
+	.product_d{}
     .pro_n_list ul li div.proimg{
         width: 100%;
         height: auto;
@@ -2490,6 +2495,7 @@ select:focus{
     .pro_n_list ul li div.procont{
         margin-left: 0px;
         padding-right: 0;
+		
     }
     .pro_p_f{
         position:initial;
@@ -2708,7 +2714,7 @@ select:focus{
 	div.addstlyPeoLis .pro_b_l ul li{ margin-left: 0;}
 	div.addstlyPeoLis .pro_n_list ul li{ height: auto; float: none;}
 	div.addstlyPeoLis .pro_n_list ul li div.proimg{float: none;}
-	div.addstlyPeoLis .pro_n_list ul li div.procont{ padding: 10px;}
+	div.addstlyPeoLis .pro_n_list ul li div.procont{ padding:0 10px;margin: 10PX 0;}
 	div.addstlyPeoLis .pro_n_list ul li .pro_title{ font-size: 18px;margin: 10px 0;}
 	div.addstlyPeoLis .pro_n_list ul li .ql-editor{padding: 10px 0;}
 	div.addstlyPeoLis .pro_n_list ul li .pro_p_f{margin-top: 10px;}
