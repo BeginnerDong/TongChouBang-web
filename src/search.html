@@ -339,14 +339,14 @@
 						<div class="peo_list">
 							<div class="pro_b_l">
 								<ul class="clear">
-									<li v-for="(item,index) in mainData" v-if="index<4" @click="intoPath('TeSeDetail.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></li>
+									<li v-for="(item,index) in mainData" v-if="index<4" @click="intoPath(item.id,item.category_id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></li>
 								</ul>
 							</div>
 							<div class="pro_n_list">
 								<ul class="clear">
 									<div class="nodata" v-if="mainData.length==0"></div>
 									<li v-for="item in mainData">
-										<div class="product_d">
+										<div class="product_d" @click="intoPath(item.id,item.category_id)">
 											<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 											<div class="procont">
 												<h3 class="pro_title">{{item.title}}</h2>
@@ -367,7 +367,7 @@
 														<span class="zk_price">{{item.discount&&item.discount!=0?item.discount:'10'}}折</span>
 													</p>
 											</div>
-											<div class="probind  nowbind" @click="intoPath('TeSeDetail.html',item.id)">立即预约</div>
+											<div class="probind  nowbind">立即预约</div>
 										</div>
 									</li>
 
@@ -635,12 +635,13 @@
 				},
 
 
-				intoPath: function(url, id) {
+				intoPath: function(id,category_id) {
 					var self = this;
-					var toUrl = url;
-					console.log(toUrl);
-					window.location.href = toUrl + '?id=' + id;
-
+					if(category_id==1){
+						window.location.href ='TeSeDetail.html?id=' + id;
+					}else{
+						window.location.href ='PrintList.html?id=' + id;
+					}
 				},
 
 			}
