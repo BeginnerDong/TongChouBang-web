@@ -967,8 +967,8 @@ html,
             margin-left: 240px;
 			height: 100%;
 			position: relative;
-
         }
+		.pro_n_list ul li div.procont .pro_title{line-height: 24px;}
 
         .pro_n_list ul li div.probind {
             position: absolute;
@@ -1787,6 +1787,7 @@ html,
 	.teseintro .tesedetail_c{height: auto!important;}
 	.teseintro .y_bind{font-size: 16px!important;}
 	.review_s .yd_btn{float: none;margin: 20px auto 0 auto; display: block; width: 120px;padding: 0 10px;text-align: center;font-size: 16px!important;line-height: 40px;}
+	.product_d .pro_intro{-webkit-line-clamp:initial; }
 	
 	.top-BannerBox{padding-top: 30px;}
 	.top_search{top: 10px; bottom: auto;width: 94%;border-radius:50px ;overflow: hidden;}
@@ -2392,6 +2393,10 @@ select:focus{
     }
     .tab_rank ul li:nth-of-type(5){
         width: 100%;
+		padding: 0 3%;
+		box-sizing: border-box;
+		font-size: 14px;
+		color: #666;
     }
  }
  @media screen and (max-width:500px) {
@@ -2719,7 +2724,7 @@ select:focus{
 	div.addstlyPeoLis .pro_n_list ul li .ql-editor{padding: 10px 0;}
 	div.addstlyPeoLis .pro_n_list ul li .pro_p_f{margin-top: 10px;}
 	div.addstlyPeoLis .pro_n_list ul li .y_price1{ margin-top: 5px;}
-	div.addstlyPeoLis .pro_n_list ul li div.probind{ position: static;width: 105px;clear: both;right: auto;top: auto;transform: translateY(0); margin: 10px auto 20px auto;}
+	div.addstlyPeoLis .pro_n_list ul li div.probind{ position: static;width: 105px;clear: both;right: auto;top: auto;transform: translateY(0); margin:20px auto;}
 	.caselsit ul li img {
 		height: 140px;
 	}
