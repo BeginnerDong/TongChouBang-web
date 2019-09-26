@@ -119,14 +119,31 @@
 						<div class="search_k">
 							<div class="search_k_1">
 								<span class="sp_1 sp_0_0">
-									<input type="text" class="search_text1" placeholder="搜索团建游，目的地等" v-model="title" /></span>
+									<input type="text" id="inputtext" v-on:keyup.13="search" class="search" class="search_text1" placeholder="全网搜索" v-model="title" /></span>
 								<span class="sp_1 sp_0_1">
-									<input type="button" class="search_btn1" value="搜索" @click="goSearch" /></span>
+									<input type="button" class="search_btn1" value="全网搜索" @click="goSearch" /></span>
 							</div>
 						</div>
 						<!--条件选择-->
-						<div class="type_seltBtn" @click="showtypeBtn">条件筛选 ∨</div>
-						<div class="type_list" v-if="showtype">
+						<div class="phone">
+							<div class="type_seltBtn" @click="showtypeBtn">条件筛选 ∨</div>
+							<div class="type_list" v-if="showtype">
+								<!--场地类型-->
+								<div class="adresstype type_s clear" v-for="(item,index) in labelData">
+									<div class="type_1">
+										<span>{{item.title[1]}}</span>
+									</div>
+									<div class="type_all" @click="allSelect(index)">
+										<span>不限</span>
+									</div>
+									<div class="type_list1">
+										<a v-for="(c_item,c_index) in item.child" @click="select(c_item.id)" :style="check(c_item.id)?'color:red':''">{{c_item.title}}</a>
+							
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="type_list compute">
 							<!--场地类型-->
 							<div class="adresstype type_s clear" v-for="(item,index) in labelData">
 								<div class="type_1">
@@ -137,7 +154,7 @@
 								</div>
 								<div class="type_list1">
 									<a v-for="(c_item,c_index) in item.child" @click="select(c_item.id)" :style="check(c_item.id)?'color:red':''">{{c_item.title}}</a>
-
+						
 								</div>
 							</div>
 						</div>
@@ -161,11 +178,11 @@
 						</div>
 					</div>
 					<div class="peo_list addstlyPeoLis">
-						<div class="pro_b_l">
+						<!-- <div class="pro_b_l">
 							<ul class="clear">
 								<li v-for="(item,index) in mainData" v-if="index<4" @click="intoPath('PrintList.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></li>
 							</ul>
-						</div>
+						</div> -->
 						<div class="pro_n_list">
 							<ul class="clear">
 								<li v-for="item in mainData"  style="position: relative;">
@@ -558,6 +575,31 @@
 					} else {
 						alert('请输入标题搜索')
 					}
+				},
+				
+				search() {
+					const self = this;
+				/* 	$('#inputtext').bind('keyup', function(event) {
+						//13 代表的是回车健 
+						alert(111)
+						
+						if (event.keyCode == 13) {
+							if (self.title != '') {
+								window.location.href = 'search.html?title=' + self.title
+							} else {
+								alert('请输入标题搜索')
+							}
+						}
+					}); */
+					
+					$(".search").keydown(function(event){  
+					    if(event.which == "13")      
+						   if (self.title != '') {
+							window.location.href = 'search.html?title=' + self.title
+						   } else {
+							alert('请输入标题搜索')
+						   }
+					});  
 				},
 
 				changePage: function(e) {

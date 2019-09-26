@@ -31,7 +31,8 @@
   <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
 <![endif]-->
 		<style>
-
+		.tab_m_f input,button,select,textarea{outline:none;border: none;}
+		textarea{resize:none}
 		.aboutus_b .aboutus_t_t{font-size: 18px;  height: auto;line-height: 32px;width: 100%;}
 		.aboutus_t_b .aboutus_b{padding: 20px 0; }
 		.aboutus_t_b .aboutus_t_d{ line-height: normal;}
@@ -155,7 +156,7 @@
 				margin-top: 20px;
             }
 
-            .btn_m_y {position: static;bottom: auto;top: auto;font-size: 16px;padding: 0;line-height: 36px;width: 120px;display: block;text-align: center;margin: 20px auto;}
+            .btn_m_y {position: static;bottom: auto;top: auto;font-size: 16px;padding: 0;line-height: 36px;width: 120px;text-align: center;margin: 20px auto;}
 			.review_k{padding: 20px;}
 
             .tab_head {
@@ -174,10 +175,23 @@
                 line-height: 25px;
             }
 
-            .tesedetail_m ul li {
-                font-size: 15px;
-            }
-
+            
+			
+			.tab_m  li:nth-of-type(1){
+			    font-size: 15px;
+				text-align: center;
+			}
+			
+			.tab_m  li:nth-of-type(2){
+			    font-size: 15px;
+				text-align: center;
+			}
+			
+			.tab_m  li:nth-of-type(3){
+			    font-size: 15px;
+				text-align: center;
+			}
+			
             .tab_m_s1 {
                 font-size: 14px;
             }
@@ -285,6 +299,16 @@
         .carousel-control img{ width: 18px; height: 30px; display: block; position: absolute;top: 50%;transform: translateY(-50%);}
 		.carousel-control.left img{left: 15px;}
 		.carousel-control.right img{right: 15px;}
+		.textarea{
+			border: none;
+			background: #fff;
+			font-size: 16px;
+			color: #666;
+			overflow: hidden;
+			line-height: 38px;
+			padding: 0;
+			font-family: sans-serif;
+		}
     </style>
 	</head>
 
@@ -441,7 +465,7 @@
 							</ul>
 							<hr />
 							<p class="t_p t-p-price">
-								<span>价格：{{mainData.price}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>优惠价格：￥{{mainData.score}}
+								<span>价格：{{mainData.price}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>优惠价格：{{mainData.score}}
 						</div>
 					</div>
 
@@ -455,7 +479,7 @@
 							<h3 class="tese_t">{{mainData.small_title}}</h3>
 							<p class="tesedetail_c">
 								{{mainData.description}}</p>
-							<p><span class="tese_gg1">{{mainData.price}}</span><a class="y_bind yd_btn" @click="submitTwo">预定</a></p>
+							<p><span class="tese_gg1">{{mainData.score}}</span><a class="y_bind yd_btn" @click="submitTwo">预定</a></p>
 						</div>
 					</div>
 					<section class="sect" v-for="(item,index) in skuData">
@@ -473,17 +497,18 @@
 								<li><span>{{item.book_time}}</span></li>
 								<li><span class="tab_m_s2">{{item.price}}</span></li>
 							</ul>
-							<a class="btn_m_y yd_btn" @click="submit(index)">预定</a>
+							<a class="btn_m_y yd_btn compute" @click="submit(index)">预定</a>
 							<hr class="tab_line_m" />
 							<ul class="clear tab_m_f">
 								<li class="clear">
 									<span class="tab_mes_t">套餐信息 :</span>
-									<p class="tab_mes_r">{{item.content}}</p>
+									<pre   class="tab_mes_r textarea">{{item.content}}</pre>
 								</li>
 								<li class="clear"><span class="tab_mes_t">预定须知 :</span>
 									<p class="tab_mes_r"></p>{{item.description}}</p>
 								</li>
 							</ul>
+							<a class="btn_m_y yd_btn phone" @click="submit(index)">预定</a>
 						</div>
 					</section>
 
@@ -522,11 +547,11 @@
 								<a v-for="item in mainData.food_facility">{{item}}</a>
 							</div>
 						</div>
-						<!-- <p class="aboutus_w">
+						<p class="aboutus_w">
 							<div class="content ql-editor " style="clear: both;">
 								<p class="p1 " v-html="mainData.content"></p>
 							</div>
-						</p> -->
+						</p>
 						<section class="ts_kk">
 							<h2>关于公司</h2>
 							<div class="content ql-editor " style="clear: both;">
@@ -734,6 +759,7 @@
 			},
 			created() {
 				const self = this;
+				
 				self.init()
 			},
 
@@ -998,6 +1024,9 @@
 							if (self.mainData.sku[j].title == '历史活动') {
 								self.actData.push(self.mainData.sku[j])
 							}
+							
+							self.mainData.sku[j].content = self.mainData.sku[j].content.replace(/\r\n/g, "<br />")
+							console.log('self.mainData.sku[j].content',self.mainData.sku[j].content)
 						}
 						var map = new BMap.Map("dituContent");          // 创建地图实例
 						var point = new BMap.Point(self.mainData.longitude,self.mainData.latitude);  // 创建点坐标  

@@ -102,6 +102,9 @@ html,
             color: #ff556f !important;
         }
  */
+		.phone{
+			display: none;
+		}
 		
 		.nav_small {
 		    display: none;
@@ -387,6 +390,12 @@ html,
             font-size: 16px;
             color: #fff;
             font-family: "MicrosoftYaHei";
+			width: 50%;
+			text-align: left;
+			overflow: hidden;
+			font-size: 16px;
+			white-space: nowrap;
+			text-overflow: ellipsis;
         }
 
         .y_price::before {
@@ -399,13 +408,18 @@ html,
             float: right;
             color: #ff556f;
             font-size: 18px;
+			width: 50%;
+			text-align: right;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
         }
 
-        .y_price::after {
+        /* .y_price::after {
             content: " 起";
             color: #fff;
             font-size: 14px;
-        }
+        } */
 
         .intro {
             text-align: left;
@@ -1839,6 +1853,7 @@ html,
         height: 100%;
         padding: 20px 0px;
     }
+	
 }
 
 @media screen and (max-width:500px) {
@@ -1893,7 +1908,12 @@ html,
         line-height: 35px;
         margin-top: 20px;
     }
-
+	.phone{
+		display: block;
+	}
+	.compute{
+		display: none;
+	}
     .m_cion {
         /* margin-left: 18%; */
     }

@@ -243,8 +243,8 @@
 					</div>
 				</div>
 				<div class="top_search">
-					<input type="text" id="inputtext" v-on:keyup.13="search" class="search" placeholder="搜索团建游，目的地等" v-model="title" /><input
-					 type="button" value="搜索服务" class="search_btn" @click="goSearch" />
+					<input type="text" id="inputtext" v-on:keyup.13="search" class="search" placeholder="全网搜索" v-model="title" /><input
+					 type="button" value="全网搜索" class="search_btn" @click="goSearch" />
 				</div>
 
 			</div>
@@ -253,7 +253,8 @@
 				<div class="content bg_1" v-if="productOneData.length>0">
 					<div class="yearsite addIndStyle">
 						<div class="clear">
-							<h2 class="c_title_1">年会场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+							<h2 class="c_title_1">年会场地推荐</h2><span class="selectdetai1">
+							<a :href="'TeSe.html?id='+id1">查看更多></a></span>
 						</div>
 
 						<div>
@@ -271,13 +272,13 @@
 										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
 										<span class="yearcion">推荐</span>
 										<div class="y_info">
-											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
+											<div class="clear"><span class="y_name avoidOverflow">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
-											<span class="intro">
+											<!-- <span class="intro">
 												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
-											</span>
+											</span> -->
 										</div>
 									</li>
 
@@ -290,11 +291,12 @@
 				<div class="content bg_2" v-if="productTwoData.length>0">
 					<div class="yearsite addIndStyle">
 						<div class="clear">
-							<h2 class="c_title_1">品牌推广专区</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+							<h2 class="c_title_1">品牌推广专区</h2><span class="selectdetai1">
+							<a :href="'TeSe.html?id='+id2">查看更多></a></span>
 						</div>
 
 						<div>
-							<div class="oneTj" style="position: relative;height:237px" @click="intoDetail('TeSeDetail.html',productThreeData[0].id)">
+							<div class="oneTj" style="position: relative;height:237px" @click="intoDetail('TeSeDetail.html',productTwoData[0].id)">
 								<img :src="productTwoData&&productTwoData[0]&&productTwoData[0].mainImg&&productTwoData[0].mainImg[0]?productTwoData[0].mainImg[0].url:''"
 								 alt="场地预订" style="height:100%" />
 								<div class="adree_yd">
@@ -308,13 +310,13 @@
 										<a><img :src="item&&item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''"></a>
 										<span class="yearcion">推荐</span>
 										<div class="y_info">
-											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
+											<div class="clear"><span class="y_name avoidOverflow">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
-											<span class="intro">
+											<!-- <span class="intro">
 												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
-											</span>
+											</span> -->
 										</div>
 									</li>
 
@@ -328,7 +330,8 @@
 				<div class="content bg_1" v-if="productThreeData.length>0">
 					<div class="yearsite addIndStyle">
 						<div class="clear">
-							<h2 class="c_title_1">发布会场地</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+							<h2 class="c_title_1">发布会场地</h2><span class="selectdetai1">
+							<a :href="'TeSe.html?id='+id3">查看更多></a></span>
 						</div>
 
 						<div>
@@ -348,11 +351,11 @@
 										<div class="y_info">
 											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
-											<span class="intro">
+											<!-- <span class="intro">
 												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
-											</span>
+											</span> -->
 										</div>
 									</li>
 
@@ -365,7 +368,8 @@
 				<div class="content bg_2" v-if="productFourData.length>0">
 					<div class="yearsite addIndStyle">
 						<div class="clear">
-							<h2 class="c_title_1">婚宴场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+							<h2 class="c_title_1">婚宴场地推荐</h2><span class="selectdetai1">
+							<a :href="'TeSe.html?id='+id4">查看更多></a></span>
 						</div>
 
 						<div>
@@ -385,11 +389,11 @@
 										<div class="y_info">
 											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
-											<span class="intro">
+											<!-- <span class="intro">
 												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
-											</span>
+											</span> -->
 										</div>
 									</li>
 
@@ -402,7 +406,8 @@
 				<div class="content bg_1" v-if="productFiveData.length>0">
 					<div class="yearsite addIndStyle">
 						<div class="clear">
-							<h2 class="c_title_1">商务会议场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+							<h2 class="c_title_1">商务会议场地推荐</h2><span class="selectdetai1">
+							<a :href="'TeSe.html?id='+id5">查看更多></a></span>
 						</div>
 
 						<div>
@@ -422,11 +427,11 @@
 										<div class="y_info">
 											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
-											<span class="intro">
+											<!-- <span class="intro">
 												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
-											</span>
+											</span> -->
 										</div>
 									</li>
 
@@ -439,7 +444,8 @@
 				<div class="content bg_2" v-if="productSixData.length>0">
 					<div class="yearsite addIndStyle">
 						<div class="clear">
-							<h2 class="c_title_1">团建场地推荐</h2><span class="selectdetai1"><a href="TeSe.html">查看更多></a></span>
+							<h2 class="c_title_1">团建场地推荐</h2><span class="selectdetai1">
+							<a :href="'TeSe.html?id='+id6">查看更多></a></span>
 						</div>
 
 						<div>
@@ -459,11 +465,11 @@
 										<div class="y_info">
 											<div class="clear"><span class="y_name">{{item.title}}</span><span class="y_price">{{item.score}}</span>
 											</div>
-											<span class="intro">
+											<!-- <span class="intro">
 												<div class=" ql-editor " style="clear: both;">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
-											</span>
+											</span> -->
 										</div>
 									</li>
 
@@ -528,7 +534,13 @@
 				},
 				title: '',
 				cityId: 0,
-				hasLogin:false
+				hasLogin:false,
+				id1:'',
+				id2:'',
+				id3:'',
+				id4:'',
+				id5:'',
+				id6:'',
 			}
 		},
 		created: function() {
@@ -602,20 +614,10 @@
 
 			search() {
 				const self = this;
-			/* 	$('#inputtext').bind('keyup', function(event) {
-					//13 代表的是回车健 
-					alert(111)
-					
-					if (event.keyCode == 13) {
-						if (self.title != '') {
-							window.location.href = 'search.html?title=' + self.title
-						} else {
-							alert('请输入标题搜索')
-						}
-					}
-				}); */
-				
+			
+				console.log(1231)
 				$(".search").keydown(function(event){  
+					console.log(event)
 				    if(event.which == "13")      
 					   if (self.title != '') {
 						window.location.href = 'search.html?title=' + self.title
@@ -725,6 +727,7 @@
 
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
+						self.id1 = res.info.data[0].id;
 						self.getProductOneData(res.info.data[0].id)
 					}
 				};
@@ -752,6 +755,9 @@
 						condition: 'in'
 					}
 				};
+				postData.order = {
+					listorder:'desc'
+				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
 						self.productOneData.push.apply(self.productOneData, res.info.data)
@@ -772,6 +778,7 @@
 
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
+						self.id2 = res.info.data[0].id;
 						self.getProductTwoData(res.info.data[0].id)
 					}
 				};
@@ -799,6 +806,9 @@
 						condition: 'in'
 					}
 				};
+				postData.order = {
+					listorder:'desc'
+				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
 						self.productTwoData.push.apply(self.productTwoData, res.info.data)
@@ -819,6 +829,7 @@
 
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
+						self.id3 = res.info.data[0].id;
 						self.getProductThreeData(res.info.data[0].id)
 					}
 				};
@@ -846,6 +857,9 @@
 						condition: 'in'
 					}
 				};
+				postData.order = {
+					listorder:'desc'
+				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
 						self.productThreeData.push.apply(self.productThreeData, res.info.data)
@@ -866,6 +880,7 @@
 
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
+						self.id4 = res.info.data[0].id;
 						self.getProductFourData(res.info.data[0].id)
 					}
 				};
@@ -893,6 +908,9 @@
 						condition: 'in'
 					}
 				};
+				postData.order = {
+					listorder:'desc'
+				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
 						self.productFourData.push.apply(self.productFourData, res.info.data)
@@ -913,6 +931,7 @@
 
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
+						self.id5 = res.info.data[0].id;
 						self.getProductFiveData(res.info.data[0].id)
 					}
 				};
@@ -940,8 +959,12 @@
 						condition: 'in'
 					}
 				};
+				postData.order = {
+					listorder:'desc'
+				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
+						
 						self.productFiveData.push.apply(self.productFiveData, res.info.data)
 					}
 				};
@@ -960,6 +983,7 @@
 
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
+						self.id6 = res.info.data[0].id;
 						self.getProductSixData(res.info.data[0].id)
 					}
 				};
@@ -987,8 +1011,12 @@
 						condition: 'in'
 					}
 				};
+				postData.order = {
+					listorder:'desc'
+				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
+						
 						self.productSixData.push.apply(self.productSixData, res.info.data)
 					}
 				};

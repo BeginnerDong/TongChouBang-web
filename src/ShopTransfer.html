@@ -119,17 +119,34 @@
 						<div class="search_k">
 							<div class="search_k_1">
 								<span class="sp_1 sp_0_0">
-									<input type="text" class="search_text1" placeholder="搜索团建游，目的地等" v-model="title" /></span>
+									<input type="text" id="inputtext" v-on:keyup.13="search" class="search" class="search_text1" placeholder="全网搜索" v-model="title" /></span>
 								<span class="sp_1 sp_0_1">
-									<input type="button" class="search_btn1" value="搜索" @click="goSearch" /></span>
+									<input type="button" class="search_btn1" value="全网搜索" @click="goSearch" /></span>
 							</div>
 						</div>
 						<!--条件选择-->
-						
-						<div class="type_seltBtn" @click="showtypeBtn">条件筛选 ∨</div>
-						<div class="type_list" v-if="showtype">
+
+						<div class="phone">
+							<div class="type_seltBtn" @click="showtypeBtn">条件筛选 ∨</div>
+							<div class="type_list" v-if="showtype">
+								<!--场地类型-->
+								<div class="adresstype type_s clear" v-for="(item,index) in labelData">
+									<div class="type_1">
+										<span>{{item.title[1]}}</span>
+									</div>
+									<div class="type_all" @click="allSelect(index)">
+										<span>不限</span>
+									</div>
+									<div class="type_list1">
+										<a v-for="(c_item,c_index) in item.child" @click="select(c_item.id)" :style="check(c_item.id)?'color:red':''">{{c_item.title}}</a>
+							
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="type_list compute">
 							<!--场地类型-->
-							<div class="adresstype type_s clear" v-for="item in labelData">
+							<div class="adresstype type_s clear" v-for="(item,index) in labelData">
 								<div class="type_1">
 									<span>{{item.title[1]}}</span>
 								</div>
@@ -138,12 +155,9 @@
 								</div>
 								<div class="type_list1">
 									<a v-for="(c_item,c_index) in item.child" @click="select(c_item.id)" :style="check(c_item.id)?'color:red':''">{{c_item.title}}</a>
-
+						
 								</div>
 							</div>
-
-
-
 						</div>
 					</div>
 				</div>
@@ -165,37 +179,36 @@
 						</div>
 					</div>
 					<div class="peo_list addstlyPeoLis">
-						<div class="pro_b_l">
+						<!-- <div class="pro_b_l">
 							<ul class="clear">
 								<li v-for="(item,index) in mainData" v-if="index<4" @click="intoPath('PrintList.html',item.id)"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></li>
 							</ul>
-						</div>
+						</div> -->
 						<div class="pro_n_list">
 							<ul class="clear">
 								<div class="nodata" v-if="mainData.length==0"></div>
 								<li v-for="item in mainData" style="position: relative;">
-									<div class="product_d"  @click="intoPath('PrintList.html',item.id)">
+									<div class="product_d" @click="intoPath('PrintList.html',item.id)">
 										<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 										<div class="procont">
 											<h3 class="pro_title">{{item.title}}</h2>
-											
-											<div style="position: absolute;top: 35px;right:15px;">
-												<span v-for="(c_item,c_index) in stars" >
-													<img  src="../img/messtaricon1.png" v-if="item.averageScore>=c_item" 
-													style="width:20px;height:20px;margin-left: 10px;" />
-													<img src="../img/messtaricon.png" v-else style="width:20px;height:20px;margin-left: 10px;" />
-												</span>
-											</div>
-											<div class="pro_intro">
-												<div class="content ql-editor">
-													<p class="p1 " v-html="item.content"></p>
+
+												<div style="position: absolute;top: 35px;right:15px;">
+													<span v-for="(c_item,c_index) in stars">
+														<img src="../img/messtaricon1.png" v-if="item.averageScore>=c_item" style="width:20px;height:20px;margin-left: 10px;" />
+														<img src="../img/messtaricon.png" v-else style="width:20px;height:20px;margin-left: 10px;" />
+													</span>
 												</div>
-											</div>
-											<p class="pro_p_f clear">
-												<span class="x_price">现价：{{item.score}}</span>
-												<span class="y_price1">原价:{{item.price}}</span>
-												<span class="zk_price">{{item.discount&&item.discount!=0?item.discount:'10'}}折</span>
-											</p>
+												<div class="pro_intro">
+													<div class="content ql-editor">
+														<p class="p1 " v-html="item.content"></p>
+													</div>
+												</div>
+												<p class="pro_p_f clear">
+													<span class="x_price">现价：{{item.score}}</span>
+													<span class="y_price1">原价:{{item.price}}</span>
+													<span class="zk_price">{{item.discount&&item.discount!=0?item.discount:'10'}}折</span>
+												</p>
 										</div>
 										<div class="probind  nowbind" @click="intoPath('PrintList.html',item.id)">立即预约</div>
 									</div>
@@ -238,7 +251,7 @@
 						pagesize: 6,
 						is_page: true,
 					},
-					showtype:false,
+					showtype: false,
 					labelData: [],
 					mainData: [],
 					totalCount: 0,
@@ -254,7 +267,7 @@
 					title: '',
 					cityId: '',
 					hasLogin: false,
-					noticeData:{},
+					noticeData: {},
 					stars: [1, 2, 3, 4, 5],
 				}
 			},
@@ -277,7 +290,7 @@
 			},
 
 			methods: {
-				showtypeBtn(){
+				showtypeBtn() {
 					var self = this;
 					self.showtype = !self.showtype;
 				},
@@ -376,6 +389,31 @@
 					} else {
 						alert('请输入标题搜索')
 					}
+				},
+				
+				search() {
+					const self = this;
+				/* 	$('#inputtext').bind('keyup', function(event) {
+						//13 代表的是回车健 
+						alert(111)
+						
+						if (event.keyCode == 13) {
+							if (self.title != '') {
+								window.location.href = 'search.html?title=' + self.title
+							} else {
+								alert('请输入标题搜索')
+							}
+						}
+					}); */
+					
+					$(".search").keydown(function(event){  
+					    if(event.which == "13")      
+						   if (self.title != '') {
+							window.location.href = 'search.html?title=' + self.title
+						   } else {
+							alert('请输入标题搜索')
+						   }
+					});  
 				},
 
 				allSelect(index) {
@@ -521,29 +559,29 @@
 						listorder: 'desc'
 					};
 					postData.getAfter = {
-						message:{
-							tableName:'Message',
-							middleKey:'id',
-							key:'relation_id',
-							searchItem:{
-								status:1
+						message: {
+							tableName: 'Message',
+							middleKey: 'id',
+							key: 'relation_id',
+							searchItem: {
+								status: 1
 							},
-							condition:'=',
-							compute:{
-							  score:[
-							    'sum',
-							    'score',
-							    {
-							      status:1,
-							    }
-							  ],
-							  count:[
-							    'count',
-							    'count',
-							    {
-							      status:1,
-							    }
-							  ]
+							condition: '=',
+							compute: {
+								score: [
+									'sum',
+									'score',
+									{
+										status: 1,
+									}
+								],
+								count: [
+									'count',
+									'count',
+									{
+										status: 1,
+									}
+								]
 							},
 						}
 					};
@@ -557,7 +595,7 @@
 							window.base.computePageArr(self);
 							self.totalCount = res.info.total
 							for (var i = 0; i < self.mainData.length; i++) {
-								self.mainData[i].averageScore = self.mainData[i].message.score/self.mainData[i].message.count
+								self.mainData[i].averageScore = self.mainData[i].message.score / self.mainData[i].message.count
 							}
 						} else {
 							self.totalCount = '0'
