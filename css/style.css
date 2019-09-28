@@ -212,7 +212,8 @@ html,
 			z-index: 99998;
             transform: translateX(-50%);
         }
-
+		.top_search .search{ width: 70%;}
+		.top_search .search_btn{ width: 30%;}
 
         @media screen and (max-width: 764px){
 			.head_top>div{
@@ -926,7 +927,7 @@ html,
         }
 
         .peo_list {
-            margin-top: 30px;
+            margin-top: 46px;
 			min-height: 600px;
         }
 
@@ -2413,10 +2414,9 @@ select:focus{
  @media screen and (max-width:935px) {
     .tab_rank ul li a{
         font-size: 15px;
-        padding: 27px 6px;
+        padding: 0px 10px;
     }
     .tab_rank ul li{
-        line-height: 72px;
         font-size: 14px;
         width: 20%;
     }
