@@ -163,7 +163,8 @@ html,
 
         /*搜索*/
         .search {
-            width: 75%;
+            width: 100%;
+			box-sizing: border-box;
             height: 100%;
             font-size: 16px;
             border: none;
@@ -173,6 +174,7 @@ html,
             padding-left: 20px;
             font-family: "McirosoftYaHei";
 			float: left;
+			box-sizing: border-box;
         }
 
         .search:focus {
@@ -753,16 +755,20 @@ html,
             height: 100px;
             background: #fef2f2;
         }
+		.search_k .sp_1 input{width: 100%;}
 
         .search_k_1 {
             padding-top: 20px;
             padding-bottom: 20px;
-            /* width: 800px; */
-            width: 80%;
+            width: 90%;
             margin: 0 auto;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
         }
+		
         .sp_0_0{
-            width: 80%;
+            width: 75%;
         }
         .search_text1 {
             width: 100%;
@@ -777,7 +783,7 @@ html,
         .search_btn1 {
             border: 0;
             width: 93px;
-            height: 58px;
+            height: 60px;
             background: #fc5473;
             font-size:16px;
             color: #fff;
@@ -790,7 +796,8 @@ html,
         }
 
         .sp_1:nth-of-type(2) {
-            margin-left: -8px;
+            margin-left: 0;
+			width: 25%;
         }
 
         /*选择*/
@@ -853,10 +860,11 @@ html,
         .product_c_z {
             max-width: 1200px;
             width: 100%;
-            margin: 0px auto 40px auto;
+            margin: 0px auto;
             min-height: 500px;
             overflow: hidden;
             padding-top: 1px;
+			padding-bottom: 40px;
         }
 		
 		/* 显示分类列表 */
@@ -982,8 +990,8 @@ html,
 			height: 100%;
 			position: relative;
         }
-		.pro_n_list ul li div.procont .pro_title{line-height: 24px;}
-
+		.pro_n_list ul li div.procont .pro_title{line-height: 24px; font-size: 16px;margin-top: 0;}
+		.pro_n_list ul li div.procont .xing{margin-bottom: 10px;position: absolute;top: 0px;right:5px;}
         .pro_n_list ul li div.probind {
             position: absolute;
             right: 20px;
@@ -1802,6 +1810,7 @@ html,
 	.teseintro .y_bind{font-size: 16px!important;}
 	.review_s .yd_btn{float: none;margin: 20px auto 0 auto; display: block; width: 120px;padding: 0 10px;text-align: center;font-size: 16px!important;line-height: 40px;}
 	.product_d .pro_intro{-webkit-line-clamp:initial; }
+	.product_d .xing{position: static!important; }
 	
 	.top-BannerBox{padding-top: 30px;}
 	.top_search{top: 10px; bottom: auto;width: 94%;border-radius:50px ;overflow: hidden;}
@@ -2403,7 +2412,7 @@ select:focus{
  /*印刷厂css兼任*/
  @media screen and (max-width:935px) {
     .tab_rank ul li a{
-        font-size: 14px;
+        font-size: 15px;
         padding: 27px 6px;
     }
     .tab_rank ul li{
@@ -2430,21 +2439,19 @@ select:focus{
     .search_text1{
         width: 100%;
         font-size: 15px;
-        height: 34px;
-    }
-    .sp_0_0{
- width: 70%;
+        height: 40px;
     }
     .sp_1{
-        height: 34px;
+        height: 40px;
     }
+	.sp_0_0{width: 70%!important;}
     .sp_0_1{
-        width: 30%;
+        width: 30%!important;
     }
     .search_btn1{
         width: 100%;
-        font-size: 15px;
-        height: 34px;
+        font-size: 14px;
+        height: 40px;
     }
     .search_k{
         height: 100%;
@@ -2481,7 +2488,6 @@ select:focus{
 		cursor: pointer;
 		line-height: 40px;
 		z-index: 999;
-		font-size: 15px;
     }
     .tab_rank{
         height: 40px;
@@ -2734,13 +2740,14 @@ select:focus{
 /*图片加载end*/
 
 
+
 @media screen and (max-width: 500px){
 	div.addstlyPeoLis{padding: 0px 10px;}
 	div.addstlyPeoLis .pro_b_l ul li{ margin-left: 0;}
 	div.addstlyPeoLis .pro_n_list ul li{ height: auto; float: none;}
 	div.addstlyPeoLis .pro_n_list ul li div.proimg{float: none;}
 	div.addstlyPeoLis .pro_n_list ul li div.procont{ padding:0 10px;margin: 10PX 0;}
-	div.addstlyPeoLis .pro_n_list ul li .pro_title{ font-size: 18px;margin: 10px 0;}
+	div.addstlyPeoLis .pro_n_list ul li .pro_title{ font-size: 16px;margin: 10px 0;}
 	div.addstlyPeoLis .pro_n_list ul li .ql-editor{padding: 10px 0;}
 	div.addstlyPeoLis .pro_n_list ul li .pro_p_f{margin-top: 10px;}
 	div.addstlyPeoLis .pro_n_list ul li .y_price1{ margin-top: 5px;}
@@ -2802,5 +2809,15 @@ select:focus{
 
 @media only screen and (max-width: 1280px){
 	.top .banner{ height: 395px!important;}
+}
+
+@media screen and (max-width: 900px){
+		.head_top{background: #fe546f;padding: 0; margin-bottom: 10px;border-bottom: 1px solid #e7e7e7;position: static; top: auto;}
+		.head_top .logoTIcon{ width: 100px; height: 39px;margin:10px 0 10px 3%;}
+		.head_logo{ line-height: 40px; font-size: 14px;float: right; margin:10px 3% 0 0;}
+		.head_logo .tab_adress{ margin: 0;color: #fff;}
+		.pro_top{margin-top: 10px; height:80px!important;}
+		.pro_top img{height: 100%!important; position: relative;left: 50%;transform: translateX(-50%);}
+		.pro_middle{margin-top: 20px;}
 }
 

@@ -18,7 +18,6 @@
 		<style>
 			.type_list1 a{ margin-left: 0; margin-right: 30px;}
 			.tab_rank ul li{font-size: 16px;}
-			.tab_rank ul li a{ font-size: 18px;}
 			.pro_n_list ul li div.procont .pro_title{ font-size:16px;margin-top: 0;}
 			.pro_n_list ul li div.procont .content{}
 			.pro_n_list ul li .pro_p_f{ bottom: 35px;}
@@ -192,17 +191,17 @@
 									<div class="product_d"  @click="intoPath('PrintList.html',item.id)">
 										<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 										<div class="procont">
-											<h3 class="pro_title">{{item.title}}</h2>
-											<div style="position: absolute;top: 35px;right:15px;">
+											<div class="xing">
 												<span v-for="(c_item,c_index) in stars" >
-													<img  src="../img/messtaricon1.png" v-if="item.averageScore>=c_item" 
-													style="width:20px;height:20px;margin-left: 10px;" />
-													<img src="../img/messtaricon.png" v-else style="width:20px;height:20px;margin-left: 10px;" />
+													<img  src="../img/messtaricon1.png" v-if="item.averageScore>=c_item"  style="width:20px;height:20px;margin-right: 10px;" />
+													<img src="../img/messtaricon.png" v-else style="width:20px;height:20px;margin-right: 10px;" />
 												</span>
 											</div>
+											<h3 class="pro_title">{{item.title}}</h3>
+											
 											<div class="pro_intro">
 												<div class="content ql-editor">
-													<p class="p1 " v-html="item.content"></p>
+													<p class="p1" v-html="item.content"></p>
 												</div>
 											</div>
 											<p class="pro_p_f clear">
