@@ -4,6 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
 		<meta http-equiv="X-UA-Compatible" content="IE=Edge，chrome=1">
 		<title>特色会场</title>
 		<script src="../js/include.js"></script>
@@ -24,7 +25,7 @@
 			background: #fff;
 			padding: 1px 30px;
 		}
-		
+		.phone:{display: none;}
 		.tese_intro_left .banner,.banner .carousel,.banner .carousel-inner{ height: 100%;}
 		.carousel-inner > .item{ width: 100%; height: 100%;}
 		.casedetail_con .ql-editor p{ line-height: 24px; padding-bottom: 10px;}
@@ -61,6 +62,15 @@
 		}
 		.addstlyhesdPic{ height: 218px!important;}
     }
+	@media (device-height:736px) and (-webkit-min-device-pixel-ratio:2){ 
+		.tese_intro{height:200px!important;}
+		.tese_intro_left{width: 100%}
+	}
+	@media screen and (max-width:400px){
+		.compute:{display: none;}
+		.phone{display: block;}
+	};
+	
     </style>
 	</head>
 
@@ -93,26 +103,12 @@
 						</ul>
 					</nav>
 					<div class="nav_small">
-						<button class="nav_btn" id="btnnav">
-							<span></span>
-							<span></span>
-							<span></span>
-						</button>
+						<div class="nav_btn" id="btnnav">
+							<div>登录/帮助</div>		
+						</div>
 						<div class="clear"></div>
 						<ul class="clear small_nav orgin" id="snav">
-							<li class="li_bg"><a>首页</a></li>
-							<li><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找印刷商</a></li>
-							<li><a href="PartTime.html">找兼职</a></li>
-							<li><a id="smnavbtn">会议配套服务</a>
-								<ul class="clear smallnav2 smycxiala" id="smnav2">
-									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-									<li><a href="Lease.html">活动道具租赁</a></li>
-									<li><a href="Advertising.html">线下广告</a></li>
-									<li><a href="GiftPurchasing.html">礼品采购</a></li>
-								</ul>
-							</li>
-							<li><a href="ShopTransfer.html">店铺转让</a></li>
+							
 							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
 							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
 							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
@@ -144,7 +140,7 @@
 
 				</div>
 			</header>
-			<div class="tese_intro">
+			<div class="tese_intro compute">
 				<div class="tese_intro_left" style="margin: 0 auto;float: none;">
 					<div class="banner">
 						<div id="carousel-example-generic" data-ride="carousel" class="carousel slide" style="position:relative">
@@ -168,7 +164,30 @@
 					</div>
 				</div>
 			</div>
-
+			<div class="tese_intro phone" style="height: 200px;">
+				<div class="tese_intro_left" style="margin: 0 auto;float: none;width: 100%;">
+					<div class="banner">
+						<div id="carousel-example-generic" data-ride="carousel" class="carousel slide" style="position:relative">
+							<ol class="carousel-indicators">
+								<li v-for="(item, index) in mainData.bannerImg" data-target="#carousel-example-generic" :data-slide-to="index"
+								 :class="index=='0'?'active':''"></li>
+							</ol>
+							<div role="listbox" class="carousel-inner">
+								<div class="item" v-for="(item, index) in mainData.bannerImg" :class="index=='0'?'active':''" style="border: none;">
+									<img :src="item.url" class="img-responsive banner_img" style="height: 100%;width: 100%">
+								</div>
+							</div>
+							<!-- 轮播（Carousel）导航 -->
+							<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+								<img src="../img/icon-left.png" alt="">
+							</a>
+							<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+								<img src="../img/icon-right.png" alt="">
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
 			<!-- <div class="addstlyhesdPic" style="width: 100%;height: 600px;">
 				<img :src="mainData.mainImg&&mainData.bannerImg&&mainData.bannerImg[0]?mainData.bannerImg[0].url:''" style="width: 100%;height: 100%;"/>
 			</div> -->

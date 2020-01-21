@@ -896,7 +896,7 @@ html,
 
         .tab_rank ul li {
             line-height: 50px;
-            width: 15%;
+            width: 17%;
             float: left;
             list-style-type: none;
             font-size: 16px;
@@ -1344,11 +1344,11 @@ html,
     height: 124px;
     font-size: 18px;
     color: #333;
-    overflow: hidden;
+/*    overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 5; */
 }
 
 .tese_gg {
@@ -1876,8 +1876,12 @@ html,
 	.top_search {
 	    height: 34px!important;
 		top: 0;
+		position: inherit;
+		transform: inherit;
+		margin: 10px auto;
+		left: 0;
 	}
-	.top-BannerBox{padding-top: 15px;}
+	.top-BannerBox{padding-top: 0;}
 	.search{
 	    font-size: 14px;
 		padding-left: 10px;
@@ -2223,7 +2227,7 @@ color: #fff
 	    display: none !important; 
 	}
 	.copyRight{padding: 10px 0!important;border-top: 1px solid #666;line-height: 20px!important;font-size: 12px!important;padding:0 3%;box-sizing:border-box ;}
-	/* .nav_small{ display:block;} */
+	 .nav_small{ display:block;} 
 	
 	.head_abnoutus {
 		 display: none;
@@ -2430,7 +2434,11 @@ select:focus{
  }
  @media screen and (max-width:500px) {
 	/* .head_top{ padding: 10px 0;} */
-	.head_top .nav_btn{ top: 15px;}
+	.head_top .nav_btn{ top: 21px;
+		width: auto;
+		background: none;
+		color: #fff;
+	}
 	.head_top .logo{ font-size: 22px; line-height: 40px;}
 	.tab_adress{font-size: 14px;}
     .search_k_1{
@@ -2814,7 +2822,7 @@ select:focus{
 @media screen and (max-width: 900px){
 		.head_top{background: #fe546f;padding: 0; margin-bottom: 10px;border-bottom: 1px solid #e7e7e7;position: static; top: auto;}
 		.head_top .logoTIcon{ width: 100px; height: 39px;margin:10px 0 10px 3%;}
-		.head_logo{ line-height: 40px; font-size: 14px;float: right; margin:10px 3% 0 0;}
+		.head_logo{ line-height: 40px; font-size: 14px;float: right; margin:10px 20% 0 0;}
 		.head_logo .tab_adress{ margin: 0;color: #fff;}
 		.pro_top{margin-top: 10px; height:80px!important;}
 		.pro_top img{height: 100%!important; position: relative;left: 50%;transform: translateX(-50%);}

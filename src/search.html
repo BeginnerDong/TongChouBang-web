@@ -221,7 +221,7 @@
 		.top .banner{ height: 200px!important;}
 	}
 	@media screen and (max-width:400px){
-		.top .banner{ height: 160px!important;}
+		.top .banner{ height: 140px!important;}
 		.yearlist ul li a img,.caselsit ul li img{ height: 120px;}
 	}
 	
@@ -262,26 +262,12 @@
 						</ul>
 					</nav>
 					<div class="nav_small">
-						<button class="nav_btn" id="btnnav">
-							<span></span>
-							<span></span>
-							<span></span>
-						</button>
+						<div class="nav_btn" id="btnnav">
+							<div>登录/帮助</div>		
+						</div>
 						<div class="clear"></div>
 						<ul class="clear small_nav orgin" id="snav">
-							<li><a href="index.html">首页</a></li>
-							<li><a href="TeSe.html">找特色会场</a></li>
-							<li><a href="Print.html">找印刷商</a></li>
-							<li><a href="PartTime.html">找兼职</a></li>
-							<li><a id="smnavbtn">会议配套服务</a>
-								<ul class="clear smallnav2 smycxiala" id="smnav2">
-									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-									<li><a href="Lease.html">活动道具租赁</a></li>
-									<li><a href="Advertising.html">线下广告</a></li>
-									<li><a href="GiftPurchasing.html">礼品采购</a></li>
-								</ul>
-							</li>
-							<li><a href="ShopTransfer.html">店铺转让</a></li>
+							
 							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
 							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
 							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
@@ -341,7 +327,7 @@
 							<div class="tab_rank">
 								<ul>
 									<li><a :class="num==1?'pro_active':''" @click="changeOrder('1')">推荐排序</a></li>
-									<li><a :class="num==2?'pro_active':''" @click="changeOrder('2')">价格排序</a></li>
+									
 									<li><a :class="num==3?'pro_active':''" @click="changeOrder('3')">销量排序</a></li>
 									<li><a :class="num==4?'pro_active':''" @click="changeOrder('4')">折扣排序</a></li>
 									<li>共有<span>{{totalCount?totalCount:'0'}}</span>个产品满足条件</li>

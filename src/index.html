@@ -101,13 +101,13 @@
 		.head_top{background: #fe546f;padding: 0; margin-bottom: 10px;border-bottom: 1px solid #e7e7e7;position: static; top: auto;}
 		.head_top{ background: #fe546f; position: static; top: auto;}
 		.head_top .logoTIcon{ width: 100px; height: 39px;margin:10px 0 10px 3%;}
-		.head_logo{ line-height: 40px; font-size: 14px;float: right; margin:10px 3% 0 0;}
+		.head_logo{ line-height: 40px; font-size: 14px;float: right; margin:10px 20% 0 0;}
 		.head_logo .tab_adress{ margin: 0;}
 		.top .banner{margin: 0 3%;border-radius: 8px;overflow: hidden; width: auto; height: 300px!important;margin-bottom: 10px;}
 		.head_nav ul li a{ color: #333;}
 		
 		.addIndStyle{ padding: 0 10px; min-width: 100%;}
-		.addIndStyle .oneTj{ display: none; }
+		/* .addIndStyle .oneTj{ display: none; } */
 		.addIndStyle .y_info{left: auto; right: auto; bottom: auto; background: #fff;padding:10px 0px 0 0px;position: static;}
 		.addIndStyle .y_info .y_name{ color: #333; width: 50%; overflow: hidden;white-space: nowrap; text-overflow: ellipsis; font-size: 14px;}
 		.addIndStyle .y_info .y_price{ width: 50%; text-align: right; overflow: hidden; font-size: 16px; font-weight: bold;overflow: hidden;white-space: nowrap; text-overflow: ellipsis;}
@@ -139,7 +139,7 @@
 	}
 	
 	@media screen and (max-width:400px){
-		.top .banner{ height: 160px!important;}
+		.top .banner{ height: 140px!important;}
 		.yearlist ul li a img,.caselsit ul li img{ height: 120px;}
 	}
 
@@ -179,16 +179,16 @@
 					<!--个人中心-->
 					<div class="head_abnoutus">
 						<ul class="clear">
-							<li  v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
-							<li  v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
-							<li  v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
+							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
+							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
+							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
 							<li><a href="Apply.html">申请入驻</a></li>
 							<li><a href="Help.html">帮助中心</a></li>
 						</ul>
 					</div>
 					<div class="me_rk" style="float: right">
 						<div class="btn_me"><img id="btn_me" src="../img/meicon.png" /></div>
-					
+
 						<ul class="me_list" id="me_list">
 							<li><a href="Login.html">登录注册</a></li>
 							<li><a href="MyCenter.html">个人中心</a></li>
@@ -197,14 +197,12 @@
 						</ul>
 					</div>
 					<div class="nav_small">
-						<button class="nav_btn" id="btnnav">
-							<span></span>
-							<span></span>
-							<span></span>
-						</button>
+						<div class="nav_btn" id="btnnav">
+							<div>登录/帮助</div>
+						</div>
 						<div class="clear"></div>
 						<ul class="clear small_nav orgin" id="snav">
-							<li class="li_bg"><a>首页</a></li>
+							<!-- <li class="li_bg"><a>首页</a></li>
 							<li><a href="TeSe.html">找特色会场</a></li>
 							<li><a href="Print.html">找印刷商</a></li>
 							<li><a href="PartTime.html">找兼职</a></li>
@@ -216,7 +214,7 @@
 									<li><a href="GiftPurchasing.html">礼品采购</a></li>
 								</ul>
 							</li>
-							<li><a href="ShopTransfer.html">店铺转让</a></li>
+							<li><a href="ShopTransfer.html">店铺转让</a></li> -->
 							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
 							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
 							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
@@ -227,7 +225,13 @@
 				</div>
 			</header>
 			<!--轮播图-->
+			
+
 			<div class="top top-BannerBox">
+				<div class="top_search">
+					<input type="text" id="inputtext" v-on:keyup.13="search" class="search" placeholder="全网搜索" v-model="title" /><input
+					 type="button" value="全网搜索" class="search_btn" @click="goSearch"/>
+				</div>
 				<div class="banner">
 					<div id="carousel-example-generic" data-ride="carousel" class="carousel slide" style="height: 100%;">
 						<ol class="carousel-indicators">
@@ -242,10 +246,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="top_search">
-					<input type="text" id="inputtext" v-on:keyup.13="search" class="search" placeholder="全网搜索" v-model="title" /><input
-					 type="button" value="全网搜索" class="search_btn" @click="goSearch" />
-				</div>
+
 
 			</div>
 			<div class="big_div">
@@ -254,7 +255,7 @@
 					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">年会场地推荐</h2><span class="selectdetai1">
-							<a :href="'TeSe.html?id='+id1">查看更多></a></span>
+								<a :href="'TeSe.html?id='+id1">查看更多></a></span>
 						</div>
 
 						<div>
@@ -292,7 +293,7 @@
 					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">品牌推广专区</h2><span class="selectdetai1">
-							<a :href="'TeSe.html?id='+id2">查看更多></a></span>
+								<a :href="'TeSe.html?id='+id2">查看更多></a></span>
 						</div>
 
 						<div>
@@ -331,7 +332,7 @@
 					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">发布会场地</h2><span class="selectdetai1">
-							<a :href="'TeSe.html?id='+id3">查看更多></a></span>
+								<a :href="'TeSe.html?id='+id3">查看更多></a></span>
 						</div>
 
 						<div>
@@ -369,7 +370,7 @@
 					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">婚宴场地推荐</h2><span class="selectdetai1">
-							<a :href="'TeSe.html?id='+id4">查看更多></a></span>
+								<a :href="'TeSe.html?id='+id4">查看更多></a></span>
 						</div>
 
 						<div>
@@ -407,7 +408,7 @@
 					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">商务会议场地推荐</h2><span class="selectdetai1">
-							<a :href="'TeSe.html?id='+id5">查看更多></a></span>
+								<a :href="'TeSe.html?id='+id5">查看更多></a></span>
 						</div>
 
 						<div>
@@ -445,7 +446,7 @@
 					<div class="yearsite addIndStyle">
 						<div class="clear">
 							<h2 class="c_title_1">团建场地推荐</h2><span class="selectdetai1">
-							<a :href="'TeSe.html?id='+id6">查看更多></a></span>
+								<a :href="'TeSe.html?id='+id6">查看更多></a></span>
 						</div>
 
 						<div>
@@ -534,13 +535,13 @@
 				},
 				title: '',
 				cityId: 0,
-				hasLogin:false,
-				id1:'',
-				id2:'',
-				id3:'',
-				id4:'',
-				id5:'',
-				id6:'',
+				hasLogin: false,
+				id1: '',
+				id2: '',
+				id3: '',
+				id4: '',
+				id5: '',
+				id6: '',
 			}
 		},
 		created: function() {
@@ -578,8 +579,8 @@
 				self.getLabelSixData();
 
 			},
-			
-			loginOff(){
+
+			loginOff() {
 				const self = this;
 				localStorage.removeItem('user_token');
 				localStorage.removeItem('user_info');
@@ -614,20 +615,21 @@
 
 			search() {
 				const self = this;
-			
-				console.log(1231)
-				$(".search").keydown(function(event){  
-					console.log(event)
-				    if(event.which == "13")      
-					   if (self.title != '') {
+
+				console.log(1231);
+				
+				console.log('event',event)
+				if (event.which == "13"){
+					if (self.title != '') {
 						window.location.href = 'search.html?title=' + self.title
-					   } else {
+					} else {
 						alert('请输入标题搜索')
-					   }
-				});  
+					}
+				}
+						
+				
 			},
-
-
+	
 
 			intoDetail: function(url, id) {
 				var self = this;
@@ -698,7 +700,7 @@
 						middleKey: 'menu_id',
 						key: 'id',
 						searchItem: {
-							
+
 							parentid: ['in', [106]]
 						},
 						condition: 'in'
@@ -738,10 +740,16 @@
 			getProductOneData: function(id) {
 				var self = this;
 				var postData = {};
-
+				postData.paginate = {
+					count: 0,
+					currentPage: 1,
+					pagesize: 5,
+					is_page: true,
+				};
 				postData.searchItem = {
 					status: 1,
-					passage2: localStorage.getItem('cityId')
+					passage2: localStorage.getItem('cityId'),
+					listorder:['not in',[0]]
 				};
 				postData.getBefore = {
 					Label: {
@@ -749,14 +757,14 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							
+
 							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				postData.order = {
-					listorder:'desc'
+					listorder: 'desc'
 				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
@@ -789,10 +797,16 @@
 			getProductTwoData: function(id) {
 				var self = this;
 				var postData = {};
-
+				postData.paginate = {
+					count: 0,
+					currentPage: 1,
+					pagesize: 5,
+					is_page: true,
+				};
 				postData.searchItem = {
 					status: 1,
-					passage2: localStorage.getItem('cityId')
+					passage2: localStorage.getItem('cityId'),
+					listorder:['not in',[0]]
 				};
 				postData.getBefore = {
 					Label: {
@@ -800,14 +814,14 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							
+
 							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				postData.order = {
-					listorder:'desc'
+					listorder: 'desc'
 				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
@@ -840,10 +854,16 @@
 			getProductThreeData: function(id) {
 				var self = this;
 				var postData = {};
-
+				postData.paginate = {
+					count: 0,
+					currentPage: 1,
+					pagesize: 5,
+					is_page: true,
+				};
 				postData.searchItem = {
 					status: 1,
-					passage2: localStorage.getItem('cityId')
+					passage2: localStorage.getItem('cityId'),
+					listorder:['not in',[0]]
 				};
 				postData.getBefore = {
 					Label: {
@@ -851,14 +871,14 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							
+
 							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				postData.order = {
-					listorder:'desc'
+					listorder: 'desc'
 				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
@@ -891,10 +911,16 @@
 			getProductFourData: function(id) {
 				var self = this;
 				var postData = {};
-
+				postData.paginate = {
+					count: 0,
+					currentPage: 1,
+					pagesize: 5,
+					is_page: true,
+				};
 				postData.searchItem = {
 					status: 1,
-					passage2: localStorage.getItem('cityId')
+					passage2: localStorage.getItem('cityId'),
+					listorder:['not in',[0]]
 				};
 				postData.getBefore = {
 					Label: {
@@ -902,14 +928,14 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							
+
 							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				postData.order = {
-					listorder:'desc'
+					listorder: 'desc'
 				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
@@ -942,10 +968,16 @@
 			getProductFiveData: function(id) {
 				var self = this;
 				var postData = {};
-
+				postData.paginate = {
+					count: 0,
+					currentPage: 1,
+					pagesize: 5,
+					is_page: true,
+				};
 				postData.searchItem = {
 					status: 1,
-					passage2: localStorage.getItem('cityId')
+					passage2: localStorage.getItem('cityId'),
+					listorder:['not in',[0]]
 				};
 				postData.getBefore = {
 					Label: {
@@ -953,18 +985,18 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							
+
 							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				postData.order = {
-					listorder:'desc'
+					listorder: 'desc'
 				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
-						
+
 						self.productFiveData.push.apply(self.productFiveData, res.info.data)
 					}
 				};
@@ -994,7 +1026,12 @@
 			getProductSixData: function(id) {
 				var self = this;
 				var postData = {};
-
+				postData.paginate = {
+					count: 0,
+					currentPage: 1,
+					pagesize: 5,
+					is_page: true,
+				};
 				postData.searchItem = {
 					status: 1,
 					passage2: localStorage.getItem('cityId')
@@ -1005,18 +1042,18 @@
 						middleKey: 'product_no',
 						key: 'relation_one',
 						searchItem: {
-							
+
 							relation_two: ['in', [id]]
 						},
 						condition: 'in'
 					}
 				};
 				postData.order = {
-					listorder:'desc'
+					listorder: 'desc'
 				};
 				var callback = function(res) {
 					if (res.info.data.length > 0) {
-						
+
 						self.productSixData.push.apply(self.productSixData, res.info.data)
 					}
 				};
@@ -1058,36 +1095,5 @@
 		});
 	}
 </script>
-<script>
-	/*PC端*/
-	var btnnav = document.getElementById("nav2btn");
-	var nav2 = document.getElementById("nav2");
-	var flag = true;
-	btnnav.onclick = function() {
-		if (flag) {
-			nav2.classList.remove("ycxiala");
-			nav2.classList.add("xiala");
-			flag = false;
-		} else {
-			nav2.classList.remove("xiala");
-			nav2.classList.add("ycxiala");
-			flag = true;
-		}
-	}
-	/*手机端*/
-	var btnnav1 = document.getElementById("smnavbtn");
-	var nav21 = document.getElementById("smnav2");
-	var flag1 = true;
-	btnnav1.onclick = function() {
-		if (flag1) {
-			nav21.classList.remove("smycxiala");
-			nav21.classList.add("smxiala");
-			flag1 = false;
-		} else {
-			nav21.classList.remove("smxiala");
-			nav21.classList.add("smycxiala");
-			flag1 = true;
-		}
-	}
-</script>
+
 <script type="text/javascript" src="../js/pubilc.js"></script>

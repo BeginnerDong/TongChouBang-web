@@ -53,7 +53,7 @@
 		.tese_intro_right .tese_mes .t-p-price {position: absolute;bottom: 0px;width: 100%;}
 		
 		.teseintro .tese_t{ margin-top:5px; font-size:18px;}
-		.teseintro .tesedetail_c{ height: 100px;font-size: 14px;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2;overflow: hidden;}
+		.teseintro .tesedetail_c{ height: 100px;font-size: 14px;}
 		.teseintro .tese_gg1{font-size: 24px;}
 		.teseintro .y_bind,.tesedetail_m .btn_m_y{font-size: 18px;}
 		.tesedetail_m ul li{font-size: 16px;}
@@ -325,26 +325,12 @@
 		            </ul>
 		        </nav>
 		        <div class="nav_small">
-		            <button class="nav_btn" id="btnnav">
-		                <span></span>
-		                <span></span>
-		                <span></span>
-		            </button>
+		            <div class="nav_btn" id="btnnav">
+		            	<div>登录/帮助</div>		
+		            </div>
 		            <div class="clear"></div>
 		            <ul class="clear small_nav orgin" id="snav">
-		                <li><a href="index.html">首页</a></li>
-		                <li><a href="TeSe.html">找特色会场</a></li>
-		                <li><a href="Print.html">找印刷商</a></li>
-		                <li><a href="PartTime.html">找兼职</a></li>
-		                <li><a id="smnavbtn">会议配套服务</a>
-		                    <ul class="clear smallnav2 smycxiala" id="smnav2">
-		                        <li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-		                        <li><a href="Lease.html">活动道具租赁</a></li>
-		                        <li><a href="Advertising.html">线下广告</a></li>
-		                        <li><a href="GiftPurchasing.html">礼品采购</a></li>
-		                    </ul>
-		                </li>
-		                <li><a href="ShopTransfer.html">店铺转让</a></li>
+		                
 		                <li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
 		                		<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
 		                		<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
@@ -452,7 +438,10 @@
 		                <ul class="clear tab_m_f">
 		                    <li class="clear">
 		                        <span class="tab_mes_t">套餐信息 :</span>
-		                        <pre class="tab_mes_r textarea">{{item.content}}</pre>
+								<div class="content ql-editor " style="clear: both;padding:0">
+									<p class="p1 " v-html="item.content"></p>
+								</div>
+		                        <!-- <pre class="tab_mes_r textarea">{{item.content}}</pre> -->
 		                    </li>
 		                    <li class="clear"><span class="tab_mes_t">预定须知 :</span>
 		                        <p class="tab_mes_r"></p>{{item.description}}</p>
@@ -468,12 +457,12 @@
 		        <div class="aboutus_t_b">
 		            <!--会议设施-->
 		            
-					<section class="ts_kk">
+					<!-- <section class="ts_kk">
 						<h2>关于公司</h2>
 						<div class="content ql-editor " style="clear: both;">
 							<p class="p1 " v-html="mainData.company"></p>
 						</div>
-					</section>
+					</section> -->
 					
 		           <section class="ts_kk">
 		            	<h2>{{mainData.company1&&mainData.company1[0]?mainData.company1[0].title:''}}图集</h2>
@@ -803,6 +792,7 @@
 								passage1:self.mainData.category[0].title
 							}
 						};
+
 						if (self.buyType == 'sku') {
 							postData.orderList = [{
 								sku: [{
@@ -820,20 +810,10 @@
 								type: 1
 							}, ]
 						}
-				
-				
 						console.log('self.userData', self.userData)
 						const callback = (res) => {
 							if (res && res.solely_code == 100000) {
-								alert('预约成功');
-								self.submitData ={
-									time: '',
-									scale: '',
-									remarks: '',
-									name: '',
-									phone: '',
-									email: ''
-								}
+								self.orderUpdate(res.info.id)
 							} else {
 								alert(res.msg);
 							};
@@ -841,8 +821,44 @@
 						window.base.addOrder(postData, callback);
 					}else{
 						alert('请补充必要信息')
-					}
+					}			
+				},
 				
+				orderUpdate(id) {
+					const self = this;
+					var now = Date.parse(new Date())/1000;
+					const postData = {};
+					postData.token = localStorage.getItem('user_token');
+					postData.searchItem = {};
+					postData.searchItem.id = id;
+					postData.data = {
+						update_time: now
+					};
+					postData.saveAfter = [{
+						tableName: 'Product',
+						FuncName: 'update',
+						searchItem: {
+							id: window.base.GetRequest().id
+						},
+						data: {
+							sale_count: parseInt(self.mainData.sale_count) + parseInt(self.count)
+						}
+					}];
+					const callback = res => {
+						if (res.solely_code == 100000) {
+							alert('预约成功');
+							self.submitData = {
+								time: '',
+								scale: '',
+								remarks: '',
+								name: '',
+								phone: '',
+								email: ''
+							}
+							self.hasOrder = true;
+						};
+					};
+					window.base.orderUpdate(postData, callback);
 				},
 
 				getMainData: function(id) {

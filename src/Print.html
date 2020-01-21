@@ -14,6 +14,7 @@
 		<script src="../js/base.js" type="application/javascript"></script>
 		<script src="../js/rem.js"></script>
 		<script type="text/javascript " src="../js/bootstrap.js"></script>
+
 		<style>
 			.type_list1 a{ margin-left: 0; margin-right: 30px;}
 			.tab_rank ul li{font-size: 16px;}
@@ -61,26 +62,12 @@
 						</ul>
 					</nav>
 					<div class="nav_small">
-						<button class="nav_btn" id="btnnav">
-							<span></span>
-							<span></span>
-							<span></span>
-						</button>
+						<div class="nav_btn" id="btnnav">
+							<div>登录/帮助</div>
+						</div>
 						<div class="clear"></div>
 						<ul class="clear small_nav orgin" id="snav">
-							<li><a>首页</a></li>
-							<li><a href="TeSe.html">找特色会场</a></li>
-							<li class="li_bg"><a href="Print.html">找印刷商</a></li>
-							<li><a href="PartTime.html">找兼职</a></li>
-							<li><a id="smnavbtn">会议配套服务</a>
-								<ul class="clear smallnav2 smycxiala" id="smnav2">
-									<li><a href="ConferenceBuffet.html">会议自助餐</a></li>
-									<li><a href="Lease.html">活动道具租赁</a></li>
-									<li><a href="Advertising.html">线下广告</a></li>
-									<li><a href="GiftPurchasing.html">礼品采购</a></li>
-								</ul>
-							</li>
-							<li><a href="ShopTransfer.html">店铺转让</a></li>
+
 							<li v-if="hasLogin" @click="loginOff"><a href="#">退出登录</a></li>
 							<li v-if="!hasLogin"><a href="Login.html">登录注册</a></li>
 							<li v-if="hasLogin"><a href="MyCenter.html">个人中心</a></li>
@@ -120,7 +107,8 @@
 						<div class="search_k">
 							<div class="search_k_1">
 								<span class="sp_1 sp_0_0">
-									<input type="text" id="inputtext" v-on:keyup.13="search" class="search" class="search_text1" placeholder="全网搜索" v-model="title" /></span>
+									<input type="text" id="inputtext" v-on:keyup.13="search" class="search" class="search_text1" placeholder="全网搜索"
+									 v-model="title" /></span>
 								<span class="sp_1 sp_0_1">
 									<input type="button" class="search_btn1" value="全网搜索" @click="goSearch" /></span>
 							</div>
@@ -139,7 +127,7 @@
 									</div>
 									<div class="type_list1">
 										<a v-for="(c_item,c_index) in item.child" @click="select(c_item.id)" :style="check(c_item.id)?'color:red':''">{{c_item.title}}</a>
-							
+
 									</div>
 								</div>
 							</div>
@@ -155,7 +143,7 @@
 								</div>
 								<div class="type_list1">
 									<a v-for="(c_item,c_index) in item.child" @click="select(c_item.id)" :style="check(c_item.id)?'color:red':''">{{c_item.title}}</a>
-						
+
 								</div>
 							</div>
 						</div>
@@ -171,7 +159,7 @@
 						<div class="tab_rank">
 							<ul>
 								<li><a :class="num==1?'pro_active':''" @click="changeOrder('1')">推荐排序</a></li>
-								<li><a :class="num==2?'pro_active':''" @click="changeOrder('2')">价格排序</a></li>
+
 								<li><a :class="num==3?'pro_active':''" @click="changeOrder('3')">销量排序</a></li>
 								<li><a :class="num==4?'pro_active':''" @click="changeOrder('4')">折扣排序</a></li>
 								<li>共有<span>{{totalCount?totalCount:'0'}}</span>个产品满足条件</li>
@@ -187,20 +175,20 @@
 						<div class="pro_n_list ">
 							<ul class="clear">
 								<div class="nodata" v-if="mainData.length==0"></div>
-								<li v-for="item in mainData"  style="position: relative;">
+								<li v-for="item in mainData" style="position: relative;">
 									<div class="product_d" @click="intoPath('PrintList.html',item.id)">
 										<div class="proimg"><img :src="item.mainImg&&item.mainImg[0]?item.mainImg[0].url:''" /></div>
 										<div class="procont">
 											<div class="xing">
-												<span v-for="(c_item,c_index) in stars" >
-													<img  src="../img/messtaricon1.png" v-if="item.averageScore>=c_item"  style="width:20px;height:20px;margin-right: 10px;" />
+												<span v-for="(c_item,c_index) in stars">
+													<img src="../img/messtaricon1.png" v-if="item.averageScore>=c_item" style="width:20px;height:20px;margin-right: 10px;" />
 													<img src="../img/messtaricon.png" v-else style="width:20px;height:20px;margin-right: 10px;" />
 												</span>
 											</div>
 											<h3 class="pro_title">{{item.title}}</h3>
-											
+
 											<div class="pro_intro">
-												<div class="content ql-editor " >
+												<div class="content ql-editor ">
 													<p class="p1 " v-html="item.content"></p>
 												</div>
 											</div>
@@ -252,7 +240,7 @@
 						pagesize: 6,
 						is_page: true,
 					},
-					showtype:false,
+					showtype: false,
 					spuArray: [],
 					pageArray: [],
 					allPages: 0,
@@ -263,12 +251,12 @@
 					cityData: [],
 					num: 1,
 					order: {
-						listorder: 'desc'
+						create_time: 'asc'
 					},
 					title: '',
 					cityId: '',
 					hasLogin: false,
-					noticeData:{},
+					noticeData: {},
 					stars: [1, 2, 3, 4, 5],
 				}
 			},
@@ -279,7 +267,7 @@
 			},
 
 			methods: {
-				showtypeBtn(){
+				showtypeBtn() {
 					var self = this;
 					self.showtype = !self.showtype;
 				},
@@ -513,30 +501,22 @@
 					console.log('self.labelData', self.labelData)
 					window.base.labelGet(postData, callback);
 				},
-				
+
 				search() {
 					const self = this;
-				/* 	$('#inputtext').bind('keyup', function(event) {
-						//13 代表的是回车健 
-						alert(111)
-						
-						if (event.keyCode == 13) {
-							if (self.title != '') {
-								window.location.href = 'search.html?title=' + self.title
-							} else {
-								alert('请输入标题搜索')
-							}
-						}
-					}); */
-					
-					$(".search").keydown(function(event){  
-					    if(event.which == "13")      
-						   if (self.title != '') {
+
+					console.log(1231);
+
+					console.log('event', event)
+					if (event.which == "13") {
+						if (self.title != '') {
 							window.location.href = 'search.html?title=' + self.title
-						   } else {
+						} else {
 							alert('请输入标题搜索')
-						   }
-					});  
+						}
+					}
+
+
 				},
 
 				getMainData: function(id) {
@@ -546,35 +526,34 @@
 					postData.paginate = window.base.cloneForm(self.paginate);
 					postData.searchItem = {
 						category_id: 2,
-						passage2: localStorage.getItem('cityId')
+						passage2: localStorage.getItem('cityId'),
+						listorder:0
 					};
-					postData.order = {
-						listorder: 'desc'
-					};
+					postData.order = window.base.cloneForm(self.order);
 					postData.getAfter = {
-						message:{
-							tableName:'Message',
-							middleKey:'id',
-							key:'relation_id',
-							searchItem:{
-								status:1
+						message: {
+							tableName: 'Message',
+							middleKey: 'id',
+							key: 'relation_id',
+							searchItem: {
+								status: 1
 							},
-							condition:'=',
-							compute:{
-							  score:[
-							    'sum',
-							    'score',
-							    {
-							      status:1,
-							    }
-							  ],
-							  count:[
-							    'count',
-							    'count',
-							    {
-							      status:1,
-							    }
-							  ]
+							condition: '=',
+							compute: {
+								score: [
+									'sum',
+									'score',
+									{
+										status: 1,
+									}
+								],
+								count: [
+									'count',
+									'count',
+									{
+										status: 1,
+									}
+								]
 							},
 						}
 					};
@@ -588,7 +567,7 @@
 							window.base.computePageArr(self);
 							self.totalCount = res.info.total
 							for (var i = 0; i < self.mainData.length; i++) {
-								self.mainData[i].averageScore = self.mainData[i].message.score/self.mainData[i].message.count
+								self.mainData[i].averageScore = self.mainData[i].message.score / self.mainData[i].message.count
 							}
 						} else {
 							self.totalCount = '0'
@@ -624,7 +603,7 @@
 					var self = this;
 					var toUrl = url;
 					console.log(toUrl);
-					window.location.href = toUrl + '?id=' + id;
+					window.open(toUrl + '?id=' + id)
 
 				},
 
@@ -635,7 +614,7 @@
 	</script>
 
 </html>
-<script type="text/javascript" src="/js/pubilc.js"></script>
+<script type="text/javascript" src="../js/pubilc.js"></script>
 <script>
 	/*PC端*/
 	var btnnav = document.getElementById("nav2btn");
